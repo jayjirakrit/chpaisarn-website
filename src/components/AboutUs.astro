@@ -1,0 +1,160 @@
+---
+const background = [
+  "Ch. Paisarn Co., Ltd. is a leading Thai manufacturer with decades of experience in the military products industry. Since our founding, we have been dedicated to delivering high-quality, tailored solutions that meet the unique needs of our customers while maintaining competitivepricing.",
+  "With a long history of supplying the Royal Thai Army and other government agencies, we have built extensive expertise in protective gear, individual equipment, platform armor, and other military products. This experience has earned us a trusted reputation both in Thailand and internationally.",
+  "Our team of skilled engineers specializes in product innovation, design, and manufacturing, enabling us to continuously enhance our offerings in line with the evolving needs of our clients. Every product undergoes rigorous quality assurance processes to ensure the highest standards, from material selection to final inspection.",
+  "We are proud of our achievements in developing bulletproof helmets, body armor, and other ballistic products that meet or exceed the stringent requirements of the Royal Thai Army. Trusted by military and law enforcement agencies worldwide, we are committed to delivering exceptional quality and reliable protection. At Ch. Paisarn Co., Ltd., we remain dedicated to leading the military product manufacturing industry, driven by innovation, quality, and customer satisfaction.",
+];
+const missions = [
+  {
+    type: "Mission",
+    info: "To drive innovation and technological advancement in ballistic protection, becoming a global leader in providing tailored, high-performance solutions that safeguard lives across military, law enforcement, and civilian sectors. We aim to be the preferred partner for those seeking the highest standards of safety, reliability, and performance in the face of ever-evolving threats.",
+  },
+
+  {
+    type: "Vision",
+    info: "To meet the diverse needs of our clients by delivering customized, cutting-edge ballistic protection solutions that offer superior defense, cost-effectiveness, and reliability. By leveraging our extensive expertise, resourceful team, and commitment to innovation, we aim to enhance security across the world, maintaining the highest levels of quality, service, and competitiveness in every product we create.",
+  },
+];
+---
+
+<style>
+  .about-us-section {
+    height: calc(50vh - 6rem);
+  }
+
+  .video-container {
+    position: relative;
+    width: 65%;
+    height: 75%; 
+    background-color: black;
+  }
+
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+  }
+
+  .about-us-content-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .background-section {
+    height: 100vh;
+    background-color: #f2f2f2;
+  }
+
+  .background-content-wrapper {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+  }
+
+  .background-content {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 2rem;
+  }
+
+  .mission-section {
+    height: 80vh;
+  }
+
+  .mission-content-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .mission-content {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .mission-content-container {
+    border-radius: 20px;
+    padding: 1rem;
+    background-color: #f2f2f2;
+  }
+
+  /* Desktop Screen */
+  @media screen and (min-width: 480px) {
+    .about-us-section {
+      height: calc(100vh - 6rem);
+    }
+
+    .mission-content-wrapper {
+      gap: 4rem;
+    }
+
+    .mission-content {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+    }
+  }
+</style>
+
+<div id="about-us-container">
+  <div class="about-us-section">
+    <div class="about-us-content-wrapper">
+      <h1 class="text-lg lg:text-3xl">CH.PAISARN</h1>
+      <div class="video-container">
+        <iframe
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          src="https://youtube.com/embed/FNiamannzMQ"
+        >
+        </iframe>
+      </div>
+    </div>
+  </div>
+  <div class="background-section">
+    <div class="background-content-wrapper">
+      <div class="background-content">
+        {
+          background.map((paragraph) => (
+            <p class="text-sm lg:text-base">{paragraph}</p>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+  <div class="mission-section">
+    <div class="mission-content-wrapper">
+      <h1 class="text-xl lg:text-3xl">Mission & Vision</h1>
+      <div class="mission-content">
+        {
+          missions.map((m) => (
+            <div class="mission-content-container text-center lg:w-1/3">
+              <h3 class="text-lg lg:text-2xl font-bold">{m.type}</h3>
+              <p class=" text-sm lg:text-xl">{m.info}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</div>

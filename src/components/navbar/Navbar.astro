@@ -1,0 +1,127 @@
+---
+import IconMenu from "../../assets/icon-menu.svg";
+import LogoImg from "../../assets/logo_chp_2.webp"
+
+const navItems = [
+  { name: "HOME", link: "/" },
+  { name: "COMPANY", link: "/company" },
+  {
+    name: "PRODUCTS",
+    link: "/products",
+    subItems: [
+      { name: "PRODUCT 1", link: "/products/product1" },
+      { name: "PRODUCT 2", link: "/products/product2" },
+      { name: "PRODUCT 3", link: "/products/product3" },
+    ],
+  },
+  { name: "SERVICE", link: "/service" },
+  { name: "CONTACT US", link: "/contact" },
+];
+---
+
+<style>
+
+  #navbar {
+    padding: 1rem;
+    height: 6rem;
+    background-color: #23425d;
+  }
+
+  #navbar  > *img {
+    height: 4rem;
+    margin-left: 2rem;
+  } 
+
+  .mobile-menu {
+    overflow: visible;
+    height: 100vh;
+    width: calc(90vw - 4rem);
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #23425d;
+    opacity: 0;
+    transition:
+      transform 0.3s ease-in-out,
+      opacity 0.3s ease-in-out;
+  }
+
+  .mobile-menu.open {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding: 1rem;
+    z-index: 20;
+    font-size: x-large;
+    font-weight: 600;
+  }
+</style>
+
+<nav>
+  <div
+    id="navbar"
+    class="sticky top-0 w-full z-10 h-full flex justify-between items-center text-white"
+  >
+    <div>
+      <img src={LogoImg.src} alt="Logo Ch.Paisarn" />
+    </div>
+    <!-- Desktop Menu -->
+    <div class="nav-desktop-wrapper hidden lg:block w-2/4 mr-10">
+      <ul
+        class="flex justify-between items-center w-full list-none"
+        role="navigation"
+      >
+        {
+          navItems.map((item) => (
+            <li>
+              <a href={item.link}>{item.name}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="nav-mobile-wrapper lg:hidden">
+      <button
+        class="btn btn-menu"
+        id="menu-btn"
+        aria-expanded="false"
+        aria-label="Open mobile nav"
+      >
+        <IconMenu name="feather-menu" class="pointer" />
+      </button>
+      <!-- Modal -->
+      <div class="mobile-menu">
+        <ul class="nav-links flex flex-col list-none">
+          {
+            navItems.map((item) => (
+              <li>
+                <a href={item.link}>{item.name}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const navBtn = document.getElementById("menu-btn");
+  const navLinks = document.querySelector(".mobile-menu");
+  const navBar = document.getElementById("navbar");
+  navBtn?.addEventListener("click", () => {
+    navBtn.setAttribute(
+      "aria-expanded",
+      navBtn?.getAttribute("aria-expanded") === "true" ? "false" : "true",
+    );
+    navLinks?.classList.toggle("open");
+  });
+</script>

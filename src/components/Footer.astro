@@ -1,0 +1,100 @@
+---
+const contactTitle = "CH.PAISARN CO.,LTD.";
+const contactUs = "Contact Us";
+const officeInfo = {
+  address:
+    "55/20 Soi Ronnasittipichai Sanambinnam Road Tasai Muang Nonthaburi 11000 Thailand",
+  phone: ["Tel: +662 580 2552 - 3", "Fax: +662 580 2663"],
+  email: ["natty@chpaisarn.com", "contact@chpaisarn.com"],
+};
+
+const factoryInfo = {
+  address: "179 Moo11 Banchian Hunka Chainat 17130 Thailand",
+  phone: ["Tel. +665 645 1982 - 6", "Fax. +665 645 1987"],
+};
+
+const LinkInfo = ["HOME", "PRODUCTS", "SERVICE", "CONTACT US"];
+---
+
+<style>
+  #footer {
+    height: 75vh;
+    background-color: #23425d;
+    color: white;
+  }
+
+  .contact-title-wrapper {
+    height: 20%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .contact-title {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid white;
+  }
+
+  .contact-content-wrapper {
+    margin-top: 2rem;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .contact-content {
+    width: 80%;
+    display: flex;
+    text-align: left;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .contact-address {
+    display: flex;
+    gap: 2rem;
+  }
+</style>
+
+<div id="footer" class="">
+  <div class="contact-title-wrapper">
+    <div class="contact-title">
+      <h1 class="text-lg lg:text-3xl">{contactTitle}</h1>
+      <button
+        class="bg-[#0360AE] hover:bg-white text-white  hover:text-[#0360AE] hover:outline-3  hover:outline-[#0360AE] font-semibold py-2 px-4 rounded inline-flex items-center"
+      >
+        {contactUs}
+      </button>
+    </div>
+  </div>
+  <div class="contact-content-wrapper">
+    <div class="contact-content text-sm lg:text-base">
+      <h3 class="font-bold">{contactUs.toUpperCase()}</h3>
+      <div class="contact-address">
+        <div class="office-info flex flex-col gap-2 w-1/3">
+          <h6 class="font-bold">Office</h6>
+          <p>{officeInfo.address}</p>
+          <div>
+            {officeInfo.phone.map((phone) => <p>{phone}</p>)}
+          </div>
+          <div>
+            {officeInfo.email.map((email) => <p>{email}</p>)}
+          </div>
+        </div>
+        <div class="factory-info flex flex-col gap-2 w-1/3">
+          <h6 class="font-bold">Factory</h6>
+          <p>{factoryInfo.address}</p>
+          <div>
+            {factoryInfo.phone.map((phone) => <p>{phone}</p>)}
+          </div>
+        </div>
+        <div class="link-info flex flex-col gap-2 w-1/3">
+          <h6 class="font-bold">Links</h6>
+          {LinkInfo.map((link) => <p>{link}</p>)}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

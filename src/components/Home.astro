@@ -1,0 +1,131 @@
+---
+import { Image } from "astro:assets";
+import ImgTest from "../assets/img_test.png";
+
+import ImageSlider from "../components/imgslider/ImageSlider.tsx";
+import BodyImg from "../assets/body-armor-1.webp";
+import BodyImg2 from "../assets/body-armor-2.webp";
+const introTitle = "CH.PAISARN";
+const introContent = "Your Trust Partner in Ballistic Protection";
+const infoTitle = "Safeguarding Lives with Advanced Ballistic Solutions";
+const infoContent =
+  "We specialize in crafting high-performance ballistic protection tailored to meet the unique needs of our clients. With years of expertise, our products are trusted globally by military and law enforcement agencies to defend against the most formidable threats. Committed to excellence, we provide top-tier defense against firearms, explosive fragments, and edged weapons, all while respecting our clients’ budgets. Our solutions deliver unmatched safety, reliability, and performance, even in the most demanding conditions.";
+const productTitle = "OUR PRODUCTS";
+const images = [
+  { url: BodyImg, alt: "Image Test 1" },
+  { url: BodyImg2, alt: "Image Test 2" },
+  { url: BodyImg, alt: "Image Test 3" },
+  { url: BodyImg2, alt: "Image Test 4" },
+  { url: BodyImg, alt: "Image Test 5" },
+];
+---
+
+<style>
+  #container {
+  }
+
+  .intro-section {
+    height: calc(60vh - 6rem);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 40% 60%;
+  }
+
+  .intro-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .intro-title,
+  .intro-content {
+    font-size: 2rem;
+  }
+
+  .info-section {
+    height: 80vh;
+    background-color: #F2F2F2;
+  }
+
+  .info-content-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .product-section {
+    height: 80vh;
+  }
+
+  .product-content-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  @media screen and (min-width: 480px) {
+    .intro-section {
+      height: 100vh;
+      grid-template-rows: 30% 70%;
+    }
+
+    .info-section {
+      height: 100vh;
+    }
+
+    .product-section {
+      height: 100vh;
+    }
+  }
+</style>
+
+<div id="container">
+  <div class="intro-section">
+    <div class="intro-content-wrapper">
+      <h1 class="font-bold text-lg lg:text-3xl">{introTitle}</h1>
+      <h2 class="text-lg lg:text-3xl">{introContent}</h2>
+    </div>
+    <div class="overflow-hidden object-cover">
+      <Image class="w-full" src={ImgTest} alt="Image Test" />
+    </div>
+  </div>
+  <div class="info-section">
+    <div class="info-content-wrapper">
+      <h1 class="text-lg lg:text-3xl">{infoTitle}</h1>
+      <h2 class="w-3/4 text-lg lg:text-3xl">{infoContent}</h2>
+      <button
+        class="bg-[#0360AE] hover:bg-white text-white  hover:text-[#0360AE] hover:outline-3  hover:outline-[#0360AE] font-semibold py-4 px-6 rounded inline-flex items-center"
+        >More Information</button
+      >
+    </div>
+  </div>
+  <div class="product-section">
+    <div class="product-content-wrapper">
+      <h1 class="font-bold text-lg lg:text-3xl">{productTitle}</h1>
+      <div
+        class="product-slider w-[90%] flex justify-between items-center gap-4"
+      >
+        <div class="flex w-full gap-4">
+          <ImageSlider images={images} client:load />
+        </div>
+      </div>
+      <button
+        class="bg-[#0360AE] hover:bg-white text-white  hover:text-[#0360AE] hover:outline-3  hover:outline-[#0360AE] font-semibold py-4 px-6 rounded inline-flex items-center"
+        >More Products</button
+      >
+    </div>
+  </div>
+</div>
+
+<script></script>
