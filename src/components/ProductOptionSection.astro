@@ -1,0 +1,165 @@
+---
+import optionBg from "@/assets/company/protection_bg.png";
+import optionBgMobile from "@/assets/company/protection_bg_mobile.png";
+
+const optionsTitle: string = Astro.props.optionsTitle;
+const optionsDescription: string = Astro.props.optionsDescription;
+const protectionOptions: {
+  label: string;
+  title: string;
+  features: string[];
+}[] = Astro.props.protectionOptions;
+---
+
+<section class="options-section" style={`--bg-mobile: url(${optionBgMobile.src}); --bg-desktop: url(${optionBg.src})`}>
+  <div class="options-head">
+    <h2 class="options-title heading-h2">{optionsTitle}</h2>
+    <p class="options-description body-text">{optionsDescription}</p>
+  </div>
+
+  <div class="options-content flex flex-col justify-center items-center gap-8">
+    {
+      protectionOptions.map((option) => (
+        <div class="option-card">
+          <div class="option-card-header">
+            <span class="option-card-label">{option.label}</span>
+            <h4 class="option-card-title heading-h4">{option.title}</h4>
+          </div>
+          <ul class="option-card-features">
+            {option.features.map((feature) => (
+              <li>{feature}</li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .options-section {
+    background-color: white;
+    background-image: var(--bg-mobile);
+    background-size: cover;
+    background-position: center;
+    padding: 3rem 2rem;
+  }
+
+  .options-head {
+    margin-bottom: 3rem;
+  }
+
+  .options-title {
+    color: var(--primary-900);
+    margin-bottom: 1.5rem;
+  }
+
+  .options-description {
+    margin-bottom: 1rem;
+  }
+
+  .options-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .option-card {
+    width: 100%;
+    background-color: #2465ae;
+    border-radius: 5px;
+    padding: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  .option-card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    /* border-bottom: 4px solid #9af9cf; */
+  }
+
+  .option-card-label {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: white;
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 3px solid #9af9cf;
+  }
+
+  .option-card-title {
+    color: white;
+  }
+
+  .option-card-features {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    color: white;
+  }
+
+  .option-card-features li {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  /* Tablet and above (min-width) */
+  @media only screen and (min-width: 768px) {
+    .options-section {
+      background-image: var(--bg-desktop);
+    }
+
+    .options-head {
+      text-align: left;
+      margin-bottom: 3rem;
+    }
+    .options-section {
+      padding: 5rem 6.25rem;
+      min-height: auto;
+    }
+
+    .option-card {
+      width: 80%;
+      padding: 2rem;
+    }
+
+    .option-card-header {
+      flex-direction: row;
+    }
+
+    .option-card-label {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      color: white;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #9af9cf;
+    }
+
+    .option-card-title {
+    }
+
+    .option-card-features {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      color: white;
+    }
+
+    .option-card-features li {
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+  }
+
+  /* Desktop and above */
+  @media only screen and (min-width: 1024px) {
+  }
+</style>

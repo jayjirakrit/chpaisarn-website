@@ -1,0 +1,153 @@
+---
+import { Image } from "astro:assets";
+
+const optionsTitle: string = Astro.props.optionsTitle;
+const optionsDescription: string = Astro.props.optionsDescription;
+const itemOptions: { label: string; title: string; img: any; imgDescription: string }[] = Astro.props.itemOptions;
+---
+
+<section class="option-items-section">
+  <div class="option-head">
+    <h2 class="option-title heading-h2">{optionsTitle}</h2>
+    <p class="option-description body-text">{optionsDescription}</p>
+  </div>
+
+  <div class="option-items-content">
+    {
+      itemOptions.map((item) => (
+        <div class="option-items-card">
+          <div class="option-items-card-header">
+            <span class="option-items-card-label">{item.label}</span>
+            <h5 class="option-items-card-title heading-h5">{item.title}</h5>
+          </div>
+          <div class="option-items-card-features">
+            <Image src={item.img} alt={item.imgDescription} />
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <style>
+    .option-items-section {
+      background-color: white;
+      background-size: cover;
+      background-position: center;
+      padding: 3.5rem 1.25rem;
+    }
+
+    .option-head {
+      /* text-align: center; */
+      margin-bottom: 3rem;
+    }
+
+    .option-title {
+      color: var(--primary-900);
+      margin-bottom: 1.5rem;
+    }
+
+    .option-description {
+      margin-bottom: 1rem;
+    }
+
+    .option-items-content {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* ← 2 columns on mobile */
+      gap: 1rem;
+    }
+
+    .option-items-card {
+      width: 100%;
+      background-color: var(--primary-50);
+      border-radius: 5px;
+      border: 1px solid var(--primary-900);
+      padding: 1rem;
+    }
+
+    .option-items-card-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 1rem;
+      color: black;
+    }
+
+    .option-items-card-label {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      color: black;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #9af9cf;
+    }
+
+    .option-items-card-title {
+      font-family: "Hanken Grotesk", sans-serif;
+      font-weight: 700;
+      color: black;
+    }
+
+    .option-items-card-features {
+      list-style-type: disc;
+      color: white;
+      display: flex;
+      justify-content: center;
+    }
+
+    .option-items-card-features li {
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    /* Tablet and above (min-width) */
+    @media only screen and (min-width: 768px) {
+      .option-items-section {
+        padding: 4.5rem;
+        min-height: auto;
+      }
+
+      .option-head {
+        text-align: start;
+      }
+
+      .option-items-content {
+        grid-template-columns: repeat(3, 1fr); /* exactly 3 equal columns */
+        gap: 3rem;
+      }
+
+      .option-items-card {
+        padding: 1.875rem;
+      }
+
+      .option-items-card-header {
+        align-items: flex-start;
+        flex-direction: row;
+      }
+
+      .option-items-card-features {
+        list-style-type: disc;
+        color: white;
+      }
+
+      .option-items-card-features li {
+        margin-bottom: 0.75rem;
+        font-size: 1rem;
+        line-height: 1.4;
+      }
+    }
+
+    /* Desktop and above */
+    @media only screen and (min-width: 1024px) {
+      .option-items-section {
+        padding: 5rem 12.5rem;
+        min-height: auto;
+      }
+
+      .option-items-content {
+        padding: 0rem 3.75rem;
+      }
+    }
+  </style>
+</section>

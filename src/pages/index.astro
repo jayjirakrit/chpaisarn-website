@@ -1,9 +1,12 @@
 ---
 import Home from '@/components/Home.astro';
 import Layout from '@/layouts/Layout.astro';
-import "../styles/global.css";
+import "@/styles/global.css";
+
+const title = "Ch.Paisarn (Chpaisarn) — Ballistic Protection Manufacturer in Thailand";
+const description = "Ch.Paisarn (Chpaisarn) designs and manufactures ballistic protection in Thailand: body armor, ballistic helmets, and NIJ-rated ballistic plates for military and law enforcement.";
 ---
 
-<Layout>
+<Layout title={title} description={description}>
 	<Home />
 </Layout>

@@ -1,0 +1,48 @@
+---
+const optionsNav: string[] = Astro.props.optionsNav;
+---
+
+<div class="options-nav">
+  {optionsNav.map((navItem) => <p class="options-nav-item body-text">{navItem}</p>)}
+</div>
+
+<style>
+  .options-nav {
+    background-color: var(--primary-900);
+    padding: 1.25rem 4rem;
+
+    /* Mobile default – 2 column grid */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    justify-items: center;
+    align-items: center;
+  }
+
+  /* Odd number of items: last one spans both columns and centres */
+  p.options-nav-item:last-child:nth-child(odd) {
+    grid-column: span 2;
+    justify-self: center;
+  }
+
+  p.options-nav-item {
+    color: white;
+    margin: 0;
+    font-family: "Hanken Grotesk", sans-serif;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+  /* Tablet and above (min-width) */
+  @media only screen and (min-width: 768px) {
+    .options-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.25rem;
+    }
+  }
+
+  /* Desktop and above */
+  @media only screen and (min-width: 1024px) {
+  }
+</style>

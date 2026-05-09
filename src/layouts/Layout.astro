@@ -1,6 +1,55 @@
 ---
-import Navbar from "@/components/navbar/Navbar.astro";
+import Navbar from "@/components/Navbar.astro";
 import Footer from "@/components/Footer.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = "Ch.Paisarn (Chpaisarn) — Ballistic Protection Manufacturer in Thailand",
+  description = "Ch.Paisarn (Chpaisarn) is a Thailand-based manufacturer of ballistic protection: body armor, ballistic helmets, and ballistic plates trusted by military and law enforcement.",
+  image = "/logo_chp.webp",
+  canonical,
+  noindex = false,
+}: Props = Astro.props;
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, "") ?? "";
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site).toString();
+const imageUrl = new URL(image, Astro.site).toString();
+
+const organizationLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Ch.Paisarn",
+  alternateName: ["Chpaisarn", "CH Paisarn", "Ch Paisarn Co., Ltd."],
+  url: siteUrl,
+  logo: `${siteUrl}/logo_chp.webp`,
+  email: "contact@chpaisarn.com",
+  telephone: "+662 580 2552",
+  address: [
+    {
+      "@type": "PostalAddress",
+      streetAddress: "55/20 Soi Ronnasittipichai Sanambinnam Road",
+      addressLocality: "Tasai Muang Nonthaburi",
+      postalCode: "11000",
+      addressCountry: "TH",
+    },
+    {
+      "@type": "PostalAddress",
+      streetAddress: "179 Moo11 Banchian",
+      addressLocality: "Hunka Chainat",
+      postalCode: "17130",
+      addressCountry: "TH",
+    },
+  ],
+  description:
+    "Ch.Paisarn (Chpaisarn) is a Thailand-based manufacturer of ballistic protection products including body armor, ballistic helmets, and ballistic plates.",
+};
 ---
 
 <!doctype html>
@@ -8,20 +57,47 @@ import Footer from "@/components/Footer.astro";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="Chpaisarn, Ch.Paisarn, ballistic protection, body armor, ballistic helmets, ballistic plates, Thailand body armor manufacturer, NIJ certified armor"
+    />
+    <meta name="author" content="Ch.Paisarn" />
+    <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Ch.Paisarn" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+
     <link rel="icon" href="/logo_chp.webp" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-    <meta name="generator" content={Astro.generator} />
-    <title>Ch.Paisarn</title>
+    <meta name="google-site-verification" content="2dmLqw5I1x54g1oNetF1eVOWEP8LqUwFqM6RqQkPNEQ" />
+    <script type="application/ld+json" set:html={JSON.stringify(organizationLd)} />
   </head>
   <body>
     <Navbar />
-    <slot />
-	<Footer />
+    <main>
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>
 

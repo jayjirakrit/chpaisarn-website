@@ -1,0 +1,543 @@
+---
+import CompanyBgImg from "@/assets/company/intro_bg.png";
+import CompanyBg01Img from "@/assets/company/factory_01_bg.svg";
+import CustomizeBg01Img from "@/assets/spec_06.png";
+import CustomizeBg02Img from "@/assets/spec_07.png";
+import CustomizeBg03Img from "@/assets/spec_02.png";
+import CustomizeBg04Img from "@/assets/spec_08.png";
+import ProductIntroSection from "@/components/ProductIntroSection.astro";
+import ProductOpItemsSection from "@/components/ProductOpItemsSection.astro";
+import ProductOptionNav from "@/components/ProductOptionNav.astro";
+import CustomStepsSection from "@/components/CustomStepsSection.astro";
+import ContactSection from "@/components/ContactSection.astro";
+import PlateIIIImg from "@/assets/products/plate/plate_III.png";
+import PlateIIIPlusImg from "@/assets/products/plate/plate_III+.png";
+import PlateIVImg from "@/assets/products/plate/plate_IV.png";
+import PlateIVMinusImg from "@/assets/products/plate/plate_IV-.png";
+import { Image } from "astro:assets";
+import BoxIcon from "@/assets/checkbox_icon.svg";
+const productSpecs = [
+  {
+    class: "Level III",
+    rows: [
+      { ammo: ["7.62 x 51 FMJ"], std: "1.2", prem: "0.90", mat: "UHMWPE" },
+      {
+        ammo: ["7.62 x 51 FMJ", "7.62 x 39 AK47 MSC"],
+        std: "1.33",
+        prem: "0.98",
+        mat: "UHMWPE",
+      },
+    ],
+  },
+  {
+    class: "Level III ++",
+    rows: [
+      {
+        ammo: ["7.62 x 51 FMJ", "7.62 x 39 AK47 MSC", "5.56 x 45 SS109 / M193"],
+        std: "1.80*",
+        prem: "1.35** - 1.45**",
+        mat: "UHMWPE + Ceramic (Sic * / B4C** )",
+      },
+    ],
+  },
+  {
+    class: "Level IV-",
+    rows: [
+      {
+        ammo: ["7.62 x 39 AK47 API"],
+        std: "2.30*",
+        prem: "1.80**",
+        mat: "UHMWPE + Ceramic (Sic * / B4C** )",
+      },
+    ],
+  },
+  {
+    class: "Level IV",
+    rows: [
+      {
+        ammo: [".30 M2 AP", "7.62 x 54R API B-32"],
+        std: "2.35** / 2.50*",
+        prem: "2.10**",
+        mat: "UHMWPE + Ceramic (Sic * / B4C** )",
+      },
+    ],
+  },
+];
+
+import optionBg from "@/assets/company/protection_bg.png";
+import optionBgMobile from "@/assets/company/protection_bg_mobile.png";
+
+// Introduction section data
+const pageTitle = "Armor Plates";
+const pageDescription =
+  "CHP® armor plates are engineered to deliver certified hard armor protection from Level III to Level IV — designed, manufactured, and tested in-house to stop the most demanding ballistic threats your operation may face.";
+
+// Your Options section data
+const optionsTitle = "Your Options";
+const optionsDescription =
+  "CHP® armor plates are certified in compliance with NIJ 0101.06, NIJ 0101.07, and Thai Ministry of Defense ballistic standards — engineered to deliver reliable protection across a range of high-velocity and armor-piercing threats.";
+
+// Options Navigation data
+const optionsNav = [
+  "Your Options",
+  "Standards & Compliance",
+  "Built to your specification",
+];
+
+// Customization section data
+const customizeTitle = "Built to Your Specification";
+const customizeDescription =
+  "Every unit has different requirements. We work directly with agencies and procurement teams to configure the right plate solution — from material grade and plate geometry to surface finish and identification markings. Our team manages the entire process in-house, from design through to final inspection. Please specify your requirements when submitting your procurement inquiry";
+
+// Item options data
+const itemOptions = [
+  {
+    label: "Option 1",
+    title: "NIJ Level III",
+    img: PlateIIIImg,
+    imgDescription: "Ballistic Plate Level III",
+  },
+  {
+    label: "Option 2",
+    title: "NIJ Level III+",
+    img: PlateIIIPlusImg,
+    imgDescription: "Ballistic Plate Level III+",
+  },
+  {
+    label: "Option 3",
+    title: "NIJ Level IV-",
+    img: PlateIVMinusImg,
+    imgDescription: "Ballistic Plate Level IV-",
+  },
+  {
+    label: "Option 4",
+    title: "NIJ Level IV",
+    img: PlateIVImg,
+    imgDescription: "Ballistic Plate Level IV",
+  },
+];
+
+// Regulation data
+const regTitle = "Standards & Compliance";
+const regDescription =
+  "Every CHP® armor plate is manufactured and tested in-house to meet the requirements of international and Thai national ballistic protection standards.";
+const regItems = [
+  {
+    title: "NIJ Compliance",
+    description:
+      "All CHP® armor plates are certified in compliance with NIJ Standard 0101.06 and NIJ Standard 0101.07 — the international benchmark for ballistic resistance testing of hard armor plates against high-velocity and armor-piercing threats.",
+  },
+  {
+    title: "Backface Signature (BFS)",
+    description:
+      "All plates comply with NIJ backface signature requirements — with BFS less than 44mm — reducing blunt force trauma transfer to the wearer and ensuring safety and comfort during ballistic impact events.",
+  },
+];
+
+const customizationSteps = [
+  {
+    step: "Step 1",
+    title: "Materials",
+    image: CustomizeBg01Img.src,
+    items: [
+      {
+        name: "UHMWPE Core",
+        desc: "The foundation of every CHP® plate — providing high ballistic resistance and multi-hit capability at low weight. Sourced from certified global manufacturers including Dyneema®."
+      },
+      {
+        name: "Ceramic Composite",
+        desc: "Integrated with the UHMWPE core for Level III++ and above — engineered to defeat high-velocity and armor-piercing threats that require ceramic reinforcement."
+      },
+      {
+        name: "Custom Material Sourcing",
+        desc: "For agencies with specific performance or operational requirements, our team works directly with procurement officers to source and configure the right material specification for your mission."
+      },
+    ],
+  },
+  {
+    step: "Step 2",
+    title: "Covering Materials",
+    image: CustomizeBg02Img.src,
+    items: [
+      {
+        name: "Concealable Armor",
+        desc: "Fully customizable covering materials selected for durability, moisture resistance, and breathability to suit specific tactical environments or weight requirements."
+      },
+      {
+        name: "Environmental Resilience",
+        desc: "Specialized options engineered to maintain structural integrity and performance in harsh climates and extreme operational conditions."
+      },
+      {
+        name: "Mission-Specific Aesthetics",
+        desc: "Complete control over design, color, and camouflage patterns to ensure seamless integration with uniforms and team requirements."
+      },
+    ],
+  },
+  {
+    step: "Step 3",
+    title: "Colors",
+    image: CustomizeBg03Img.src,
+    items: [
+      {
+        name: "Standard colors",
+        desc: "Select from Black, Olive Green, Navy Blue",
+      },
+      {
+        name: "Custom Colors",
+        desc: "Additional colors are available based on customer specifications for camouflage or unit identification.",
+      },
+    ],
+  },
+];
+
+// Contact section data
+const ctaTitle = "Get in Touch";
+const ctaDescription =
+  "Contact us to learn more about our defense solutions or to discuss your specific operational requirements. Our team is ready to provide the expertise and custom-engineered armor solutions needed to meet your mission objectives.";
+---
+
+<!-- Introduction Section -->
+<ProductIntroSection
+  companyBgImg={CompanyBgImg}
+  pageTitle={pageTitle}
+  pageDescription={pageDescription}
+/>
+
+<!--Options Navigation -->
+<ProductOptionNav optionsNav={optionsNav} />
+
+<!-- Your Item Options Section -->
+<ProductOpItemsSection
+  optionsTitle={optionsTitle}
+  optionsDescription={optionsDescription}
+  itemOptions={itemOptions}
+/>
+
+<!-- Regulation Section -->
+<section
+  class="reg-section"
+  style={`--bg-mobile: url(${optionBgMobile.src}); --bg-desktop: url(${optionBg.src})`}
+>
+  <div class="reg-top">
+    <div>
+      <h3 class="heading-h2 text-(--primary-900) mb-2">{regTitle}</h3>
+      <p class="body-text">{regDescription}</p>
+    </div>
+    <div class="reg-compliance">
+      <div class="reg-header">
+        <div class="reg-title-wrap body-text">
+          <h6 class="reg-title">The Regulation</h6>
+        </div>
+        <h3 class="reg-description heading-h3">Compliance</h3>
+      </div>
+      <div class="reg-content">
+        {
+          regItems.map((item) => (
+            <div class="reg-card">
+              <div class="reg-card-header">
+                <span class="reg-icon">
+                  <Image src={BoxIcon} alt="Box Icon" />
+                </span>
+                <div>
+                  <h5 class="reg-card-title heading-h5">{item.title}</h5>
+                </div>
+              </div>
+              <p class="reg-card-description body-text">{item.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="reg-spec">
+    <h2 class="reg-spec-title heading-h3">
+      Certified Protection Across Every Mission Threat.
+    </h2>
+    <div class="reg-spec-table-wrap">
+      <table class="reg-spec-table">
+        <thead>
+          <tr class="reg-spec-header-main">
+            <th rowspan="2">NIJ 0101.06<br />Classification</th>
+            <th rowspan="2">Test Ammunitions</th>
+            <th colspan="2">Max. Weight (kg.)</th>
+            <th rowspan="2">Material<br />*Sic **B4C</th>
+          </tr>
+          <tr class="reg-spec-header-sub">
+            <th class="reg-spec-weight-col">Standard</th>
+            <th class="reg-spec-weight-col">Premium</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            productSpecs.map((spec) =>
+              spec.rows.map((row, idx) => (
+                <tr>
+                  {idx === 0 && (
+                    <td rowspan={spec.rows.length} class="reg-spec-class">
+                      {spec.class}
+                    </td>
+                  )}
+                  <td class="reg-spec-ammo">
+                    <ul>
+                      {row.ammo.map((item) => (
+                        <li>{item}</li>
+                      ))}
+                    </ul>
+                  </td>
+                  <td>{row.std}</td>
+                  <td>{row.prem}</td>
+                  {idx === 0 && <td rowspan={spec.rows.length}>{row.mat}</td>}
+                </tr>
+              )),
+            )
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Customization Section -->
+<CustomStepsSection
+  customizeTitle={customizeTitle}
+  customizeDescription={customizeDescription}
+  customizationSteps={customizationSteps}
+/>
+
+<!-- Contact Section -->
+<ContactSection
+  bgImg={CompanyBg01Img}
+  contactTitle={ctaTitle}
+  contactDescription={ctaDescription}
+/>
+
+<style>
+  /* Regulation Section */
+  .reg-section {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    background-color: white;
+    background-image: var(--bg-mobile);
+    background-size: cover;
+    background-position: center;
+    padding: 3rem 1.25rem;
+  }
+
+  .reg-top {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .reg-header {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    flex-basis: 100%;
+    max-width: 242px;
+  }
+
+  .reg-title-wrap {
+    color: black;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+  }
+
+  .reg-title {
+    display: inline-block;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid var(--secondary-500);
+  }
+
+  .reg-description {
+    color: var(--primary-900);
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .reg-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .reg-card {
+    background-color: var(--primary-700);
+    color: white;
+    border-radius: 5px;
+    border: 1px solid var(--primary-700);
+    padding: 2rem;
+    max-width: 600px;
+  }
+
+  .reg-card-header {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .reg-card-title {
+    margin-bottom: 0.75rem;
+  }
+
+  /* Spec table block */
+  .reg-spec {
+    display: flex;
+    flex-direction: column;
+    gap: 2.25rem;
+  }
+
+  .reg-spec-title {
+    color: var(--primary-900);
+  }
+
+  .reg-spec-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .reg-spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "Hanken Grotesk", sans-serif;
+  }
+
+  .reg-spec-table thead th {
+    background-color: #2465ae;
+    color: #f0f0f0;
+    font-weight: 400;
+    font-size: 0.625rem;
+    padding: 0.5rem 0.5rem;
+    text-align: center;
+    border: 1px solid #f0f0f0;
+    line-height: 1.4;
+  }
+
+  .reg-spec-table .reg-spec-header-main th:first-child,
+  .reg-spec-table .reg-spec-header-main th:last-child {
+    font-weight: 700;
+  }
+
+  .reg-spec-table thead th[rowspan="2"] {
+    vertical-align: middle;
+  }
+
+  .reg-spec-table .reg-spec-header-sub th {
+    font-weight: 400;
+    padding: 0.5rem 0.625rem;
+    border-top: 1px solid #2465ae;
+  }
+
+  .reg-spec-table .reg-spec-weight-col {
+    width: 4.5rem;
+  }
+
+  .reg-spec-table tbody td {
+    background-color: white;
+    border: 1px solid #d4d4d4;
+    padding: 0.5rem 0.5rem;
+    font-size: 0.625rem;
+    color: #272727;
+    line-height: 1.4;
+  }
+
+  .reg-spec-table .reg-spec-class {
+    font-weight: 700;
+  }
+
+  .reg-spec-table .reg-spec-ammo {
+    padding-left: 0;
+  }
+
+  .reg-spec-table .reg-spec-ammo ul {
+    list-style: disc;
+    margin: 0;
+    padding-left: 1.5rem;
+  }
+
+  .reg-spec-table .reg-spec-ammo li {
+    margin-bottom: 0.5rem;
+  }
+
+  .reg-spec-table .reg-spec-ammo li:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Tablet and above (min-width) */
+  @media only screen and (min-width: 768px) {
+    .reg-section {
+      background-image: var(--bg-desktop);
+      padding: 6.25rem;
+    }
+
+    .reg-spec-table thead th {
+      font-size: 1rem;
+      padding: 1rem 1.375rem;
+    }
+
+    .reg-spec-table .reg-spec-header-sub th {
+      padding: 0.75rem 1.375rem;
+    }
+
+    .reg-spec-table .reg-spec-weight-col {
+      width: 9rem;
+    }
+
+    .reg-spec-table tbody td {
+      font-size: 1rem;
+      padding: 1rem 1.375rem;
+    }
+
+    .reg-top {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4rem;
+    }
+
+    .reg-section {
+      gap: 4rem;
+    }
+
+    .reg-compliance {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 3rem;
+      width: 100%;
+    }
+
+    .reg-header {
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      width: 13rem;
+      align-items: flex-start;
+      padding-right: 2rem;
+      border-right: 3px solid var(--secondary-500);
+    }
+
+    .reg-content {
+      flex: 1;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .reg-title-wrap {
+      justify-content: flex-start;
+    }
+
+    .reg-description {
+      text-align: left;
+    }
+  }
+
+  /* Desktop and above */
+  @media only screen and (min-width: 1024px) {
+    .reg-section {
+      padding: 6.25rem 13rem;
+    }
+  }
+</style>
