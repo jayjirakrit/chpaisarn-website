@@ -1,0 +1,501 @@
+---
+import CompanyBgImg from "@/images/company/company_02_bg.svg";
+import CompanyBg01Img from "@/images/company/factory_01_bg.svg";
+import CustomizeBg01Img from "@/images/company/cust_bg_01.svg";
+import CustomizeBg02Img from "@/images/company/cust_bg_02.svg";
+import CustomizeBg03Img from "@/images/company/cust_bg_03.svg";
+import CustomizeBg04Img from "@/images/company/cust_bg_04.svg";
+import CustomizeBg05Img from "@/images/company/cust_bg_05.svg";
+
+// Hero section data
+const pageTitle = "Body Armors";
+const pageDescription =
+  "Our Body Armors provide cutting-edge protection across three main categories, ensuring comprehensive safety for law enforcement, military, and security personnel. Whether you're facing bullets, knives, spikes, or a combination of both, we offer the flexibility to tailor your protection.";
+
+// Your Options section data
+const optionsTitle = "Your Options";
+const optionsDescription =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
+
+// Customization section data
+const customizeTitle = "We can customize for you";
+const customizeDescription =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
+
+// CTA section data
+const ctaTitle = "Get in Touch";
+const ctaDescription =
+  "Contact us to learn more about our defense solutions or to discuss your specific operational requirements. Our team is ready to provide the expertise and custom-engineered armor solutions needed to meet your mission objectives.";
+
+// Temporary Figma image URLs (replace with actual project images)
+const images = {
+  bodyArmorHero: "https://www.figma.com/api/mcp/asset/80380962-5c84-465f-9eff-3a71af6a0c04",
+  step1: "https://www.figma.com/api/mcp/asset/b87c14dd-b2bd-48e8-9329-2641e5397487",
+  step2: "https://www.figma.com/api/mcp/asset/6f2c1106-5aaa-481c-ba58-0c61981bc4c4",
+  step3: "https://www.figma.com/api/mcp/asset/a6734146-fdea-411d-8886-ae8287cf6a29",
+  step4: "https://www.figma.com/api/mcp/asset/38cba38e-2fff-4997-97fb-67492dd8cdce",
+  step5: "https://www.figma.com/api/mcp/asset/e6c09109-6714-40e1-a716-4f1f31e8d9aa",
+  ctaSection: "https://www.figma.com/api/mcp/asset/f4f4ff96-460f-43cf-b55a-e9f4f7ab67b6",
+};
+
+const protectionOptions = [
+  {
+    label: "Option 1",
+    title: "Bullet Protection (NIJ 0101.06)",
+    features: [
+      "NIJ 0101.06 Compliant: Our armor meets the NIJ 0101.06 standard, offering Level II and Level IIIA protection for defense against handguns and shrapnel. For high-risk environments, Level III and Level IV armor plates can be added for enhanced protection against rifle rounds and armor-piercing projectiles.",
+      "High-Caliber Defense: The Level III and Level IV options provide robust defense against 7.62mm NATO, 5.56mm, and other high-caliber rounds, ensuring maximum ballistic protection in tactical situations.",
+      "Fragmentation Protection: In addition to bullet protection, our armor also offers fragment defense, stopping shrapnel, explosive fragments, and other debris.",
+    ],
+  },
+  {
+    label: "Option 2",
+    title: "Stab/Knife/Spike Protection",
+    features: [
+      "Stab-Resistant Armor: Our armor includes knife and stab-resistant inserts that protect against bladed weapons, spikes, and other sharp objects. This is ideal for situations where physical attacks with sharp objects pose a threat.",
+      "Knife and Spike Defense: Whether you're in a close combat environment or facing potential attacks with knives or spikes, our specialized armor prevents penetration from sharp objects, offering crucial protection in high-risk situations.",
+      "Tactical or Concealable: Available in both tactical and concealed designs, this protection ensures safety while allowing the flexibility to operate effectively in various environments.",
+    ],
+  },
+  {
+    label: "Option 3",
+    title: "Dual Protection (Bullet + Stab/Knife/Spike)",
+    features: [
+      "Multi-Threat Defense: For those who need full-spectrum protection, we offer Dual Protection systems, combining bulletproof and stab/knife/spike protection into one customizable armor solution. This multi-threat armor is ideal for high-risk operations where you may face both firearms and sharp-object attacks.",
+      "Complete Coverage: This dual-layered protection system ensures you are covered against a broad range of threats—bullets and sharp objects—in a single, integrated solution.",
+      "Customization: You can customize the level of bullet protection (from Level II to Level IV) and combine it with stab/knife inserts for complete personal safety.",
+    ],
+  },
+];
+
+const customizationSteps = [
+  {
+    step: "Step 1",
+    title: "Armor Design Options",
+    image: CustomizeBg04Img.src,
+    items: [
+      {
+        name: "Concealable Armor",
+        desc: "Lightweight and discreet, ideal for bulletproof protection and the option to add stab resistance for everyday, undercover, or low-profile operations.",
+      },
+      {
+        name: "Tactical Armor",
+        desc: "Designed for military and law enforcement, offering Level III or Level IV bulletproof protection with the option to integrate stab-resistant inserts for comprehensive defense.",
+      },
+      {
+        name: "Full Coverage Armor",
+        desc: "Provides complete torso protection (including neck, groin, and shoulders) for maximum defense against bullets,",
+      },
+      {
+        name: "Floatable Armor",
+        desc: "Perfect for water-based operations, this armor provides both bulletproof and/ or stab protection, ensuring safety in aquatic environments.",
+      },
+    ],
+  },
+  {
+    step: "Step 2",
+    title: "Sizing",
+    image: CustomizeBg02Img.src,
+    content: "Choose from wide size range from XS to XXL, with custom sizing for a tailored fit.",
+  },
+  {
+    step: "Step 3",
+    title: "Colors",
+    image: CustomizeBg03Img.src,
+    items: [
+      { name: "Standard colors", desc: "Select from Black, Olive Green, Navy Blue" },
+      { name: "Custom Colors", desc: "Additional colors are available based on customer specifications for camouflage or unit identification." },
+    ],
+  },
+  {
+    step: "Step 4",
+    title: "Protection Area",
+    image: CustomizeBg04Img.src,
+    items: [
+      { name: "Specific Areas", desc: "Choose to focus protection on key areas like the neck, abdomen, groin, or shoulders" },
+      { name: "Full-body Armor", desc: "opt for full-body armor for ultimate defense." },
+    ],
+  },
+  {
+    step: "Step 5",
+    title: "Additional Accessories and Upgrades",
+    image: CustomizeBg05Img.src,
+    items: [
+      {
+        name: "Hard Armor Plates",
+        desc: "For enhanced ballistic protection, add ceramic or polyethylene plates for Level III or IV protection against high-caliber rounds and armor-piercing projectiles, alongside fragmentation defense.",
+      },
+      {
+        name: "Removable Components",
+        desc: "Neck, shoulder, and groin protectors can be added or removed for customizable protection based on the situation.",
+      },
+      {
+        name: "Insertable Plates",
+        desc: "Add ceramic or polyethylene plates for Level III or IV protection, offering defense against high-caliber rounds and armor-piercing projectiles, as well as enhanced fragmentation defense.",
+      },
+      {
+        name: "Anti-Stab Inserts",
+        desc: "Customize armor with stab-resistant inserts to provide additional protection from blades, spikes, and other sharp objects in vulnerable areas.",
+      },
+    ],
+  },
+];
+---
+
+<style>
+  .hero-section {
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    position: relative;
+    padding: 6rem 4rem;
+    min-height: 466px;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(20, 55, 95, 0.5) 0%, rgba(20, 55, 95, 0.5) 70%, transparent 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 535px;
+  }
+
+  .options-nav {
+    background-color: var(--primary-900);
+    padding: 1.25rem 6.25rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .option-card {
+    width: 80%;
+    background-color: #2465ae;
+    border-radius: 5px;
+    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  .option-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    /* border-bottom: 4px solid #9af9cf; */
+  }
+
+  .option-label {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: white;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid #9af9cf;
+
+  }
+
+  .option-title {
+    font-family: "Hanken Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    color: white;
+  }
+
+  .option-features {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    color: white;
+  }
+
+  .option-features li {
+    margin-bottom: 0.75rem;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .customize-section {
+    background-color: var(--primary-900);
+    padding: 5rem 6.25rem;
+  }
+
+  .customize-header {
+    margin-bottom: 4rem;
+  }
+
+  .customize-title {
+    font-size: 58px;
+    color: white;
+    margin-bottom: 1.5rem;
+  }
+
+  .customize-description {
+    font-size: 16px;
+    color: white;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+  }
+
+  .customize-cta {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    color: white;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  .customize-step {
+    display: flex;
+    gap: 2.25rem;
+    margin-bottom: 3rem;
+  }
+
+  .step-image {
+    width: 100%;
+    height: 196px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+    margin-bottom: 2rem;
+  }
+
+  .step-content {
+    flex: 1;
+  }
+
+  .step-header {
+    border-right: 4px solid #9af9cf;
+    padding-right: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .step-label {
+    font-family: "Hanken Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-title {
+    font-family: "Hanken Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    color: white;
+  }
+
+  .step-items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .step-item-title {
+    font-family: "Hanken Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 21px;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-item-desc {
+    font-family: "Hanken Grotesk", sans-serif;
+    font-size: 16px;
+    color: white;
+    line-height: 1.4;
+  }
+
+  .cta-section {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 6.25rem 9.375rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .cta-box {
+    background-color: var(--primary-900);
+    border-radius: 5px;
+    padding: 2.25rem;
+    max-width: 446px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 10;
+  }
+
+  .cta-title {
+    font-family: "Hanken Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 38px;
+    color: white;
+    margin-bottom: 1.25rem;
+  }
+
+  .cta-description {
+    font-family: "Gotham", sans-serif;
+    font-size: 16px;
+    color: white;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+  }
+
+  .cta-button {
+    background-color: #58bb90;
+    border: none;
+    border-radius: 5px;
+    padding: 0.75rem 1.5rem;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background-color: #4fa07d;
+  }
+
+  .cta-button-text {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 3rem 2rem;
+      min-height: auto;
+    }
+
+    .options-nav {
+      padding: 1rem 2rem;
+      flex-direction: column;
+    }
+
+    .customize-section {
+      padding: 2rem;
+    }
+
+    .step-items {
+      grid-template-columns: 1fr;
+    }
+
+    .customize-step {
+      flex-direction: column;
+    }
+
+    .step-image {
+      width: 100%;
+    }
+
+    .cta-section {
+      padding: 2rem;
+    }
+
+    .cta-box {
+      max-width: 100%;
+    }
+  }
+</style>
+
+<!-- Hero Section -->
+<section class="hero-section" style={`background-image: url(${CompanyBgImg.src}); background-color: var(--primary-900);`}>
+  <div class="hero-content">
+    <h1 class="heading-h2 text-white hero-title mb-4">{pageTitle}</h1>
+    <p class="body-text heading-h6 text-white" style="max-width: 535px;">{pageDescription}</p>
+  </div>
+</section>
+
+<!-- Options Navigation -->
+<div class="options-nav flex justify-center">
+  <p style="color: white; margin: 0; font-family: 'Hanken Grotesk', sans-serif; font-weight: 700; font-size: 21px;">Your Options</p>
+  <p style="color: white; margin: 0; font-family: 'Hanken Grotesk', sans-serif; font-weight: 400; font-size: 21px;">Customization</p>
+</div>
+
+<!-- Your Options Section -->
+<section style="background-color: white; padding: 5rem 6.25rem;">
+  <div style="margin-bottom: 3rem;">
+    <h2 class="heading-h2" style="color: var(--primary-900); margin-bottom: 1.5rem;">{optionsTitle}</h2>
+    <p class="body-text" style="margin-bottom: 1rem;">{optionsDescription}</p>
+  </div>
+
+  <div class="flex flex-col justify-center items-center gap-8">
+    {
+      protectionOptions.map((option) => (
+        <div class="option-card">
+          <div class="option-header">
+            <span class="option-label">{option.label}</span>
+            <h3 class="option-title">{option.title}</h3>
+          </div>
+          <ul class="option-features">
+            {option.features.map((feature) => (
+              <li>{feature}</li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<!-- Customization Section -->
+<section class="customize-section">
+  <div class="customize-header">
+    <h2 class="customize-title">{customizeTitle}</h2>
+    <p class="customize-description">{customizeDescription}</p>
+    <div class="customize-cta">
+      <p style="margin: 0;">Contact Us for Customization</p>
+      <span>→</span>
+    </div>
+  </div>
+
+  <!-- Customization Steps -->
+  <div>
+    {
+      customizationSteps.map((step) => (
+        <img src={step.image} alt={step.title} class="step-image" />
+        <div class="customize-step">
+          <div class="step-header">
+            <p class="step-label">{step.step}</p>
+            <h3 class="step-title">{step.title}</h3>
+          </div>
+          <div class="step-content">
+            {step.items ? (
+              <div class="step-items">
+                {step.items.map((item) => (
+                  <div>
+                    <p class="step-item-title">{item.name}</p>
+                    <p class="step-item-desc">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p class="step-item-desc">{step.content}</p>
+            )}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="cta-section" style={`background-image: url(${CompanyBg01Img.src});`}>
+  <div class="cta-box">
+    <h2 class="cta-title">{ctaTitle}</h2>
+    <p class="cta-description">{ctaDescription}</p>
+    <button class="cta-button">
+      <span class="cta-button-text">Contact Us</span>
+    </button>
+  </div>
+</section>

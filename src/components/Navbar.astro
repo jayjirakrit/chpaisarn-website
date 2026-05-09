@@ -3,7 +3,16 @@ import LogoImg from "../assets/logo_chp.webp";
 
 const navItems = [
   { name: "Home", link: "/" },
-  { name: "Products", link: "/products" },
+  {
+    name: "Products",
+    link: "/products",
+    items: [
+      { name: "Ballistic Plates", link: "/products/ballistic-plates" },
+      { name: "Ballistic Helmets", link: "/products/ballistic-helmets" },
+      { name: "Other Ballistic Solutions", link: "/products/other-solutions" },
+      { name: "Customized Defense Solutions", link: "/products/customized-solutions" },
+    ],
+  },
   { name: "About Us", link: "/company" },
   { name: "Contact Us", link: "/contact" },
 ];
@@ -27,78 +36,136 @@ const currentPath = Astro.url.pathname;
       <div class="hidden lg:flex flex-col gap-3">
         <!-- Language Selector -->
         <div class="flex justify-end gap-5 text-sm">
-          {languages.map((lang) => (
-            <a
-              href="#"
-              class="font-hanken text-[16px] font-normal text-[#14375F] hover:text-[#2465AE] transition-colors"
-            >
-              {lang.name}
-            </a>
-          ))}
+          {
+            languages.map((lang) => (
+              <a href="#" class="font-hanken text-[16px] font-normal text-[#14375F] hover:text-[#2465AE] transition-colors">
+                {lang.name}
+              </a>
+            ))
+          }
         </div>
 
         <!-- Navigation Items -->
-        <div class="flex gap-8 items-center">
-          {navItems.map((item, index) => (
-            <a
-              href={item.link}
-              class={`font-hanken text-[21px] transition-colors ${
-                currentPath === item.link
-                  ? "font-bold text-[#14375F]"
-                  : "font-normal text-[#14375F] hover:text-[#2465AE]"
-              }`}
-            >
-              {item.name}
-            </a>
-          ))}
-          <button id="mobile-menu-btn" class="hidden">
-            <svg
-              class="w-8 h-8 text-[#14375F]"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              ></path>
+        <div class="font-hanken flex gap-8 items-center">
+          {
+            navItems.map((item, index) => {
+              const hasSubItems = item.items && item.items.length > 0;
+              if (hasSubItems) {
+                return (
+                  <div id="nav-bar-product" class="relative z-20">
+                    {/* relative container for absolute dropdown */}
+                    <a
+                      href={item.link}
+                      class={`text-[21px] transition-colors ${
+                        currentPath === item.link ? "font-bold text-[#14375F]" : "font-normal text-[#14375F] hover:text-[#2465AE]"
+                      }`}
+                    >
+                      {item.name}
+                    </a>
+                    <div class="dropdown absolute left-0 top-full hidden">
+                      <div class="flex flex-col bg-white p-5 gap-4">
+                        {item.items.map((subItem) => (
+                          <a
+                            href={subItem.link}
+                            class="text-[21px] font-normal text-[#14375F] hover:text-[#2465AE] transition-colors whitespace-nowrap"
+                          >
+                            {subItem.name}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                );
+              } else {
+                return (
+                  <a
+                    href={item.link}
+                    class={`text-[21px] transition-colors ${
+                      currentPath === item.link ? "font-bold text-[#14375F]" : "font-normal text-[#14375F] hover:text-[#2465AE]"
+                    }`}
+                  >
+                    {item.name}
+                  </a>
+                );
+              }
+            })
+          }
+          <!-- <button id="mobile-menu-btn" class="hidden">
+            <svg class="w-8 h-8 text-[#14375F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
-          </button>
+          </button> -->
         </div>
       </div>
 
       <!-- Mobile Menu Button -->
-      <div class="lg:hidden">
-        <button id="mobile-menu-btn" class="p-2">
-          <svg
-            class="w-8 h-8 text-[#14375F]"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            ></path>
+      <div class="relative lg:hidden">
+        <button id="mobile-menu-btn" class="p-2 z-20">
+          <svg class="w-8 h-8 text-[#14375F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         </button>
+        <div class="mobile-nav-container fixed top-0 right-0">
+          <div class="flex flex-col gap-4 p-4 bg-white w-[33.333vw] min-w-[200px]">
+            <button id="close-menu-btn" class="flex justify-end p-2">
+              <svg class="w-6 h-6 text-[#14375F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+            {
+              navItems.map((item) => (
+                <a
+                  href={item.link}
+                  class={`text-[21px] whitespace-nowrap transition-colors ${
+                    currentPath === item.link ? "font-bold text-[#14375F]" : "font-normal text-[#14375F] hover:text-[#2465AE]"
+                  }`}
+                >
+                  {item.name}
+                </a>
+              ))
+            }
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</nav>
 
-<style>
-  nav {
-    box-shadow: 0px 3px 2.5px rgba(0, 0, 0, 0.15);
-  }
+  <style>
+    nav {
+      box-shadow: 0px 3px 2.5px rgba(0, 0, 0, 0.15);
+    }
 
-  @media (max-width: 1024px) {
-    nav .desktop-nav {
+    .mobile-nav-container {
       display: none;
     }
-  }
-</style>
+
+    .mobile-toggle-open {
+      display: flex;
+    }
+
+    @media (max-width: 1024px) {
+      nav .desktop-nav {
+        display: none;
+      }
+    }
+  </style>
+
+  <script>
+    const productNav = document.getElementById("nav-bar-product");
+    const dropdown = productNav?.querySelector(".dropdown");
+    const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+    const closeMenuBtn = document.getElementById("close-menu-btn");
+    productNav?.addEventListener("mouseenter", (e) => dropdown?.classList.remove("hidden"));
+    productNav?.addEventListener("mouseleave", (e) => dropdown?.classList.add("hidden"));
+    mobileMenuBtn?.addEventListener("click", (e) => {
+      e.preventDefault();
+      const mobileNav = document.querySelector(".mobile-nav-container");
+      mobileNav?.classList.toggle("mobile-toggle-open");
+    });
+    closeMenuBtn?.addEventListener("click", (e) => {
+      e.preventDefault();
+      const mobileNav = document.querySelector(".mobile-nav-container");
+      mobileNav?.classList.remove("mobile-toggle-open");
+    });
+  </script>
+</nav>
