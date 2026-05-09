@@ -1,0 +1,104 @@
+---
+import LogoImg from "../assets/logo_chp.webp";
+
+const navItems = [
+  { name: "Home", link: "/" },
+  { name: "Products", link: "/products" },
+  { name: "About Us", link: "/company" },
+  { name: "Contact Us", link: "/contact" },
+];
+
+const languages = [
+  { code: "en", name: "English" },
+  { code: "th", name: "ไทย" },
+];
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="sticky top-0 z-50 bg-white shadow-md">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-24">
+      <!-- Logo -->
+      <div class="shrink-0">
+        <img src={LogoImg.src} alt="Ch.Paisarn Logo" class="h-20 w-auto" />
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden lg:flex flex-col gap-3">
+        <!-- Language Selector -->
+        <div class="flex justify-end gap-5 text-sm">
+          {languages.map((lang) => (
+            <a
+              href="#"
+              class="font-hanken text-[16px] font-normal text-[#14375F] hover:text-[#2465AE] transition-colors"
+            >
+              {lang.name}
+            </a>
+          ))}
+        </div>
+
+        <!-- Navigation Items -->
+        <div class="flex gap-8 items-center">
+          {navItems.map((item, index) => (
+            <a
+              href={item.link}
+              class={`font-hanken text-[21px] transition-colors ${
+                currentPath === item.link
+                  ? "font-bold text-[#14375F]"
+                  : "font-normal text-[#14375F] hover:text-[#2465AE]"
+              }`}
+            >
+              {item.name}
+            </a>
+          ))}
+          <button id="mobile-menu-btn" class="hidden">
+            <svg
+              class="w-8 h-8 text-[#14375F]"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="lg:hidden">
+        <button id="mobile-menu-btn" class="p-2">
+          <svg
+            class="w-8 h-8 text-[#14375F]"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<style>
+  nav {
+    box-shadow: 0px 3px 2.5px rgba(0, 0, 0, 0.15);
+  }
+
+  @media (max-width: 1024px) {
+    nav .desktop-nav {
+      display: none;
+    }
+  }
+</style>

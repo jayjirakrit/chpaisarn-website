@@ -1,131 +1,228 @@
 ---
-import { Image } from "astro:assets";
-import ImgTest from "../assets/img_test.png";
+import HeroBgImg from "@/images/company/hero_bg.svg";
+import ProductBgImg from "@/images/company/factory_01_bg.svg";
+import CompanyBgImg from "@/images/company/company_bg.png";
 
-import ImageSlider from "../components/imgslider/ImageSlider.tsx";
-import BodyImg from "../assets/body-armor-1.webp";
-import BodyImg2 from "../assets/body-armor-2.webp";
-const introTitle = "CH.PAISARN";
-const introContent = "Your Trust Partner in Ballistic Protection";
-const infoTitle = "Safeguarding Lives with Advanced Ballistic Solutions";
-const infoContent =
-  "We specialize in crafting high-performance ballistic protection tailored to meet the unique needs of our clients. With years of expertise, our products are trusted globally by military and law enforcement agencies to defend against the most formidable threats. Committed to excellence, we provide top-tier defense against firearms, explosive fragments, and edged weapons, all while respecting our clients’ budgets. Our solutions deliver unmatched safety, reliability, and performance, even in the most demanding conditions.";
-const productTitle = "OUR PRODUCTS";
-const images = [
-  { url: BodyImg, alt: "Image Test 1" },
-  { url: BodyImg2, alt: "Image Test 2" },
-  { url: BodyImg, alt: "Image Test 3" },
-  { url: BodyImg2, alt: "Image Test 4" },
-  { url: BodyImg, alt: "Image Test 5" },
-];
+// Hero section data
+const heroTitle = "\"Your Trusted Partner in Ballistic Protection\"";
+
+// Products section data
+const productsTitle = "Our Products";
+const productsDescription =
+  "We offer a wide range of ballistic protection products designed to meet the demands of military, law enforcement, security, and civilian applications. Whether you're seeking personal protection or armored vehicle solutions, our products provide the ultimate defense against ballistic threats.";
+
+// Team section data
+const teamTitle = "Meet The Team";
+const teamDescription =
+  "We specialize in crafting high-performance ballistic protection tailored to meet the unique needs of our clients. With years of expertise, our products are trusted globally by military and law enforcement agencies to defend against the most formidable threats. Committed to excellence, we provide top-tier defense against firearms, explosive fragments, and edged weapons, all while respecting our clients' budgets. Our solutions deliver unmatched safety, reliability, and performance, even in the most demanding conditions.";
+
+// Contact section data
+const contactTitle = "Get in Touch";
+const contactDescription =
+  "Contact us to learn more about our defense solutions or to discuss your specific operational requirements. Our team is ready to provide the expertise and custom-engineered armor solutions needed to meet your mission objectives.";
 ---
 
 <style>
-  #container {
+  .hero-section {
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    padding: 6rem 4rem;
+    min-height: 100vh;
   }
 
-  .intro-section {
-    height: calc(60vh - 6rem);
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 900px;
+  }
+
+  .hero-title {
+    color: white;
+    margin-bottom: 3rem;
+  }
+
+  .cta-group {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .products-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 40% 60%;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 0;
+    border-radius: 10px;
+    overflow: hidden;
   }
 
-  .intro-content-wrapper {
+  .product-card {
     display: flex;
-    flex-direction: column;
+    align-items: start;
     justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    text-align: center;
+    min-height: 400px;
+    padding: 2rem;
   }
 
-  .intro-title,
-  .intro-content {
-    font-size: 2rem;
+  .product-main {
+    background: linear-gradient(135deg, rgba(20, 55, 95, 0.3), rgba(20, 55, 95, 0.3));
+    position: relative;
+    border-bottom: 10px solid #58bb90;
   }
 
-  .info-section {
-    height: 80vh;
-    background-color: #F2F2F2;
+  .product-label-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    color: white;
+    white-space: nowrap;
   }
 
-  .info-content-wrapper {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 2rem;
-    text-align: center;
-  }
-
-  .product-section {
-    height: 80vh;
-  }
-
-  .product-content-wrapper {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 2rem;
-    text-align: center;
-  }
-
-  @media screen and (min-width: 480px) {
-    .intro-section {
-      height: 100vh;
-      grid-template-rows: 30% 70%;
+  @media (max-width: 1024px) {
+    .products-grid {
+      grid-template-columns: 1fr;
     }
 
-    .info-section {
-      height: 100vh;
+    .hero-section {
+      padding: 4rem 2rem;
     }
 
-    .product-section {
-      height: 100vh;
+    .cta-group {
+      flex-direction: column;
     }
   }
 </style>
 
-<div id="container">
-  <div class="intro-section">
-    <div class="intro-content-wrapper">
-      <h1 class="font-bold text-lg lg:text-3xl">{introTitle}</h1>
-      <h2 class="text-lg lg:text-3xl">{introContent}</h2>
-    </div>
-    <div class="overflow-hidden object-cover">
-      <Image class="w-full" src={ImgTest} alt="Image Test" />
-    </div>
-  </div>
-  <div class="info-section">
-    <div class="info-content-wrapper">
-      <h1 class="text-lg lg:text-3xl">{infoTitle}</h1>
-      <h2 class="w-3/4 text-lg lg:text-3xl">{infoContent}</h2>
-      <button
-        class="bg-[#0360AE] hover:bg-white text-white  hover:text-[#0360AE] hover:outline-3  hover:outline-[#0360AE] font-semibold py-4 px-6 rounded inline-flex items-center"
-        >More Information</button
-      >
+<!-- Hero Section -->
+<section class="hero-section" style={`background-image: url(${HeroBgImg.src}); background-color: var(--primary-900);`}>
+  <div class="heading-h1 hero-content">
+    <h1 class="hero-title">{heroTitle}</h1>
+    <div class="cta-group">
+      <div class="btn-primary">Explore our products</div>
+      <div class="btn-secondary">Learn more</div>
     </div>
   </div>
-  <div class="product-section">
-    <div class="product-content-wrapper">
-      <h1 class="font-bold text-lg lg:text-3xl">{productTitle}</h1>
-      <div
-        class="product-slider w-[90%] flex justify-between items-center gap-4"
-      >
-        <div class="flex w-full gap-4">
-          <ImageSlider images={images} client:load />
+</section>
+
+<!-- Our Products Section -->
+<section class="section-padding bg-gray-50" style={`background-image: url(${ProductBgImg.src});`}>
+  <div class="mx-auto">
+    <div class="mb-12 flex flex-col md:flex-row md:items-end md:justify-between">
+      <div>
+        <h2 class="heading-h2 text-(--primary-900) mb-4">{productsTitle}</h2>
+        <p class="body-text mb-4">{productsDescription}</p>
+        <div class="flex gap-4 justify-end">
+          <button
+            class="bg-[#58bb90] text-white font-bold py-2 px-5 rounded-sm hover:opacity-90 transition-all"
+            style="font-family: 'Space Grotesk'; font-size: 18px;"
+          >
+            View Products
+          </button>
+          <button
+            class="text-[#14375f] font-bold hover:text-[#2465ae] transition-colors flex gap-2 items-center"
+            style="font-family: 'Space Grotesk'; font-size: 18px;"
+          >
+            Customize your product
+            <span>→</span>
+          </button>
         </div>
       </div>
-      <button
-        class="bg-[#0360AE] hover:bg-white text-white  hover:text-[#0360AE] hover:outline-3  hover:outline-[#0360AE] font-semibold py-4 px-6 rounded inline-flex items-center"
-        >More Products</button
-      >
+    </div>
+
+    <!-- Product Grid -->
+    <div class="flex w-full rounded-lg overflow-hidden">
+      <!-- Main Product Card -->
+      <div class="product-card product-main flex-9" style={`background-image: url(${CompanyBgImg.src});`}>
+        <div class="flex gap-4 w-full h-full justify-between">
+          <div class="heading-h3 flex justify-end product-label-vertical">Body Armors</div>
+          <div>
+            <p class="text-white text-lg leading-relaxed mb-4">
+              Our Body Armors provide cutting-edge protection across three main categories, ensuring comprehensive safety for law enforcement,
+              military, and security personnel. Whether you're facing bullets, knives, spikes, or a combination of both, we offer the flexibility to
+              tailor your protection.
+            </p>
+            <button class="text-white font-bold flex gap-2 items-center hover:underline">
+              Explore Body Armors
+              <span>→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Helmet Card -->
+      <div class="product-card bg-[#2465ae] flex-1">
+        <div class="heading-h3 product-label-vertical">Ballistic Helmets</div>
+      </div>
+
+      <!-- Plates Card -->
+      <div class="product-card bg-[#90b9e7] flex-1">
+        <div class="heading-h3 product-label-vertical">Ballistic Plates</div>
+      </div>
+
+      <!-- Solutions Card -->
+      <div class="product-card bg-[#194577] flex-1">
+        <div class="heading-h3 product-label-vertical">Other Ballistic Solutions</div>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-<script></script>
+<!-- Team Section -->
+<section class="section-padding bg-[#194577]">
+  <div class="amx-auto">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <!-- Images -->
+      <div class="space-y-4">
+        <div class="bg-gray-400 rounded-lg h-96 w-full flex items-center justify-center">
+          <span class="text-white text-lg">Team Image</span>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-gray-300 rounded-lg h-32 flex items-center justify-center">
+            <span class="text-gray-600">Team</span>
+          </div>
+          <div class="bg-gray-300 rounded-lg h-32 flex items-center justify-center">
+            <span class="text-gray-600">Team</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="text-white">
+        <h2 class="heading-h2 mb-6">{teamTitle}</h2>
+        <p class="body-text mb-8">{teamDescription}</p>
+        <button
+          class="bg-[#58bb90] text-white font-bold py-3 px-6 rounded-sm hover:opacity-90 transition-all"
+          style="font-family: 'Space Grotesk'; font-size: 24px;"
+        >
+          Check Our Story
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Past Projects Section -->
+<section class="section-padding bg-[#5e99dc]">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="heading-h4 mb-8 text-center text-white">Past projects / success story placeholder</h2>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="section-padding bg-cover bg-center bg-white" style={`background-image: url(${ProductBgImg.src});`}>
+  <div class="max-w-7xl mx-auto relative z-10 flex justify-end">
+    <div class="bg-[#14375f] rounded-sm p-9 max-w-md shadow-lg">
+      <h3 class="heading-h3 text-white mb-4">{contactTitle}</h3>
+      <p class="text-white text-base leading-relaxed mb-8">{contactDescription}</p>
+      <button
+        class="bg-[#58bb90] text-white font-bold py-3 px-6 rounded-sm hover:opacity-90 transition-all w-full"
+        style="font-family: 'Space Grotesk'; font-size: 24px;"
+      >
+        Contact Us
+      </button>
+    </div>
+  </div>
+</section>
