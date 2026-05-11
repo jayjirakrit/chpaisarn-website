@@ -1,0 +1,93 @@
+---
+const bgImg: { src: string } = Astro.props.bgImg;
+const contactTitle: string = Astro.props.contactTitle;
+const contactDescription: string = Astro.props.contactDescription;
+---
+
+<section class="cta-section" style={`background-image: url(${bgImg.src});`}>
+  <div class="cta-box">
+    <h2 class="cta-title">{contactTitle}</h2>
+    <p class="cta-description">{contactDescription}</p>
+    <button class="cta-button">
+      <span class="cta-button-text">Contact Us</span>
+    </button>
+  </div>
+</section>
+
+<style>
+  .cta-section {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 3rem 4.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .cta-box {
+    background-color: var(--primary-900);
+    border-radius: 5px;
+    padding: 2.25rem;
+    max-width: 446px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 10;
+  }
+
+  .cta-title {
+    font-family: "Hanken Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 1.75rem;
+    color: white;
+    margin-bottom: 1.25rem;
+  }
+
+  .cta-description {
+    font-family: "Gotham", sans-serif;
+    font-size: 0.75rem;
+    color: white;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+  }
+
+  .cta-button {
+    background-color: #58bb90;
+    border: none;
+    border-radius: 5px;
+    padding: 0.75rem 1.5rem;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background-color: #4fa07d;
+  }
+
+  .cta-button-text {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: white;
+  }
+
+  /* Tablet and above (min-width) */
+  @media only screen and (min-width: 768px) {
+    .cta-title {
+      font-size: 2.75rem;
+    }
+
+    .cta-description {
+      font-size: 1rem;
+    }
+
+    .cta-button-text {
+      font-size: 1.5rem;
+    }
+  }
+
+  /* Desktop and above */
+  @media only screen and (min-width: 1024px) {
+  }
+</style>

@@ -1,0 +1,187 @@
+---
+const customizeTitle: string = Astro.props.customizeTitle;
+const customizeDescription: string = Astro.props.customizeDescription;
+const customizationSteps: any[] = Astro.props.customizationSteps;
+---
+
+<section class="customize-section">
+  <div class="customize-header">
+    <h2 class="customize-title">{customizeTitle}</h2>
+    <p class="customize-description">{customizeDescription}</p>
+    <div class="customize-cta">
+      <p class="m-0">Contact Us for Customization</p>
+      <span>→</span>
+    </div>
+  </div>
+
+  <!-- Customization Steps -->
+  <div>
+    {
+      customizationSteps.map((step) => (
+        <img src={step.image} alt={step.title} class="step-image" />
+        <div class="customize-step">
+          <div class="step-header">
+            <p class="step-label">{step.step}</p>
+            <h3 class="step-title">{step.title}</h3>
+          </div>
+          <div class="step-content">
+            {step.items ? (
+              <div class="step-items">
+                {step.items.map((item) => (
+                  <div>
+                    <p class="step-item-title">{item.name}</p>
+                    <p class="step-item-desc">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p class="step-item-desc">{step.content}</p>
+            )}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .customize-section {
+    background-color: var(--primary-900);
+    padding: 3rem 4rem;
+  }
+
+  .customize-header {
+    margin-bottom: 4rem;
+    text-align: center;
+  }
+
+  .customize-title {
+    font-size: 3.5rem;
+    color: white;
+    margin-bottom: 1.5rem;
+  }
+
+  .customize-description {
+    font-size: 1px;
+    color: white;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+  }
+
+  .customize-cta {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    color: white;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  .customize-step {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .step-image {
+    display: block;
+    width: 100%;
+    height: 10rem;
+    border-radius: 0.5rem;
+    object-fit: cover;
+    flex-shrink: 0;
+    margin-bottom: 2rem;
+  }
+
+  .step-content {
+    flex: 1;
+  }
+
+  .step-header {
+    border-right: 4px solid #9af9cf;
+    padding-right: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .step-label {
+    font-family: "Hanken Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-title {
+    font-family: "Hanken Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 1.75rem;
+    color: white;
+  }
+
+  .step-items {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+  }
+
+  .step-item-title {
+    font-family: "Hanken Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 1.375rem;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-item-desc {
+    font-family: "Hanken Grotesk", sans-serif;
+    font-size: 1rem;
+    color: white;
+    line-height: 1.4;
+  }
+
+  /* Tablet and above (min-width) */
+  @media only screen and (min-width: 768px) {
+    .customize-section {
+        padding: 5rem 6.25rem;
+    }
+
+    .customize-header {
+        text-align: left;
+    }
+
+    .customize-step {
+        flex-direction: row;
+        gap: 2.25rem;
+    }
+
+    .customize-cta {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: end;
+    }
+
+    .step-image {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 0.5rem;
+        object-fit: cover;
+        flex-shrink: 0;
+        margin-bottom: 2rem;
+    }
+
+    .step-items {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+  }
+
+  /* Desktop and above */
+  @media only screen and (min-width: 1024px) {
+  }
+
+</style>

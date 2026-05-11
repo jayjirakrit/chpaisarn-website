@@ -1,0 +1,53 @@
+---
+const companyBgImg: { src: string } = Astro.props.companyBgImg;
+const pageTitle: string = Astro.props.pageTitle;
+const pageDescription: string = Astro.props.pageDescription;
+---
+
+<section class="hero-section" style={`background-image: url(${companyBgImg.src});`}>
+  <div class="hero-content">
+    <h1 class="hero-title heading-h2">{pageTitle}</h1>
+    <p class="hero-description body-text heading-h6">{pageDescription}</p>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    background-color: var(--primary-900);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    position: relative;
+    padding: 3rem 2rem;
+  }
+
+  .hero-content {
+    color: white;
+  }
+
+  .hero-title {
+    margin-bottom: 1rem;
+  }
+
+  .hero-description {
+    position: relative;
+    z-index: 10;
+  }
+
+  /* Tablet and above (min-width) */
+  @media only screen and (min-width: 768px) {
+    .hero-section {
+      padding: 6rem 4rem;
+    }
+
+    .hero-content{
+        max-width: 600px;
+    }
+  }
+
+  /* Desktop and above */
+  @media only screen and (min-width: 1024px) {
+  }
+</style>

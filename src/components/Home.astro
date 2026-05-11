@@ -4,7 +4,7 @@ import ProductBgImg from "@/images/company/factory_01_bg.svg";
 import CompanyBgImg from "@/images/company/company_bg.png";
 
 // Hero section data
-const heroTitle = "\"Your Trusted Partner in Ballistic Protection\"";
+const heroTitle = '"Your Trusted Partner in Ballistic Protection"';
 
 // Products section data
 const productsTitle = "Our Products";
@@ -51,14 +51,6 @@ const contactDescription =
     flex-wrap: wrap;
   }
 
-  .products-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 0;
-    border-radius: 10px;
-    overflow: hidden;
-  }
-
   .product-card {
     display: flex;
     align-items: start;
@@ -73,19 +65,32 @@ const contactDescription =
     border-bottom: 10px solid #58bb90;
   }
 
+  .product-card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
   .product-label-vertical {
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    transform: rotate(180deg);
     color: white;
     white-space: nowrap;
   }
 
-  @media (max-width: 1024px) {
-    .products-grid {
-      grid-template-columns: 1fr;
-    }
+  .product-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    height: auto;
+    align-items: center;
+  }
 
+  .product-description {
+    width: 80%;
+  }
+
+  @media (max-width: 1024px) {
     .hero-section {
       padding: 4rem 2rem;
     }
@@ -93,6 +98,33 @@ const contactDescription =
     .cta-group {
       flex-direction: column;
     }
+  }
+
+  /* Tablet and above (min-width) */
+  @media only screen and (min-width: 768px) {
+    .product-card-container {
+      flex-direction: row;
+      gap: 0;
+    }
+    .products-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .product-content {
+      flex-direction: row;
+      gap: 0.5rem;
+      justify-content: space-evenly;
+    }
+
+    .product-label-vertical {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+    }
+  }
+
+  /* Desktop and above */
+  @media only screen and (min-width: 1024px) {
   }
 </style>
 
@@ -133,12 +165,12 @@ const contactDescription =
     </div>
 
     <!-- Product Grid -->
-    <div class="flex w-full rounded-lg overflow-hidden">
+    <div class="product-card-container flex w-full rounded-lg overflow-hidden">
       <!-- Main Product Card -->
       <div class="product-card product-main flex-9" style={`background-image: url(${CompanyBgImg.src});`}>
-        <div class="flex gap-4 w-full h-full justify-between">
+        <div class="product-content flex gap-4 w-full h-full justify-between">
           <div class="heading-h3 flex justify-end product-label-vertical">Body Armors</div>
-          <div>
+          <div class="product-description">
             <p class="text-white text-lg leading-relaxed mb-4">
               Our Body Armors provide cutting-edge protection across three main categories, ensuring comprehensive safety for law enforcement,
               military, and security personnel. Whether you're facing bullets, knives, spikes, or a combination of both, we offer the flexibility to
@@ -153,17 +185,17 @@ const contactDescription =
       </div>
 
       <!-- Helmet Card -->
-      <div class="product-card bg-[#2465ae] flex-1">
+      <div class="product-card bg-[#2465ae] lg:flex-1">
         <div class="heading-h3 product-label-vertical">Ballistic Helmets</div>
       </div>
 
       <!-- Plates Card -->
-      <div class="product-card bg-[#90b9e7] flex-1">
+      <div class="product-card bg-[#90b9e7] lg:flex-1">
         <div class="heading-h3 product-label-vertical">Ballistic Plates</div>
       </div>
 
       <!-- Solutions Card -->
-      <div class="product-card bg-[#194577] flex-1">
+      <div class="product-card bg-[#194577] lg:flex-1">
         <div class="heading-h3 product-label-vertical">Other Ballistic Solutions</div>
       </div>
     </div>
@@ -177,15 +209,7 @@ const contactDescription =
       <!-- Images -->
       <div class="space-y-4">
         <div class="bg-gray-400 rounded-lg h-96 w-full flex items-center justify-center">
-          <span class="text-white text-lg">Team Image</span>
-        </div>
-        <div class="grid grid-cols-2 gap-4">
-          <div class="bg-gray-300 rounded-lg h-32 flex items-center justify-center">
-            <span class="text-gray-600">Team</span>
-          </div>
-          <div class="bg-gray-300 rounded-lg h-32 flex items-center justify-center">
-            <span class="text-gray-600">Team</span>
-          </div>
+          <span class="text-white text-lg">Image</span>
         </div>
       </div>
 
