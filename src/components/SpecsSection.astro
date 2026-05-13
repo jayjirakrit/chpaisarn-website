@@ -1,0 +1,214 @@
+---
+// Product spec data
+const productSpecs = [
+  {
+    class: "Level III",
+    rows: [
+      { ammo: ["7.62 x 51 FMJ"], std: "1.2", prem: "0.90", mat: "UHMWPE" },
+      { ammo: ["7.62 x 51 FMJ", "7.62 x 39 AK47 MSC"], std: "1.33", prem: "0.98", mat: "UHMWPE" },
+    ],
+  },
+  {
+    class: "Level III ++",
+    rows: [
+      {
+        ammo: ["7.62 x 51 FMJ", "7.62 x 39 AK47 MSC", "5.56 x 45 SS109 / M193"],
+        std: "1.80*",
+        prem: "1.35** - 1.45**",
+        mat: "UHMWPE + Ceramic (Sic * / B4C** )",
+      },
+    ],
+  },
+  { class: "Level IV-", rows: [{ ammo: ["7.62 x 39 AK47 API"], std: "2.30*", prem: "1.80**", mat: "UHMWPE + Ceramic (Sic * / B4C** )" }] },
+  {
+    class: "Level IV",
+    rows: [{ ammo: [".30 M2 AP", "7.62 x 54R API B-32"], std: "2.35** / 2.50*", prem: "2.10**", mat: "UHMWPE + Ceramic (Sic * / B4C** )" }],
+  },
+];
+---
+
+<section class="spec-section">
+  <h2 class="spec-title heading-h2">Product Specification</h2>
+  <div class="spec-table-wrapper">
+    <table class="spec-table">
+      <thead>
+        <tr class="header-main">
+          <th rowspan="2">NIJ 0101.06<br />Classification</th>
+          <th rowspan="2">Test Ammunitions</th>
+          <th colspan="2">Max. Weight (kg.)</th>
+          <th rowspan="2">Material<br />*Sic **B4C</th>
+        </tr>
+        <tr class="header-sub">
+          <th class="weight-col">Standard</th>
+          <th class="weight-col">Premium</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          productSpecs.map((spec) =>
+            spec.rows.map((row, idx) => (
+              <tr>
+                {idx === 0 && <td rowspan={spec.rows.length}>{spec.class}</td>}
+                <td class="ammo">
+                  <ul>
+                    {row.ammo.map((item) => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
+                </td>
+                <td>{row.std}</td>
+                <td>{row.prem}</td>
+                {idx === 0 && <td rowspan={spec.rows.length}>{row.mat}</td>}
+              </tr>
+            )),
+          )
+        }
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<style>
+  /* Product Specification Section */
+  .spec-section {
+    padding: 3rem 4rem;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .spec-title {
+    color: var(--primary-900);
+  }
+
+  .spec-table-wrapper {
+    width: 100%;
+    max-width: 1100px;
+  }
+
+  .spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "Hanken Grotesk", sans-serif;
+  }
+
+  .spec-table thead th {
+    background-color: #2465ae;
+    color: #f0f0f0;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 16px 22px;
+    text-align: center;
+    border: 1px solid #f0f0f0;
+    line-height: 1.4;
+  }
+
+  .spec-table .header-main th:first-child,
+  .spec-table .header-main th:last-child {
+    font-weight: 700;
+  }
+
+  .spec-table thead th[rowspan="2"] {
+    vertical-align: middle;
+  }
+
+  .spec-table .header-sub th {
+    font-weight: 400;
+    padding: 12px 22px;
+    border-top: 1px solid #2465ae;
+  }
+
+  .spec-table .header-sub .weight-col {
+    width: 145px;
+  }
+
+  .spec-table tbody td {
+    border: 1px solid #d4d4d4;
+    padding: 16px 22px;
+    font-size: 16px;
+    color: #272727;
+    line-height: 1.4;
+  }
+
+  .spec-table td:first-child {
+    width: 250px;
+  }
+
+  .spec-table td:nth-child(2) {
+    width: 200px;
+  }
+
+  .spec-table td:nth-child(3),
+  .spec-table td:nth-child(4) {
+    width: 200px;
+  }
+
+  .spec-table .ammo {
+    padding-left: 0;
+  }
+
+  .spec-table .ammo ul {
+    list-style: disc;
+    margin: 0;
+    padding-left: 24px;
+  }
+
+  .spec-table .ammo li {
+    margin-bottom: 0.5rem;
+  }
+
+  .spec-table .ammo li:last-child {
+    margin-bottom: 0;   
+  }
+
+  @media only screen and (min-width: 768px) {
+    .spec-section {
+      display: flex;
+    }
+  }
+</style>
+
+<!-- Archieved Table -->
+<!-- <section class="spec-section">
+  <h2 class="spec-title heading-h2">Product Specification</h2>
+  <div class="spec-table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th rowspan=" 2">NIJ 0101.06<br />Classification</th>
+          <th rowspan="2">Test Ammunitions</th>
+          <th colspan="2">Max. Weight (kg.)</th>
+          <th rowspan="2">Dimensions</th>
+        </tr>
+        <tr>
+          <th>Standard</th>
+          <th>Premium</th>
+        </tr>
+        <tbody>
+          <tr>
+            <td>Plate III</td>
+            <td>Ceramic Composite</td>
+            <td>5.5 lbs (2.5 kg)</td>
+            <td>5.5 lbs (2.5 kg)</td>
+            <td>10" x 12" (25.4 cm x 30.5 cm)</td>
+          </tr>
+          <tr>
+            <td>Plate IV</td>
+            <td>Ceramic Composite with Polyethylene Backing</td>
+            <td>7.5 lbs (3.4 kg)</td>
+            <td>7.5 lbs (3.4 kg)</td>
+            <td>10" x 12" (25.4 cm x 30.5 cm)</td>
+          </tr>
+          <tr>
+            <td>Plate IV-</td>
+            <td>Ceramic Composite with Polyethylene Backing</td>
+            <td>6.8 lbs (3.1 kg)</td>
+            <td>6.8 lbs (3.1 kg)</td>
+            <td>10" x 12" (25.4 cm x 30.5 cm)</td>
+          </tr>
+        </tbody>
+      </thead>
+    </table>
+  </div>
+</section> -->

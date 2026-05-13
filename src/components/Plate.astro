@@ -1,0 +1,358 @@
+---
+import CompanyBgImg from "@/images/company/company_02_bg.svg";
+import CompanyBg01Img from "@/images/company/factory_01_bg.svg";
+import CustomizeBg01Img from "@/images/company/cust_bg_01.svg";
+import CustomizeBg02Img from "@/images/company/cust_bg_02.svg";
+import CustomizeBg03Img from "@/images/company/cust_bg_03.svg";
+import CustomizeBg04Img from "@/images/company/cust_bg_04.svg";
+import CustomizeBg05Img from "@/images/company/cust_bg_05.svg";
+import ProductIntroSection from "@/components/ProductIntroSection.astro";
+import ProductOpItemsSection from "@/components/ProductOpItemsSection.astro";
+import ProductOptionNav from "@/components/ProductOptionNav.astro";
+import CustomStepsSection from "@/components/CustomStepsSection.astro";
+import ContactSection from "@/components/ContactSection.astro";
+import PlateIIIImg from "@/images/products/plate_III.svg";
+import PlateIVImg from "@/images/products/plate_IV.svg";
+import PlateIVMinusImg from "@/images/products/plate_IV-.svg";
+import { Image } from "astro:assets";
+import BoxIcon from "@/assets/checkbox_icon.svg";
+import SpecsSection from "@/components/SpecsSection.astro";
+
+// Hero section data
+const pageTitle = "Ballistic Plates";
+const pageDescription =
+  "Our ballistic plates provide customizable solutions for personal protection. With options ranging from Level III to Level IV, each plate is tested for performance and durability to protect against high-velocity rounds.";
+
+// Your Options section data
+const optionsTitle = "Your Options";
+const optionsDescription = "";
+  // "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
+
+// Options Navigation data
+const optionsNav = ["Your Options", "Regulations", "Customization"];
+
+// Customization section data
+const customizeTitle = "We can customize for you";
+const customizeDescription =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
+
+// Item options data
+const itemOptions = [
+  {
+    label: "Option 1",
+    title: "NIJ Level III",
+    img: PlateIIIImg,
+    imgDescription: "Ballistic Plate Level III",
+  },
+  {
+    label: "Option 2",
+    title: "NIJ Level III+",
+    img: PlateIVMinusImg,
+    imgDescription: "Ballistic Plate Level III+",
+  },
+  {
+    label: "Option 3",
+    title: "NIJ Level IV-",
+    img: PlateIVMinusImg,
+    imgDescription: "Ballistic Plate Level IV-",
+  },
+  {
+    label: "Option 4",
+    title: "NIJ Level IV",
+    img: PlateIVImg,
+    imgDescription: "Ballistic Plate Level IV",
+  },
+];
+
+const regItems = [
+  {
+    title: "Adherence to NIJ 0101.06 Standards",
+    description:
+      "Compliant with NIJ 0101.06 Level III - IV standards for ballistic protection, ensuring defense against a wide range of ballistic threats.",
+  },
+  {
+    title: "Backface Signature (BFS)",
+    description: "Complies with NIJ standards, with BFS less than 44 mm, reducing blunt force trauma and ensuring safety and comfort.",
+  },
+  {
+    title: "Dual-Configuration Defense",
+    description: "Can be used in conjunction with a Level IIIA vest for multi-layered protection or standalone as a single armor plate.",
+  },
+  {
+    title: "Customizable Protection Level",
+    description:
+      "Armor plates can be tailored to provide defense against various threats, from Level III for high-velocity rounds to Level IV for stopping armor-piercing projectiles.",
+  },
+  {
+    title: "Optimized Comfort",
+    description: "Available in single and multi-curved designs for optimal fit and comfort tailored to the wearer's body type and operational needs.",
+  },
+];
+
+const customizationSteps = [
+  {
+    step: "Step 1",
+    title: "Armor Design Options",
+    image: CustomizeBg01Img.src,
+    items: [
+      {
+        name: "Concealable Armor",
+        desc: "Lightweight and discreet, ideal for bulletproof protection and the option to add stab resistance for everyday, undercover, or low-profile operations.",
+      },
+      {
+        name: "Tactical Armor",
+        desc: "Designed for military and law enforcement, offering Level III or Level IV bulletproof protection with the option to integrate stab-resistant inserts for comprehensive defense.",
+      },
+      {
+        name: "Full Coverage Armor",
+        desc: "Provides complete torso protection (including neck, groin, and shoulders) for maximum defense against bullets,",
+      },
+      {
+        name: "Floatable Armor",
+        desc: "Perfect for water-based operations, this armor provides both bulletproof and/ or stab protection, ensuring safety in aquatic environments.",
+      },
+    ],
+  },
+  {
+    step: "Step 2",
+    title: "Sizing",
+    image: CustomizeBg02Img.src,
+    content: "Choose from wide size range from XS to XXL, with custom sizing for a tailored fit.",
+  },
+  {
+    step: "Step 3",
+    title: "Colors",
+    image: CustomizeBg03Img.src,
+    items: [
+      { name: "Standard colors", desc: "Select from Black, Olive Green, Navy Blue" },
+      { name: "Custom Colors", desc: "Additional colors are available based on customer specifications for camouflage or unit identification." },
+    ],
+  },
+  {
+    step: "Step 4",
+    title: "Protection Area",
+    image: CustomizeBg04Img.src,
+    items: [
+      { name: "Specific Areas", desc: "Choose to focus protection on key areas like the neck, abdomen, groin, or shoulders" },
+      { name: "Full-body Armor", desc: "opt for full-body armor for ultimate defense." },
+    ],
+  },
+  {
+    step: "Step 5",
+    title: "Additional Accessories and Upgrades",
+    image: CustomizeBg05Img.src,
+    items: [
+      {
+        name: "Hard Armor Plates",
+        desc: "For enhanced ballistic protection, add ceramic or polyethylene plates for Level III or IV protection against high-caliber rounds and armor-piercing projectiles, alongside fragmentation defense.",
+      },
+      {
+        name: "Removable Components",
+        desc: "Neck, shoulder, and groin protectors can be added or removed for customizable protection based on the situation.",
+      },
+      {
+        name: "Insertable Plates",
+        desc: "Add ceramic or polyethylene plates for Level III or IV protection, offering defense against high-caliber rounds and armor-piercing projectiles, as well as enhanced fragmentation defense.",
+      },
+      {
+        name: "Anti-Stab Inserts",
+        desc: "Customize armor with stab-resistant inserts to provide additional protection from blades, spikes, and other sharp objects in vulnerable areas.",
+      },
+    ],
+  },
+];
+
+// Contact section data
+const ctaTitle = "Get in Touch";
+const ctaDescription =
+  "Contact us to learn more about our defense solutions or to discuss your specific operational requirements. Our team is ready to provide the expertise and custom-engineered armor solutions needed to meet your mission objectives.";
+---
+
+<!-- Introduction Section -->
+<ProductIntroSection companyBgImg={CompanyBgImg} pageTitle={pageTitle} pageDescription={pageDescription} />
+
+<!--Options Navigation -->
+<ProductOptionNav optionsNav={optionsNav} />
+
+<!-- Your Item Options Section -->
+<ProductOpItemsSection optionsTitle={optionsTitle} optionsDescription={optionsDescription} itemOptions={itemOptions} />
+
+<div class="overlay-section h-32"></div>
+
+<!-- Regulation Section -->
+<section class="reg-section">
+  <div class="reg-header">
+    <div class="reg-title-wrap body-text">
+      <h6 class="reg-title">The Regulation</h6>
+    </div>
+    <h3 class="reg-description heading-h3">NIJ Protection Level</h3>
+  </div>
+
+  <div class="reg-content">
+    {
+      regItems.map((item) => (
+        <div class="reg-card">
+          <div class="reg-card-header">
+            <span class="reg-icon">
+              <Image src={BoxIcon} alt="Box Icon" />
+            </span>
+            <div>
+              <h5 class="reg-card-title heading-h5">{item.title}</h5>
+            </div>
+          </div>
+          <p class="reg-card-description body-text">{item.description}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<!-- Customization Section -->
+<CustomStepsSection customizeTitle={customizeTitle} customizeDescription={customizeDescription} customizationSteps={customizationSteps} />
+
+<!-- Product Specification Section -->
+<SpecsSection />
+
+<!-- Contact Section -->
+<ContactSection
+  bgImg={CompanyBg01Img}
+  contactTitle={ctaTitle}
+  contactDescription={ctaDescription}
+  bgColor="primary-50"
+  titleColor="primary-700"
+  desColor="black"
+/>
+
+<style>
+  /* Regulation Section */
+  .reg-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    background-color: white;
+    background-size: cover;
+    background-position: center;
+    padding: 6.25rem;
+  }
+
+  .reg-header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex-basis: 100%;
+    margin-bottom: 3rem;
+    max-width: 242px;
+  }
+
+  .reg-title-wrap {
+    color: black;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+  }
+
+  .reg-title {
+    display: inline-block;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid #9af9cf;
+  }
+
+  .reg-description {
+    color: var(--primary-900);
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .reg-content {
+    flex-basis: 69%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .reg-card {
+    background-color: var(--primary-700);
+    color: white;
+    border-radius: 5px;
+    border: 1px solid var(--primary-700);
+    padding: 2rem;
+    max-width: 600px;
+  }
+
+  .reg-card-header {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .reg-card-title {
+    margin-bottom: 0.75rem;
+  }
+
+  .reg-card-description {
+  }
+
+  .spec-section {
+    padding: 3rem 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .spec-title {
+    color: var(--primary-900);
+  }
+
+  .spec-table-wrapper {
+    width: 100%;
+    max-width: 1100px;
+  }
+
+  table {
+    border-collapse: collapse; /* merges adjacent borders into one */
+    width: 100%; /* optional, for full-width tables */
+  }
+
+  th,
+  td {
+    border: 1px solid #ccc; /* light gray border – adjust color/thickness as needed */
+    padding: 0.75rem; /* optional, adds spacing inside cells */
+    text-align: left; /* or center, depending on your design */
+  }
+
+  /* Tablet and above (min-width) */
+  @media only screen and (min-width: 768px) {
+    .reg-section {
+      flex-direction: row;
+      justify-content: center;
+      align-items: start;
+      gap: 4rem;
+    }
+
+    .reg-header {
+      flex-basis: 31%;
+      width: 33%;
+    }
+
+    .reg-content {
+      flex-basis: 69%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .reg-title-wrap {
+      justify-content: flex-start;
+    }
+
+    .reg-description {
+      text-align: left;
+    }
+  }
+
+  /* Desktop and above */
+  @media only screen and (min-width: 1024px) {
+  }
+</style>

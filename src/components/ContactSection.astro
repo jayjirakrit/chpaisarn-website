@@ -1,13 +1,18 @@
 ---
-const bgImg: { src: string } = Astro.props.bgImg;
-const contactTitle: string = Astro.props.contactTitle;
-const contactDescription: string = Astro.props.contactDescription;
+const {
+  bgImg = { src: "" },
+  contactTitle = "Contact Us",
+  contactDescription = "Get in touch with us",
+  bgColor = "primary-900",
+  titleColor = "white",
+  desColor = "white",
+} = Astro.props;
 ---
 
 <section class="cta-section" style={`background-image: url(${bgImg.src});`}>
-  <div class="cta-box">
-    <h2 class="cta-title">{contactTitle}</h2>
-    <p class="cta-description">{contactDescription}</p>
+  <div class="cta-box" style={`background-color: var(--${bgColor});`}>
+    <h2 class="cta-title" style={`color: var(--${titleColor});`}>{contactTitle}</h2>
+    <p class="cta-description" style={`color: var(--${desColor});`}>{contactDescription}</p>
     <button class="cta-button">
       <span class="cta-button-text">Contact Us</span>
     </button>
@@ -19,7 +24,7 @@ const contactDescription: string = Astro.props.contactDescription;
     background-size: cover;
     background-position: center;
     position: relative;
-    padding: 3rem 4.5rem;
+    padding: 3rem 4rem;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -39,7 +44,7 @@ const contactDescription: string = Astro.props.contactDescription;
     font-family: "Hanken Grotesk", sans-serif;
     font-weight: 700;
     font-size: 1.75rem;
-    color: white;
+    color: var(--titleColor);
     margin-bottom: 1.25rem;
   }
 
@@ -74,6 +79,9 @@ const contactDescription: string = Astro.props.contactDescription;
 
   /* Tablet and above (min-width) */
   @media only screen and (min-width: 768px) {
+    .cta-section {
+      padding: 6.25rem 9.375rem;
+    }
     .cta-title {
       font-size: 2.75rem;
     }
