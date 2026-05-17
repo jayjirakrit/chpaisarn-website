@@ -1,0 +1,163 @@
+---
+import CompanyBgImg from "@/images/company/company_02_bg.svg";
+import CompanyBg01Img from "@/images/company/factory_01_bg.svg";
+import CustomizeBg01Img from "@/images/company/cust_bg_01.svg";
+import CustomizeBg02Img from "@/images/company/cust_bg_02.svg";
+import CustomizeBg03Img from "@/images/company/cust_bg_03.svg";
+import CustomizeBg04Img from "@/images/company/cust_bg_04.svg";
+import CustomizeBg05Img from "@/images/company/cust_bg_05.svg";
+import ProductIntroSection from "@/components/ProductIntroSection.astro";
+import ProductOpItemsSection from "@/components/ProductOpItemsSection.astro";
+import ProductOptionNav from "@/components/ProductOptionNav.astro";
+import CustomStepsSection from "@/components/CustomStepsSection.astro";
+import ContactSection from "@/components/ContactSection.astro";
+import CvcHelmentImg from "@/images/products/cvc_helmet.svg";
+import FastHelmet01Img from "@/images/products/fast_helmet_01.svg";
+import FastHelmet02Img from "@/images/products/fast_helmet_02.svg";
+import NijHelmetImg from "@/images/products/nij_helmet.svg";
+
+// Hero section data
+const pageTitle = "Ballistic Helmets";
+const pageDescription =
+  "Engineered from advanced materials to provide high-impact defense against ballistic threats and blunt trauma without sacrificing mobility. These lightweight, durable helmets are fully customizable in shape and specification to meet unique operational or environmental demands.";
+
+  // Your Options section data
+const optionsTitle = "Your Options";
+const optionsDescription = "";
+  // "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
+
+// Options Navigation data
+const optionsNav = ["Your Options", "Customization"];
+
+// Customization section data
+const customizeTitle = "We can customize for you";
+const customizeDescription =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
+
+// Item options data
+const itemOptions = [
+  {
+    label: "Option 1",
+    title: "CVC Helmet",
+    img: CvcHelmentImg,
+    imgDescription: "CVC Helmet",
+  },
+  {
+    label: "Option 2",
+    title: "Fast Helmet",
+    img: FastHelmet01Img,
+    imgDescription: "Fast Helmet",
+  },
+  {
+    label: "Option 3",
+    title: "Fast Helmet",
+    img: FastHelmet02Img,
+    imgDescription: "Fast Helmet",
+  },
+  {
+    label: "Option 4",
+    title: "NIJ Level IV-",
+    img: NijHelmetImg,
+    imgDescription: "NIJ Level IV- Helmet",
+  },
+];
+
+const customizationSteps = [
+  {
+    step: "Step 1",
+    title: "Armor Design Options",
+    image: CustomizeBg01Img.src,
+    items: [
+      {
+        name: "Concealable Armor",
+        desc: "Lightweight and discreet, ideal for bulletproof protection and the option to add stab resistance for everyday, undercover, or low-profile operations.",
+      },
+      {
+        name: "Tactical Armor",
+        desc: "Designed for military and law enforcement, offering Level III or Level IV bulletproof protection with the option to integrate stab-resistant inserts for comprehensive defense.",
+      },
+      {
+        name: "Full Coverage Armor",
+        desc: "Provides complete torso protection (including neck, groin, and shoulders) for maximum defense against bullets,",
+      },
+      {
+        name: "Floatable Armor",
+        desc: "Perfect for water-based operations, this armor provides both bulletproof and/ or stab protection, ensuring safety in aquatic environments.",
+      },
+    ],
+  },
+  {
+    step: "Step 2",
+    title: "Sizing",
+    image: CustomizeBg02Img.src,
+    content: "Choose from wide size range from XS to XXL, with custom sizing for a tailored fit.",
+  },
+  {
+    step: "Step 3",
+    title: "Colors",
+    image: CustomizeBg03Img.src,
+    items: [
+      { name: "Standard colors", desc: "Select from Black, Olive Green, Navy Blue" },
+      { name: "Custom Colors", desc: "Additional colors are available based on customer specifications for camouflage or unit identification." },
+    ],
+  },
+  {
+    step: "Step 4",
+    title: "Protection Area",
+    image: CustomizeBg04Img.src,
+    items: [
+      { name: "Specific Areas", desc: "Choose to focus protection on key areas like the neck, abdomen, groin, or shoulders" },
+      { name: "Full-body Armor", desc: "opt for full-body armor for ultimate defense." },
+    ],
+  },
+  {
+    step: "Step 5",
+    title: "Additional Accessories and Upgrades",
+    image: CustomizeBg05Img.src,
+    items: [
+      {
+        name: "Hard Armor Plates",
+        desc: "For enhanced ballistic protection, add ceramic or polyethylene plates for Level III or IV protection against high-caliber rounds and armor-piercing projectiles, alongside fragmentation defense.",
+      },
+      {
+        name: "Removable Components",
+        desc: "Neck, shoulder, and groin protectors can be added or removed for customizable protection based on the situation.",
+      },
+      {
+        name: "Insertable Plates",
+        desc: "Add ceramic or polyethylene plates for Level III or IV protection, offering defense against high-caliber rounds and armor-piercing projectiles, as well as enhanced fragmentation defense.",
+      },
+      {
+        name: "Anti-Stab Inserts",
+        desc: "Customize armor with stab-resistant inserts to provide additional protection from blades, spikes, and other sharp objects in vulnerable areas.",
+      },
+    ],
+  },
+];
+
+// Contact section data
+const ctaTitle = "Get in Touch";
+const ctaDescription =
+  "Contact us to learn more about our defense solutions or to discuss your specific operational requirements. Our team is ready to provide the expertise and custom-engineered armor solutions needed to meet your mission objectives.";
+---
+
+<!-- Introduction Section -->
+<ProductIntroSection companyBgImg={CompanyBgImg} pageTitle={pageTitle} pageDescription={pageDescription} />
+
+<!--Options Navigation -->
+<ProductOptionNav optionsNav={optionsNav} />
+
+<!-- Your Item Options Section -->
+<ProductOpItemsSection optionsTitle={optionsTitle} optionsDescription={optionsDescription} itemOptions={itemOptions} />
+
+<div class="overlay-section h-32"></div>
+
+<!-- Customization Section -->
+<CustomStepsSection customizeTitle={customizeTitle} customizeDescription={customizeDescription} customizationSteps={customizationSteps} />
+
+<!-- Contact Section -->
+<ContactSection bgImg={CompanyBg01Img} contactTitle={ctaTitle} contactDescription={ctaDescription} />
+
+<style>
+  
+</style>
