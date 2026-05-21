@@ -1,171 +1,523 @@
 ---
 import LogoImg from "../assets/logo_chp.webp";
 
+type Card = {
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+  accent?: boolean;
+};
+
+type MegaMenu = {
+  layout: "single" | "two" | "products";
+  cards: Card[];
+};
+
 const navItems = [
-  { name: "Home", link: "/" },
-  {
-    name: "Products",
-    link: "/products",
-    items: [
-      { name: "Ballistic Plates", link: "/products/ballistic-plates" },
-      { name: "Ballistic Helmets", link: "/products/ballistic-helmets" },
-      { name: "Other Ballistic Solutions", link: "/products/other-solutions" },
-      { name: "Customized Defense Solutions", link: "/products/customized-solutions" },
-    ],
-  },
-  { name: "About Us", link: "/company" },
-  { name: "Contact Us", link: "/contact" },
+  { name: "Home", link: "/", key: "home" },
+  { name: "Products", link: "/products", key: "products" },
+  { name: "About Us", link: "/company", key: "about" },
+  { name: "Contact Us", link: "/contact", key: "contact" },
 ];
 
 const languages = [
   { code: "en", name: "English" },
   { code: "th", name: "ไทย" },
 ];
+
+const PRODUCT_IMG = "/images/navbar/products-card.png";
 const currentPath = Astro.url.pathname;
+
+const megaMenus: Record<string, MegaMenu> = {
+  home: {
+    layout: "single",
+    cards: [
+      {
+        title: "Homepage",
+        description: "Leading the industry through innovative engineering and rigorous international standards. We specialize in custom-tailored ballistic solutions and individual equipment, ensuring uncompromising safety for those on the front lines.",
+        image: "/images/navbar/home-card-2d516d.png",
+        link: "/",
+      },
+    ],
+  },
+  products: {
+    layout: "products",
+    cards: [
+      { title: "Body Armors", description: "Our Body Armors provide cutting-edge protection across three main categories, ensuring comprehensive safety for law enforcement, military, and security personnel. Whether you're facing bullets, knives, spikes, or a combination of both, we offer the flexibility to tailor your protection.", image: PRODUCT_IMG, link: "/products/body-armors" },
+      { title: "Ballistic Helmets", description: "Engineered from advanced materials to provide high-impact defense against ballistic threats and blunt trauma without sacrificing mobility. These lightweight, durable helmets are fully customizable in shape and specification to meet unique operational or environmental demands.", image: PRODUCT_IMG, link: "/products/ballistic-helmets" },
+      { title: "Ballistic Plates", description: "Our ballistic plates provide customizable solutions for personal protection. With options ranging from Level III to Level IV, each plate is tested for performance and durability to protect against high-velocity rounds.", image: PRODUCT_IMG, link: "/products/ballistic-plates" },
+      { title: "Other Ballistic Solutions", description: "We offer a wide range of ballistic protection products beyond traditional body armor and armored vehicles. From custom-sized solutions to specialized coatings, we provide innovative protection for various needs.", image: PRODUCT_IMG, link: "/products/other-solutions" },
+      { title: "Customized Defense Solutions", description: "We offer a wide range of ballistic protection products designed to meet the demands of military, law enforcement, security, and civilian applications. Whether you're seeking personal protection or armored vehicle solutions, our products provide the ultimate defense against ballistic threats.", image: PRODUCT_IMG, link: "/products/customized-solutions" },
+    ],
+  },
+  about: {
+    layout: "two",
+    cards: [
+      { title: "Our Company", description: "50 years of experience. 100% in-house design, manufacturing, and testing. Thailand's largest ballistic protection manufacturer.", image: "/images/navbar/about-quality.png", link: "/company" },
+      { title: "Quality Standards", description: "At Ch. Paisarn, we combine rigorous international testing with advanced engineering to ensure every piece of equipment provides dependable protection. Explore our commitment to excellence through our certified processes and precision manufacturing.", image: "/images/navbar/about-quality.png", link: "/company#quality", accent: true },
+    ],
+  },
+  contact: {
+    layout: "single",
+    cards: [
+      {
+        title: "Get In Touch",
+        description: "Our team is here to provide expert assistance. Whether you are looking to place a bulk order or seeking tailored guidance, we are committed to delivering the support you need. Contact us today to discuss your specific requirements.",
+        image: "/images/navbar/contact-card-7e346c.png",
+        link: "/contact",
+      },
+    ],
+  },
+};
+
+const isPathActive = (link: string) =>
+  currentPath === link || (link !== "/" && currentPath.startsWith(link));
+
+const GLOBE_PATH = "M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2zm9.542 8.667h-4.198c-.412-2.016-1.064-3.771-1.896-5.097a11.37 11.37 0 0 1 6.094 5.097zM16 4.04c1.147 1.19 2.084 3.157 2.631 5.627h-5.262C13.916 7.197 14.853 5.23 16 4.04zM4.318 18.667A11.618 11.618 0 0 1 4 16c0-.9.107-1.774.318-2.667h4.814A23.94 23.94 0 0 0 9 16c0 .9.053 1.787.132 2.667H4.318zm.14 2h4.198c.412 2.016 1.064 3.771 1.896 5.097a11.37 11.37 0 0 1-6.094-5.097zm4.198-10.667H4.458a11.37 11.37 0 0 1 6.094-5.097c-.832 1.326-1.484 3.081-1.896 5.097zM16 27.96c-1.147-1.19-2.084-3.157-2.631-5.627h5.262C18.084 24.803 17.147 26.77 16 27.96zm3.208-7.627h-6.416A21.764 21.764 0 0 1 12.667 16c0-.921.047-1.81.125-2.667h6.416c.078.857.125 1.746.125 2.667s-.047 1.81-.125 2.667h.001zm.24 7.764c.832-1.326 1.484-3.081 1.896-5.097h4.198a11.37 11.37 0 0 1-6.094 5.097zm2.42-7.097A25.894 25.894 0 0 0 22 16a25.894 25.894 0 0 0-.132-2.667h4.814C26.893 14.226 27 15.1 27 16s-.107 1.774-.318 2.667h-4.814z";
 ---
 
-<nav class="sticky top-0 z-50 bg-white shadow-md">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-24">
-      <!-- Logo -->
-      <div class="shrink-0">
-        <img src={LogoImg.src} alt="Ch.Paisarn Logo" class="h-20 w-auto" />
-      </div>
+<nav class="navbar">
+  <div class="navbar-main">
+    <div class="navbar-container">
+      <div class="navbar-inner">
+        <a href="/" class="navbar-logo">
+          <img src={LogoImg.src} alt="Ch.Paisarn Logo" />
+        </a>
 
-      <!-- Desktop Menu -->
-      <div class="hidden lg:flex flex-col gap-3">
-        <!-- Language Selector -->
-        <div class="flex justify-end gap-5 text-sm">
-          {
-            languages.map((lang) => (
-              <a href="#" class="font-hanken text-[16px] font-normal text-[#14375F] hover:text-[#2465AE] transition-colors">
-                {lang.name}
-              </a>
-            ))
-          }
-        </div>
-
-        <!-- Navigation Items -->
-        <div class="font-hanken flex gap-8 items-center">
-          {
-            navItems.map((item, index) => {
-              const hasSubItems = item.items && item.items.length > 0;
-              if (hasSubItems) {
-                return (
-                  <div id="nav-bar-product" class="relative z-20">
-                    {/* relative container for absolute dropdown */}
-                    <a
-                      href={item.link}
-                      class={`text-[21px] transition-colors ${
-                        currentPath === item.link ? "font-bold text-[#14375F]" : "font-normal text-[#14375F] hover:text-[#2465AE]"
-                      }`}
-                    >
-                      {item.name}
-                    </a>
-                    <div class="dropdown absolute left-0 top-full hidden">
-                      <div class="flex flex-col bg-white p-5 gap-4">
-                        {item.items.map((subItem) => (
-                          <a
-                            href={subItem.link}
-                            class="text-[21px] font-normal text-[#14375F] hover:text-[#2465AE] transition-colors whitespace-nowrap"
-                          >
-                            {subItem.name}
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                );
-              } else {
-                return (
-                  <a
-                    href={item.link}
-                    class={`text-[21px] transition-colors ${
-                      currentPath === item.link ? "font-bold text-[#14375F]" : "font-normal text-[#14375F] hover:text-[#2465AE]"
-                    }`}
-                  >
-                    {item.name}
-                  </a>
-                );
-              }
-            })
-          }
-          <!-- <button id="mobile-menu-btn" class="hidden">
-            <svg class="w-8 h-8 text-[#14375F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-          </button> -->
-        </div>
-      </div>
-
-      <!-- Mobile Menu Button -->
-      <div class="relative lg:hidden">
-        <button id="mobile-menu-btn" class="p-2 z-20">
-          <svg class="w-8 h-8 text-[#14375F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-        <div class="mobile-nav-container fixed top-0 right-0">
-          <div class="flex flex-col gap-4 p-4 bg-white w-[33.333vw] min-w-[200px]">
-            <button id="close-menu-btn" class="flex justify-end p-2">
-              <svg class="w-6 h-6 text-[#14375F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-            </button>
-            {
-              navItems.map((item) => (
-                <a
-                  href={item.link}
-                  class={`text-[21px] whitespace-nowrap transition-colors ${
-                    currentPath === item.link ? "font-bold text-[#14375F]" : "font-normal text-[#14375F] hover:text-[#2465AE]"
-                  }`}
-                >
+        <div class="navbar-desktop">
+          <div class="navbar-nav-items">
+            {navItems.map((item) => (
+              <div class="nav-item" data-menu={item.key}>
+                <a href={item.link} class:list={["nav-link", { "is-active": isPathActive(item.link) }]}>
                   {item.name}
                 </a>
-              ))
-            }
+              </div>
+            ))}
+          </div>
+
+          <div class="lang-group">
+            <svg class="lang-icon" width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><path d={GLOBE_PATH} /></svg>
+            <div class="lang-list">
+              {languages.map((lang, i) => (
+                <a href="#" class:list={["lang-link", { "is-active": i === 0 }]}>{lang.name}</a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div class="navbar-mobile">
+          <button id="mobile-menu-btn" class="mobile-icon-btn" aria-label="Open menu">
+            <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <div class="mobile-nav-container">
+            <div class="mobile-nav-panel">
+              <button id="close-menu-btn" class="mobile-icon-btn mobile-close-btn" aria-label="Close menu">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              {navItems.map((item) => (
+                <a href={item.link} class:list={["mobile-nav-link", { "is-active": currentPath === item.link }]}>
+                  {item.name}
+                </a>
+              ))}
+              <div class="mobile-language">
+                {languages.map((lang, i) => (
+                  <a href="#" class:list={["mobile-lang-link", { "is-active": i === 0 }]}>{lang.name}</a>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
+  <div class="navbar-accent-bar"></div>
+
+  {Object.entries(megaMenus).map(([key, menu]) => (
+    <div id={`mega-menu-${key}`} class="mega-menu hidden">
+      <div class="mega-menu-container">
+        <div class="mega-menu-sidebar">
+          <div class="mega-nav-items">
+            {navItems.map((item) => (
+              <a href={item.link} class:list={["mega-nav-link", { "is-active": item.key === key }]}>
+                {item.name}
+              </a>
+            ))}
+          </div>
+          <div class="lang-group mega-lang-group">
+            <svg class="lang-icon" width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><path d={GLOBE_PATH} /></svg>
+            <div class="lang-list">
+              {languages.map((lang, i) => (
+                <a href="#" class:list={["lang-link", { "is-active": i === 0 }]}>{lang.name}</a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div class={`mega-menu-content layout-${menu.layout}`}>
+          {menu.cards.map((card) => (
+            <a href={card.link} class="mega-card">
+              <div class="mega-card-image">
+                <img src={card.image} alt={card.title} />
+              </div>
+              <div class="mega-card-text">
+                <span class:list={["mega-card-title", { "is-accent": card.accent }]}>{card.title}</span>
+                <span class="mega-card-description">{card.description}</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  ))}
+
   <style>
-    nav {
-      box-shadow: 0px 3px 2.5px rgba(0, 0, 0, 0.15);
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background-color: var(--white);
     }
 
-    .mobile-nav-container {
+    .navbar-main {
+      box-shadow: 0 0.1875rem 0.3125rem 0 rgba(0, 0, 0, 0.15);
+    }
+
+    .navbar-container {
+      max-width: 94.5rem;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 5.625rem;
+    }
+
+    .navbar-logo {
+      flex-shrink: 0;
+    }
+
+    .navbar-logo img {
+      height: 4.4375rem;
+      width: auto;
+    }
+
+    .navbar-desktop {
       display: none;
     }
 
-    .mobile-toggle-open {
+    .navbar-nav-items {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      font-family: var(--font-hanken);
+    }
+
+    .nav-link,
+    .lang-link,
+    .mega-nav-link,
+    .mobile-nav-link,
+    .mobile-lang-link {
+      font-weight: 400;
+      color: var(--primary-900);
+      text-decoration: none;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav-link,
+    .lang-link {
+      font-size: 1.3125rem;
+    }
+
+    .nav-link:hover,
+    .lang-link:hover,
+    .mega-nav-link:hover,
+    .mobile-nav-link:hover {
+      color: var(--primary-500);
+    }
+
+    .nav-link.is-active,
+    .lang-link.is-active,
+    .mega-nav-link.is-active,
+    .mobile-nav-link.is-active,
+    .mobile-lang-link.is-active {
+      font-weight: 700;
+    }
+
+    .lang-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .lang-icon {
+      color: var(--primary-900);
+    }
+
+    .lang-list {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .lang-link {
+      font-family: var(--font-hanken);
+    }
+
+    .navbar-mobile {
+      position: relative;
+    }
+
+    .mobile-icon-btn {
+      padding: 0.5rem;
+      background: none;
+      border: none;
+      color: var(--primary-900);
+      cursor: pointer;
+    }
+
+    .mobile-close-btn {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .mobile-nav-container {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 50;
+      display: none;
+    }
+
+    .mobile-nav-container.is-open {
       display: flex;
     }
 
-    @media (max-width: 1024px) {
-      nav .desktop-nav {
+    .mobile-nav-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem;
+      background-color: var(--white);
+      width: 66.667vw;
+      min-width: 12.5rem;
+      box-shadow: 0 0.625rem 0.9375rem -0.1875rem rgba(0, 0, 0, 0.1);
+      min-height: 100vh;
+    }
+
+    .mobile-nav-link {
+      font-size: 1.3125rem;
+    }
+
+    .mobile-language {
+      display: flex;
+      gap: 1.25rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 0.0625rem solid #f3f4f6;
+    }
+
+    .mobile-lang-link {
+      font-family: var(--font-hanken);
+      font-size: 1rem;
+    }
+
+    .navbar-accent-bar {
+      height: 0.625rem;
+      width: 100%;
+      background: linear-gradient(90deg, rgba(25, 69, 119, 1) 8%, rgba(143, 185, 232, 1) 100%);
+    }
+
+    .mega-menu {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      background-color: var(--white);
+      z-index: 40;
+      box-shadow: 0 0.375rem 1rem rgba(0, 0, 0, 0.15);
+    }
+
+    .mega-menu.hidden {
+      display: none;
+    }
+
+    .mega-menu-container {
+      max-width: 94.5rem;
+      margin: 0 auto;
+      padding: 3.125rem 1.5rem;
+      display: flex;
+      gap: 2.25rem;
+    }
+
+    .mega-menu-sidebar {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-shrink: 0;
+      min-width: 13.75rem;
+      border-right: 0.1875rem solid var(--secondary-500);
+      padding-right: 2.25rem;
+    }
+
+    .mega-nav-items {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .mega-nav-link {
+      font-size: 1.75rem;
+      line-height: 140%;
+    }
+
+    .mega-lang-group {
+      margin-top: 2rem;
+    }
+
+    .mega-menu-content {
+      flex: 1;
+      display: grid;
+      gap: 1.75rem;
+    }
+
+    .mega-menu-content.layout-single {
+      grid-template-columns: minmax(0, 23.75rem);
+    }
+
+    .mega-menu-content.layout-two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      max-width: 38.75rem;
+    }
+
+    .mega-menu-content.layout-products {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .mega-card {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      border-radius: 0.625rem;
+      overflow: hidden;
+      text-decoration: none;
+    }
+
+    .mega-card-image {
+      width: 100%;
+      border-radius: 0.3125rem;
+      overflow: hidden;
+      height: 11.4375rem;
+    }
+
+    .layout-two .mega-card-image {
+      height: 17.875rem;
+    }
+
+    .layout-single .mega-card-image {
+      height: 12.25rem;
+    }
+
+    .mega-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .mega-card:hover .mega-card-image img {
+      transform: scale(1.05);
+    }
+
+    .mega-card-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .mega-card-title {
+      font-size: 1.3125rem;
+      font-weight: 700;
+      line-height: 160%;
+      color: var(--primary-900);
+    }
+
+    .mega-card-title.is-accent {
+      color: #087a49;
+    }
+
+    .mega-card-description {
+      font-size: 1rem;
+      line-height: 140%;
+      color: var(--black);
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .layout-single .mega-card-description {
+      display: block;
+      overflow: visible;
+    }
+
+    @media only screen and (min-width: 1024px) {
+      .navbar-container {
+        padding: 0 6.25rem;
+      }
+
+      .navbar-desktop {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+      }
+
+      .navbar-mobile {
         display: none;
       }
     }
   </style>
 
   <script>
-    const productNav = document.getElementById("nav-bar-product");
-    const dropdown = productNav?.querySelector(".dropdown");
-    const mobileMenuBtn = document.getElementById("mobile-menu-btn");
-    const closeMenuBtn = document.getElementById("close-menu-btn");
-    productNav?.addEventListener("mouseenter", (e) => dropdown?.classList.remove("hidden"));
-    productNav?.addEventListener("mouseleave", (e) => dropdown?.classList.add("hidden"));
-    mobileMenuBtn?.addEventListener("click", (e) => {
-      e.preventDefault();
-      const mobileNav = document.querySelector(".mobile-nav-container");
-      mobileNav?.classList.toggle("mobile-toggle-open");
+    import $ from "jquery";
+
+    let hideTimer: ReturnType<typeof setTimeout>;
+    const $menus = $(".mega-menu");
+
+    const show = ($menu: JQuery) => {
+      clearTimeout(hideTimer);
+      $menus.not($menu).addClass("hidden");
+      $menu.removeClass("hidden");
+    };
+
+    const hide = ($menu: JQuery) => {
+      hideTimer = setTimeout(() => $menu.addClass("hidden"), 150);
+    };
+
+    $(".nav-item[data-menu]").each(function () {
+      const $menu = $(`#mega-menu-${$(this).data("menu")}`);
+      if (!$menu.length) return;
+      $(this).add($menu)
+        .on("mouseenter", () => show($menu))
+        .on("mouseleave", () => hide($menu));
     });
-    closeMenuBtn?.addEventListener("click", (e) => {
-      e.preventDefault();
-      const mobileNav = document.querySelector(".mobile-nav-container");
-      mobileNav?.classList.remove("mobile-toggle-open");
+
+    $(document).on("click", (e) => {
+      if (!$(e.target as Element).closest(".nav-item, .mega-menu").length) {
+        $menus.addClass("hidden");
+      }
     });
+
+    $("#mobile-menu-btn").on("click", () => $(".mobile-nav-container").toggleClass("is-open"));
+    $("#close-menu-btn").on("click", () => $(".mobile-nav-container").removeClass("is-open"));
   </script>
 </nav>

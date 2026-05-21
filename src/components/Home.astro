@@ -1,7 +1,10 @@
 ---
+import CompanyBg03Img from "@/images/company/company_bg_03.png";
 import HeroBgImg from "@/images/company/hero_bg.svg";
 import ProductBgImg from "@/images/company/factory_01_bg.svg";
 import CompanyBgImg from "@/images/company/company_bg.png";
+import Collapse from "@/components/collapse/Collapse.tsx";
+import { Image } from "astro:assets";
 
 // Hero section data
 const heroTitle = '"Your Trusted Partner in Ballistic Protection"';
@@ -10,6 +13,36 @@ const heroTitle = '"Your Trusted Partner in Ballistic Protection"';
 const productsTitle = "Our Products";
 const productsDescription =
   "We offer a wide range of ballistic protection products designed to meet the demands of military, law enforcement, security, and civilian applications. Whether you're seeking personal protection or armored vehicle solutions, our products provide the ultimate defense against ballistic threats.";
+const products = [
+  {
+    title: "Body Armors",
+    description:
+      "Our Body Armors provide cutting-edge protection across three main categories, ensuring comprehensive safety for law enforcement, military, and security personnel. Whether you’re facing bullets, knives, spikes, or a combination of both, we offer the flexibility to tailor your protection.",
+    img: CompanyBgImg,
+    imgDescription: "Body Armors",
+  },
+  {
+    title: "Ballistic Helmets",
+    description:
+      "Engineered from advanced materials to provide high-impact defense against ballistic threats and blunt trauma without sacrificing mobility. These lightweight, durable helmets are fully customizable in shape and specification to meet unique operational or environmental demands.",
+    img: CompanyBgImg,
+    imgDescription: "Ballistic Helmets",
+  },
+  {
+    title: "Ballistic Plates",
+    description:
+      "Our ballistic plates provide customizable solutions for personal protection. With options ranging from Level III to Level IV, each plate is tested for performance and durability to protect against high-velocity rounds.",
+    img: CompanyBgImg,
+    imgDescription: "Ballistic Plates",
+  },
+  {
+    title: "Other Ballistic Solutions",
+    description:
+      "we offer a wide range of ballistic protection products beyond traditional body armor and armored vehicles. From custom-sized solutions to specialized coatings, we provide innovative protection for various needs. Our additional products include ballistic shields, bomb blankets, backpacks, briefcases, wall panels, and more—each designed to offer reliable protection in diverse environments.",
+    img: CompanyBgImg,
+    imgDescription: "Other Ballistic Solutions",
+  },
+];
 
 // Team section data
 const teamTitle = "Meet The Team";
@@ -20,113 +53,23 @@ const teamDescription =
 const contactTitle = "Get in Touch";
 const contactDescription =
   "Contact us to learn more about our defense solutions or to discuss your specific operational requirements. Our team is ready to provide the expertise and custom-engineered armor solutions needed to meet your mission objectives.";
+
+// Trust partner section data
+const partnersTitle = "Trusted by our partners";
+const partnersDescription =
+  "We are proud to partner with the organizations and personnel who protect our nation's frontline. Every piece of gear we manufacture has been rigorously tested and proven through real-world deployment in active operational fields and critical border zones. These strategic partnerships stand as a testament to our unyielding commitment to life-saving reliability under the toughest conditions.";
+const partners = [
+  { name: "Royal Thai Armed Forces", img: "/images/partners/royal-thai-armed-forces.png" },
+  { name: "The Royal Thai Police (RTP)", img: "/images/partners/royal-thai-police.png" },
+  { name: "Department of Provincial Administration", img: "/images/partners/provincial-administration.png" },
+  { name: "United Nation (UN)", img: "/images/partners/united-nations.png" },
+  { name: "The Royal Thai Air Force (RTAF)", img: "/images/partners/rtaf-1.png" },
+  { name: "Royal Thai Army Medical Department", img: "/images/partners/rta-medical-1.png" },
+  { name: "The Royal Thai Air Force (RTAF)", img: "/images/partners/rtaf-2.png" },
+  { name: "Territorial Defense Command (TDC)", img: "/images/partners/territorial-defense.png" },
+  { name: "Royal Thai Army Medical Department", img: "/images/partners/rta-medical-2.png" },
+];
 ---
-
-<style>
-  .hero-section {
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    position: relative;
-    padding: 6rem 4rem;
-    min-height: 100vh;
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 10;
-    max-width: 900px;
-  }
-
-  .hero-title {
-    color: white;
-    margin-bottom: 3rem;
-  }
-
-  .cta-group {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-
-  .product-card {
-    display: flex;
-    align-items: start;
-    justify-content: center;
-    min-height: 400px;
-    padding: 2rem;
-  }
-
-  .product-main {
-    background: linear-gradient(135deg, rgba(20, 55, 95, 0.3), rgba(20, 55, 95, 0.3));
-    position: relative;
-    border-bottom: 10px solid #58bb90;
-  }
-
-  .product-card-container {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    width: 100%;
-  }
-
-  .product-label-vertical {
-    color: white;
-    white-space: nowrap;
-  }
-
-  .product-content {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    width: 100%;
-    height: auto;
-    align-items: center;
-  }
-
-  .product-description {
-    width: 80%;
-  }
-
-  @media (max-width: 1024px) {
-    .hero-section {
-      padding: 4rem 2rem;
-    }
-
-    .cta-group {
-      flex-direction: column;
-    }
-  }
-
-  /* Tablet and above (min-width) */
-  @media only screen and (min-width: 768px) {
-    .product-card-container {
-      flex-direction: row;
-      gap: 0;
-    }
-    .products-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .product-content {
-      flex-direction: row;
-      gap: 0.5rem;
-      justify-content: space-evenly;
-    }
-
-    .product-label-vertical {
-      writing-mode: vertical-rl;
-      text-orientation: mixed;
-      transform: rotate(180deg);
-    }
-  }
-
-  /* Desktop and above */
-  @media only screen and (min-width: 1024px) {
-  }
-</style>
 
 <!-- Hero Section -->
 <section class="hero-section" style={`background-image: url(${HeroBgImg.src}); background-color: var(--primary-900);`}>
@@ -165,40 +108,7 @@ const contactDescription =
     </div>
 
     <!-- Product Grid -->
-    <div class="product-card-container flex w-full rounded-lg overflow-hidden">
-      <!-- Main Product Card -->
-      <div class="product-card product-main flex-9" style={`background-image: url(${CompanyBgImg.src});`}>
-        <div class="product-content flex gap-4 w-full h-full justify-between">
-          <div class="heading-h3 flex justify-end product-label-vertical">Body Armors</div>
-          <div class="product-description">
-            <p class="text-white text-lg leading-relaxed mb-4">
-              Our Body Armors provide cutting-edge protection across three main categories, ensuring comprehensive safety for law enforcement,
-              military, and security personnel. Whether you're facing bullets, knives, spikes, or a combination of both, we offer the flexibility to
-              tailor your protection.
-            </p>
-            <button class="text-white font-bold flex gap-2 items-center hover:underline">
-              Explore Body Armors
-              <span>→</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Helmet Card -->
-      <div class="product-card bg-[#2465ae] lg:flex-1">
-        <div class="heading-h3 product-label-vertical">Ballistic Helmets</div>
-      </div>
-
-      <!-- Plates Card -->
-      <div class="product-card bg-[#90b9e7] lg:flex-1">
-        <div class="heading-h3 product-label-vertical">Ballistic Plates</div>
-      </div>
-
-      <!-- Solutions Card -->
-      <div class="product-card bg-[#194577] lg:flex-1">
-        <div class="heading-h3 product-label-vertical">Other Ballistic Solutions</div>
-      </div>
-    </div>
+    <Collapse client:visible />
   </div>
 </section>
 
@@ -206,11 +116,8 @@ const contactDescription =
 <section class="section-padding bg-[#194577]">
   <div class="amx-auto">
     <div class="grid md:grid-cols-2 gap-12 items-center">
-      <!-- Images -->
       <div class="space-y-4">
-        <div class="bg-gray-400 rounded-lg h-96 w-full flex items-center justify-center">
-          <span class="text-white text-lg">Image</span>
-        </div>
+          <Image src={CompanyBg03Img} alt="Company Background" class="team-image" />
       </div>
 
       <!-- Content -->
@@ -228,8 +135,29 @@ const contactDescription =
   </div>
 </section>
 
+<!-- Trust Partner Section -->
+<section class="partners-section">
+  <div class="partners-head">
+    <h2 class="partners-title">{partnersTitle}</h2>
+    <p class="partners-description">{partnersDescription}</p>
+  </div>
+
+  <div class="partners-grid">
+    {
+      partners.map((partner) => (
+        <div class="partner-card">
+          <div class="partner-logo">
+            <img src={partner.img} alt={partner.name} />
+          </div>
+          <span class="partner-name">{partner.name}</span>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
 <!-- Past Projects Section -->
-<section class="section-padding bg-[#5e99dc]">
+<section class="section-padding bg-[#5e99dc] hidden">
   <div class="max-w-7xl mx-auto">
     <h2 class="heading-h4 mb-8 text-center text-white">Past projects / success story placeholder</h2>
   </div>
@@ -250,3 +178,137 @@ const contactDescription =
     </div>
   </div>
 </section>
+
+<style>
+  .hero-section {
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    padding: 6rem 4rem;
+    min-height: 100vh;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 900px;
+  }
+
+  .hero-title {
+    color: white;
+    margin-bottom: 3rem;
+  }
+
+  .team-image {
+    display: block;
+    width: 100%;
+    height: 20rem;
+    border-radius: 1rem;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .partners-section {
+    background-color: var(--white);
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .partners-head {
+    width: 100%;
+    max-width: 68.125rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .partners-title {
+    font-family: var(--font-hanken);
+    font-weight: 700;
+    font-size: 2.25rem;
+    text-transform: capitalize;
+    color: var(--primary-900);
+  }
+
+  .partners-description {
+    font-family: var(--font-hanken);
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: var(--black);
+  }
+
+  .partners-grid {
+    width: 100%;
+    max-width: 68.125rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem 1rem;
+  }
+
+  .partner-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.125rem;
+  }
+
+  .partner-logo {
+    width: 100%;
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .partner-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .partner-name {
+    font-family: var(--font-hanken);
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: var(--black);
+    text-align: center;
+  }
+
+  @media (max-width: 1024px) {
+    .hero-section {
+      padding: 4rem 2rem;
+    }
+
+    .cta-group {
+      flex-direction: column;
+    }
+  }
+
+  /* Tablet and above (min-width) */
+  @media only screen and (min-width: 768px) {
+    .partners-section {
+      padding: 6.25rem;
+      gap: 3rem;
+    }
+
+    .partners-title {
+      font-size: 3.625rem;
+    }
+
+    .partners-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+  }
+
+  /* Desktop and above */
+  @media only screen and (min-width: 1024px) {
+  }
+</style>
