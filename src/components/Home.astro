@@ -38,7 +38,8 @@ const cards = [
   },
   {
     label: "Armor Plates",
-    description:"Our armor Plates provide customizable solutions for personal protection. With options ranging from Level III to Level IV, each plate is tested for performance and durability to protect against high-velocity rounds.",
+    description:
+      "Our armor Plates provide customizable solutions for personal protection. With options ranging from Level III to Level IV, each plate is tested for performance and durability to protect against high-velocity rounds.",
     buttonText: "Explore Armor Plates",
     bgColor: "bg-[#90b9e7]",
     bgImage: CompanyBg03Img.src,
@@ -47,7 +48,8 @@ const cards = [
 
   {
     label: "Other Solutions",
-    description: "We offer a wide range of ballistic protection products beyond traditional body armor and armored vehicles. From custom-sized solutions to specialized coatings, we provide innovative protection for various needs.",
+    description:
+      "We offer a wide range of ballistic protection products beyond traditional body armor and armored vehicles. From custom-sized solutions to specialized coatings, we provide innovative protection for various needs.",
     buttonText: "Explore Other Solution",
     bgColor: "bg-[#194577]",
     bgImage: CompanyBgImg.src,
@@ -58,7 +60,7 @@ const cards = [
 // Team section data
 const teamTitle = "Meet The Team";
 const teamDescription =
-  "As Thailand's largest manufacturer of ballistic protection equipment, we engineering high-performance gear built to withstand tropical environments and the toughest operational conditions in the field. Our absolute commitment to safety drives every design decision we make—ensuring every piece of equipment delivers uncompromised reliability, durability, and protection when it matters most.";
+  "As Thailand's largest manufacturer of ballistic protection equipment, we engineering high-performance gear built to withstand tropical environments and the toughest operational conditions in the field. Our absolute commitment to safety drives every design decision we make ensuring every piece of equipment delivers uncompromised reliability, durability, and protection when it matters most.";
 // Contact section data
 const contactTitle = "Get in Touch";
 const contactDescription =
@@ -131,7 +133,7 @@ const partners = [
       <div>
         <h2 class="heading-h2 text-(--primary-900) mb-4">{productsTitle}</h2>
         <p class="body-text mb-4">{productsDescription}</p>
-        <div class="flex gap-4 justify-end">
+        <div class="flex flex-col lg:flex-row gap-4 justify-end">
           <button
             class="bg-[#58bb90] text-white font-bold py-2 px-5 rounded-sm hover:opacity-90 transition-all"
             style="font-family: 'Space Grotesk'; font-size: 18px;"
@@ -255,7 +257,7 @@ const partners = [
   }
 
   .product-section {
-    padding: 6.25rem;
+    padding: 2rem;
     isolation: isolate;
   }
 
@@ -263,7 +265,7 @@ const partners = [
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 6.25rem;
+    padding: 0 2rem;
     gap: 48px;
     isolation: isolate;
   }
@@ -353,6 +355,14 @@ const partners = [
 
   /* Tablet and above (min-width) */
   @media only screen and (min-width: 768px) {
+    .product-section {
+      padding: 6.25rem;
+    }
+
+    .product-container {
+      padding: 0 6.25rem;
+    }
+
     .partners-section {
       padding: 6.25rem;
       gap: 3rem;

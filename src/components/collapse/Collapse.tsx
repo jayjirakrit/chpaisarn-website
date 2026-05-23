@@ -37,7 +37,7 @@ const Collapse: React.FC<CollapseProps> = ({ cards }) => {
       {cards.map((card, index) => (
         <div
           key={index}
-          className={`product-card ${card.bgColor} ${isActive(index) ? "hidden border-highlight" : ""}`}
+          className={`product-card ${card.bgColor} ${isActive(index) ? "border-highlight" : ""}`}
           style={{ backgroundImage: isActive(index) && card.bgImage ? `url(${card.bgImage})` : "none" }}
           onClick={() => setVisible(index)}
         >

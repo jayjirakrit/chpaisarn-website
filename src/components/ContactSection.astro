@@ -11,8 +11,12 @@ const {
 
 <section class="cta-section" style={`background-image: url(${bgImg.src});`}>
   <div class="cta-box" style={`background-color: var(--${bgColor});`}>
-    <h2 class="cta-title" style={`color: var(--${titleColor});`}>{contactTitle}</h2>
-    <p class="cta-description" style={`color: var(--${desColor});`}>{contactDescription}</p>
+    <h2 class="cta-title" style={`color: var(--${titleColor});`}>
+      {contactTitle}
+    </h2>
+    <p class="cta-description" style={`color: var(--${desColor});`}>
+      {contactDescription}
+    </p>
     <button class="cta-button">
       <span class="cta-button-text">Contact Us</span>
     </button>
@@ -61,7 +65,7 @@ const {
     border: none;
     border-radius: 5px;
     padding: 0.75rem 1.5rem;
-    width: 50%;
+    width: 100%;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
@@ -92,6 +96,10 @@ const {
 
     .cta-button-text {
       font-size: 1.5rem;
+    }
+
+    .cta-button {
+      width: 50%;
     }
   }
 
