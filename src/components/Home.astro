@@ -1,10 +1,14 @@
 ---
-import CompanyBg03Img from "@/images/company/company_bg_03.png";
 import HeroBgImg from "@/images/company/hero_bg.svg";
 import ProductBgImg from "@/images/company/factory_01_bg.svg";
 import CompanyBgImg from "@/images/company/company_bg.png";
+import CompanyBg03Img from "@/images/company/company_bg_03.png";
+import CompanyBg04Img from "@/images/company/company_bg_04.png";
+import ContactBgImg from "@/images/company/contact_bg.svg";
 import Collapse from "@/components/collapse/Collapse.tsx";
-import { Image } from "astro:assets";
+import ContactSection from "@/components/ContactSection.astro";
+import ArmorImg from "@/images/products/body_armor_1.png";
+import CvcHelmetImg from "@/images/products/cvc_helmet.svg";
 
 // Hero section data
 const heroTitle = '"Your Trusted Partner in Ballistic Protection"';
@@ -13,42 +17,48 @@ const heroTitle = '"Your Trusted Partner in Ballistic Protection"';
 const productsTitle = "Our Products";
 const productsDescription =
   "We offer a wide range of ballistic protection products designed to meet the demands of military, law enforcement, security, and civilian applications. Whether you're seeking personal protection or armored vehicle solutions, our products provide the ultimate defense against ballistic threats.";
-const products = [
+const cards = [
   {
-    title: "Body Armors",
+    label: "Body Armors",
     description:
-      "Our Body Armors provide cutting-edge protection across three main categories, ensuring comprehensive safety for law enforcement, military, and security personnel. Whether you’re facing bullets, knives, spikes, or a combination of both, we offer the flexibility to tailor your protection.",
-    img: CompanyBgImg,
-    imgDescription: "Body Armors",
+      "Our Body Armors provide cutting-edge protection across three main categories, ensuring comprehensive safety for law enforcement, military, and security personnel. Whether you're facing bullets, knives, spikes, or a combination of both, we offer the flexibility to tailor your protection.",
+    buttonText: "Explore Body Armors",
+    bgColor: "bg-[#14375f]",
+    bgImage: CompanyBgImg.src,
+    productImage: ArmorImg.src,
   },
   {
-    title: "Ballistic Helmets",
+    label: "Ballistic Helmets",
     description:
       "Engineered from advanced materials to provide high-impact defense against ballistic threats and blunt trauma without sacrificing mobility. These lightweight, durable helmets are fully customizable in shape and specification to meet unique operational or environmental demands.",
-    img: CompanyBgImg,
-    imgDescription: "Ballistic Helmets",
+    buttonText: "Explore Ballistic Helmets",
+    bgColor: "bg-[#2465ae]",
+    bgImage: CompanyBg04Img.src,
+    productImage: CvcHelmetImg.src,
   },
   {
-    title: "Ballistic Plates",
-    description:
-      "Our ballistic plates provide customizable solutions for personal protection. With options ranging from Level III to Level IV, each plate is tested for performance and durability to protect against high-velocity rounds.",
-    img: CompanyBgImg,
-    imgDescription: "Ballistic Plates",
+    label: "Armor Plates",
+    description:"Our armor Plates provide customizable solutions for personal protection. With options ranging from Level III to Level IV, each plate is tested for performance and durability to protect against high-velocity rounds.",
+    buttonText: "Explore Armor Plates",
+    bgColor: "bg-[#90b9e7]",
+    bgImage: CompanyBg03Img.src,
+    productImage: ArmorImg.src,
   },
+
   {
-    title: "Other Ballistic Solutions",
-    description:
-      "we offer a wide range of ballistic protection products beyond traditional body armor and armored vehicles. From custom-sized solutions to specialized coatings, we provide innovative protection for various needs. Our additional products include ballistic shields, bomb blankets, backpacks, briefcases, wall panels, and more—each designed to offer reliable protection in diverse environments.",
-    img: CompanyBgImg,
-    imgDescription: "Other Ballistic Solutions",
+    label: "Other Solutions",
+    description: "We offer a wide range of ballistic protection products beyond traditional body armor and armored vehicles. From custom-sized solutions to specialized coatings, we provide innovative protection for various needs.",
+    buttonText: "Explore Other Solution",
+    bgColor: "bg-[#194577]",
+    bgImage: CompanyBgImg.src,
+    productImage: ArmorImg.src,
   },
 ];
 
 // Team section data
 const teamTitle = "Meet The Team";
 const teamDescription =
-  "Ch.Paisarn (Chpaisarn) specializes in crafting high-performance ballistic protection tailored to meet the unique needs of our clients. With years of expertise, our products are trusted globally by military and law enforcement agencies to defend against the most formidable threats. Committed to excellence, we provide top-tier defense against firearms, explosive fragments, and edged weapons, all while respecting our clients' budgets. Our solutions deliver unmatched safety, reliability, and performance, even in the most demanding conditions.";
-
+  "As Thailand's largest manufacturer of ballistic protection equipment, we engineering high-performance gear built to withstand tropical environments and the toughest operational conditions in the field. Our absolute commitment to safety drives every design decision we make—ensuring every piece of equipment delivers uncompromised reliability, durability, and protection when it matters most.";
 // Contact section data
 const contactTitle = "Get in Touch";
 const contactDescription =
@@ -59,20 +69,47 @@ const partnersTitle = "Trusted by our partners";
 const partnersDescription =
   "We are proud to partner with the organizations and personnel who protect our nation's frontline. Every piece of gear we manufacture has been rigorously tested and proven through real-world deployment in active operational fields and critical border zones. These strategic partnerships stand as a testament to our unyielding commitment to life-saving reliability under the toughest conditions.";
 const partners = [
-  { name: "Royal Thai Armed Forces", img: "/images/partners/royal-thai-armed-forces.png" },
-  { name: "The Royal Thai Police (RTP)", img: "/images/partners/royal-thai-police.png" },
-  { name: "Department of Provincial Administration", img: "/images/partners/provincial-administration.png" },
+  {
+    name: "Royal Thai Armed Forces",
+    img: "/images/partners/royal-thai-armed-forces.png",
+  },
+  {
+    name: "The Royal Thai Police (RTP)",
+    img: "/images/partners/royal-thai-police.png",
+  },
+  {
+    name: "Department of Provincial Administration",
+    img: "/images/partners/provincial-administration.png",
+  },
   { name: "United Nation (UN)", img: "/images/partners/united-nations.png" },
-  { name: "The Royal Thai Air Force (RTAF)", img: "/images/partners/rtaf-1.png" },
-  { name: "Royal Thai Army Medical Department", img: "/images/partners/rta-medical-1.png" },
-  { name: "The Royal Thai Air Force (RTAF)", img: "/images/partners/rtaf-2.png" },
-  { name: "Territorial Defense Command (TDC)", img: "/images/partners/territorial-defense.png" },
-  { name: "Royal Thai Army Medical Department", img: "/images/partners/rta-medical-2.png" },
+  {
+    name: "The Royal Thai Air Force (RTAF)",
+    img: "/images/partners/rtaf-1.png",
+  },
+  {
+    name: "Royal Thai Army Medical Department",
+    img: "/images/partners/rta-medical-1.png",
+  },
+  {
+    name: "The Royal Thai Air Force (RTAF)",
+    img: "/images/partners/rtaf-2.png",
+  },
+  {
+    name: "Territorial Defense Command (TDC)",
+    img: "/images/partners/territorial-defense.png",
+  },
+  {
+    name: "Royal Thai Army Medical Department",
+    img: "/images/partners/rta-medical-2.png",
+  },
 ];
 ---
 
 <!-- Hero Section -->
-<section class="hero-section" style={`background-image: url(${HeroBgImg.src}); background-color: var(--primary-900);`}>
+<section
+  class="hero-section"
+  style={`background-image: url(${HeroBgImg.src}); background-color: var(--primary-900);`}
+>
   <div class="heading-h1 hero-content">
     <h1 class="hero-title">{heroTitle}</h1>
     <div class="cta-group">
@@ -83,9 +120,14 @@ const partners = [
 </section>
 
 <!-- Our Products Section -->
-<section class="section-padding bg-gray-50" style={`background-image: url(${ProductBgImg.src});`}>
-  <div class="mx-auto">
-    <div class="mb-12 flex flex-col md:flex-row md:items-end md:justify-between">
+<section
+  class="product-section bg-gray-50"
+  style={`background-image: url(${ProductBgImg.src});`}
+>
+  <div class="product-container mx-auto">
+    <div
+      class="mb-12 flex flex-col md:flex-row md:items-end md:justify-between"
+    >
       <div>
         <h2 class="heading-h2 text-(--primary-900) mb-4">{productsTitle}</h2>
         <p class="body-text mb-4">{productsDescription}</p>
@@ -108,16 +150,20 @@ const partners = [
     </div>
 
     <!-- Product Grid -->
-    <Collapse client:visible />
+    <Collapse client:visible cards={cards} />
   </div>
 </section>
 
 <!-- Team Section -->
-<section class="section-padding bg-[#194577]">
+<section class="team-section section-padding">
   <div class="amx-auto">
     <div class="grid md:grid-cols-2 gap-12 items-center">
       <div class="space-y-4">
-          <Image src={CompanyBg03Img} alt="Company Background" class="team-image" />
+        <!-- <Image
+          src={CompanyBg03Img}
+          alt="Company Background"
+          class="team-image"
+        /> -->
       </div>
 
       <!-- Content -->
@@ -128,7 +174,7 @@ const partners = [
           class="bg-[#58bb90] text-white font-bold py-3 px-6 rounded-sm hover:opacity-90 transition-all"
           style="font-family: 'Space Grotesk'; font-size: 24px;"
         >
-          Check Our Story
+          Learn Our Story
         </button>
       </div>
     </div>
@@ -156,28 +202,15 @@ const partners = [
   </div>
 </section>
 
-<!-- Past Projects Section -->
-<section class="section-padding bg-[#5e99dc] hidden">
-  <div class="max-w-7xl mx-auto">
-    <h2 class="heading-h4 mb-8 text-center text-white">Past projects / success story placeholder</h2>
-  </div>
-</section>
-
 <!-- Contact Section -->
-<section class="section-padding bg-cover bg-center bg-white" style={`background-image: url(${ProductBgImg.src});`}>
-  <div class="max-w-7xl mx-auto relative z-10 flex justify-end">
-    <div class="bg-[#14375f] rounded-sm p-9 max-w-md shadow-lg">
-      <h3 class="heading-h3 text-white mb-4">{contactTitle}</h3>
-      <p class="text-white text-base leading-relaxed mb-8">{contactDescription}</p>
-      <button
-        class="bg-[#58bb90] text-white font-bold py-3 px-6 rounded-sm hover:opacity-90 transition-all w-full"
-        style="font-family: 'Space Grotesk'; font-size: 24px;"
-      >
-        Contact Us
-      </button>
-    </div>
-  </div>
-</section>
+<ContactSection
+  bgImg={ContactBgImg}
+  contactTitle={contactTitle}
+  contactDescription={contactDescription}
+  bgColor="primary-50"
+  titleColor="primary-700"
+  desColor="black"
+/>
 
 <style>
   .hero-section {
@@ -202,6 +235,16 @@ const partners = [
     margin-bottom: 3rem;
   }
 
+  .cta-group {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .team-section {
+    background-color: var(--primary-900);
+  }
+
   .team-image {
     display: block;
     width: 100%;
@@ -209,6 +252,20 @@ const partners = [
     border-radius: 1rem;
     object-fit: cover;
     flex-shrink: 0;
+  }
+
+  .product-section {
+    padding: 6.25rem;
+    isolation: isolate;
+  }
+
+  .product-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 6.25rem;
+    gap: 48px;
+    isolation: isolate;
   }
 
   .partners-section {
@@ -247,12 +304,14 @@ const partners = [
   .partners-grid {
     width: 100%;
     max-width: 68.125rem;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 2rem 1rem;
   }
 
   .partner-card {
+    width: calc(50% - 0.5rem);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -303,8 +362,8 @@ const partners = [
       font-size: 3.625rem;
     }
 
-    .partners-grid {
-      grid-template-columns: repeat(5, minmax(0, 1fr));
+    .partner-card {
+      width: calc(20% - 0.8rem);
     }
   }
 
