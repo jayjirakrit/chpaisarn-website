@@ -1,7 +1,11 @@
 ---
 const optionsTitle: string = Astro.props.optionsTitle;
 const optionsDescription: string = Astro.props.optionsDescription;
-const protectionOptions: { label: string; title: string; features: string[] }[] = Astro.props.protectionOptions;
+const protectionOptions: {
+  label: string;
+  title: string;
+  features: string[];
+}[] = Astro.props.protectionOptions;
 ---
 
 <section class="options-section">
@@ -107,6 +111,10 @@ const protectionOptions: { label: string; title: string; features: string[] }[] 
 
   /* Tablet and above (min-width) */
   @media only screen and (min-width: 768px) {
+    .options-head {
+      text-align: left;
+      margin-bottom: 3rem;
+    }
     .options-section {
       padding: 5rem 6.25rem;
       min-height: auto;

@@ -6,29 +6,65 @@ import CustomizeBg02Img from "@/images/company/cust_bg_02.svg";
 import CustomizeBg03Img from "@/images/company/cust_bg_03.svg";
 import CustomizeBg04Img from "@/images/company/cust_bg_04.svg";
 import CustomizeBg05Img from "@/images/company/cust_bg_05.svg";
+import PlateIIIImg from "@/images/products/plate_III.svg";
+
 import ProductIntroSection from "@/components/ProductIntroSection.astro";
 import ProductOptionSection from "@/components/ProductOptionSection.astro";
 import ProductOptionNav from "@/components/ProductOptionNav.astro";
 import CustomStepsSection from "@/components/CustomStepsSection.astro";
 import ContactSection from "@/components/ContactSection.astro";
+import ProductOpItemsSection from "@/components/ProductOpItemsSection.astro";
 
 // Hero section data
 const pageTitle = "Body Armors";
 const pageDescription =
-  "Our Body Armors provide cutting-edge protection across three main categories, ensuring comprehensive safety for law enforcement, military, and security personnel. Whether you're facing bullets, knives, spikes, or a combination of both, we offer the flexibility to tailor your protection.";
+  "CHP® body armor is engineered to deliver certified ballistic and multi-threat protection for military, law enforcement, and security personnel designed, manufactured, and tested in-house to meet the demands of each specific mission and operation";
+
+// Your Options Item section data
+const optionsItemTitle = "Your Options";
+const optionsItemDescription =
+  "CHP® ballistic helmets are available across a range of proven military profiles each certified to NIJ and MIL-STD ballistic standards and configurable to your unit's specific operational requirements.";
 
 // Your Options section data
-const optionsTitle = "Your Options";
+const optionsTitle = "Protection Systems: Select Your Base";
 const optionsDescription =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
+  "Every operation carries a different threat profile. Our body armor range covers three primary protection systems each fully configurable to the specific requirements of your unit, environment, and mission. All three protection systems are fully configurable to your unit's specific requirements explore our customization options";
 
 // Options Navigation data
-const optionsNav = ["Your Options", "Customization"];
+const optionsNav = ["Protection Systems", "Built to your specification"];
+
+// Item options data
+const itemOptions = [
+  {
+    label: "Option 1",
+    title: "NIJ Level III",
+    img: PlateIIIImg,
+    imgDescription: "Ballistic Plate Level III",
+  },
+  {
+    label: "Option 2",
+    title: "NIJ Level III+",
+    img: PlateIIIImg,
+    imgDescription: "Ballistic Plate Level III+",
+  },
+  {
+    label: "Option 3",
+    title: "NIJ Level IV-",
+    img: PlateIIIImg,
+    imgDescription: "Ballistic Plate Level IV-",
+  },
+  {
+    label: "Option 4",
+    title: "NIJ Level IV",
+    img: PlateIIIImg,
+    imgDescription: "Ballistic Plate Level IV",
+  },
+];
 
 // Customization section data
-const customizeTitle = "We can customize for you";
+const customizeTitle = "Built to your specification";
 const customizeDescription =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
+  "Every unit has different requirements. We work directly with agencies and procurement teams to configure the right armor solution — from protection level and coverage area to sizing, color, and accessories. Our team manages the entire process in-house, from design through to final inspection.";
 
 // CTA section data
 const ctaTitle = "Get in Touch";
@@ -68,49 +104,84 @@ const protectionOptions = [
 const customizationSteps = [
   {
     step: "Step 1",
-    title: "Armor Design Options",
+    title: "Armor Configuration",
     image: CustomizeBg01Img.src,
     items: [
       {
         name: "Concealable Armor",
-        desc: "Lightweight and discreet, ideal for bulletproof protection and the option to add stab resistance for everyday, undercover, or low-profile operations.",
+        desc: "Lightweight and discreet — ideal for ballistic protection in undercover, low-profile, or everyday operational environments. Option to add stab resistance.",
       },
       {
         name: "Tactical Armor",
-        desc: "Designed for military and law enforcement, offering Level III or Level IV bulletproof protection with the option to integrate stab-resistant inserts for comprehensive defense.",
+        desc: "Designed for military and law enforcement offering Level III or Level IV ballistic protection with the option to integrate stab-resistant inserts for comprehensive multi-threat defense.",
       },
       {
         name: "Full Coverage Armor",
-        desc: "Provides complete torso protection (including neck, groin, and shoulders) for maximum defense against bullets,",
+        desc: "Provides complete torso protection including neck, groin, and shoulders for maximum defense against ballistic and fragmentation threats.",
       },
       {
         name: "Floatable Armor",
-        desc: "Perfect for water-based operations, this armor provides both bulletproof and/ or stab protection, ensuring safety in aquatic environments.",
+        desc: "Provides complete torso protection including neck, groin, and shoulders for maximum defense against ballistic and fragmentation threats.",
       },
     ],
   },
   {
     step: "Step 2",
-    title: "Sizing",
+    title: "Fit & Sizing System",
     image: CustomizeBg02Img.src,
-    content: "Choose from wide size range from XS to XXL, with custom sizing for a tailored fit.",
+    content:
+      "Choose from wide size range from XS to XXL, with custom sizing for a tailored fit.",
+    items: [
+      {
+        name: "Standardized Sizing",
+        desc: "Available in a full size range from XS to XXL for straightforward unit-wide procurement and inventory management.",
+      },
+      {
+        name: "Adaptive Fit System",
+        desc: "One-size configurations with integrated adjustment systems — straps, side panels, and retention mechanisms — allow a single vest to be fitted and secured to individual wearers across a range of body types..",
+      },
+      {
+        name: "Custom Sizing",
+        desc: "Fully custom sizing is available on request for specific unit requirements or non-standard fit specifications.",
+      },
+    ],
   },
   {
     step: "Step 3",
-    title: "Colors",
+    title: "Jacket's Colors &  Patterns",
     image: CustomizeBg03Img.src,
     items: [
-      { name: "Standard colors", desc: "Select from Black, Olive Green, Navy Blue" },
-      { name: "Custom Colors", desc: "Additional colors are available based on customer specifications for camouflage or unit identification." },
+      {
+        name: "Standardized Sizing",
+        desc: "Available in Black, Olive Green, and Navy Blue as standard colorways for military, law enforcement, and security applications.",
+      },
+      {
+        name: "Patterns",
+        desc: "Custom camouflage patterns and unit-specific fabric designs are available on request — including digital camouflage, woodland, and multi-terrain patterns for operational environment matching.",
+      },
     ],
   },
   {
     step: "Step 4",
-    title: "Protection Area",
+    title: "Special Treatments",
     image: CustomizeBg04Img.src,
     items: [
-      { name: "Specific Areas", desc: "Choose to focus protection on key areas like the neck, abdomen, groin, or shoulders" },
-      { name: "Full-body Armor", desc: "opt for full-body armor for ultimate defense." },
+      {
+        name: "Ripstop Weave",
+        desc: "Reinforced grid construction that prevents tears from spreading in jungle terrain and rough operational environments.",
+      },
+      {
+        name: "Water-Resistant Coating (DWR)",
+        desc: "Repels light rain and moisture without compromising breathability or fabric weight.",
+      },      
+      {
+        name: "Anti-Bacterial Treatment",
+        desc: "Inhibits bacterial growth during prolonged field deployment in hot and humid conditions.",
+      },
+      {
+        name: "Flame-Retardant Treatment",
+        desc: "Reduces ignition risk in high-threat or explosive environments.",
+      },
     ],
   },
   {
@@ -120,19 +191,15 @@ const customizationSteps = [
     items: [
       {
         name: "Hard Armor Plates",
-        desc: "For enhanced ballistic protection, add ceramic or polyethylene plates for Level III or IV protection against high-caliber rounds and armor-piercing projectiles, alongside fragmentation defense.",
-      },
-      {
-        name: "Removable Components",
-        desc: "Neck, shoulder, and groin protectors can be added or removed for customizable protection based on the situation.",
-      },
-      {
-        name: "Insertable Plates",
-        desc: "Add ceramic or polyethylene plates for Level III or IV protection, offering defense against high-caliber rounds and armor-piercing projectiles, as well as enhanced fragmentation defense.",
+        desc: "Add ceramic or polyethylene plates for Level III or Level IV protection against high-caliber rounds and armor-piercing projectiles, alongside enhanced fragmentation defense.",
       },
       {
         name: "Anti-Stab Inserts",
-        desc: "Customize armor with stab-resistant inserts to provide additional protection from blades, spikes, and other sharp objects in vulnerable areas.",
+        desc: "Customize with stab-resistant inserts to provide additional protection from bladed weapons, spikes, and other edged threats in vulnerable areas.",
+      },
+      {
+        name: "Removable Components",
+        desc: "Neck, shoulder, and groin protectors can be added or removed for configurable protection based on the operational requirement.",
       },
     ],
   },
@@ -140,32 +207,39 @@ const customizationSteps = [
 ---
 
 <!-- Hero Section -->
-<ProductIntroSection 
-  companyBgImg={CompanyBgImg} 
-  pageTitle={pageTitle} 
-  pageDescription={pageDescription} 
+<ProductIntroSection
+  companyBgImg={CompanyBgImg}
+  pageTitle={pageTitle}
+  pageDescription={pageDescription}
 />
 
 <!--Options Navigation -->
 <ProductOptionNav optionsNav={optionsNav} />
 
+<!-- Your Item Options Section -->
+<ProductOpItemsSection
+  optionsTitle={optionsItemTitle}
+  optionsDescription={optionsItemDescription}
+  itemOptions={itemOptions}
+/>
+
 <!-- Your Options Section -->
-<ProductOptionSection 
-  optionsTitle={optionsTitle} 
-  optionsDescription={optionsDescription} 
-  protectionOptions={protectionOptions} 
+<ProductOptionSection
+  optionsTitle={optionsTitle}
+  optionsDescription={optionsDescription}
+  protectionOptions={protectionOptions}
 />
 
 <!-- Customization Section -->
-<CustomStepsSection 
-  customizeTitle={customizeTitle} 
-  customizeDescription={customizeDescription} 
+<CustomStepsSection
+  customizeTitle={customizeTitle}
+  customizeDescription={customizeDescription}
   customizationSteps={customizationSteps}
 />
 
 <!-- Contact Section -->
-<ContactSection 
+<ContactSection
   bgImg={CompanyBg01Img}
-  contactTitle={ctaTitle} 
+  contactTitle={ctaTitle}
   contactDescription={ctaDescription}
 />
