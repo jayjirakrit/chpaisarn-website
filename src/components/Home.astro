@@ -9,14 +9,16 @@ import Collapse from "@/components/collapse/Collapse.tsx";
 import ContactSection from "@/components/ContactSection.astro";
 import ArmorImg from "@/images/products/body_armor_1.png";
 import CvcHelmetImg from "@/images/products/helmet/cvc_helmet.svg";
+import PlateIIIImg from "@/images/products/plate_III.svg";
 
 // Hero section data
-const heroTitle = '"Your Trusted Partner in Ballistic Protection"';
+const heroTitle1 = "Part of Every Mission.";
+const heroTitle2 = "Proud of Every Success.";
 
 // Products section data
 const productsTitle = "Our Products";
 const productsDescription =
-  "We offer a wide range of ballistic protection products designed to meet the demands of military, law enforcement, security, and civilian applications. Whether you're seeking personal protection or armored vehicle solutions, our products provide the ultimate defense against ballistic threats.";
+  "From personal protection to specialized security solutions, every CHP® product is designed, manufactured, and tested in-house purpose-built to meet the specific demands of military, law enforcement, and security operations.";
 const cards = [
   {
     label: "Body Armors",
@@ -43,7 +45,7 @@ const cards = [
     buttonText: "Explore Armor Plates",
     bgColor: "bg-[#90b9e7]",
     bgImage: CompanyBg03Img.src,
-    productImage: ArmorImg.src,
+    productImage: PlateIIIImg.src,
   },
 
   {
@@ -53,14 +55,16 @@ const cards = [
     buttonText: "Explore Other Solution",
     bgColor: "bg-[#194577]",
     bgImage: CompanyBgImg.src,
-    productImage: ArmorImg.src,
   },
 ];
 
 // Team section data
 const teamTitle = "Meet The Team";
-const teamDescription =
-  "As Thailand's largest manufacturer of ballistic protection equipment, we engineering high-performance gear built to withstand tropical environments and the toughest operational conditions in the field. Our absolute commitment to safety drives every design decision we make ensuring every piece of equipment delivers uncompromised reliability, durability, and protection when it matters most.";
+const teamDescription1 =
+  "Our absolute commitment to safety drives every design decision we make ensuring every piece of equipment delivers uncompromised reliability, durability, and protection when it matters most.";
+const teamDescription2 =
+  "As Thailand's largest manufacturer of ballistic protection equipment, we engineering high-performance gear built to withstand tropical environments and the toughest operational conditions in the field.";
+
 // Contact section data
 const contactTitle = "Get in Touch";
 const contactDescription =
@@ -108,12 +112,10 @@ const partners = [
 ---
 
 <!-- Hero Section -->
-<section
-  class="hero-section"
-  style={`background-image: url(${HeroBgImg.src}); background-color: var(--primary-900);`}
->
-  <div class="heading-h1 hero-content">
-    <h1 class="hero-title">{heroTitle}</h1>
+<section class="hero-section" style={`background-image: url(${HeroBgImg.src}); background-color: var(--primary-900);`}>
+  <div class="hero-content heading-h1">
+    <h1 class="hero-title">{heroTitle1}</h1>
+    <h1 class="hero-title">{heroTitle2}</h1>
     <div class="cta-group">
       <div class="btn-primary">Explore our products</div>
       <div class="btn-secondary">Learn more</div>
@@ -122,26 +124,21 @@ const partners = [
 </section>
 
 <!-- Our Products Section -->
-<section
-  class="product-section bg-gray-50"
-  style={`background-image: url(${ProductBgImg.src});`}
->
-  <div class="product-container mx-auto">
-    <div
-      class="mb-12 flex flex-col md:flex-row md:items-end md:justify-between"
-    >
+<section class="product-section bg-gray-50" style={`background-image: url(${ProductBgImg.src});`}>
+  <div class="product-container">
+    <div class="mb-12 flex flex-col md:flex-row md:items-end md:justify-between">
       <div>
         <h2 class="heading-h2 text-(--primary-900) mb-4">{productsTitle}</h2>
         <p class="body-text mb-4">{productsDescription}</p>
-        <div class="flex flex-col lg:flex-row gap-4 justify-end">
+        <div class="flex flex-col lg:flex-row gap-2 items-end">
           <button
-            class="bg-[#58bb90] text-white font-bold py-2 px-5 rounded-sm hover:opacity-90 transition-all"
+            class="bg-[#58bb90] text-white font-bold py-3 px-3 rounded-sm hover:opacity-90 transition-all"
             style="font-family: 'Space Grotesk'; font-size: 18px;"
           >
             View Products
           </button>
           <button
-            class="text-[#14375f] font-bold hover:text-[#2465ae] transition-colors flex gap-2 items-center"
+            class="text-[#14375f] font-bold hover:text-[#2465ae] transition-colors py-2 px-2 flex gap-2 items-center p-0"
             style="font-family: 'Space Grotesk'; font-size: 18px;"
           >
             Customize your product
@@ -157,21 +154,24 @@ const partners = [
 </section>
 
 <!-- Team Section -->
-<section class="team-section section-padding">
-  <div class="amx-auto">
+<section class="team-section">
+  <div class="team-container">
     <div class="grid md:grid-cols-2 gap-12 items-center">
       <div class="space-y-4">
-        <!-- <Image
-          src={CompanyBg03Img}
-          alt="Company Background"
-          class="team-image"
-        /> -->
+        <iframe
+          class="team-video"
+          src="https://www.youtube.com/embed/hOm-Hv6FT1I?si=fAvULb6s6OsnHqA2"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen></iframe>
       </div>
 
       <!-- Content -->
-      <div class="text-white">
+      <div class="team-content text-white">
         <h2 class="heading-h2 mb-6">{teamTitle}</h2>
-        <p class="body-text mb-8">{teamDescription}</p>
+        <p class="body-text-sm mb-4">{teamDescription1}</p>
+        <p class="body-text-sm mb-4 lg:mb-8">{teamDescription2}</p>
         <button
           class="bg-[#58bb90] text-white font-bold py-3 px-6 rounded-sm hover:opacity-90 transition-all"
           style="font-family: 'Space Grotesk'; font-size: 24px;"
@@ -197,7 +197,7 @@ const partners = [
           <div class="partner-logo">
             <img src={partner.img} alt={partner.name} />
           </div>
-          <span class="partner-name">{partner.name}</span>
+          <span class="partner-name body-text-sm">{partner.name}</span>
         </div>
       ))
     }
@@ -222,19 +222,19 @@ const partners = [
     align-items: center;
     justify-content: flex-start;
     position: relative;
-    padding: 6rem 4rem;
+    padding: 3rem 1.3125rem;
     min-height: 100vh;
   }
 
   .hero-content {
     position: relative;
     z-index: 10;
-    max-width: 900px;
+    max-width: 1000px;
   }
 
   .hero-title {
     color: white;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
   }
 
   .cta-group {
@@ -245,6 +245,14 @@ const partners = [
 
   .team-section {
     background-color: var(--primary-900);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem 1.25rem;
+  }
+
+  .team-container {
+    display: flex;
   }
 
   .team-image {
@@ -256,23 +264,29 @@ const partners = [
     flex-shrink: 0;
   }
 
+  .team-video {
+    height: 16.5rem;
+    width: 100%;
+    /* height: 20rem; */
+    /* border-radius: 1rem; */
+    overflow: hidden;
+  }
+
   .product-section {
     padding: 2rem;
+    padding: 4rem 1.25rem;
     isolation: isolate;
   }
 
   .product-container {
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0 2rem;
     gap: 48px;
     isolation: isolate;
   }
 
   .partners-section {
     background-color: var(--white);
-    padding: 3rem 2rem;
+    padding: 4rem 1.25rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -313,7 +327,7 @@ const partners = [
   }
 
   .partner-card {
-    width: calc(50% - 0.5rem);
+    width: calc((100% - 2rem) / 3);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -337,47 +351,58 @@ const partners = [
   .partner-name {
     font-family: var(--font-hanken);
     font-weight: 400;
-    font-size: 1rem;
     line-height: 1.4;
     color: var(--black);
     text-align: center;
   }
 
-  @media (max-width: 1024px) {
-    .hero-section {
-      padding: 4rem 2rem;
-    }
-
-    .cta-group {
-      flex-direction: column;
-    }
-  }
-
   /* Tablet and above (min-width) */
   @media only screen and (min-width: 768px) {
-    .product-section {
+    .team-section {
       padding: 6.25rem;
+      flex-direction: row;
     }
-
-    .product-container {
-      padding: 0 6.25rem;
-    }
-
     .partners-section {
       padding: 6.25rem;
       gap: 3rem;
     }
-
+    .product-section {
+      padding: 4.6875rem;
+    }
     .partners-title {
       font-size: 3.625rem;
-    }
-
-    .partner-card {
-      width: calc(20% - 0.8rem);
     }
   }
 
   /* Desktop and above */
   @media only screen and (min-width: 1024px) {
+    .hero-section {
+      padding: 6rem 4rem;
+    }
+    .product-section {
+      padding: 6.25rem;
+    }
+    .product-container {
+      padding: 0 6.25rem;
+    }
+    .team-section {
+      justify-content: center;
+    }
+    .team-video {
+      width: 28.125rem;
+      height: 21.25rem;
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+    .team-content {
+      width: 31.25rem;
+    }
+    .partners-section {
+      padding: 3rem 2rem;
+      gap: 3rem;
+    }
+    .partner-card {
+      width: calc(20% - 0.8rem);
+    }
   }
 </style>

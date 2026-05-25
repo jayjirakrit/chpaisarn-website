@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./Collapse.css";
 
-function useIsMobile(breakpoint = 768) {
+function useIsMobile(breakpoint = 1024) {
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -41,24 +41,22 @@ const Collapse: React.FC<CollapseProps> = ({ cards }) => {
           style={{ backgroundImage: isActive(index) && card.bgImage ? `url(${card.bgImage})` : "none" }}
           onClick={() => setVisible(index)}
         >
-          <div className={`heading-h3 product-label-vertical ${isActive(index) ? "hidden" : ""}`}>
-            {card.label}
-          </div>
+          <div className={`heading-h3 product-label-vertical ${isActive(index) ? "hidden" : ""}`}>{card.label}</div>
           <div className="product-content">
-            <div className={`heading-h3 product-label-vertical ${!isActive(index) ? "hidden" : ""}`}>
-              {card.label}
-            </div>
+            <div className={`heading-h3 product-label-vertical ${!isActive(index) ? "hidden" : ""}`}>{card.label}</div>
             <div className={`product-description ${!isActive(index) ? "hidden" : ""}`}>
-              <p className="text-white text-lg leading-relaxed mb-4">{card.description}</p>
+              <p className="text-white body-text mb-4">{card.description}</p>
               <button className="text-white font-bold flex gap-2 items-center hover:underline">
                 {card.buttonText}
                 <span>→</span>
               </button>
             </div>
           </div>
-          <div className={`w-full flex justify-end ${!isActive(index) ? "hidden" : ""}`}>
-            <img src={card.productImage} alt={card.label} className="w-1/2" />
-          </div>
+          {isActive(index) && card.productImage && (
+            <div className="product-img">
+              <img src={card.productImage} alt={card.label} />
+            </div>
+          )}
         </div>
       ))}
     </div>
