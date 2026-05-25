@@ -11,27 +11,31 @@ import ProductOpItemsSection from "@/components/ProductOpItemsSection.astro";
 import ProductOptionNav from "@/components/ProductOptionNav.astro";
 import CustomStepsSection from "@/components/CustomStepsSection.astro";
 import ContactSection from "@/components/ContactSection.astro";
-import CvcHelmentImg from "@/images/products/cvc_helmet.svg";
-import FastHelmet01Img from "@/images/products/fast_helmet_01.svg";
-import FastHelmet02Img from "@/images/products/fast_helmet_02.svg";
-import NijHelmetImg from "@/images/products/nij_helmet.svg";
+import CvcHelmentImg from "@/images/products/helmet/cvc_helmet.svg";
+import FastHelmet01Img from "@/images/products/helmet/fast_helmet_01.svg";
+import FastHelmet02Img from "@/images/products/helmet/fast_helmet_02.svg";
+import NijHelmetImg from "@/images/products/helmet/nij_helmet.svg";
+import Helmet05Img from "@/images/products/helmet/helmet_05.svg";
+import Helmet06Img from "@/images/products/helmet/helmet_06.svg";
+import Helmet07Img from "@/images/products/helmet/helmet_07.svg";
+import Helmet08Img from "@/images/products/helmet/helmet_08.svg";
 
 // Hero section data
 const pageTitle = "Ballistic Helmets";
 const pageDescription =
   "Engineered from advanced materials to provide high-impact defense against ballistic threats and blunt trauma without sacrificing mobility. These lightweight, durable helmets are fully customizable in shape and specification to meet unique operational or environmental demands.";
 
-  // Your Options section data
+// Your Options section data
 const optionsTitle = "Your Options";
 const optionsDescription = "";
-  // "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
 
 // Options Navigation data
 const optionsNav = ["Your Options", "Customization"];
 
 // Customization section data
 const customizeTitle = "Built to Your Specification";
-const customizeDescription = "Every unit has different requirements. We work directly with agencies and procurement teams to configure the right plate solution — from material grade and plate geometry to surface finish and identification markings. Our team manages the entire process in-house, from design through to final inspection. Please specify your requirements when submitting your procurement inquiry";
+const customizeDescription =
+  "Every unit has different requirements. We work directly with agencies and procurement teams to configure the right plate solution — from material grade and plate geometry to surface finish and identification markings. Our team manages the entire process in-house, from design through to final inspection. Please specify your requirements when submitting your procurement inquiry";
 
 // Item options data
 const itemOptions = [
@@ -59,6 +63,30 @@ const itemOptions = [
     img: NijHelmetImg,
     imgDescription: "NIJ Level IV- Helmet",
   },
+  {
+    label: "Option 5",
+    title: "PASGT Helmet",
+    img: Helmet05Img,
+    imgDescription: "PASGT Helmet",
+  },
+  {
+    label: "Option 6",
+    title: "Ballistic Helmet",
+    img: Helmet06Img,
+    imgDescription: "Ballistic Helmet",
+  },
+  {
+    label: "Option 7",
+    title: "Ballistic Helmet",
+    img: Helmet07Img,
+    imgDescription: "Ballistic Helmet",
+  },
+  {
+    label: "Option 8",
+    title: "Ballistic Helmet",
+    img: Helmet08Img,
+    imgDescription: "Ballistic Helmet",
+  },
 ];
 
 const customizationSteps = [
@@ -69,7 +97,7 @@ const customizationSteps = [
     items: [
       {
         name: "UHMWPE Core",
-        desc: "The foundation of every CHP® plate — providing high ballistic resistance and multi-hit capability at low weight. Sourced from certified global manufacturers including Dyneema®."
+        desc: "The foundation of every CHP® plate — providing high ballistic resistance and multi-hit capability at low weight. Sourced from certified global manufacturers including Dyneema®.",
       },
       {
         name: "Ceramic Composite",
@@ -77,7 +105,7 @@ const customizationSteps = [
       },
       {
         name: "Custom Material Sourcing",
-        desc: "For agencies with specific performance or operational requirements, our team works directly with procurement officers to source and configure the right material specification for your mission." 
+        desc: "For agencies with specific performance or operational requirements, our team works directly with procurement officers to source and configure the right material specification for your mission.",
       },
     ],
   },
@@ -86,10 +114,19 @@ const customizationSteps = [
     title: "Covering Materials",
     image: CustomizeBg02Img.src,
     content: "Choose from wide size range from XS to XXL, with custom sizing for a tailored fit.",
-        items: [
-      { name: "Concealable Armor", desc: "Fully customizable covering materials selected for durability, moisture resistance, and breathability to suit specific tactical environments or weight requirements." },
-      { name: "Environmental Resilience", desc: "Specialized options engineered to maintain structural integrity and performance in harsh climates and extreme operational conditions." },
-      { name: "Mission-Specific Aesthetics", desc: "Complete control over design, color, and camouflage patterns to ensure seamless integration with uniforms and team requirements." },
+    items: [
+      {
+        name: "Concealable Armor",
+        desc: "Fully customizable covering materials selected for durability, moisture resistance, and breathability to suit specific tactical environments or weight requirements.",
+      },
+      {
+        name: "Environmental Resilience",
+        desc: "Specialized options engineered to maintain structural integrity and performance in harsh climates and extreme operational conditions.",
+      },
+      {
+        name: "Mission-Specific Aesthetics",
+        desc: "Complete control over design, color, and camouflage patterns to ensure seamless integration with uniforms and team requirements.",
+      },
     ],
   },
   {
@@ -97,11 +134,26 @@ const customizationSteps = [
     title: "Colors",
     image: CustomizeBg03Img.src,
     items: [
-      { name: "Size", desc: "Fully customizable covering materials selected for durability, moisture resistance, and breathability to suit specific tactical environments or weight requirements." },
-      { name: "Curvature", desc: "Specialized options engineered to maintain structural integrity and performance in harsh climates and extreme operational conditions." },
-      { name: "Cut Shape", desc: "Complete control over design, color, and camouflage patterns to ensure seamless integration with uniforms and team requirements." },
-      { name: "Trauma Reduction", desc: "Complete control over design, color, and camouflage patterns to ensure seamless integration with uniforms and team requirements." },
-      { name: "Plate Marking & Identification", desc: "Complete control over design, color, and camouflage patterns to ensure seamless integration with uniforms and team requirements." },
+      {
+        name: "Size",
+        desc: "Fully customizable covering materials selected for durability, moisture resistance, and breathability to suit specific tactical environments or weight requirements.",
+      },
+      {
+        name: "Curvature",
+        desc: "Specialized options engineered to maintain structural integrity and performance in harsh climates and extreme operational conditions.",
+      },
+      {
+        name: "Cut Shape",
+        desc: "Complete control over design, color, and camouflage patterns to ensure seamless integration with uniforms and team requirements.",
+      },
+      {
+        name: "Trauma Reduction",
+        desc: "Complete control over design, color, and camouflage patterns to ensure seamless integration with uniforms and team requirements.",
+      },
+      {
+        name: "Plate Marking & Identification",
+        desc: "Complete control over design, color, and camouflage patterns to ensure seamless integration with uniforms and team requirements.",
+      },
     ],
   },
   {
@@ -161,6 +213,4 @@ const ctaDescription =
 <!-- Contact Section -->
 <ContactSection bgImg={CompanyBg01Img} contactTitle={ctaTitle} contactDescription={ctaDescription} />
 
-<style>
-  
-</style>
+<style></style>

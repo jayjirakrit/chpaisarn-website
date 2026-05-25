@@ -6,7 +6,15 @@ import CustomizeBg02Img from "@/images/company/cust_bg_02.svg";
 import CustomizeBg03Img from "@/images/company/cust_bg_03.svg";
 import CustomizeBg04Img from "@/images/company/cust_bg_04.svg";
 import CustomizeBg05Img from "@/images/company/cust_bg_05.svg";
-import PlateIIIImg from "@/images/products/plate_III.svg";
+import Armor01Img from "@/images/products/armor/armor_01.svg";
+import Armor02Img from "@/images/products/armor/armor_02.svg";
+import Armor03Img from "@/images/products/armor/armor_03.svg";
+import Armor04Img from "@/images/products/armor/armor_04.svg";
+import Armor05Img from "@/images/products/armor/armor_05.svg";
+import Armor06Img from "@/images/products/armor/armor_06.svg";
+import Armor07Img from "@/images/products/armor/armor_07.svg";
+import Armor08Img from "@/images/products/armor/armor_08.svg";
+import Armor09Img from "@/images/products/armor/armor_09.svg";
 
 import ProductIntroSection from "@/components/ProductIntroSection.astro";
 import ProductOptionSection from "@/components/ProductOptionSection.astro";
@@ -37,26 +45,56 @@ const optionsNav = ["Protection Systems", "Built to your specification"];
 const itemOptions = [
   {
     label: "Option 1",
-    title: "NIJ Level III",
-    img: PlateIIIImg,
+    // title: "NIJ Level III",
+    img: Armor01Img,
     imgDescription: "Ballistic Plate Level III",
   },
   {
     label: "Option 2",
-    title: "NIJ Level III+",
-    img: PlateIIIImg,
+    // title: "NIJ Level III+",
+    img: Armor02Img,
     imgDescription: "Ballistic Plate Level III+",
   },
   {
     label: "Option 3",
-    title: "NIJ Level IV-",
-    img: PlateIIIImg,
+    // title: "NIJ Level IV-",
+    img: Armor03Img,
     imgDescription: "Ballistic Plate Level IV-",
   },
   {
     label: "Option 4",
-    title: "NIJ Level IV",
-    img: PlateIIIImg,
+    // title: "NIJ Level IV",
+    img: Armor04Img,
+    imgDescription: "Ballistic Plate Level IV",
+  },
+  {
+    label: "Option 5",
+    // title: "NIJ Level III",
+    img: Armor05Img,
+    imgDescription: "Ballistic Plate Level III",
+  },
+  {
+    label: "Option 6",
+    // title: "NIJ Level III+",
+    img: Armor06Img,
+    imgDescription: "Ballistic Plate Level III+",
+  },
+  {
+    label: "Option 7",
+    // title: "NIJ Level IV-",
+    img: Armor07Img,
+    imgDescription: "Ballistic Plate Level IV-",
+  },
+  {
+    label: "Option 8",
+    // title: "NIJ Level IV",
+    img: Armor08Img,
+    imgDescription: "Ballistic Plate Level IV",
+  },
+  {
+    label: "Option 9",
+    // title: "NIJ Level IV",
+    img: Armor09Img,
     imgDescription: "Ballistic Plate Level IV",
   },
 ];
@@ -129,8 +167,7 @@ const customizationSteps = [
     step: "Step 2",
     title: "Fit & Sizing System",
     image: CustomizeBg02Img.src,
-    content:
-      "Choose from wide size range from XS to XXL, with custom sizing for a tailored fit.",
+    content: "Choose from wide size range from XS to XXL, with custom sizing for a tailored fit.",
     items: [
       {
         name: "Standardized Sizing",
@@ -173,7 +210,7 @@ const customizationSteps = [
       {
         name: "Water-Resistant Coating (DWR)",
         desc: "Repels light rain and moisture without compromising breathability or fabric weight.",
-      },      
+      },
       {
         name: "Anti-Bacterial Treatment",
         desc: "Inhibits bacterial growth during prolonged field deployment in hot and humid conditions.",
@@ -207,39 +244,19 @@ const customizationSteps = [
 ---
 
 <!-- Hero Section -->
-<ProductIntroSection
-  companyBgImg={CompanyBgImg}
-  pageTitle={pageTitle}
-  pageDescription={pageDescription}
-/>
+<ProductIntroSection companyBgImg={CompanyBgImg} pageTitle={pageTitle} pageDescription={pageDescription} />
 
 <!--Options Navigation -->
 <ProductOptionNav optionsNav={optionsNav} />
 
 <!-- Your Item Options Section -->
-<ProductOpItemsSection
-  optionsTitle={optionsItemTitle}
-  optionsDescription={optionsItemDescription}
-  itemOptions={itemOptions}
-/>
+<ProductOpItemsSection optionsTitle={optionsItemTitle} optionsDescription={optionsItemDescription} itemOptions={itemOptions} />
 
 <!-- Your Options Section -->
-<ProductOptionSection
-  optionsTitle={optionsTitle}
-  optionsDescription={optionsDescription}
-  protectionOptions={protectionOptions}
-/>
+<ProductOptionSection optionsTitle={optionsTitle} optionsDescription={optionsDescription} protectionOptions={protectionOptions} />
 
 <!-- Customization Section -->
-<CustomStepsSection
-  customizeTitle={customizeTitle}
-  customizeDescription={customizeDescription}
-  customizationSteps={customizationSteps}
-/>
+<CustomStepsSection customizeTitle={customizeTitle} customizeDescription={customizeDescription} customizationSteps={customizationSteps} />
 
 <!-- Contact Section -->
-<ContactSection
-  bgImg={CompanyBg01Img}
-  contactTitle={ctaTitle}
-  contactDescription={ctaDescription}
-/>
+<ContactSection bgImg={CompanyBg01Img} contactTitle={ctaTitle} contactDescription={ctaDescription} />
