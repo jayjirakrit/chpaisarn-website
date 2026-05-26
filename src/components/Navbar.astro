@@ -17,7 +17,7 @@ type MegaMenu = {
 const navItems = [
   { name: "Home", link: "/", key: "home" },
   { name: "Products", link: "/products", key: "products" },
-  { name: "About Us", link: "/company", key: "about" },
+  { name: "About Us", link: "/#about", key: "about" },
   { name: "Contact Us", link: "/contact", key: "contact" },
 ];
 
@@ -26,7 +26,11 @@ const languages = [
   { code: "th", name: "ไทย" },
 ];
 
-const PRODUCT_IMG = "/images/navbar/products-card.png";
+const ARMOR_IMG = "/images/navbar/nav_armor.png";
+const CUSTOMIZE_IMG = "/images/navbar/nav_customize.png";
+const HELMET_IMG = "/images/navbar/nav_helmet.png";
+const PLATE_IMG = "/images/navbar/nav_plate.png";
+const OTHER_IMG = "/images/navbar/nav_other.png";
 const currentPath = Astro.url.pathname;
 
 const megaMenus: Record<string, MegaMenu> = {
@@ -35,8 +39,9 @@ const megaMenus: Record<string, MegaMenu> = {
     cards: [
       {
         title: "Homepage",
-        description: "Leading the industry through innovative engineering and rigorous international standards. We specialize in custom-tailored ballistic solutions and individual equipment, ensuring uncompromising safety for those on the front lines.",
-        image: "/images/navbar/home-card-2d516d.png",
+        description:
+          "Leading the industry through innovative engineering and rigorous international standards. We specialize in custom-tailored ballistic solutions and individual equipment, ensuring uncompromising safety for those on the front lines.",
+        image: "/images/navbar/home-card.png",
         link: "/",
       },
     ],
@@ -44,18 +49,61 @@ const megaMenus: Record<string, MegaMenu> = {
   products: {
     layout: "products",
     cards: [
-      { title: "Body Armors", description: "Our Body Armors provide cutting-edge protection across three main categories, ensuring comprehensive safety for law enforcement, military, and security personnel. Whether you're facing bullets, knives, spikes, or a combination of both, we offer the flexibility to tailor your protection.", image: PRODUCT_IMG, link: "/products" },
-      { title: "Ballistic Helmets", description: "Engineered from advanced materials to provide high-impact defense against ballistic threats and blunt trauma without sacrificing mobility. These lightweight, durable helmets are fully customizable in shape and specification to meet unique operational or environmental demands.", image: PRODUCT_IMG, link: "/products/ballistic-helmets" },
-      { title: "Ballistic Plates", description: "Our ballistic plates provide customizable solutions for personal protection. With options ranging from Level III to Level IV, each plate is tested for performance and durability to protect against high-velocity rounds.", image: PRODUCT_IMG, link: "/products/ballistic-plates" },
-      { title: "Other Ballistic Solutions", description: "We offer a wide range of ballistic protection products beyond traditional body armor and armored vehicles. From custom-sized solutions to specialized coatings, we provide innovative protection for various needs.", image: PRODUCT_IMG, link: "/products/other-solutions" },
-      { title: "Customized Defense Solutions", description: "We offer a wide range of ballistic protection products designed to meet the demands of military, law enforcement, security, and civilian applications. Whether you're seeking personal protection or armored vehicle solutions, our products provide the ultimate defense against ballistic threats.", image: PRODUCT_IMG, link: "/products/customized-solutions" },
+      {
+        title: "Body Armors",
+        description:
+          "Our Body Armors provide cutting-edge protection across three main categories, ensuring comprehensive safety for law enforcement, military, and security personnel. Whether you're facing bullets, knives, spikes, or a combination of both, we offer the flexibility to tailor your protection.",
+        image: ARMOR_IMG,
+        link: "/products",
+      },
+      {
+        title: "Ballistic Helmets",
+        description:
+          "Engineered from advanced materials to provide high-impact defense against ballistic threats and blunt trauma without sacrificing mobility. These lightweight, durable helmets are fully customizable in shape and specification to meet unique operational or environmental demands.",
+        image: HELMET_IMG,
+        link: "/products/ballistic-helmets",
+      },
+      {
+        title: "Ballistic Plates",
+        description:
+          "Our ballistic plates provide customizable solutions for personal protection. With options ranging from Level III to Level IV, each plate is tested for performance and durability to protect against high-velocity rounds.",
+        image: PLATE_IMG,
+        link: "/products/ballistic-plates",
+      },
+      {
+        title: "Other Ballistic Solutions",
+        description:
+          "We offer a wide range of ballistic protection products beyond traditional body armor and armored vehicles. From custom-sized solutions to specialized coatings, we provide innovative protection for various needs.",
+        image: OTHER_IMG,
+        link: "/products/",
+      },
+      {
+        title: "Customized Defense Solutions",
+        description:
+          "We offer a wide range of ballistic protection products designed to meet the demands of military, law enforcement, security, and civilian applications. Whether you're seeking personal protection or armored vehicle solutions, our products provide the ultimate defense against ballistic threats.",
+        image: CUSTOMIZE_IMG,
+        link: "/products/",
+      },
     ],
   },
   about: {
     layout: "two",
     cards: [
-      { title: "Our Company", description: "50 years of experience. 100% in-house design, manufacturing, and testing. Thailand's largest ballistic protection manufacturer.", image: "/images/navbar/about-quality.png", link: "/company" },
-      { title: "Quality Standards", description: "At Ch. Paisarn, we combine rigorous international testing with advanced engineering to ensure every piece of equipment provides dependable protection. Explore our commitment to excellence through our certified processes and precision manufacturing.", image: "/images/navbar/about-quality.png", link: "/company#quality", accent: true },
+      {
+        title: "Our Company",
+        description:
+          "50 years of experience. 100% in-house design, manufacturing, and testing. Thailand's largest ballistic protection manufacturer.",
+        image: "/images/navbar/about-company.png",
+        link: "/",
+      },
+      {
+        title: "Quality Standards",
+        description:
+          "At Ch. Paisarn, we combine rigorous international testing with advanced engineering to ensure every piece of equipment provides dependable protection. Explore our commitment to excellence through our certified processes and precision manufacturing.",
+        image: "/images/navbar/about-quality.png",
+        link: "/",
+        accent: true,
+      },
     ],
   },
   contact: {
@@ -63,18 +111,19 @@ const megaMenus: Record<string, MegaMenu> = {
     cards: [
       {
         title: "Get In Touch",
-        description: "Our team is here to provide expert assistance. Whether you are looking to place a bulk order or seeking tailored guidance, we are committed to delivering the support you need. Contact us today to discuss your specific requirements.",
-        image: "/images/navbar/contact-card-7e346c.png",
+        description:
+          "Our team is here to provide expert assistance. Whether you are looking to place a bulk order or seeking tailored guidance, we are committed to delivering the support you need. Contact us today to discuss your specific requirements.",
+        image: "/images/navbar/contact-card.png",
         link: "/contact",
       },
     ],
   },
 };
 
-const isPathActive = (link: string) =>
-  currentPath === link || (link !== "/" && currentPath.startsWith(link));
+const isPathActive = (link: string) => currentPath === link || (link !== "/" && currentPath.startsWith(link));
 
-const GLOBE_PATH = "M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2zm9.542 8.667h-4.198c-.412-2.016-1.064-3.771-1.896-5.097a11.37 11.37 0 0 1 6.094 5.097zM16 4.04c1.147 1.19 2.084 3.157 2.631 5.627h-5.262C13.916 7.197 14.853 5.23 16 4.04zM4.318 18.667A11.618 11.618 0 0 1 4 16c0-.9.107-1.774.318-2.667h4.814A23.94 23.94 0 0 0 9 16c0 .9.053 1.787.132 2.667H4.318zm.14 2h4.198c.412 2.016 1.064 3.771 1.896 5.097a11.37 11.37 0 0 1-6.094-5.097zm4.198-10.667H4.458a11.37 11.37 0 0 1 6.094-5.097c-.832 1.326-1.484 3.081-1.896 5.097zM16 27.96c-1.147-1.19-2.084-3.157-2.631-5.627h5.262C18.084 24.803 17.147 26.77 16 27.96zm3.208-7.627h-6.416A21.764 21.764 0 0 1 12.667 16c0-.921.047-1.81.125-2.667h6.416c.078.857.125 1.746.125 2.667s-.047 1.81-.125 2.667h.001zm.24 7.764c.832-1.326 1.484-3.081 1.896-5.097h4.198a11.37 11.37 0 0 1-6.094 5.097zm2.42-7.097A25.894 25.894 0 0 0 22 16a25.894 25.894 0 0 0-.132-2.667h4.814C26.893 14.226 27 15.1 27 16s-.107 1.774-.318 2.667h-4.814z";
+const GLOBE_PATH =
+  "M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2zm9.542 8.667h-4.198c-.412-2.016-1.064-3.771-1.896-5.097a11.37 11.37 0 0 1 6.094 5.097zM16 4.04c1.147 1.19 2.084 3.157 2.631 5.627h-5.262C13.916 7.197 14.853 5.23 16 4.04zM4.318 18.667A11.618 11.618 0 0 1 4 16c0-.9.107-1.774.318-2.667h4.814A23.94 23.94 0 0 0 9 16c0 .9.053 1.787.132 2.667H4.318zm.14 2h4.198c.412 2.016 1.064 3.771 1.896 5.097a11.37 11.37 0 0 1-6.094-5.097zm4.198-10.667H4.458a11.37 11.37 0 0 1 6.094-5.097c-.832 1.326-1.484 3.081-1.896 5.097zM16 27.96c-1.147-1.19-2.084-3.157-2.631-5.627h5.262C18.084 24.803 17.147 26.77 16 27.96zm3.208-7.627h-6.416A21.764 21.764 0 0 1 12.667 16c0-.921.047-1.81.125-2.667h6.416c.078.857.125 1.746.125 2.667s-.047 1.81-.125 2.667h.001zm.24 7.764c.832-1.326 1.484-3.081 1.896-5.097h4.198a11.37 11.37 0 0 1-6.094 5.097zm2.42-7.097A25.894 25.894 0 0 0 22 16a25.894 25.894 0 0 0-.132-2.667h4.814C26.893 14.226 27 15.1 27 16s-.107 1.774-.318 2.667h-4.814z";
 ---
 
 <nav class="navbar">
@@ -87,21 +136,27 @@ const GLOBE_PATH = "M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.
 
         <div class="navbar-desktop">
           <div class="navbar-nav-items">
-            {navItems.map((item) => (
-              <div class="nav-item" data-menu={item.key}>
-                <a href={item.link} class:list={["nav-link", { "is-active": isPathActive(item.link) }]}>
-                  {item.name}
-                </a>
-              </div>
-            ))}
+            {
+              navItems.map((item) => (
+                <div class="nav-item" data-menu={item.key}>
+                  <a href={item.link} class:list={["nav-link", { "is-active": isPathActive(item.link) }]}>
+                    {item.name}
+                  </a>
+                </div>
+              ))
+            }
           </div>
 
           <div class="lang-group">
-            <svg class="lang-icon" width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><path d={GLOBE_PATH} /></svg>
+            <svg class="lang-icon" width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><path d={GLOBE_PATH}></path></svg>
             <div class="lang-list">
-              {languages.map((lang, i) => (
-                <a href="#" class:list={["lang-link", { "is-active": i === 0 }]}>{lang.name}</a>
-              ))}
+              {
+                languages.map((lang, i) => (
+                  <a href="#" class:list={["lang-link", { "is-active": i === 0 }]}>
+                    {lang.name}
+                  </a>
+                ))
+              }
             </div>
           </div>
         </div>
@@ -109,28 +164,15 @@ const GLOBE_PATH = "M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.
         <div class="navbar-mobile">
           <button id="mobile-menu-btn" class="mobile-icon-btn" aria-label="Open menu">
             <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
           </button>
-          <div class="mobile-nav-container">
-            <div class="mobile-nav-panel">
-              <button id="close-menu-btn" class="mobile-icon-btn mobile-close-btn" aria-label="Close menu">
-                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-              {navItems.map((item) => (
-                <a href={item.link} class:list={["mobile-nav-link", { "is-active": currentPath === item.link }]}>
-                  {item.name}
-                </a>
-              ))}
-              <div class="mobile-language">
-                {languages.map((lang, i) => (
-                  <a href="#" class:list={["mobile-lang-link", { "is-active": i === 0 }]}>{lang.name}</a>
-                ))}
-              </div>
-            </div>
-          </div>
+          <button id="close-menu-btn" class="mobile-icon-btn mobile-close-btn is-close" aria-label="Close menu">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+          <!-- mobile panel moved out of here -->
         </div>
       </div>
     </div>
@@ -138,43 +180,78 @@ const GLOBE_PATH = "M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.
 
   <div class="navbar-accent-bar"></div>
 
-  {Object.entries(megaMenus).map(([key, menu]) => (
-    <div id={`mega-menu-${key}`} class="mega-menu hidden">
-      <div class="mega-menu-container">
-        <div class="mega-menu-sidebar">
-          <div class="mega-nav-items">
-            {navItems.map((item) => (
-              <a href={item.link} class:list={["mega-nav-link", { "is-active": item.key === key }]}>
-                {item.name}
+  <!-- Mobile panel now in normal flow, directly after accent bar -->
+  <div class="mobile-nav-container">
+    <div class="mobile-nav-panel">
+      {
+        navItems.map((item) => (
+          <div class="mobile-nav-link" data-menu={item.key}>
+            <a href={item.link} class:list={["", { "is-active": currentPath === item.link }]}>
+              {item.name}
+            </a>
+            <button>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 6.71H8.09L4.79 10L6.21 11.42L11.91 5.71L6.21 0L4.79 1.42L8.09 4.71H0V6.71Z" fill="#14375F" />
+              </svg>
+            </button>
+          </div>
+        ))
+      }
+      <div class="mobile-language">
+        {
+          languages.map((lang, i) => (
+            <a href="#" class:list={["mobile-lang-link", { "is-active": i === 0 }]}>
+              {lang.name}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  {
+    Object.entries(megaMenus).map(([key, menu]) => (
+      <div id={`mega-menu-${key}`} class="mega-menu hidden">
+        <div class="mega-menu-container">
+          <div class="mega-menu-sidebar">
+            <div class="mega-nav-items">
+              {navItems.map((item) => (
+                <a href={item.link} class:list={["mega-nav-link", { "is-active": item.key === key }]}>
+                  {item.name}
+                </a>
+              ))}
+            </div>
+            <div class="lang-group mega-lang-group">
+              <svg class="lang-icon" width="32" height="32" viewBox="0 0 32 32" fill="currentColor">
+                <path d={GLOBE_PATH} />
+              </svg>
+              <div class="lang-list">
+                {languages.map((lang, i) => (
+                  <a href="#" class:list={["lang-link", { "is-active": i === 0 }]}>
+                    {lang.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div class={`mega-menu-content layout-${menu.layout}`}>
+            {menu.cards.map((card) => (
+              <a href={card.link} class="mega-card">
+                <div class="mega-card-image">
+                  <img src={card.image} alt={card.title} />
+                </div>
+                <div class="mega-card-text">
+                  <span class:list={["mega-card-title", { "is-accent": card.accent }]}>{card.title}</span>
+                  <span class="mega-card-description">{card.description}</span>
+                </div>
               </a>
             ))}
           </div>
-          <div class="lang-group mega-lang-group">
-            <svg class="lang-icon" width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><path d={GLOBE_PATH} /></svg>
-            <div class="lang-list">
-              {languages.map((lang, i) => (
-                <a href="#" class:list={["lang-link", { "is-active": i === 0 }]}>{lang.name}</a>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div class={`mega-menu-content layout-${menu.layout}`}>
-          {menu.cards.map((card) => (
-            <a href={card.link} class="mega-card">
-              <div class="mega-card-image">
-                <img src={card.image} alt={card.title} />
-              </div>
-              <div class="mega-card-text">
-                <span class:list={["mega-card-title", { "is-accent": card.accent }]}>{card.title}</span>
-                <span class="mega-card-description">{card.description}</span>
-              </div>
-            </a>
-          ))}
         </div>
       </div>
-    </div>
-  ))}
+    ))
+  }
 
   <style>
     .navbar {
@@ -286,37 +363,47 @@ const GLOBE_PATH = "M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.
       cursor: pointer;
     }
 
+    .mobile-icon-btn.is-close {
+      display: none;
+    }
+
     .mobile-close-btn {
       display: flex;
       justify-content: flex-end;
     }
 
+    /* In‑flow container – NO fixed positioning */
     .mobile-nav-container {
-      position: fixed;
-      top: 0;
-      right: 0;
-      z-index: 50;
       display: none;
+      position: relative;
+      width: 100%;
+      background-color: var(--white);
+      box-shadow: 0 0.625rem 0.9375rem -0.1875rem rgba(0, 0, 0, 0.1);
     }
 
     .mobile-nav-container.is-open {
-      display: flex;
+      display: block;
     }
 
     .mobile-nav-panel {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
-      padding: 1rem;
-      background-color: var(--white);
-      width: 66.667vw;
+      width: 100%;
       min-width: 12.5rem;
-      box-shadow: 0 0.625rem 0.9375rem -0.1875rem rgba(0, 0, 0, 0.1);
-      min-height: 100vh;
+      padding: 2rem 1.25rem;
     }
 
     .mobile-nav-link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       font-size: 1.3125rem;
+      padding: 0.75rem 0;
+      border-top: 1.5px solid var(--secondary-500);
+    }
+
+    .mobile-nav-link:first-child {
+      border-top: none;
     }
 
     .mobile-language {
@@ -390,17 +477,8 @@ const GLOBE_PATH = "M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.
       gap: 1.75rem;
     }
 
-    .mega-menu-content.layout-single {
-      grid-template-columns: minmax(0, 23.75rem);
-    }
-
     .mega-menu-content.layout-two {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      max-width: 38.75rem;
-    }
-
-    .mega-menu-content.layout-products {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
     .mega-card {
@@ -410,13 +488,6 @@ const GLOBE_PATH = "M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.
       border-radius: 0.625rem;
       overflow: hidden;
       text-decoration: none;
-    }
-
-    .mega-card-image {
-      width: 100%;
-      border-radius: 0.3125rem;
-      overflow: hidden;
-      height: 11.4375rem;
     }
 
     .layout-two .mega-card-image {
@@ -470,6 +541,45 @@ const GLOBE_PATH = "M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.
       overflow: visible;
     }
 
+    @media only screen and (min-width: 768px) {
+
+      .navbar-container {
+        padding: 1.25rem 4.6875rem;
+      }
+      
+      .navbar-desktop {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+      }
+
+      .navbar-mobile {
+        display: none;
+      }
+
+      /* Still hide the mobile container on desktop */
+      .mobile-nav-container {
+        display: none !important;
+      }
+
+      .mega-menu-container {
+        margin: 0 auto;
+        padding: 3.5rem 4.6875rem;
+        display: flex;
+        gap: 1.75rem;
+      }
+      .mega-menu-content.layout-products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .mega-card-image {
+        width: 100%;
+        border-radius: 0.3125rem;
+        overflow: hidden;
+        height: 16rem;
+      }
+    }
+
     @media only screen and (min-width: 1024px) {
       .navbar-container {
         padding: 0 6.25rem;
@@ -483,6 +593,27 @@ const GLOBE_PATH = "M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.
 
       .navbar-mobile {
         display: none;
+      }
+
+      /* Still hide the mobile container on desktop */
+      .mobile-nav-container {
+        display: none !important;
+      }
+
+      .mega-menu-container {
+        max-width: 94.5rem;
+        margin: 0 auto;
+        padding: 3.125rem 14rem;
+        display: flex;
+        gap: 1.75rem;
+      }
+
+      .mega-menu-content.layout-products {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .mega-card-image {
+        height: 14rem;
       }
     }
   </style>
@@ -506,7 +637,8 @@ const GLOBE_PATH = "M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.
     $(".nav-item[data-menu]").each(function () {
       const $menu = $(`#mega-menu-${$(this).data("menu")}`);
       if (!$menu.length) return;
-      $(this).add($menu)
+      $(this)
+        .add($menu)
         .on("mouseenter", () => show($menu))
         .on("mouseleave", () => hide($menu));
     });
@@ -517,7 +649,8 @@ const GLOBE_PATH = "M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.
       }
     });
 
+    // Toggle the in‑flow mobile container
     $("#mobile-menu-btn").on("click", () => $(".mobile-nav-container").toggleClass("is-open"));
-    $("#close-menu-btn").on("click", () => $(".mobile-nav-container").removeClass("is-open"));
+    $("#close-menu-btn").on("click", () => $(".mobile-nav-container").toggleClass("is-open"));
   </script>
 </nav>
