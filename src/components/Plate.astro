@@ -19,23 +19,22 @@ import { Image } from "astro:assets";
 import BoxIcon from "@/assets/checkbox_icon.svg";
 import SpecsSection from "@/components/SpecsSection.astro";
 
-// Hero section data
-const pageTitle = "Ballistic Plates";
+// Introduction section data
+const pageTitle = "Armor Plates";
 const pageDescription =
-  "Our ballistic plates provide customizable solutions for personal protection. With options ranging from Level III to Level IV, each plate is tested for performance and durability to protect against high-velocity rounds.";
+  "CHP® armor plates are engineered to deliver certified hard armor protection from Level III to Level IV — designed, manufactured, and tested in-house to stop the most demanding ballistic threats your operation may face.";
 
 // Your Options section data
 const optionsTitle = "Your Options";
-const optionsDescription = "";
-  // "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
+const optionsDescription =
+  "CHP® armor plates are certified in compliance with NIJ 0101.06, NIJ 0101.07, and Thai Ministry of Defense ballistic standards — engineered to deliver reliable protection across a range of high-velocity and armor-piercing threats.";
 
 // Options Navigation data
-const optionsNav = ["Your Options", "Regulations", "Customization"];
+const optionsNav = ["Your Options", "Standards & Compliance", "Built to your specification"];
 
 // Customization section data
-const customizeTitle = "We can customize for you";
-const customizeDescription =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
+const customizeTitle = "Built to Your Specification";
+const customizeDescription = "Every unit has different requirements. We work directly with agencies and procurement teams to configure the right plate solution — from material grade and plate geometry to surface finish and identification markings. Our team manages the entire process in-house, from design through to final inspection. Please specify your requirements when submitting your procurement inquiry";
 
 // Item options data
 const itemOptions = [
@@ -178,8 +177,6 @@ const ctaDescription =
 <!-- Your Item Options Section -->
 <ProductOpItemsSection optionsTitle={optionsTitle} optionsDescription={optionsDescription} itemOptions={itemOptions} />
 
-<div class="overlay-section h-32"></div>
-
 <!-- Regulation Section -->
 <section class="reg-section">
   <div class="reg-header">
@@ -219,9 +216,6 @@ const ctaDescription =
   bgImg={CompanyBg01Img}
   contactTitle={ctaTitle}
   contactDescription={ctaDescription}
-  bgColor="primary-50"
-  titleColor="primary-700"
-  desColor="black"
 />
 
 <style>
