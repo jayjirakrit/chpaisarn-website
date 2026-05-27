@@ -20,7 +20,7 @@ const protectionOptions: {
         <div class="option-card">
           <div class="option-card-header">
             <span class="option-card-label">{option.label}</span>
-            <h3 class="option-card-title">{option.title}</h3>
+            <h4 class="option-card-title heading-h4">{option.title}</h4>
           </div>
           <ul class="option-card-features">
             {option.features.map((feature) => (
@@ -42,7 +42,6 @@ const protectionOptions: {
   }
 
   .options-head {
-    text-align: center;
     margin-bottom: 3rem;
   }
 
@@ -86,14 +85,12 @@ const protectionOptions: {
     font-weight: 700;
     font-size: 12px;
     color: white;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.75rem;
     border-bottom: 3px solid #9af9cf;
   }
 
   .option-card-title {
-    font-family: "Hanken Grotesk", sans-serif;
-    font-weight: 700;
-    font-size: 28px;
     color: white;
   }
 
@@ -139,10 +136,6 @@ const protectionOptions: {
     }
 
     .option-card-title {
-      font-family: "Hanken Grotesk", sans-serif;
-      font-weight: 700;
-      font-size: 28px;
-      color: white;
     }
 
     .option-card-features {

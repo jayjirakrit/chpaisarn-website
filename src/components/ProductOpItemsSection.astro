@@ -6,10 +6,10 @@ const optionsDescription: string = Astro.props.optionsDescription;
 const itemOptions: { label: string; title: string; img: any; imgDescription: string }[] = Astro.props.itemOptions;
 ---
 
-<section class="options-section">
-  <div class="options-head">
-    <h2 class="options-title heading-h2">{optionsTitle}</h2>
-    <p class="options-description body-text">{optionsDescription}</p>
+<section class="option-section">
+  <div class="option-head">
+    <h2 class="option-title heading-h2">{optionsTitle}</h2>
+    <p class="option-description body-text">{optionsDescription}</p>
   </div>
 
   <div class="option-items-content">
@@ -18,7 +18,7 @@ const itemOptions: { label: string; title: string; img: any; imgDescription: str
         <div class="option-items-card">
           <div class="option-items-card-header">
             <span class="option-items-card-label">{item.label}</span>
-            <h3 class="option-items-card-title">{item.title}</h3>
+            <h5 class="option-items-card-title heading-h5">{item.title}</h5>
           </div>
           <div class="option-items-card-features">
             <Image src={item.img} alt={item.imgDescription} />
@@ -29,31 +29,31 @@ const itemOptions: { label: string; title: string; img: any; imgDescription: str
   </div>
 
   <style>
-    .options-section {
+    .option-section {
       background-color: white;
       background-size: cover;
       background-position: center;
-      padding: 3rem 2rem;
+      padding: 3.5rem 1.25rem;
     }
 
-    .options-head {
-      text-align: center;
+    .option-head {
+      /* text-align: center; */
       margin-bottom: 3rem;
     }
 
-    .options-title {
+    .option-title {
       color: var(--primary-900);
       margin-bottom: 1.5rem;
     }
 
-    .options-description {
+    .option-description {
       margin-bottom: 1rem;
     }
 
     .option-items-content {
       display: grid;
-      grid-template-columns: 1fr; /* 1 column on mobile */
-      gap: 2rem;
+      grid-template-columns: repeat(2, 1fr); /* ← 2 columns on mobile */
+      gap: 1rem;
     }
 
     .option-items-card {
@@ -85,7 +85,6 @@ const itemOptions: { label: string; title: string; img: any; imgDescription: str
     .option-items-card-title {
       font-family: "Hanken Grotesk", sans-serif;
       font-weight: 700;
-      font-size: 1.75rem;
       color: black;
     }
 
@@ -104,18 +103,18 @@ const itemOptions: { label: string; title: string; img: any; imgDescription: str
 
     /* Tablet and above (min-width) */
     @media only screen and (min-width: 768px) {
-      .options-section {
-        padding: 5rem 6.25rem;
+      .option-section {
+        padding: 4.5rem;
         min-height: auto;
       }
 
-      .options-head {
+      .option-head {
         text-align: start;
       }
 
       .option-items-content {
         grid-template-columns: repeat(3, 1fr); /* exactly 3 equal columns */
-        gap: 4rem;
+        gap: 3rem;
       }
 
       .option-items-card {
@@ -131,9 +130,9 @@ const itemOptions: { label: string; title: string; img: any; imgDescription: str
         font-size: 1rem;
       }
 
-      .option-items-card-title {
+      /* .option-items-card-title {
         font-size: 2rem;
-      }
+      } */
 
       .option-items-card-features {
         list-style-type: disc;
@@ -149,6 +148,10 @@ const itemOptions: { label: string; title: string; img: any; imgDescription: str
 
     /* Desktop and above */
     @media only screen and (min-width: 1024px) {
+      .option-section {
+        padding: 5rem 6.25rem;
+        min-height: auto;
+      }
     }
   </style>
 </section>

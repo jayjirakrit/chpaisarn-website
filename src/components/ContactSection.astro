@@ -1,7 +1,7 @@
 ---
 const {
   bgImg = { src: "" },
-  contactTitle = "Contact Us",
+  contactTitle = "Discover  Ch.Paisarn",
   contactDescription = "Get in touch with us",
   bgColor = "primary-900",
   titleColor = "white",
@@ -14,7 +14,7 @@ const {
     <h2 class="cta-title" style={`color: var(--${titleColor});`}>
       {contactTitle}
     </h2>
-    <p class="cta-description" style={`color: var(--${desColor});`}>
+    <p class="cta-description body-text-sm" style={`color: var(--${desColor});`}>
       {contactDescription}
     </p>
     <button class="cta-button">
@@ -28,7 +28,7 @@ const {
     background-size: cover;
     background-position: center;
     position: relative;
-    padding: 3rem 4rem;
+    padding: 3.125rem 1.25rem;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -37,7 +37,7 @@ const {
   .cta-box {
     background-color: var(--primary-900);
     border-radius: 5px;
-    padding: 2.25rem;
+    padding: 1.25rem;
     max-width: 446px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     position: relative;
@@ -53,8 +53,6 @@ const {
   }
 
   .cta-description {
-    font-family: "Gotham", sans-serif;
-    font-size: 0.75rem;
     color: white;
     line-height: 1.4;
     margin-bottom: 2rem;
@@ -65,7 +63,6 @@ const {
     border: none;
     border-radius: 5px;
     padding: 0.75rem 1.5rem;
-    width: 100%;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
@@ -86,12 +83,16 @@ const {
     .cta-section {
       padding: 6.25rem 9.375rem;
     }
+
+    .cta-box {
+      padding: 2.25rem;
+    }
+    
     .cta-title {
       font-size: 2.75rem;
     }
 
     .cta-description {
-      font-size: 1rem;
     }
 
     .cta-button-text {

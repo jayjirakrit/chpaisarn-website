@@ -45,12 +45,11 @@ const customizationSteps: any[] = Astro.props.customizationSteps;
 <style>
   .customize-section {
     background-color: var(--primary-900);
-    padding: 3rem 4rem;
+    padding: 3.75rem 1.25rem;
   }
 
   .customize-header {
-    margin-bottom: 4rem;
-    text-align: center;
+    margin-bottom: 3rem;
   }
 
   .customize-title {
@@ -66,7 +65,8 @@ const customizationSteps: any[] = Astro.props.customizationSteps;
   .customize-container {
     display: flex;
     flex-direction: column;
-    gap: 3.5rem;
+    /* gap: 3.5rem; */
+    gap: 2.25rem;
   }
   .customize-cta {
     display: flex;
@@ -105,10 +105,6 @@ const customizationSteps: any[] = Astro.props.customizationSteps;
   .step-header {
     display: flex;
     flex-direction: column;
-    border-right: 4px solid #9af9cf;
-    padding-right: 1.5rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
     gap: 0.75rem;
   }
 
@@ -158,6 +154,11 @@ const customizationSteps: any[] = Astro.props.customizationSteps;
 
     .customize-header {
       text-align: left;
+      margin-bottom: 4rem;
+    }
+
+    .customize-container {
+      gap: 3.5rem;
     }
 
     .customize-step {
@@ -176,6 +177,10 @@ const customizationSteps: any[] = Astro.props.customizationSteps;
     }
     .step-header {
       flex: 1;
+      padding-right: 1.5rem;
+      border-right: 4px solid #9af9cf;
+      /* margin-bottom: 1.5rem; */
+      /* padding-bottom: 1rem; */
     }
 
     .step-content {
