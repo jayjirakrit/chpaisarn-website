@@ -1,23 +1,24 @@
 ---
-import CompanyBgImg from "@/images/company/company_02_bg.svg";
-import CompanyBg01Img from "@/images/company/factory_01_bg.svg";
-import CustomizeBg01Img from "@/images/company/cust_bg_01.svg";
-import CustomizeBg02Img from "@/images/company/cust_bg_02.svg";
-import CustomizeBg03Img from "@/images/company/cust_bg_03.svg";
-import CustomizeBg04Img from "@/images/company/cust_bg_04.svg";
-import CustomizeBg05Img from "@/images/company/cust_bg_05.svg";
+import CompanyBgImg from "@/assets/company/company_02_bg.svg";
+import CompanyBg01Img from "@/assets/company/factory_01_bg.svg";
+import CustomizeBg01Img from "@/assets/spec_06.png";
+import CustomizeBg02Img from "@/assets/spec_07.png";
+import CustomizeBg03Img from "@/assets/spec_02.png";
+import CustomizeBg04Img from "@/assets/spec_08.png";
 import ProductIntroSection from "@/components/ProductIntroSection.astro";
 import ProductOpItemsSection from "@/components/ProductOpItemsSection.astro";
 import ProductOptionNav from "@/components/ProductOptionNav.astro";
 import CustomStepsSection from "@/components/CustomStepsSection.astro";
 import ContactSection from "@/components/ContactSection.astro";
-import PlateIIIImg from "@/images/products/plate_III.svg";
-import PlateIIIPlusImg from "@/images/products/plate_III+.svg";
-import PlateIVImg from "@/images/products/plate_IV.svg";
-import PlateIVMinusImg from "@/images/products/plate_IV-.svg";
+import PlateIIIImg from "@/assets/products/plate/plate_III.png";
+import PlateIIIPlusImg from "@/assets/products/plate/plate_III+.png";
+import PlateIVImg from "@/assets/products/plate/plate_IV.png";
+import PlateIVMinusImg from "@/assets/products/plate/plate_IV-.png";
 import { Image } from "astro:assets";
 import BoxIcon from "@/assets/checkbox_icon.svg";
 import SpecsSection from "@/components/SpecsSection.astro";
+
+import optionBg from "@/assets/company/option_bg.png";
 
 // Introduction section data
 const pageTitle = "Armor Plates";
@@ -34,7 +35,8 @@ const optionsNav = ["Your Options", "Standards & Compliance", "Built to your spe
 
 // Customization section data
 const customizeTitle = "Built to Your Specification";
-const customizeDescription = "Every unit has different requirements. We work directly with agencies and procurement teams to configure the right plate solution — from material grade and plate geometry to surface finish and identification markings. Our team manages the entire process in-house, from design through to final inspection. Please specify your requirements when submitting your procurement inquiry";
+const customizeDescription =
+  "Every unit has different requirements. We work directly with agencies and procurement teams to configure the right plate solution — from material grade and plate geometry to surface finish and identification markings. Our team manages the entire process in-house, from design through to final inspection. Please specify your requirements when submitting your procurement inquiry";
 
 // Item options data
 const itemOptions = [
@@ -137,29 +139,6 @@ const customizationSteps = [
       { name: "Full-body Armor", desc: "opt for full-body armor for ultimate defense." },
     ],
   },
-  {
-    step: "Step 5",
-    title: "Additional Accessories and Upgrades",
-    image: CustomizeBg05Img.src,
-    items: [
-      {
-        name: "Hard Armor Plates",
-        desc: "For enhanced ballistic protection, add ceramic or polyethylene plates for Level III or IV protection against high-caliber rounds and armor-piercing projectiles, alongside fragmentation defense.",
-      },
-      {
-        name: "Removable Components",
-        desc: "Neck, shoulder, and groin protectors can be added or removed for customizable protection based on the situation.",
-      },
-      {
-        name: "Insertable Plates",
-        desc: "Add ceramic or polyethylene plates for Level III or IV protection, offering defense against high-caliber rounds and armor-piercing projectiles, as well as enhanced fragmentation defense.",
-      },
-      {
-        name: "Anti-Stab Inserts",
-        desc: "Customize armor with stab-resistant inserts to provide additional protection from blades, spikes, and other sharp objects in vulnerable areas.",
-      },
-    ],
-  },
 ];
 
 // Contact section data
@@ -178,7 +157,7 @@ const ctaDescription =
 <ProductOpItemsSection optionsTitle={optionsTitle} optionsDescription={optionsDescription} itemOptions={itemOptions} />
 
 <!-- Regulation Section -->
-<section class="reg-section">
+<section class="reg-section" style={`background-image: url(${optionBg.src})`}>
   <div class="reg-header">
     <div class="reg-title-wrap body-text">
       <h6 class="reg-title">The Regulation</h6>
@@ -212,11 +191,7 @@ const ctaDescription =
 <SpecsSection />
 
 <!-- Contact Section -->
-<ContactSection
-  bgImg={CompanyBg01Img}
-  contactTitle={ctaTitle}
-  contactDescription={ctaDescription}
-/>
+<ContactSection bgImg={CompanyBg01Img} contactTitle={ctaTitle} contactDescription={ctaDescription} />
 
 <style>
   /* Regulation Section */

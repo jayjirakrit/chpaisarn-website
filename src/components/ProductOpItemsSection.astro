@@ -6,7 +6,7 @@ const optionsDescription: string = Astro.props.optionsDescription;
 const itemOptions: { label: string; title: string; img: any; imgDescription: string }[] = Astro.props.itemOptions;
 ---
 
-<section class="option-section">
+<section class="option-items-section">
   <div class="option-head">
     <h2 class="option-title heading-h2">{optionsTitle}</h2>
     <p class="option-description body-text">{optionsDescription}</p>
@@ -29,7 +29,7 @@ const itemOptions: { label: string; title: string; img: any; imgDescription: str
   </div>
 
   <style>
-    .option-section {
+    .option-items-section {
       background-color: white;
       background-size: cover;
       background-position: center;
@@ -103,7 +103,7 @@ const itemOptions: { label: string; title: string; img: any; imgDescription: str
 
     /* Tablet and above (min-width) */
     @media only screen and (min-width: 768px) {
-      .option-section {
+      .option-items-section {
         padding: 4.5rem;
         min-height: auto;
       }
@@ -118,21 +118,13 @@ const itemOptions: { label: string; title: string; img: any; imgDescription: str
       }
 
       .option-items-card {
-        padding: 2rem;
+        padding: 1.875rem;
       }
 
       .option-items-card-header {
         align-items: flex-start;
         flex-direction: row;
       }
-
-      .option-items-card-label {
-        font-size: 1rem;
-      }
-
-      /* .option-items-card-title {
-        font-size: 2rem;
-      } */
 
       .option-items-card-features {
         list-style-type: disc;
@@ -148,9 +140,13 @@ const itemOptions: { label: string; title: string; img: any; imgDescription: str
 
     /* Desktop and above */
     @media only screen and (min-width: 1024px) {
-      .option-section {
-        padding: 5rem 6.25rem;
+      .option-items-section {
+        padding: 5rem 12.5rem;
         min-height: auto;
+      }
+
+      .option-items-content {
+        padding: 0rem 3.75rem;
       }
     }
   </style>

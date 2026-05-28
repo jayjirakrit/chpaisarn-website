@@ -1,4 +1,6 @@
 ---
+import optionBg from "@/assets/company/option_bg.png";
+
 const optionsTitle: string = Astro.props.optionsTitle;
 const optionsDescription: string = Astro.props.optionsDescription;
 const protectionOptions: {
@@ -8,7 +10,7 @@ const protectionOptions: {
 }[] = Astro.props.protectionOptions;
 ---
 
-<section class="options-section">
+<section class="options-section" style={`background-image: url(${optionBg.src})`}>
   <div class="options-head">
     <h2 class="options-title heading-h2">{optionsTitle}</h2>
     <p class="options-description body-text">{optionsDescription}</p>
