@@ -45,7 +45,7 @@ const Collapse: React.FC<CollapseProps> = ({ cards }) => {
           <div className="product-content">
             <div className={`heading-h3 product-label-vertical ${!isActive(index) ? "hidden" : ""}`}>{card.label}</div>
             <div className={`product-description ${!isActive(index) ? "hidden" : ""}`}>
-              <p className="text-white body-text mb-4">{card.description}</p>
+              <p className="text-white body-text mb-4" dangerouslySetInnerHTML={{ __html: card.description }} />
               <button className="text-white font-bold flex gap-2 items-center hover:underline">
                 {card.buttonText}
                 <span>→</span>

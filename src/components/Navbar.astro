@@ -70,20 +70,6 @@ const megaMenus: Record<string, MegaMenu> = {
         image: PLATE_IMG,
         link: "/products/ballistic-plates",
       },
-      {
-        title: "Other Ballistic Solutions",
-        description:
-          "We offer a wide range of ballistic protection products beyond traditional body armor and armored vehicles. From custom-sized solutions to specialized coatings, we provide innovative protection for various needs.",
-        image: OTHER_IMG,
-        link: "/products/",
-      },
-      {
-        title: "Customized Defense Solutions",
-        description:
-          "We offer a wide range of ballistic protection products designed to meet the demands of military, law enforcement, security, and civilian applications. Whether you're seeking personal protection or armored vehicle solutions, our products provide the ultimate defense against ballistic threats.",
-        image: CUSTOMIZE_IMG,
-        link: "/products/",
-      },
     ],
   },
   about: {
@@ -184,16 +170,29 @@ const GLOBE_PATH =
   <div class="mobile-nav-container">
     <div class="mobile-nav-panel">
       {
-        navItems.map((item) => (
+        navItems.map((item, index) => (
           <div class="mobile-nav-link" data-menu={item.key}>
-            <a href={item.link} class:list={["", { "is-active": currentPath === item.link }]}>
-              {item.name}
-            </a>
-            <button>
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 6.71H8.09L4.79 10L6.21 11.42L11.91 5.71L6.21 0L4.79 1.42L8.09 4.71H0V6.71Z" fill="#14375F" />
-              </svg>
-            </button>
+            <div class="mobile-nav-link-parent">
+              <a href={item.link} class:list={["font-bold", { "is-active": currentPath === item.link }]}>
+                {item.name}
+              </a>
+              <button type="button">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 6.71H8.09L4.79 10L6.21 11.42L11.91 5.71L6.21 0L4.79 1.42L8.09 4.71H0V6.71Z" fill="#14375F" />
+                </svg>
+              </button>
+            </div>
+
+            <div id={`mobile-nav-link-child-${index}`} class="mobile-nav-link-child hidden">
+              {megaMenus[item.key as keyof typeof megaMenus]?.cards.map((card) => (
+                <a href={card.link} class="mega-card mb-2.5">
+                  <div class="flex flex-col gap-2">
+                    <h6 class="heading-h6 font-bold">{card.title}</h6>
+                    <p class="body-text text-black">{card.description}</p>
+                  </div>
+                </a>
+              ))}
+            </div>
           </div>
         ))
       }
@@ -234,12 +233,11 @@ const GLOBE_PATH =
               </div>
             </div>
           </div>
-
           <div class={`mega-menu-content layout-${menu.layout}`}>
             {menu.cards.map((card) => (
               <a href={card.link} class="mega-card">
                 <div class="mega-card-image">
-                  <img src={card.image} alt={card.title} />
+                  <img src={card.image} alt={card.title} width="245" height="183" />
                 </div>
                 <div class="mega-card-text">
                   <span class:list={["mega-card-title", { "is-accent": card.accent }]}>{card.title}</span>
@@ -317,8 +315,7 @@ const GLOBE_PATH =
 
     .nav-link:hover,
     .lang-link:hover,
-    .mega-nav-link:hover,
-    .mobile-nav-link:hover {
+    .mega-nav-link:hover {
       color: var(--primary-500);
     }
 
@@ -372,10 +369,11 @@ const GLOBE_PATH =
       justify-content: flex-end;
     }
 
-    /* In‑flow container – NO fixed positioning */
     .mobile-nav-container {
       display: none;
-      position: relative;
+      position: sticky;
+      top: 0;
+      z-index: 49; /* below navbar-main (z‑50) but above page content */
       width: 100%;
       background-color: var(--white);
       box-shadow: 0 0.625rem 0.9375rem -0.1875rem rgba(0, 0, 0, 0.1);
@@ -395,11 +393,28 @@ const GLOBE_PATH =
 
     .mobile-nav-link {
       display: flex;
+      flex-direction: column;
+      border-top: 1.5px solid var(--secondary-500);
+    }
+
+    .mobile-nav-link-parent {
+      display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 1.3125rem;
       padding: 0.75rem 0;
-      border-top: 1.5px solid var(--secondary-500);
+    }
+
+    .mobile-nav-link-child .mega-card p {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: normal; /* ← override inherited nowrap */
+      word-break: break-word;
+      line-height: 1.4;
+      max-height: calc(1.4em * 3);
     }
 
     .mobile-nav-link:first-child {
@@ -502,6 +517,7 @@ const GLOBE_PATH =
       width: 100%;
       height: 100%;
       object-fit: cover;
+      aspect-ratio: 245 / 183;
       transition: transform 0.3s;
     }
 
@@ -542,11 +558,10 @@ const GLOBE_PATH =
     }
 
     @media only screen and (min-width: 768px) {
-
       .navbar-container {
         padding: 1.25rem 4.6875rem;
       }
-      
+
       .navbar-desktop {
         display: flex;
         align-items: center;
@@ -613,7 +628,7 @@ const GLOBE_PATH =
       }
 
       .mega-card-image {
-        height: 14rem;
+        /* height: 14rem; */
       }
     }
   </style>
@@ -652,5 +667,27 @@ const GLOBE_PATH =
     // Toggle the in‑flow mobile container
     $("#mobile-menu-btn").on("click", () => $(".mobile-nav-container").toggleClass("is-open"));
     $("#close-menu-btn").on("click", () => $(".mobile-nav-container").toggleClass("is-open"));
+
+    // --- Mobile accordion for sub-menus ---
+    $(".mobile-nav-link-parent button").on("click", function (e) {
+      e.preventDefault();
+      const $btn = $(this);
+      const $parent = $btn.closest(".mobile-nav-link");
+      const $child = $parent.find(".mobile-nav-link-child");
+      const isActive = $btn.hasClass("active");
+
+      // Close all other open children
+      $(".mobile-nav-link-child").not($child).addClass("hidden");
+      $(".mobile-nav-link-parent button").not($btn).removeClass("active");
+
+      // Toggle current child and button state
+      if (isActive) {
+        $btn.removeClass("active");
+        $child.addClass("hidden");
+      } else {
+        $btn.addClass("active");
+        $child.removeClass("hidden");
+      }
+    });
   </script>
 </nav>

@@ -31,7 +31,7 @@ const optionsDescription =
   "CHP® armor plates are certified in compliance with NIJ 0101.06, NIJ 0101.07, and Thai Ministry of Defense ballistic standards — engineered to deliver reliable protection across a range of high-velocity and armor-piercing threats.";
 
 // Options Navigation data
-const optionsNav = ["Your Options", "Standards & Compliance", "Built to your specification"];
+const optionsNav = ["Your Options", "Compliance", "Built to your specification"];
 
 // Customization section data
 const customizeTitle = "Built to Your Specification";
@@ -66,6 +66,9 @@ const itemOptions = [
   },
 ];
 
+const regTitle = "Standards & Compliance";
+const regDescription =
+  "Every CHP® armor plate is manufactured and tested in-house to meet the requirements of international and Thai national ballistic protection standards.";
 const regItems = [
   {
     title: "Adherence to NIJ 0101.06 Standards",
@@ -158,11 +161,15 @@ const ctaDescription =
 
 <!-- Regulation Section -->
 <section class="reg-section" style={`background-image: url(${optionBg.src})`}>
+  <div>
+    <h3 class="heading-h2 text-(--primary-900) mb-2">{regTitle}</h3>
+    <p class="body-text">{regDescription}</p>
+  </div>
   <div class="reg-header">
     <div class="reg-title-wrap body-text">
       <h6 class="reg-title">The Regulation</h6>
     </div>
-    <h3 class="reg-description heading-h3">NIJ Protection Level</h3>
+    <h3 class="reg-description heading-h3">Compliance</h3>
   </div>
 
   <div class="reg-content">
@@ -203,15 +210,15 @@ const ctaDescription =
     background-color: white;
     background-size: cover;
     background-position: center;
-    padding: 6.25rem;
+    padding: 3rem 1.25rem;
   }
 
   .reg-header {
     display: flex;
+    display: none;
     flex-direction: column;
     width: 100%;
     flex-basis: 100%;
-    margin-bottom: 3rem;
     max-width: 242px;
   }
 
@@ -299,11 +306,15 @@ const ctaDescription =
       justify-content: center;
       align-items: start;
       gap: 4rem;
+      padding: 6.25rem;
     }
 
     .reg-header {
+      display: flex;
       flex-basis: 31%;
       width: 33%;
+      margin-bottom: 3rem;
+      align-items: center;
     }
 
     .reg-content {
