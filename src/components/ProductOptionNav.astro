@@ -30,16 +30,15 @@ const optionsNav: { label: string; anchor: string }[] = Astro.props.optionsNav;
   a.options-nav-item {
     color: white;
     margin: 0;
-    font-family: "Hanken Grotesk", sans-serif;
+    font-family: var(--font-hanken);
     font-weight: 400;
     white-space: nowrap;
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: width 0.3s ease-in-out;
   }
 
   a.options-nav-item:hover {
     color: var(--secondary-500);
-    text-decoration: underline;
   }
 
   /* Tablet and above (min-width) */
@@ -52,7 +51,4 @@ const optionsNav: { label: string; anchor: string }[] = Astro.props.optionsNav;
     }
   }
 
-  /* Desktop and above */
-  @media only screen and (min-width: 1024px) {
-  }
 </style>

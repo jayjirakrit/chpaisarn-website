@@ -22,6 +22,7 @@ type CardData = {
   bgImage?: string;
   bgImageMobile?: string;
   productImage?: string;
+  link?: string;
 };
 interface CollapseProps {
   cards: CardData[];
@@ -46,18 +47,20 @@ const Collapse: React.FC<CollapseProps> = ({ cards }) => {
           }}
           onClick={() => setVisible(index)}
         >
-          <div className={`heading-h3 product-label-vertical ${isActive(index) ? "hidden" : ""}`}>{card.label}</div>
+          <div className={`product-label-h3 product-label-vertical ${isActive(index) ? "hidden" : ""}`}>{card.label}</div>
           <div className="product-content">
-            <div className={`heading-h3 product-label-vertical ${!isActive(index) ? "hidden" : ""}`}>{card.label}</div>
+            <div className={`product-label-h3 product-label-vertical ${!isActive(index) ? "hidden" : ""}`}>{card.label}</div>
             <div className="product-description">
               <p className="text-white body-text mb-4" dangerouslySetInnerHTML={{ __html: card.description }} />
               <button className="text-white font-bold flex gap-2 items-center hover:underline">
-                {card.buttonText}
-                <span>→</span>
+                <a href={card.link}>
+                  {card.buttonText}
+                  <span>→</span>
+                </a>
               </button>
             </div>
           </div>
-          {card.productImage && !isMobile && (
+          {isActive(index) && card.productImage && !isMobile && (
             <div className="product-img">
               <img src={card.productImage} alt={card.label} loading="lazy" decoding="async" />
             </div>

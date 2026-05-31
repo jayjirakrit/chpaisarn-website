@@ -7,7 +7,7 @@ const customizationSteps: any[] = Astro.props.customizationSteps;
 <section class="customize-section">
   <div class="customize-header">
     <h2 class="customize-title">{customizeTitle}</h2>
-    <p class="customize-description heading-h6">{customizeDescription}</p>
+    <p class="customize-description">{customizeDescription}</p>
   </div>
 
   <!-- Customization Steps -->
@@ -61,6 +61,16 @@ const customizationSteps: any[] = Astro.props.customizationSteps;
   .customize-description {
     color: white;
     margin-bottom: 2rem;
+    font-family: var(--font-hanken);
+    font-size: 1rem;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .customize-description { font-size: 1.125rem; }
+  }
+
+  @media only screen and (min-width: 1024px) {
+    .customize-description { font-size: 1.125rem; }
   }
   .customize-container {
     display: flex;
@@ -68,16 +78,6 @@ const customizationSteps: any[] = Astro.props.customizationSteps;
     /* gap: 3.5rem; */
     gap: 2.25rem;
   }
-  .customize-cta {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-    color: white;
-    font-family: "Space Grotesk", sans-serif;
-    font-weight: 700;
-    font-size: 1rem;
-  }
-
   .customize-step {
     display: flex;
     flex-direction: column;
@@ -109,17 +109,17 @@ const customizationSteps: any[] = Astro.props.customizationSteps;
   }
 
   .step-label {
-    font-family: "Hanken Grotesk", sans-serif;
+    font-family: var(--font-hanken);
     font-weight: 700;
     font-size: 1rem;
     color: white;
     padding-bottom: 0.75rem;
-    border-bottom: 4px solid #9af9cf;
+    border-bottom: 3px solid var(--accent);
     align-self: flex-start;
   }
 
   .step-title {
-    font-family: "Hanken Grotesk", sans-serif;
+    font-family: var(--font-hanken);
     font-weight: 700;
     font-size: 1.75rem;
     color: white;
@@ -163,19 +163,13 @@ const customizationSteps: any[] = Astro.props.customizationSteps;
       gap: 2.25rem;
     }
 
-    .customize-cta {
-      display: flex;
-      gap: 0.5rem;
-      justify-content: end;
-    }
-
     .step-image {
       height: auto;
     }
     .step-header {
       flex: 1;
       padding-right: 1.5rem;
-      border-right: 4px solid #9af9cf;
+      border-right: 3px solid var(--accent);
     }
 
     .step-content {
@@ -189,7 +183,4 @@ const customizationSteps: any[] = Astro.props.customizationSteps;
     }
   }
 
-  /* Desktop and above */
-  @media only screen and (min-width: 1024px) {
-  }
 </style>

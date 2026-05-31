@@ -223,7 +223,7 @@ const ctaDescription =
 >
   <div class="reg-top">
     <div>
-      <h3 class="heading-h2 text-(--primary-900) mb-2">{regTitle}</h3>
+      <h3 class="reg-title-h2 text-(--primary-900) mb-2">{regTitle}</h3>
       <p class="body-text">{regDescription}</p>
     </div>
     <div class="reg-compliance">
@@ -231,7 +231,7 @@ const ctaDescription =
         <div class="reg-title-wrap body-text">
           <h6 class="reg-title">The Regulation</h6>
         </div>
-        <h3 class="reg-description heading-h3">Compliance</h3>
+        <h3 class="reg-description">Compliance</h3>
       </div>
       <div class="reg-content">
         {
@@ -242,7 +242,7 @@ const ctaDescription =
                   <Image src={BoxIcon} alt="Box Icon" />
                 </span>
                 <div>
-                  <h5 class="reg-card-title heading-h5">{item.title}</h5>
+                  <h5 class="reg-card-title">{item.title}</h5>
                 </div>
               </div>
               <p class="reg-card-description body-text">{item.description}</p>
@@ -254,7 +254,7 @@ const ctaDescription =
   </div>
 
   <div class="reg-spec">
-    <h2 class="reg-spec-title heading-h3">
+    <h2 class="reg-spec-title">
       Certified Protection Across Every Mission Threat.
     </h2>
     <div class="reg-spec-table-wrap">
@@ -359,6 +359,22 @@ const ctaDescription =
     border-bottom: 3px solid var(--secondary-500);
   }
 
+  /* h2-scale applied to an h3 tag */
+  .reg-title-h2 {
+    font-family: var(--font-hanken);
+    font-weight: 700;
+    font-size: 2.25rem;
+    line-height: 1.2;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .reg-title-h2 { font-size: 3rem; }
+  }
+
+  @media only screen and (min-width: 1024px) {
+    .reg-title-h2 { font-size: 3.625rem; }
+  }
+
   .reg-description {
     color: var(--primary-900);
     margin-bottom: 1rem;
@@ -396,8 +412,20 @@ const ctaDescription =
     gap: 2.25rem;
   }
 
+  /* h3-scale applied to an h2 tag */
   .reg-spec-title {
     color: var(--primary-900);
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .reg-spec-title { font-size: 1.875rem; }
+  }
+
+  @media only screen and (min-width: 1024px) {
+    .reg-spec-title { font-size: 2.375rem; }
   }
 
   .reg-spec-table-wrap {

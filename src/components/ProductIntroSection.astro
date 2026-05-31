@@ -7,13 +7,10 @@ const pageDescription: string = Astro.props.pageDescription;
 const mobileImg = companyBgImgMobile ?? companyBgImg;
 ---
 
-<section
-  class="hero-section"
-  style={`--bg-desktop: url(${companyBgImg.src}); --bg-mobile: url(${mobileImg.src});`}
->
+<section class="hero-section" style={`--bg-desktop: url(${companyBgImg.src}); --bg-mobile: url(${mobileImg.src});`}>
   <div class="hero-content">
-    <h1 class="hero-title heading-h2">{pageTitle}</h1>
-    <p class="hero-description body-text heading-h6">{pageDescription}</p>
+    <h1 class="hero-title">{pageTitle}</h1>
+    <p class="hero-description body-text">{pageDescription}</p>
   </div>
 </section>
 
@@ -36,12 +33,11 @@ const mobileImg = companyBgImgMobile ?? companyBgImg;
   }
 
   .hero-title {
+    font-family: var(--font-hanken);
+    font-weight: 700;
+    font-size: 2.25rem;
+    line-height: 1.2;
     margin-bottom: 1rem;
-  }
-
-  .hero-description {
-    position: relative;
-    z-index: 10;
   }
 
   /* Tablet and above (min-width) */
@@ -51,12 +47,26 @@ const mobileImg = companyBgImgMobile ?? companyBgImg;
       padding: 6rem 4rem;
     }
 
-    .hero-content{
-        max-width: 600px;
+    .hero-title {
+      font-size: 3rem;
+    }
+
+    .hero-content {
+      max-width: 600px;
+    }
+
+  }
+
+  /* Desktop and above (min-width) */
+  @media only screen and (min-width: 1024px) {
+    .hero-title {
+      font-size: 3.625rem;
     }
   }
 
-  /* Desktop and above */
-  @media only screen and (min-width: 1024px) {
+  .hero-description {
+    position: relative;
+    z-index: 10;
   }
+
 </style>

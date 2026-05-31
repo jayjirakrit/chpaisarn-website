@@ -8,7 +8,7 @@ const itemOptions: { label: string; title: string; img: any; imgDescription: str
 
 <section class="option-items-section">
   <div class="option-head">
-    <h2 class="option-title heading-h2">{optionsTitle}</h2>
+    <h2 class="option-title">{optionsTitle}</h2>
     <p class="option-description body-text">{optionsDescription}</p>
   </div>
 
@@ -18,7 +18,7 @@ const itemOptions: { label: string; title: string; img: any; imgDescription: str
         <div class="option-items-card reveal" style={`transition-delay: ${index * 60}ms`}>
           <div class="option-items-card-header">
             <span class="option-items-card-label">{item.label}</span>
-            <h5 class="option-items-card-title heading-h5">{item.title}</h5>
+            <h5 class="option-items-card-title">{item.title}</h5>
           </div>
           <div class="option-items-card-features">
             <Image src={item.img} alt={item.imgDescription} />
@@ -59,7 +59,7 @@ const itemOptions: { label: string; title: string; img: any; imgDescription: str
     .option-items-card {
       width: 100%;
       background-color: var(--primary-50);
-      border-radius: 5px;
+      border-radius: 0.3125rem;
       border: 1px solid var(--primary-900);
       padding: 1rem;
     }
@@ -74,16 +74,16 @@ const itemOptions: { label: string; title: string; img: any; imgDescription: str
     }
 
     .option-items-card-label {
-      font-family: "Space Grotesk", sans-serif;
+      font-family: var(--font-space);
       font-weight: 700;
       font-size: 0.75rem;
       color: black;
       padding-bottom: 0.5rem;
-      border-bottom: 3px solid #9af9cf;
+      border-bottom: 3px solid var(--accent);
     }
 
     .option-items-card-title {
-      font-family: "Hanken Grotesk", sans-serif;
+      font-family: var(--font-hanken);
       font-weight: 700;
       color: black;
     }
@@ -126,16 +126,6 @@ const itemOptions: { label: string; title: string; img: any; imgDescription: str
         flex-direction: row;
       }
 
-      .option-items-card-features {
-        list-style-type: disc;
-        color: white;
-      }
-
-      .option-items-card-features li {
-        margin-bottom: 0.75rem;
-        font-size: 1rem;
-        line-height: 1.4;
-      }
     }
 
     /* Desktop and above */

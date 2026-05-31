@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* ── Design Tokens ─────────────────────────────────────────────────────────── */
 :root {
   /* Primary Colors */
   --primary-900: #14375f;
@@ -11,12 +12,27 @@
 
   /* Secondary Colors */
   --secondary-500: #58bb90;
+  --secondary-700: #087a49;
+  --secondary-hover: #4fa07d;
+
+  /* Accent */
+  --accent: #9af9cf;
 
   /* Neutral Colors */
   --white: #ffffff;
   --black: #272727;
   --gray-light: #f5f5f5;
+  --gray-lighter: #f0f0f0;
+  --gray-border: #d4d4d4;
   --gray: #F3F7FC;
+
+  /* UI Colors */
+  --error: #c0392b;
+  --focus-ring: #0078d7;
+  --cta-blue: #0360ae;
+
+  /* Shadows */
+  --shadow-card: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.15);
 
   /* Font Families */
   --font-space: "Space Grotesk", sans-serif;
@@ -24,6 +40,7 @@
   --font-roboto: "Roboto", sans-serif;
 }
 
+/* ── Base Reset ────────────────────────────────────────────────────────────── */
 html,
 body {
   margin: 0;
@@ -38,54 +55,61 @@ body {
   color: var(--black);
 }
 
-/* Reusable section utilities */
+/* ── Layout Utilities ──────────────────────────────────────────────────────── */
 @layer components {
   .section-padding {
     @apply px-6 py-16 sm:px-8 lg:px-[100px] lg:py-[100px];
   }
+}
 
-  .section-min-h {
-    @apply min-h-screen;
-  }
-
-  .heading-h1 {
+/* ── Heading Typography ────────────────────────────────────────────────────── */
+@layer components {
+  h1 {
     @apply font-bold text-5xl sm:text-6xl lg:text-[80px];
     font-family: var(--font-space);
   }
 
-  .heading-h2 {
+  h2 {
     @apply font-bold text-4xl sm:text-5xl lg:text-[58px];
     font-family: var(--font-hanken);
   }
 
-  .heading-h3 {
+  h3 {
     @apply font-bold text-2xl sm:text-3xl lg:text-[38px];
     font-family: var(--font-hanken);
   }
 
-  .heading-h4 {
+  h4 {
     @apply font-bold text-xl sm:text-2xl lg:text-[28px];
     font-family: var(--font-hanken);
   }
 
-  .heading-h5 {
+  h5 {
     @apply font-bold text-lg sm:text-xl lg:text-[22px];
     font-family: var(--font-hanken);
   }
 
-  .heading-h6 {
+  h6 {
     @apply text-base sm:text-lg lg:text-[18px];
     font-family: var(--font-hanken);
   }
+}
 
+/* ── Body Text Utilities ───────────────────────────────────────────────────── */
+@layer components {
+  p,
   .body-text {
     @apply text-base lg:text-lg leading-relaxed;
   }
 
+  small,
   .body-text-sm {
     @apply text-sm lg:text-base leading-relaxed;
   }
+}
 
+/* ── Buttons ───────────────────────────────────────────────────────────────── */
+@layer components {
   .btn-primary {
     @apply bg-[#58bb90] text-white font-bold py-3 px-6 rounded-sm hover:opacity-90;
     font-family: var(--font-space);
@@ -110,7 +134,21 @@ body {
   .btn-secondary:active {
     transform: scale(0.96);
   }
+}
 
+/* ── Decorative Helpers ────────────────────────────────────────────────────── */
+@layer components {
+  .label-accent-border {
+    border-bottom: 3px solid var(--accent);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+}
+
+/* ── Color Utilities ───────────────────────────────────────────────────────── */
+@layer components {
   .text-primary {
     color: var(--primary-500);
   }
@@ -122,8 +160,11 @@ body {
   .bg-gradient-primary {
     background: linear-gradient(to right, var(--primary-700), var(--primary-100));
   }
+}
 
-  /* Scroll-reveal utility — toggled by IntersectionObserver in Layout.astro */
+/* ── Scroll Reveal Animation ───────────────────────────────────────────────── */
+@layer components {
+  /* Toggled by IntersectionObserver in Layout.astro */
   .reveal {
     opacity: 0;
     transform: translateY(2rem);
@@ -136,7 +177,8 @@ body {
   }
 }
 
-/* Keyboard focus ring — visible only for keyboard navigation */
+/* ── Focus Ring ────────────────────────────────────────────────────────────── */
+/* Visible only for keyboard navigation */
 :focus-visible {
   outline: 3px solid var(--primary-500);
   outline-offset: 3px;

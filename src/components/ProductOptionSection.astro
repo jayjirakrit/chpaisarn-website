@@ -13,7 +13,7 @@ const protectionOptions: {
 
 <section class="options-section" style={`--bg-mobile: url(${optionBgMobile.src}); --bg-desktop: url(${optionBg.src})`}>
   <div class="options-head">
-    <h2 class="options-title heading-h2">{optionsTitle}</h2>
+    <h2 class="options-title">{optionsTitle}</h2>
     <p class="options-description body-text">{optionsDescription}</p>
   </div>
 
@@ -23,7 +23,7 @@ const protectionOptions: {
         <div class="option-card">
           <div class="option-card-header">
             <span class="option-card-label">{option.label}</span>
-            <h4 class="option-card-title heading-h4">{option.title}</h4>
+            <h4 class="option-card-title">{option.title}</h4>
           </div>
           <ul class="option-card-features">
             {option.features.map((feature) => (
@@ -68,10 +68,10 @@ const protectionOptions: {
 
   .option-card {
     width: 100%;
-    background-color: #2465ae;
-    border-radius: 5px;
+    background-color: var(--primary-500);
+    border-radius: 0.3125rem;
     padding: 1rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-card);
   }
 
   .option-card-header {
@@ -85,13 +85,13 @@ const protectionOptions: {
   }
 
   .option-card-label {
-    font-family: "Space Grotesk", sans-serif;
+    font-family: var(--font-space);
     font-weight: 700;
-    font-size: 12px;
+    font-size: 0.75rem;
     color: white;
     padding-bottom: 0.25rem;
     margin-bottom: 0.75rem;
-    border-bottom: 3px solid #9af9cf;
+    border-bottom: 3px solid var(--accent);
   }
 
   .option-card-title {
@@ -135,31 +135,7 @@ const protectionOptions: {
     }
 
     .option-card-label {
-      font-family: "Space Grotesk", sans-serif;
-      font-weight: 700;
-      font-size: 12px;
-      color: white;
       padding-bottom: 0.5rem;
-      border-bottom: 3px solid #9af9cf;
     }
-
-    .option-card-title {
-    }
-
-    .option-card-features {
-      list-style-type: disc;
-      padding-left: 1.5rem;
-      color: white;
-    }
-
-    .option-card-features li {
-      margin-bottom: 0.75rem;
-      font-size: 1rem;
-      line-height: 1.4;
-    }
-  }
-
-  /* Desktop and above */
-  @media only screen and (min-width: 1024px) {
   }
 </style>

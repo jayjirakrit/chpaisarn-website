@@ -36,16 +36,16 @@ const {
 
   .cta-box {
     background-color: var(--primary-900);
-    border-radius: 5px;
+    border-radius: 0.3125rem;
     padding: 1.25rem;
-    max-width: 446px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    max-width: 27.875rem;
+    box-shadow: var(--shadow-card);
     position: relative;
     z-index: 10;
   }
 
   .cta-title {
-    font-family: "Hanken Grotesk", sans-serif;
+    font-family: var(--font-hanken);
     font-weight: 700;
     font-size: 1.75rem;
     color: var(--titleColor);
@@ -61,16 +61,16 @@ const {
   .cta-button {
     display: inline-block;
     text-decoration: none;
-    background-color: #58bb90;
+    background-color: var(--secondary-500);
     border: none;
-    border-radius: 5px;
+    border-radius: 0.3125rem;
     padding: 0.75rem 1.5rem;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.1s ease;
   }
 
   .cta-button:hover {
-    background-color: #4fa07d;
+    background-color: var(--secondary-hover);
   }
 
   .cta-button:active {
@@ -78,7 +78,7 @@ const {
   }
 
   .cta-button-text {
-    font-family: "Space Grotesk", sans-serif;
+    font-family: var(--font-space);
     font-weight: 700;
     font-size: 1rem;
     color: white;
@@ -93,12 +93,9 @@ const {
     .cta-box {
       padding: 2.25rem;
     }
-    
+
     .cta-title {
       font-size: 2.75rem;
-    }
-
-    .cta-description {
     }
 
     .cta-button-text {
@@ -108,9 +105,5 @@ const {
     .cta-button {
       width: 50%;
     }
-  }
-
-  /* Desktop and above */
-  @media only screen and (min-width: 1024px) {
   }
 </style>

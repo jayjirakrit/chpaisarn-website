@@ -33,6 +33,7 @@ const cards = [
     bgImage: CompanyBgImg.src,
     bgImageMobile: CompanyBg01MobileImg.src,
     productImage: ArmorImg.src,
+    link: "/products"
   },
   {
     label: "Ballistic Helmets",
@@ -43,6 +44,7 @@ const cards = [
     bgImage: CompanyBg04Img.src,
     bgImageMobile: CompanyBg02MobileImg.src,
     productImage: CvcHelmetImg.src,
+    link: "/products/ballistic-helmets"
   },
   {
     label: "Armor Plates",
@@ -53,6 +55,7 @@ const cards = [
     bgImage: CompanyBg03Img.src,
     bgImageMobile: CompanyBg03MobileImg.src,
     productImage: PlateIIIImg.src,
+    link: "/products/ballistic-plates"
   },
 
   {
@@ -122,7 +125,7 @@ const contactDescription =
 
 <!-- Hero Section -->
 <section class="hero-section" style={`--hero-bg: url(${HeroBgImg.src}); --hero-bg-mobile: url(${HeroBgImg.src}); background-color: var(--primary-900);`}>
-  <div class="hero-content heading-h1">
+  <div class="hero-content">
     <h1 class="hero-title">{heroTitle1}</h1>
     <h1 class="hero-title">{heroTitle2}</h1>
     <div class="cta-group">
@@ -137,19 +140,13 @@ const contactDescription =
   <div class="product-container">
     <div class="mb-12 flex flex-col md:flex-row md:items-end md:justify-between">
       <div>
-        <h2 class="heading-h2 text-(--primary-900) mb-4">{productsTitle}</h2>
+        <h2 class="text-(--primary-900) mb-4">{productsTitle}</h2>
         <p class="body-text mb-4">{productsDescription}</p>
         <div class="flex flex-col lg:flex-row gap-2 items-end justify-end">
-          <button
-            class="bg-[#58bb90] text-white font-bold py-3 px-3 rounded-sm hover:opacity-90 transition-all"
-            style="font-family: 'Space Grotesk'; font-size: 18px;"
-          >
+          <button class="btn-primary" style="font-size: 1.125rem;">
             View Products
           </button>
-          <button
-            class="text-[#14375f] font-bold hover:text-[#2465ae] transition-colors py-2 px-2 flex gap-2 items-center p-0"
-            style="font-family: 'Space Grotesk'; font-size: 18px;"
-          >
+          <button class="customize-btn">
             Customize your product
             <span>→</span>
           </button>
@@ -177,13 +174,10 @@ const contactDescription =
 
       <!-- Content -->
       <div class="team-content text-white">
-        <h2 class="heading-h2 mb-6 whitespace-nowrap">{teamTitle}</h2>
+        <h2 class="mb-6 whitespace-nowrap">{teamTitle}</h2>
         <p class="body-text-sm mb-4">{teamDescription1}</p>
         <p class="body-text-sm mb-4 lg:mb-8">{teamDescription2}</p>
-        <button
-          class="bg-[#58bb90] text-white font-bold py-3 px-6 rounded-sm hover:opacity-90 transition-all"
-          style="font-family: 'Space Grotesk'; font-size: 24px;"
-        >
+        <button class="btn-primary">
           Learn Our Story
         </button>
       </div>
@@ -250,6 +244,8 @@ const contactDescription =
     position: relative;
     z-index: 10;
     max-width: 1000px;
+    font-family: var(--font-space);
+    font-weight: 700;
   }
 
   .hero-title {
@@ -270,6 +266,25 @@ const contactDescription =
     gap: 2rem;
     flex-wrap: wrap;
     animation: fadeUp 0.7s ease 0.5s both;
+  }
+
+  .customize-btn {
+    font-family: var(--font-space);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--primary-900);
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+
+  .customize-btn:hover {
+    color: var(--primary-500);
   }
 
   .team-section {

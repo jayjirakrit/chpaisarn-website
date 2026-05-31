@@ -22,6 +22,20 @@
   white-space: nowrap;
 }
 
+.product-label-h3 {
+  font-family: "Hanken Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .product-label-h3 { font-size: 1.875rem; }
+}
+
+@media only screen and (min-width: 1024px) {
+  .product-label-h3 { font-size: 2.375rem; }
+}
+
 .product-content {
   display: flex;
   flex-direction: column;
@@ -52,7 +66,7 @@
 
   .product-card {
     padding: 2rem;
-    min-height: 400px;
+    min-height: 25rem;
   }
 
   .product-description {
@@ -97,7 +111,7 @@
   }
 
   .product-card.is-active-card {
-    flex: 3;
+    flex: 6;
   }
 
   .product-img {
@@ -105,7 +119,7 @@
   }
 
   .border-highlight {
-    border-bottom: 10px solid #58bb90;
+    border-bottom: 10px solid var(--secondary-500);
   }
 
   /* Description fades in after card expands */
