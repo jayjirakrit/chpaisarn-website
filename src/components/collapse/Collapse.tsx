@@ -38,7 +38,7 @@ const Collapse: React.FC<CollapseProps> = ({ cards }) => {
       {cards.map((card, index) => (
         <div
           key={index}
-          className={`product-card ${card.bgColor} ${isActive(index) ? "border-highlight" : ""}`}
+          className={`product-card ${card.bgColor} ${isActive(index) ? "border-highlight is-active-card" : ""}`}
           style={{
             backgroundImage: isActive(index) && card.bgImage ? `url(${isMobile && card.bgImageMobile ? card.bgImageMobile : card.bgImage})` : "none",
             backgroundSize: "cover",
@@ -49,7 +49,7 @@ const Collapse: React.FC<CollapseProps> = ({ cards }) => {
           <div className={`heading-h3 product-label-vertical ${isActive(index) ? "hidden" : ""}`}>{card.label}</div>
           <div className="product-content">
             <div className={`heading-h3 product-label-vertical ${!isActive(index) ? "hidden" : ""}`}>{card.label}</div>
-            <div className={`product-description ${!isActive(index) ? "hidden" : ""}`}>
+            <div className="product-description">
               <p className="text-white body-text mb-4" dangerouslySetInnerHTML={{ __html: card.description }} />
               <button className="text-white font-bold flex gap-2 items-center hover:underline">
                 {card.buttonText}
@@ -57,9 +57,9 @@ const Collapse: React.FC<CollapseProps> = ({ cards }) => {
               </button>
             </div>
           </div>
-          {isActive(index) && card.productImage && !isMobile && (
+          {card.productImage && !isMobile && (
             <div className="product-img">
-              <img src={card.productImage} alt={card.label} />
+              <img src={card.productImage} alt={card.label} loading="lazy" decoding="async" />
             </div>
           )}
         </div>

@@ -194,16 +194,16 @@ const contactDescription =
 <!-- Trust Partner Section -->
 <section class="partners-section">
   <div class="partners-head">
-    <h2 class="partners-title">{partnersTitle}</h2>
-    <p class="partners-description">{partnersDescription}</p>
+    <h2 class="partners-title reveal">{partnersTitle}</h2>
+    <p class="partners-description reveal" style="transition-delay: 0.1s">{partnersDescription}</p>
   </div>
 
   <div class="partners-grid">
     {
-      partners.map((partner) => (
-        <div class="partner-card">
+      partners.map((partner, index) => (
+        <div class="partner-card reveal" style={`transition-delay: ${index * 80}ms`}>
           <div class="partner-logo">
-            <img src={partner.img} alt={partner.name} />
+            <img src={partner.img} alt={partner.name} loading="lazy" decoding="async" />
           </div>
           <span class="partner-name body-text-sm">{partner.name}</span>
         </div>
@@ -223,6 +223,17 @@ const contactDescription =
 />
 
 <style>
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(1.5rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   .hero-section {
     background-image: var(--hero-bg-mobile);
     background-size: cover;
@@ -246,10 +257,19 @@ const contactDescription =
     margin-bottom: 2.5rem;
   }
 
+  .hero-title:nth-child(1) {
+    animation: fadeUp 0.7s ease 0.1s both;
+  }
+
+  .hero-title:nth-child(2) {
+    animation: fadeUp 0.7s ease 0.3s both;
+  }
+
   .cta-group {
     display: flex;
     gap: 2rem;
     flex-wrap: wrap;
+    animation: fadeUp 0.7s ease 0.5s both;
   }
 
   .team-section {
@@ -362,6 +382,13 @@ const contactDescription =
     width: 8rem;
     height: 8rem;
     object-fit: contain;
+    transition: transform 0.25s ease, filter 0.25s ease;
+    filter: grayscale(30%);
+  }
+
+  .partner-card:hover .partner-logo img {
+    transform: scale(1.08);
+    filter: grayscale(0%);
   }
 
   .partner-name {

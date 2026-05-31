@@ -13,8 +13,8 @@ const customizationSteps: any[] = Astro.props.customizationSteps;
   <!-- Customization Steps -->
   <div class="customize-container">
     {
-      customizationSteps.map((step) => (
-        <div class="step-wrapper">
+      customizationSteps.map((step, index) => (
+        <div class="step-wrapper reveal" style={`transition-delay: ${index * 100}ms`}>
           <img src={step.image} alt={step.title} class="step-image" />
           <div class="customize-step">
             <div class="step-header">

@@ -40,7 +40,11 @@ const optionsDescription =
   "Every operation carries a different threat profile. Our body armor range covers three primary protection systems each fully configurable to the specific requirements of your unit, environment, and mission. All three protection systems are fully configurable to your unit's specific requirements explore our customization options";
 
 // Options Navigation data
-const optionsNav = ["Your Options", "Protection Systems", "Built to your specification"];
+const optionsNav = [
+  { label: "Your Options", anchor: "your-options" },
+  { label: "Protection Systems", anchor: "protection-systems" },
+  { label: "Built to your specification", anchor: "customization" },
+];
 
 // Item options data
 const itemOptions = [
@@ -251,13 +255,19 @@ const customizationSteps = [
 <ProductOptionNav optionsNav={optionsNav} />
 
 <!-- Your Item Options Section -->
-<ProductOpItemsSection optionsTitle={optionsItemTitle} optionsDescription={optionsItemDescription} itemOptions={itemOptions} />
+<div id="your-options">
+  <ProductOpItemsSection optionsTitle={optionsItemTitle} optionsDescription={optionsItemDescription} itemOptions={itemOptions} />
+</div>
 
 <!-- Your Options Section -->
-<ProductOptionSection optionsTitle={optionsTitle} optionsDescription={optionsDescription} protectionOptions={protectionOptions} />
+<div id="protection-systems">
+  <ProductOptionSection optionsTitle={optionsTitle} optionsDescription={optionsDescription} protectionOptions={protectionOptions} />
+</div>
 
 <!-- Customization Section -->
-<CustomStepsSection customizeTitle={customizeTitle} customizeDescription={customizeDescription} customizationSteps={customizationSteps} />
+<div id="customization">
+  <CustomStepsSection customizeTitle={customizeTitle} customizeDescription={customizeDescription} customizationSteps={customizationSteps} />
+</div>
 
 <!-- Contact Section -->
 <ContactSection bgImg={CompanyBg01Img} contactTitle={ctaTitle} contactDescription={ctaDescription} />

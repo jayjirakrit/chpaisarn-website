@@ -29,7 +29,10 @@ const optionsTitle = "Your Options";
 const optionsDescription = "";
 
 // Options Navigation data
-const optionsNav = ["Your Options", "Customization"];
+const optionsNav = [
+  { label: "Your Options", anchor: "your-options" },
+  { label: "Customization", anchor: "customization" },
+];
 
 // Customization section data
 const customizeTitle = "Built to Your Specification";
@@ -201,20 +204,24 @@ const ctaDescription =
 <ProductOptionNav optionsNav={optionsNav} />
 
 <!-- Your Item Options Section -->
-<ProductOpItemsSection
-  optionsTitle={optionsTitle}
-  optionsDescription={optionsDescription}
-  itemOptions={itemOptions}
-/>
+<div id="your-options">
+  <ProductOpItemsSection
+    optionsTitle={optionsTitle}
+    optionsDescription={optionsDescription}
+    itemOptions={itemOptions}
+  />
+</div>
 
 <div class="overlay-section h-32"></div>
 
 <!-- Customization Section -->
-<CustomStepsSection
-  customizeTitle={customizeTitle}
-  customizeDescription={customizeDescription}
-  customizationSteps={customizationSteps}
-/>
+<div id="customization">
+  <CustomStepsSection
+    customizeTitle={customizeTitle}
+    customizeDescription={customizeDescription}
+    customizationSteps={customizationSteps}
+  />
+</div>
 
 <!-- Contact Section -->
 <ContactSection

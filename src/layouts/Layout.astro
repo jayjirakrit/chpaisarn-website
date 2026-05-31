@@ -93,11 +93,25 @@ const organizationLd = {
     <script type="application/ld+json" set:html={JSON.stringify(organizationLd)} />
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <Navbar />
-    <main>
+    <main id="main-content">
       <slot />
     </main>
     <Footer />
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("is-visible");
+              observer.unobserve(e.target);
+            }
+          }),
+        { threshold: 0.15 }
+      );
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    </script>
   </body>
 </html>
 
@@ -107,5 +121,22 @@ const organizationLd = {
     margin: 0;
     width: 100%;
     height: 100%;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 100;
+    background: var(--primary-900);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    font-family: var(--font-hanken);
+    font-size: 1rem;
+    text-decoration: none;
+  }
+
+  .skip-link:focus {
+    left: 0;
   }
 </style>

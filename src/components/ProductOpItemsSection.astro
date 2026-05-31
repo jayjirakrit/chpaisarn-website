@@ -14,8 +14,8 @@ const itemOptions: { label: string; title: string; img: any; imgDescription: str
 
   <div class="option-items-content">
     {
-      itemOptions.map((item) => (
-        <div class="option-items-card">
+      itemOptions.map((item, index) => (
+        <div class="option-items-card reveal" style={`transition-delay: ${index * 60}ms`}>
           <div class="option-items-card-header">
             <span class="option-items-card-label">{item.label}</span>
             <h5 class="option-items-card-title heading-h5">{item.title}</h5>

@@ -79,9 +79,9 @@ const optionsDescription =
 
 // Options Navigation data
 const optionsNav = [
-  "Your Options",
-  "Standards & Compliance",
-  "Built to your specification",
+  { label: "Your Options", anchor: "your-options" },
+  { label: "Standards & Compliance", anchor: "standards-compliance" },
+  { label: "Built to your specification", anchor: "customization" },
 ];
 
 // Customization section data
@@ -207,14 +207,17 @@ const ctaDescription =
 <ProductOptionNav optionsNav={optionsNav} />
 
 <!-- Your Item Options Section -->
-<ProductOpItemsSection
-  optionsTitle={optionsTitle}
-  optionsDescription={optionsDescription}
-  itemOptions={itemOptions}
-/>
+<div id="your-options">
+  <ProductOpItemsSection
+    optionsTitle={optionsTitle}
+    optionsDescription={optionsDescription}
+    itemOptions={itemOptions}
+  />
+</div>
 
 <!-- Regulation Section -->
 <section
+  id="standards-compliance"
   class="reg-section"
   style={`--bg-mobile: url(${optionBgMobile.src}); --bg-desktop: url(${optionBg.src})`}
 >
@@ -299,11 +302,13 @@ const ctaDescription =
 </section>
 
 <!-- Customization Section -->
-<CustomStepsSection
-  customizeTitle={customizeTitle}
-  customizeDescription={customizeDescription}
-  customizationSteps={customizationSteps}
-/>
+<div id="customization">
+  <CustomStepsSection
+    customizeTitle={customizeTitle}
+    customizeDescription={customizeDescription}
+    customizationSteps={customizationSteps}
+  />
+</div>
 
 <!-- Contact Section -->
 <ContactSection

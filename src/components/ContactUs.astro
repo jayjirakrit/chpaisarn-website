@@ -12,7 +12,7 @@ const pageDescription =
 // Contact section data
 const ctaTitle = "Explore Our Solutions";
 const ctaDescription =
-  "We offer a wide range of ballistic protection products designed to meet the demands of military, law enforcement, security, and civilian applications. Whether you’re seeking personal protection or armored vehicle solutions, our products provide the ultimate defense against ballistic threats.";
+  "We offer a wide range of ballistic protection products designed to meet the demands of military, law enforcement, security, and civilian applications. Whether you're seeking personal protection or armored vehicle solutions, our products provide the ultimate defense against ballistic threats.";
 ---
 
 <!-- Introduction Section -->
@@ -24,35 +24,81 @@ const ctaDescription =
     <div class="form-title">
       <h3 class="heading-h3">Contact Us</h3>
     </div>
-    <div class="form-content">
+    <form id="contact-form" class="form-content" novalidate>
       <div class="field-row">
         <div class="input-container">
-          <label class="heading-h5" for="name">Name</label>
-          <input type="text" id="name" placeholder="Input your name" />
+          <label class="heading-h5" for="name">Name <span class="required-mark" aria-hidden="true">*</span></label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Input your name"
+            required
+            aria-required="true"
+            autocomplete="name"
+            aria-describedby="name-error"
+          />
+          <span id="name-error" class="field-error" role="alert" aria-live="polite"></span>
         </div>
         <div class="input-container">
           <label class="heading-h5" for="company">Company</label>
-          <input type="text" id="company" placeholder="Input your company" />
+          <input
+            type="text"
+            id="company"
+            name="company"
+            placeholder="Input your company"
+            autocomplete="organization"
+            aria-describedby="company-error"
+          />
+          <span id="company-error" class="field-error" role="alert" aria-live="polite"></span>
         </div>
       </div>
       <div class="field-row">
         <div class="input-container">
-          <label class="heading-h5" for="email">Email</label>
-          <input type="text" id="email" placeholder="Input your email" />
+          <label class="heading-h5" for="email">Email <span class="required-mark" aria-hidden="true">*</span></label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Input your email"
+            required
+            aria-required="true"
+            autocomplete="email"
+            aria-describedby="email-error"
+          />
+          <span id="email-error" class="field-error" role="alert" aria-live="polite"></span>
         </div>
         <div class="input-container">
-          <label class="heading-h5" for="company">Phone Number</label>
-          <input type="text" id="phone" placeholder="Input your phone number" />
+          <label class="heading-h5" for="phone">Phone Number</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="Input your phone number"
+            autocomplete="tel"
+            aria-describedby="phone-error"
+          />
+          <span id="phone-error" class="field-error" role="alert" aria-live="polite"></span>
         </div>
       </div>
       <div class="field-row">
         <div class="input-container">
-          <label class="heading-h5" for="name">Enquiry</label>
-          <input type="text" id="enquiry" placeholder="Input your enquiry" />
+          <label class="heading-h5" for="enquiry">Enquiry <span class="required-mark" aria-hidden="true">*</span></label>
+          <textarea
+            id="enquiry"
+            name="enquiry"
+            placeholder="Input your enquiry"
+            rows="4"
+            required
+            aria-required="true"
+            autocomplete="off"
+            aria-describedby="enquiry-error"
+          ></textarea>
+          <span id="enquiry-error" class="field-error" role="alert" aria-live="polite"></span>
         </div>
       </div>
-      <button class="bg-[#58bb90] text-white font-bold rounded-sm hover:opacity-90 transition-all"> Submit Your Enquiry </button>
-    </div>
+      <button type="submit" class="submit-btn"> Submit Your Enquiry </button>
+    </form>
   </div>
 </div>
 
@@ -106,34 +152,93 @@ const ctaDescription =
     display: block;
   }
 
-  input[type="text"] {
+  .required-mark {
+    color: #c0392b;
+    margin-left: 0.2rem;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
     padding: 0.625rem 1.375rem;
     border: 1px solid var(--primary-500);
     border-radius: 5px;
     outline: none;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
     background: var(--gray);
+    font-family: var(--font-hanken);
+    font-size: 1rem;
   }
 
-  input#enquiry {
+  textarea {
+    resize: vertical;
+    min-height: 6rem;
     width: 100%;
     margin-bottom: 2.25rem;
   }
 
-  input[type="text"]:focus {
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="tel"]:focus,
+  textarea:focus {
     border-color: #0078d7;
     box-shadow: 0 0 5px rgba(0, 120, 215, 0.5);
   }
 
-  input[type="text"]::placeholder {
+  input::placeholder,
+  textarea::placeholder {
     color: var(--primary-100);
   }
 
-  button {
+  input[aria-invalid="true"],
+  textarea[aria-invalid="true"] {
+    border-color: #c0392b;
+  }
+
+  input:valid:not(:placeholder-shown),
+  textarea:valid:not(:placeholder-shown) {
+    border-color: var(--secondary-500);
+  }
+
+  .field-error {
+    display: block;
+    min-height: 1.25rem;
+    font-size: 0.875rem;
+    color: #c0392b;
+    margin-top: 0.25rem;
+  }
+
+  .submit-btn {
     align-self: flex-start;
     font-family: "Space Grotesk";
     font-size: 1.5rem;
     padding: 0.75rem 1.5rem;
+    background-color: #58bb90;
+    color: white;
+    font-weight: 700;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.1s ease, background-color 0.3s ease;
+  }
+
+  .submit-btn:hover {
+    opacity: 0.9;
+  }
+
+  .submit-btn:active {
+    transform: scale(0.97);
+  }
+
+  .submit-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .submit-btn.btn-sent {
+    background-color: var(--primary-700);
   }
 
   /* Tablet and above (min-width) */
@@ -155,21 +260,63 @@ const ctaDescription =
       flex-direction: row;
     }
 
-    button {
+    .submit-btn {
       width: 285px;
     }
   }
 
   /* Desktop and above */
   @media only screen and (min-width: 1024px) {
-    input[type="text"] {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"] {
       width: 385px;
-      padding: 0.625rem 1.375rem;
-      border: 1px solid var(--primary-500);
-      border-radius: 5px;
-      outline: none;
-      transition: border-color 0.3s ease;
-      background: var(--gray);
     }
   }
 </style>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  if (form) {
+    const submitBtn = form.querySelector<HTMLButtonElement>('[type="submit"]');
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      let valid = true;
+
+      form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("[required]").forEach((input) => {
+        const error = document.getElementById(input.id + "-error");
+        if (!input.validity.valid) {
+          valid = false;
+          if (error) error.textContent = input.validationMessage;
+          input.setAttribute("aria-invalid", "true");
+        } else {
+          if (error) error.textContent = "";
+          input.removeAttribute("aria-invalid");
+        }
+      });
+
+      if (!valid || !submitBtn) return;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending…";
+
+      // Replace the timeout below with an actual fetch() when a backend is wired up
+      await new Promise((r) => setTimeout(r, 1000));
+
+      submitBtn.textContent = "Sent! We'll be in touch.";
+      submitBtn.classList.add("btn-sent");
+    });
+
+    // Clear per-field error on input
+    form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("input, textarea").forEach((input) => {
+      input.addEventListener("input", () => {
+        const error = document.getElementById(input.id + "-error");
+        if (input.validity.valid) {
+          if (error) error.textContent = "";
+          input.removeAttribute("aria-invalid");
+        }
+      });
+    });
+  }
+</script>

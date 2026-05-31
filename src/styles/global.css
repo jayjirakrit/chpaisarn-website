@@ -87,17 +87,28 @@ body {
   }
 
   .btn-primary {
-    @apply bg-[#58bb90] text-white font-bold py-3 px-6 rounded-sm hover:opacity-90 transition-all;
+    @apply bg-[#58bb90] text-white font-bold py-3 px-6 rounded-sm hover:opacity-90;
     font-family: var(--font-space);
-    font-size: 24px;
+    font-size: 1.5rem;
     line-height: 1.4;
+    transition: opacity 0.15s ease, transform 0.1s ease;
+  }
+
+  .btn-primary:active {
+    transform: scale(0.96);
+    opacity: 1;
   }
 
   .btn-secondary {
-    @apply border-2 border-white text-white font-bold py-3 px-6 rounded-sm hover:bg-white hover:text-[#14375f] transition-all;
+    @apply border-2 border-white text-white font-bold py-3 px-6 rounded-sm hover:bg-white hover:text-[#14375f];
     font-family: var(--font-space);
-    font-size: 24px;
+    font-size: 1.5rem;
     line-height: 1.4;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+  }
+
+  .btn-secondary:active {
+    transform: scale(0.96);
   }
 
   .text-primary {
@@ -112,5 +123,25 @@ body {
     background: linear-gradient(to right, var(--primary-700), var(--primary-100));
   }
 
-  
+  /* Scroll-reveal utility — toggled by IntersectionObserver in Layout.astro */
+  .reveal {
+    opacity: 0;
+    transform: translateY(2rem);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Keyboard focus ring — visible only for keyboard navigation */
+:focus-visible {
+  outline: 3px solid var(--primary-500);
+  outline-offset: 3px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
 }

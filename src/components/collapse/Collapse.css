@@ -90,11 +90,31 @@
     height: 40.5rem;
   }
 
+  .product-card {
+    flex: 1;
+    overflow: hidden;
+    transition: flex 0.4s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+  }
+
+  .product-card.is-active-card {
+    flex: 3;
+  }
+
   .product-img {
     width: 50%;
   }
 
   .border-highlight {
     border-bottom: 10px solid #58bb90;
+  }
+
+  /* Description fades in after card expands */
+  .product-description {
+    opacity: 0;
+    transition: opacity 0.3s ease 0.15s;
+  }
+
+  .is-active-card .product-description {
+    opacity: 1;
   }
 }
