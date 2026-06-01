@@ -1,0 +1,130 @@
+---
+const title = "Built on 50 Years of Trust";
+const stats = [
+    {
+        number: "50",
+        suffix: "",
+        title: "Years",
+        desc: "Trusted by the Royal Thai Army since 1974.",
+        wide: false,
+    },
+    {
+        number: "7",
+        suffix: "",
+        title: "Export Markets",
+        desc: "Proven performance recognised beyond Thailand's borders.",
+        wide: false,
+    },
+    {
+        number: "120,000",
+        suffix: "+",
+        title: "Units per Year",
+        desc: "Production capacity built for large-scale procurement.",
+        wide: true,
+    },
+];
+---
+
+<section id="stat" class="stat-section section-padding">
+    <h5 class="stat-title">{title}</h5>
+
+    <div class="stat-content">
+        {
+            stats.map((stat) => (
+                <div class={`stat-card${stat.wide ? " stat-card--wide" : ""}`}>
+                    <p class="stat-number">
+                        {stat.number}
+                        {stat.suffix}
+                    </p>
+                    <h6 class="stat-card-title heading-h6">{stat.title}</h6>
+                    <p class="stat-card-desc body-text-sm">{stat.desc}</p>
+                </div>
+            ))
+        }
+    </div>
+</section>
+
+<style>
+    .stat-section {
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .stat-title {
+        color: var(--primary-900);
+    }
+
+    .stat-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+    }
+
+    .stat-card {
+        background-color: var(--primary-500);
+        border-radius: 0.5rem;
+        padding: 1.25rem 1rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .stat-card--wide {
+        grid-column: 1 / -1;
+        align-items: center;
+        text-align: center;
+    }
+
+    .stat-number {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 2.75rem;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--accent);
+    }
+
+    .stat-card-title,
+    .stat-card-desc {
+        color: var(--white);
+    }
+
+    /* Tablet and above */
+    @media only screen and (min-width: 768px) {
+        .stat-section {
+            gap: 2rem;
+        }
+
+        .stat-content {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .stat-card--wide {
+            grid-column: auto;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+        }
+    }
+
+    /* Desktop and above */
+    @media only screen and (min-width: 1024px) {
+        .stat-section {
+            gap: 2.5rem;
+        }
+        .stat-content {
+            gap: 1.5rem;
+        }
+        .stat-card {
+            padding: 2rem 1.5rem 2.25rem;
+        }
+        .stat-number {
+            font-size: 3.5rem;
+        }
+    }
+</style>

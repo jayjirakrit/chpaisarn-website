@@ -27,66 +27,80 @@ const company = ["About Us", "Quality", "Contact Us"];
       <!-- Logo & Copyright -->
       <div class="footer-brand">
         <img src={LogoImg.src} alt="Ch.Paisarn Logo" class="footer-logo" />
+        <p class="footer-copy footer-copy-desktop">© 2026 Ch.Paisarn. All Rights Reserved.</p>
+        <p class="footer-copy footer-copy-desktop">Website created by House of Bandan</p>
+      </div>
+
+      <!-- Contact group: spans both contact cols on mobile -->
+      <div class="footer-contact-wrapper">
+        <h3 class="footer-heading footer-group-heading">Contact Us</h3>
+
+        <!-- Office -->
+        <div class="footer-col">
+          <h3 class="footer-heading footer-col-heading">Contact Us</h3>
+          <div class="footer-contact-list">
+            <div class="footer-contact-block">
+              <p class="footer-label">Office</p>
+              <p class="footer-text">{officeInfo.address}</p>
+            </div>
+            <div class="footer-contact-row">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.61A16 16 0 0 0 15.39 16.09l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <p class="footer-text">{officeInfo.phone}</p>
+            </div>
+            <div class="footer-contact-row">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <p class="footer-text">{officeInfo.email}</p>
+            </div>
+            <div class="footer-contact-row">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <p class="footer-text">{officeInfo.email2}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Factory -->
+        <div class="footer-col">
+          <h3 class="footer-heading footer-col-heading">Factory</h3>
+          <div class="footer-contact-list">
+            <div class="footer-contact-block">
+              <p class="footer-label">Factory</p>
+              <p class="footer-text">{factoryInfo.address}</p>
+            </div>
+            <div class="footer-contact-row">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.61A16 16 0 0 0 15.39 16.09l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <p class="footer-text">{factoryInfo.phone}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nav group: 2-col grid on mobile -->
+      <div class="footer-nav-wrapper">
+        <!-- Products Links -->
+        <div class="footer-col">
+          <h3 class="footer-heading">Products</h3>
+          <ul class="footer-links">
+            {products.map((product) => (
+              <li><a href="#" class="footer-link">{product}</a></li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Company Links -->
+        <div class="footer-col">
+          <h3 class="footer-heading">Company</h3>
+          <ul class="footer-links">
+            {company.map((item) => (
+              <li><a href="#" class="footer-link">{item}</a></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Copyright: bottom on mobile, under logo on desktop -->
+      <div class="footer-bottom">
         <p class="footer-copy">© 2026 Ch.Paisarn. All Rights Reserved.</p>
         <p class="footer-copy">Website created by House of Bandan</p>
-      </div>
-
-      <!-- Office -->
-      <div class="footer-col">
-        <h3 class="footer-heading">Contact Us</h3>
-        <div class="footer-contact-list">
-          <div class="footer-contact-block">
-            <p class="footer-label">Office</p>
-            <p class="footer-text">{officeInfo.address}</p>
-          </div>
-          <div class="footer-contact-row">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.61A16 16 0 0 0 15.39 16.09l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <p class="footer-text">{officeInfo.phone}</p>
-          </div>
-          <div class="footer-contact-row">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-            <p class="footer-text">{officeInfo.email}</p>
-          </div>
-          <div class="footer-contact-row">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-            <p class="footer-text">{officeInfo.email2}</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Factory -->
-      <div class="footer-col">
-        <h3 class="footer-heading">Factory</h3>
-        <div class="footer-contact-list">
-          <div class="footer-contact-block">
-            <p class="footer-label">Factory</p>
-            <p class="footer-text">{factoryInfo.address}</p>
-          </div>
-          <div class="footer-contact-row">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.61A16 16 0 0 0 15.39 16.09l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <p class="footer-text">{factoryInfo.phone}</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Products Links -->
-      <div class="footer-col">
-        <h3 class="footer-heading">Products</h3>
-        <ul class="footer-links">
-          {products.map((product) => (
-            <li><a href="#" class="footer-link">{product}</a></li>
-          ))}
-        </ul>
-      </div>
-
-      <!-- Company Links -->
-      <div class="footer-col">
-        <h3 class="footer-heading">Company</h3>
-        <ul class="footer-links">
-          {company.map((item) => (
-            <li><a href="#" class="footer-link">{item}</a></li>
-          ))}
-        </ul>
       </div>
 
     </div>
@@ -111,8 +125,8 @@ const company = ["About Us", "Quality", "Contact Us"];
   }
 
   .footer-grid {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 2.5rem;
   }
 
@@ -129,12 +143,48 @@ const company = ["About Us", "Quality", "Contact Us"];
     object-fit: contain;
   }
 
+  /* Desktop copyright (inside brand) hidden on mobile */
+  .footer-copy-desktop {
+    display: none;
+  }
+
   .footer-copy {
     font-family: var(--font-hanken);
     font-size: 0.75rem;
     font-weight: 400;
     color: var(--black);
     line-height: 1.5;
+  }
+
+  /* ── Mobile: Contact wrapper — "Contact Us" heading + 2-col grid ─────────────── */
+  .footer-contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 1.5rem;
+  }
+
+  /* Group heading spans both contact columns */
+  .footer-group-heading {
+    grid-column: 1 / -1;
+  }
+
+  /* Per-column headings hidden on mobile (group heading takes over) */
+  .footer-col-heading {
+    display: none;
+  }
+
+  /* ── Mobile: Nav wrapper — 2-col grid ──────────────────────────────────────── */
+  .footer-nav-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  /* ── Copyright at bottom on mobile ─────────────────────────────────────────── */
+  .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
   }
 
   /* ── Content Columns ───────────────────────────────────────────────────────── */
@@ -215,15 +265,48 @@ const company = ["About Us", "Quality", "Contact Us"];
     color: var(--primary-500);
   }
 
-  /* ── Responsive ─────────────────────────────────────────────────────────────── */
+  /* ── Tablet and above ───────────────────────────────────────────────────────── */
   @media only screen and (min-width: 768px) {
     .footer-inner {
       padding: 4rem 3rem;
     }
 
+    /* Switch to 5-col grid; brand in col 1, copyright below brand */
     .footer-grid {
+      display: grid;
       grid-template-columns: 1fr 1.6fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr auto;
       gap: 3rem;
+      align-items: start;
+    }
+
+    .footer-brand {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    /* Wrappers dissolve — children become direct grid children */
+    .footer-contact-wrapper,
+    .footer-nav-wrapper {
+      display: contents;
+    }
+
+    /* Mobile copyright hidden; desktop copyright (inside brand) shown */
+    .footer-bottom {
+      display: none;
+    }
+
+    .footer-copy-desktop {
+      display: block;
+    }
+
+    /* Hide mobile group heading; show per-column headings */
+    .footer-group-heading {
+      display: none;
+    }
+
+    .footer-col-heading {
+      display: block;
     }
 
     .footer-logo {
@@ -231,6 +314,7 @@ const company = ["About Us", "Quality", "Contact Us"];
     }
   }
 
+  /* ── Desktop and above ──────────────────────────────────────────────────────── */
   @media only screen and (min-width: 1024px) {
     .footer-inner {
       padding: 5rem 6.25rem;

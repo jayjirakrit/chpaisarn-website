@@ -1,0 +1,60 @@
+---
+import CompanyBgImg from "@/assets/company/intro_bg.png";
+import CtaBgImg from "@/assets/company/cta_bg.png";
+
+import ProductIntroSection from "@/components/ProductIntroSection.astro";
+import StatSection from "@/components/StatSection.astro";
+import ContactSection from "@/components/ContactSection.astro";
+
+
+// Intro data
+const introTitle = "Our Company";
+const introDesc =
+    "Founded in 1974, Ch.Paisarn Co., Ltd. is Thailand's largest manufacturer of ballistic protection equipment built on over 50 years of dedication to protecting Thailand's armed forces and security agencies. A silent, loyal companion following every soldier into every mission since 1974.";
+
+// Legacy data
+const legTitle = "";
+const legDesc = "";
+const legacies = [
+    {
+        img: "",
+        title: "",
+        decs: "",
+    },
+];
+
+// Contact section data
+const ctaTitle = "Get in Touch";
+const ctaDescription =
+  "Contact us to learn more about our defense solutions or to discuss your specific operational requirements. Our team is ready to provide the expertise and custom-engineered armor solutions needed to meet your mission objectives.";
+
+---
+
+<!-- Intro Section -->
+<ProductIntroSection
+    companyBgImg={CompanyBgImg}
+    pageTitle={introTitle}
+    pageDescription={introDesc}
+/>
+
+<!-- Stat Section -->
+<StatSection />
+
+<!-- Legacy Section -->
+<section id="legacy" class="legacy-section">
+    <div class="legacy-header">
+        <div class="legacy-title"></div>
+        <div class="legacy-desc"></div>
+    </div>
+
+    <div class="legacy-content"></div>
+</section>
+
+<!-- Contact Section -->
+<ContactSection
+  bgImg={CtaBgImg}
+  contactTitle={ctaTitle}
+  contactDescription={ctaDescription}
+/>
+
+<style></style>
