@@ -1,5 +1,14 @@
 ---
 import LogoImg from "../assets/logo_chp.webp";
+import type { Lang } from "@/i18n/types";
+import { useTranslations } from "@/i18n/utils";
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = "en" } = Astro.props;
+const t = useTranslations(lang);
 
 const officeInfo = {
   address: "55/20 Soi Ronnasittipichai Sanambinnam Road Tasai Muang Nonthaburi 11000 Thailand",
@@ -12,10 +21,6 @@ const factoryInfo = {
   address: "179 Moo11 Banchian Hunka Chainat 17130 Thailand",
   phone: "+665 645 1982 - 6",
 };
-
-const products = ["Body Armors", "Ballistic Helmets", "Ballistic Plates", "Other Ballistic Solutions", "Customized Defense Solutions"];
-
-const company = ["About Us", "Quality", "Contact Us"];
 ---
 
 <footer class="footer">
@@ -27,20 +32,20 @@ const company = ["About Us", "Quality", "Contact Us"];
       <!-- Logo & Copyright -->
       <div class="footer-brand">
         <img src={LogoImg.src} alt="Ch.Paisarn Logo" class="footer-logo" />
-        <p class="footer-copy footer-copy-desktop">© 2026 Ch.Paisarn. All Rights Reserved.</p>
-        <p class="footer-copy footer-copy-desktop">Website created by House of Bandan</p>
+        <p class="footer-copy footer-copy-desktop">{t("footer.copyright")}</p>
+        <p class="footer-copy footer-copy-desktop">{t("footer.credit")}</p>
       </div>
 
       <!-- Contact group: spans both contact cols on mobile -->
       <div class="footer-contact-wrapper">
-        <h3 class="footer-heading footer-group-heading">Contact Us</h3>
+        <h3 class="footer-heading footer-group-heading">{t("footer.contactUs")}</h3>
 
         <!-- Office -->
         <div class="footer-col">
-          <h3 class="footer-heading footer-col-heading">Contact Us</h3>
+          <h3 class="footer-heading footer-col-heading">{t("footer.contactUs")}</h3>
           <div class="footer-contact-list">
             <div class="footer-contact-block">
-              <p class="footer-label">Office</p>
+              <p class="footer-label">{t("footer.office")}</p>
               <p class="footer-text">{officeInfo.address}</p>
             </div>
             <div class="footer-contact-row">
@@ -60,10 +65,10 @@ const company = ["About Us", "Quality", "Contact Us"];
 
         <!-- Factory -->
         <div class="footer-col">
-          <h3 class="footer-heading footer-col-heading">Factory</h3>
+          <h3 class="footer-heading footer-col-heading">{t("footer.factory")}</h3>
           <div class="footer-contact-list">
             <div class="footer-contact-block">
-              <p class="footer-label">Factory</p>
+              <p class="footer-label">{t("footer.factory")}</p>
               <p class="footer-text">{factoryInfo.address}</p>
             </div>
             <div class="footer-contact-row">
@@ -78,9 +83,9 @@ const company = ["About Us", "Quality", "Contact Us"];
       <div class="footer-nav-wrapper">
         <!-- Products Links -->
         <div class="footer-col">
-          <h3 class="footer-heading">Products</h3>
+          <h3 class="footer-heading">{t("footer.products")}</h3>
           <ul class="footer-links">
-            {products.map((product) => (
+            {t("footer.products.list").map((product) => (
               <li><a href="#" class="footer-link">{product}</a></li>
             ))}
           </ul>
@@ -88,9 +93,9 @@ const company = ["About Us", "Quality", "Contact Us"];
 
         <!-- Company Links -->
         <div class="footer-col">
-          <h3 class="footer-heading">Company</h3>
+          <h3 class="footer-heading">{t("footer.company")}</h3>
           <ul class="footer-links">
-            {company.map((item) => (
+            {t("footer.company.list").map((item) => (
               <li><a href="#" class="footer-link">{item}</a></li>
             ))}
           </ul>
@@ -99,8 +104,8 @@ const company = ["About Us", "Quality", "Contact Us"];
 
       <!-- Copyright: bottom on mobile, under logo on desktop -->
       <div class="footer-bottom">
-        <p class="footer-copy">© 2026 Ch.Paisarn. All Rights Reserved.</p>
-        <p class="footer-copy">Website created by House of Bandan</p>
+        <p class="footer-copy">{t("footer.copyright")}</p>
+        <p class="footer-copy">{t("footer.credit")}</p>
       </div>
 
     </div>

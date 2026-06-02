@@ -1,30 +1,17 @@
 ---
 import StatBgImg from "@/assets/company/protection_bg.png";
+import type { Lang } from "@/i18n/types";
+import { useTranslations } from "@/i18n/utils";
 
-const title = "Built on 50 Years of Trust";
-const stats = [
-    {
-        number: "50",
-        suffix: "",
-        title: "Years",
-        desc: "Trusted by the Royal Thai Army since 1974.",
-        wide: false,
-    },
-    {
-        number: "7",
-        suffix: "",
-        title: "Export Markets",
-        desc: "Proven performance recognised beyond Thailand's borders.",
-        wide: false,
-    },
-    {
-        number: "120,000",
-        suffix: "+",
-        title: "Units per Year",
-        desc: "Production capacity built for large-scale procurement.",
-        wide: true,
-    },
-];
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = "en" } = Astro.props;
+const t = useTranslations(lang);
+
+const title = t("stat.title");
+const stats = t("stat.items");
 ---
 
 <section

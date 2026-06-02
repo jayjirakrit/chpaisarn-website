@@ -18,196 +18,38 @@ import HelmetFastImg from "@/assets/products/helmet/helmet_fast_rif.png";
 import HelmetFastGreenImg from "@/assets/products/helmet/helmet_fast_green.png";
 import HelmetWendyImg from "@/assets/products/helmet/helmet_wendy.png";
 import HelmetAirFrameImg from "@/assets/products/helmet/helmet_air_frame.png";
+import type { Lang } from "@/i18n/types";
+import { useTranslations } from "@/i18n/utils";
 
-// Hero section data
-const pageTitle = "Ballistic Helmets";
-const pageDescription =
-  "Engineered from advanced materials to provide high-impact defense against ballistic threats and blunt trauma without sacrificing mobility. These lightweight, durable helmets are fully customizable in shape and specification to meet unique operational or environmental demands.";
+interface Props {
+  lang?: Lang;
+}
 
-// Your Options section data
-const optionsTitle = "Your Options";
-const optionsDescription = "";
+const { lang = "en" } = Astro.props;
+const t = useTranslations(lang);
 
-// Options Navigation data
-const optionsNav = [
-  { label: "Your Options", anchor: "your-options" },
-  { label: "Customization", anchor: "customization" },
-];
+const helmetImgs = [HelmetMitImg, HelmetNewFastImg, HelmetSouthImg, HelmetFastImg, HelmetFastGreenImg, HelmetWendyImg, HelmetAirFrameImg];
+const stepImgs = [CustomizeBg01Img.src, CustomizeBg02Img.src, CustomizeBg03Img.src, CustomizeBg04Img.src, CustomizeBg05Img.src];
 
-// Customization section data
-const customizeTitle = "Built to Your Specification";
-const customizeDescription =
-  "Every unit has different requirements. We work directly with agencies and procurement teams to configure the right plate solution — from material grade and plate geometry to surface finish and identification markings. Our team manages the entire process in-house, from design through to final inspection. Please specify your requirements when submitting your procurement inquiry";
-
-// Item options data
-const itemOptions = [
-  {
-    label: "Option 1",
-    title: "CVC Helmet",
-    img: HelmetMitImg,
-    imgDescription: "CVC Helmet",
-  },
-  {
-    label: "Option 2",
-    title: "Fast Helmet",
-    img: HelmetNewFastImg,
-    imgDescription: "Fast Helmet",
-  },
-  {
-    label: "Option 3",
-    title: "Fast Helmet",
-    img: HelmetSouthImg,
-    imgDescription: "Fast Helmet",
-  },
-  {
-    label: "Option 4",
-    title: "NIJ Level IV-",
-    img: HelmetFastImg,
-    imgDescription: "NIJ Level IV- Helmet",
-  },
-  {
-    label: "Option 5",
-    title: "PASGT",
-    img: HelmetFastGreenImg,
-    imgDescription: "PASGT Helmet",
-  },
-  {
-    label: "Option 6",
-    title: "Ballistic",
-    img: HelmetWendyImg,
-    imgDescription: "Ballistic Helmet",
-  },
-  {
-    label: "Option 7",
-    title: "Ballistic",
-    img: HelmetAirFrameImg,
-    imgDescription: "Ballistic Helmet",
-  },
-  // {
-  //   label: "Option 8",
-  //   title: "Ballistic",
-  //   img: Helmet08Img,
-  //   imgDescription: "Ballistic Helmet",
-  // },
-];
-
-const customizationSteps = [
-  {
-    step: "Step 1",
-    title: "Protection Level",
-    image: CustomizeBg01Img.src,
-    items: [
-      {
-        name: "Standard Protection — Up to NIJ Level IIIA",
-        desc: "The helmet complies with the NIJ 0101.08 ballistic standard, providing certified protection against handgun projectiles and fragmentation threats up to Level IIIA.<br><br> Fragmentation resistance is tested under the V50 ballistic test, with a V50 threshold of 620 m/s and 670 m/s for fragment simulation projectiles.",
-      },
-      {
-        name: "Premium Protection — NIJ Level III",
-        desc: "The helmet is tested for ballistic resistance under the V50 ballistic test to NIJ Level III — providing certified protection against rifle-caliber threats in addition to handgun projectiles and fragmentation.<br><br>This ensures the helmet is capable of stopping high-velocity projectiles and shrapnel encountered in combat and blast environments.",
-      },
-    ],
-  },
-  {
-    step: "Step 2",
-    title: "Materials",
-    image: CustomizeBg02Img.src,
-    content:
-      "Choose from wide size range from XS to XXL, with custom sizing for a tailored fit.",
-    items: [
-      {
-        name: "Aramid (Kevlar®)",
-        desc: "A proven ballistic fiber widely used in military helmet construction — offering excellent protection against ballistic threats and fragmentation, with strong heat resistance and durability. Aramid is the established standard material for helmets requiring certified NIJ and MIL-STD compliance.",
-      },
-      {
-        name: "UHMWPE",
-        desc: "Ultra-High-Molecular-Weight Polyethylene delivers the same level of certified ballistic protection at a significantly reduced weight compared to Aramid — reducing fatigue during extended operations and improving mobility. The preferred material where weight reduction is the priority.",
-      },
-      {
-        name: "Custom Materials",
-        desc: "For agencies with specific performance or operational requirements, our team works directly with procurement officers to source and configure the right material specification for your mission.",
-      },
-    ],
-  },
-  {
-    step: "Step 3",
-    title: "Shape Options",
-    image: CustomizeBg03Img.src,
-    items: [
-      {
-        name: "PASGT (Personnel Armor System for Ground Troops)",
-        desc: "Full-coverage traditional profile offering maximum ballistic protection across the head and temple areas — suited for infantry and general military applications.",
-      },
-      {
-        name: "FAST (Future Assault Shell Technology)",
-        desc: "Lightweight and modern profile with reduced ear coverage for enhanced situational awareness — preferred by special forces and tactical units requiring high mobility.",
-      },
-      {
-        name: "MICH (Modular Integrated Communications Helmet)",
-        desc: "Modular profile designed for compatibility with communication systems and tactical accessories — suited for units requiring integrated headset and electronics mounting.",
-      },
-      {
-        name: "CVC (Combat Vehicle Crewman)",
-        desc: "Low-profile design optimized for vehicle crew members — providing protection and comfort in confined spaces and armored vehicle environments.",
-      },
-      {
-        name: "Custom Shapes",
-        desc: "Custom profiles can be designed and manufactured to meet specific mission requirements or unit specifications not covered by standard profiles.",
-      },
-    ],
-  },
-  {
-    step: "Step 4",
-    title: "Colors",
-    image: CustomizeBg04Img.src,
-    items: [
-      {
-        name: "Standard Colors",
-        desc: "Available in Green, Black, Desert, and Blue as standard colorways for military, law enforcement, and security applications.",
-      },
-      {
-        name: "Custom Colors",
-        desc: "Custom colors and camouflage patterns are available on request — including unit-specific colorways and multi-terrain patterns for operational environment matching.",
-      },
-    ],
-  },
-  {
-    step: "Step 5",
-    title: "Sizing",
-    image: CustomizeBg05Img.src,
-    items: [
-      {
-        name: "Standardized Sizing",
-        desc: "CHP® helmets are available in two standard size configurations to ensure a secure and comfortable fit across a wide range of head sizes: <br><br> &nbsp;&#x2022; Size 1: S / M <br> &nbsp;&#x2022; Size 2: L / XL",
-      },
-      {
-        name: "Custom Sizing",
-        desc: "Custom sizing is available on request for specific unit requirements or non-standard fit specifications.",
-      },
-    ],
-  },
-];
-
-// Contact section data
-const ctaTitle = "Get in Touch";
-const ctaDescription =
-  "Contact us to learn more about our defense solutions or to discuss your specific operational requirements. Our team is ready to provide the expertise and custom-engineered armor solutions needed to meet your mission objectives.";
+const itemOptions = t("helmet.itemOptions").map((opt, i) => ({ ...opt, img: helmetImgs[i] }));
+const customizationSteps = t("helmet.customizationSteps").map((step, i) => ({ ...step, image: stepImgs[i] }));
 ---
 
 <!-- Introduction Section -->
 <ProductIntroSection
   companyBgImg={CompanyBgImg}
-  pageTitle={pageTitle}
-  pageDescription={pageDescription}
+  pageTitle={t("helmet.hero.title")}
+  pageDescription={t("helmet.hero.description")}
 />
 
 <!--Options Navigation -->
-<ProductOptionNav optionsNav={optionsNav} />
+<ProductOptionNav optionsNav={t("helmet.optionsNav")} />
 
 <!-- Your Item Options Section -->
 <div id="your-options">
   <ProductOpItemsSection
-    optionsTitle={optionsTitle}
-    optionsDescription={optionsDescription}
+    optionsTitle={t("helmet.options.title")}
+    optionsDescription={t("helmet.options.description")}
     itemOptions={itemOptions}
   />
 </div>
@@ -217,8 +59,8 @@ const ctaDescription =
 <!-- Customization Section -->
 <div id="customization">
   <CustomStepsSection
-    customizeTitle={customizeTitle}
-    customizeDescription={customizeDescription}
+    customizeTitle={t("helmet.customize.title")}
+    customizeDescription={t("helmet.customize.description")}
     customizationSteps={customizationSteps}
   />
 </div>
@@ -226,8 +68,9 @@ const ctaDescription =
 <!-- Contact Section -->
 <ContactSection
   bgImg={CompanyBg01Img}
-  contactTitle={ctaTitle}
-  contactDescription={ctaDescription}
+  contactTitle={t("helmet.cta.title")}
+  contactDescription={t("helmet.cta.description")}
+  lang={lang}
 />
 
 <style></style>

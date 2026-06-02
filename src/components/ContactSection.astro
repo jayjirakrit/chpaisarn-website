@@ -1,4 +1,18 @@
 ---
+import type { Lang } from "@/i18n/types";
+import { useTranslations } from "@/i18n/utils";
+
+interface Props {
+  bgImg?: { src: string };
+  contactTitle?: string;
+  contactDescription?: string;
+  bgColor?: string;
+  titleColor?: string;
+  desColor?: string;
+  link?: string;
+  lang?: Lang;
+}
+
 const {
   bgImg = { src: "" },
   contactTitle = "Discover  Ch.Paisarn",
@@ -6,7 +20,10 @@ const {
   bgColor = "primary-900",
   titleColor = "white",
   desColor = "white",
+  lang = "en",
 } = Astro.props;
+
+const t = useTranslations(lang);
 ---
 
 <section class="cta-section" style={`background-image: url(${bgImg.src});`}>
@@ -18,7 +35,7 @@ const {
       {contactDescription}
     </p>
     <a href="/contact" class="cta-button">
-      <span class="cta-button-text">Contact Us</span>
+      <span class="cta-button-text">{t("shared.contactBtn")}</span>
     </a>
   </div>
 </section>

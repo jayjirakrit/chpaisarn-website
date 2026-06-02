@@ -40,6 +40,18 @@
   --font-roboto: "Roboto", sans-serif;
 }
 
+/* ── Thai Font Override ────────────────────────────────────────────────────── */
+:root[lang="th"] {
+  --font-space: "Sarabun", "Roboto", sans-serif;
+  --font-hanken: "Sarabun", "Roboto", sans-serif;
+}
+
+:root[lang="th"] h1,
+:root[lang="th"] h2,
+:root[lang="th"] h3 {
+  line-height: 1.4;
+}
+
 /* ── Base Reset ────────────────────────────────────────────────────────────── */
 html,
 body {

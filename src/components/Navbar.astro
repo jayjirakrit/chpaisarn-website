@@ -1,5 +1,14 @@
 ---
 import LogoImg from "../assets/logo_chp.webp";
+import type { Lang } from "@/i18n/types";
+import { useTranslations, getAlternateLangUrl } from "@/i18n/utils";
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = "en" } = Astro.props;
+const t = useTranslations(lang);
 
 type Card = {
   title: string;
@@ -14,35 +23,32 @@ type MegaMenu = {
   cards: Card[];
 };
 
-const navItems = [
-  { name: "Home", link: "/", key: "home" },
-  { name: "Products", link: "/products", key: "products" },
-  { name: "About Us", link: "/company", key: "about" },
-  { name: "Contact Us", link: "/contact", key: "contact" },
-];
+const prefix = lang === "th" ? "/th" : "";
 
-const languages = [
-  { code: "en", name: "English" },
-  { code: "th", name: "ไทย" },
+const navItems = [
+  { name: t("nav.home"), link: prefix + "/", key: "home" },
+  { name: t("nav.products"), link: prefix + "/products", key: "products" },
+  { name: t("nav.about"), link: prefix + "/company", key: "about" },
+  { name: t("nav.contact"), link: prefix + "/contact", key: "contact" },
 ];
 
 const ARMOR_IMG = "/images/navbar/nav_armor.png";
-const CUSTOMIZE_IMG = "/images/navbar/nav_customize.png";
 const HELMET_IMG = "/images/navbar/nav_helmet.png";
 const PLATE_IMG = "/images/navbar/nav_plate.png";
-const OTHER_IMG = "/images/navbar/nav_other.png";
 const currentPath = Astro.url.pathname;
+const alternatePath = getAlternateLangUrl(currentPath, lang);
+const enHref = lang === "th" ? alternatePath : currentPath;
+const thHref = lang === "en" ? alternatePath : currentPath;
 
 const megaMenus: Record<string, MegaMenu> = {
   home: {
     layout: "single",
     cards: [
       {
-        title: "Homepage",
-        description:
-          "Leading the industry through innovative engineering and rigorous international standards. We specialize in custom-tailored ballistic solutions and individual equipment, ensuring uncompromising safety for those on the front lines.",
+        title: t("nav.mega.home.title"),
+        description: t("nav.mega.home.description"),
         image: "/images/navbar/home-card.png",
-        link: "/",
+        link: prefix + "/",
       },
     ],
   },
@@ -50,25 +56,22 @@ const megaMenus: Record<string, MegaMenu> = {
     layout: "products",
     cards: [
       {
-        title: "Body Armors",
-        description:
-          "Our Body Armors provide cutting-edge protection across three main categories, ensuring comprehensive safety for law enforcement, military, and security personnel. Whether you're facing bullets, knives, spikes, or a combination of both, we offer the flexibility to tailor your protection.",
+        title: t("nav.mega.armor.title"),
+        description: t("nav.mega.armor.description"),
         image: ARMOR_IMG,
-        link: "/products",
+        link: prefix + "/products",
       },
       {
-        title: "Ballistic Helmets",
-        description:
-          "Engineered from advanced materials to provide high-impact defense against ballistic threats and blunt trauma without sacrificing mobility. These lightweight, durable helmets are fully customizable in shape and specification to meet unique operational or environmental demands.",
+        title: t("nav.mega.helmet.title"),
+        description: t("nav.mega.helmet.description"),
         image: HELMET_IMG,
-        link: "/products/ballistic-helmets",
+        link: prefix + "/products/ballistic-helmets",
       },
       {
-        title: "Ballistic Plates",
-        description:
-          "Our ballistic plates provide customizable solutions for personal protection. With options ranging from Level III to Level IV, each plate is tested for performance and durability to protect against high-velocity rounds.",
+        title: t("nav.mega.plate.title"),
+        description: t("nav.mega.plate.description"),
         image: PLATE_IMG,
-        link: "/products/ballistic-plates",
+        link: prefix + "/products/ballistic-plates",
       },
     ],
   },
@@ -76,18 +79,16 @@ const megaMenus: Record<string, MegaMenu> = {
     layout: "two",
     cards: [
       {
-        title: "Our Company",
-        description:
-          "50 years of experience. 100% in-house design, manufacturing, and testing. Thailand's largest ballistic protection manufacturer.",
+        title: t("nav.mega.company.title"),
+        description: t("nav.mega.company.description"),
         image: "/images/navbar/about-company.png",
-        link: "/company",
+        link: prefix + "/company",
       },
       {
-        title: "Quality Standards",
-        description:
-          "At Ch. Paisarn, we combine rigorous international testing with advanced engineering to ensure every piece of equipment provides dependable protection. Explore our commitment to excellence through our certified processes and precision manufacturing.",
+        title: t("nav.mega.quality.title"),
+        description: t("nav.mega.quality.description"),
         image: "/images/navbar/about-quality.png",
-        link: "/",
+        link: prefix + "/",
         accent: true,
       },
     ],
@@ -96,17 +97,16 @@ const megaMenus: Record<string, MegaMenu> = {
     layout: "single",
     cards: [
       {
-        title: "Get In Touch",
-        description:
-          "Our team is here to provide expert assistance. Whether you are looking to place a bulk order or seeking tailored guidance, we are committed to delivering the support you need. Contact us today to discuss your specific requirements.",
+        title: t("nav.mega.contact.title"),
+        description: t("nav.mega.contact.description"),
         image: "/images/navbar/contact-card.png",
-        link: "/contact",
+        link: prefix + "/contact",
       },
     ],
   },
 };
 
-const isPathActive = (link: string) => currentPath === link || (link !== "/" && currentPath.startsWith(link));
+const isPathActive = (link: string) => currentPath === link || (link !== "/" && link !== "/th/" && link !== "/th" && currentPath.startsWith(link));
 
 const GLOBE_PATH =
   "M16 2C8.268 2 2 8.268 2 16s6.268 14 14 14 14-6.268 14-14S23.732 2 16 2zm9.542 8.667h-4.198c-.412-2.016-1.064-3.771-1.896-5.097a11.37 11.37 0 0 1 6.094 5.097zM16 4.04c1.147 1.19 2.084 3.157 2.631 5.627h-5.262C13.916 7.197 14.853 5.23 16 4.04zM4.318 18.667A11.618 11.618 0 0 1 4 16c0-.9.107-1.774.318-2.667h4.814A23.94 23.94 0 0 0 9 16c0 .9.053 1.787.132 2.667H4.318zm.14 2h4.198c.412 2.016 1.064 3.771 1.896 5.097a11.37 11.37 0 0 1-6.094-5.097zm4.198-10.667H4.458a11.37 11.37 0 0 1 6.094-5.097c-.832 1.326-1.484 3.081-1.896 5.097zM16 27.96c-1.147-1.19-2.084-3.157-2.631-5.627h5.262C18.084 24.803 17.147 26.77 16 27.96zm3.208-7.627h-6.416A21.764 21.764 0 0 1 12.667 16c0-.921.047-1.81.125-2.667h6.416c.078.857.125 1.746.125 2.667s-.047 1.81-.125 2.667h.001zm.24 7.764c.832-1.326 1.484-3.081 1.896-5.097h4.198a11.37 11.37 0 0 1-6.094 5.097zm2.42-7.097A25.894 25.894 0 0 0 22 16a25.894 25.894 0 0 0-.132-2.667h4.814C26.893 14.226 27 15.1 27 16s-.107 1.774-.318 2.667h-4.814z";
@@ -137,13 +137,12 @@ const GLOBE_PATH =
           <div class="lang-group" role="group" aria-label="Language selection">
             <svg class="lang-icon" width="32" height="32" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d={GLOBE_PATH}></path></svg>
             <div class="lang-list">
-              {
-                languages.map((lang, i) => (
-                  <a href="#" class:list={["lang-link", { "is-active": i === 0 }]}>
-                    {lang.name}
-                  </a>
-                ))
-              }
+              <a href={enHref} class:list={["lang-link", { "is-active": lang === "en" }]}>
+                {t("nav.langEn")}
+              </a>
+              <a href={thHref} class:list={["lang-link", { "is-active": lang === "th" }]}>
+                {t("nav.langTh")}
+              </a>
             </div>
           </div>
         </div>
@@ -198,13 +197,12 @@ const GLOBE_PATH =
         ))
       }
       <div class="mobile-language">
-        {
-          languages.map((lang, i) => (
-            <a href="#" class:list={["mobile-lang-link", { "is-active": i === 0 }]}>
-              {lang.name}
-            </a>
-          ))
-        }
+        <a href={enHref} class:list={["mobile-lang-link", { "is-active": lang === "en" }]}>
+          {t("nav.langEn")}
+        </a>
+        <a href={thHref} class:list={["mobile-lang-link", { "is-active": lang === "th" }]}>
+          {t("nav.langTh")}
+        </a>
       </div>
     </div>
   </div>
@@ -226,11 +224,12 @@ const GLOBE_PATH =
                 <path d={GLOBE_PATH} />
               </svg>
               <div class="lang-list">
-                {languages.map((lang, i) => (
-                  <a href="#" class:list={["lang-link", { "is-active": i === 0 }]}>
-                    {lang.name}
-                  </a>
-                ))}
+                <a href={enHref} class:list={["lang-link", { "is-active": lang === "en" }]}>
+                  {t("nav.langEn")}
+                </a>
+                <a href={thHref} class:list={["lang-link", { "is-active": lang === "th" }]}>
+                  {t("nav.langTh")}
+                </a>
               </div>
             </div>
           </div>
@@ -293,11 +292,7 @@ const GLOBE_PATH =
     }
 
     .navbar-brand-name {
-      display: block;
-      font-family: "Space Grotesk", sans-serif;
-      font-weight: 700;
-      font-size: 1.125rem;
-      color: var(--primary-900);
+      display: none;
     }
 
     @media only screen and (min-width: 768px) {

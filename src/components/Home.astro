@@ -1,6 +1,5 @@
 ---
 import HeroBgImg from "@/assets/company/hero_bg.png";
-import HeroBgMobileImg from "@/assets/company/hero_bg_mobile.png";
 import ProductBgImg from "@/assets/company/factory_01_bg.svg";
 import CompanyBgImg from "@/assets/company/company_bg.png";
 import CompanyBg01MobileImg from "@/assets/company/company_bg_01_mobile.png";
@@ -14,113 +13,39 @@ import ContactSection from "@/components/ContactSection.astro";
 import ArmorImg from "@/assets/products/body_armor_1.png";
 import CvcHelmetImg from "@/assets/products/helmet/helmet_fast_green.png";
 import PlateIIIImg from "@/assets/products/plate/plate_III.png";
+import type { Lang } from "@/i18n/types";
+import { useTranslations } from "@/i18n/utils";
 
-// Hero section data
-const heroQuote = "CHP® · High Quality Military Equipment";
-const heroTitle1 = "Part of Every Mission.";
-const heroTitle2 = "Proud of Every Success.";
+interface Props {
+  lang?: Lang;
+}
 
-// Products section data
-const productsTitle = "Our Products";
-const productsDescription =
-  "From personal protection to specialized security solutions, every CHP® product is designed, manufactured, and tested in-house purpose-built to meet the specific demands of military, law enforcement, and security operations.";
-const cards = [
-  {
-    label: "Body Armors",
-    description:
-      "Our Body Armors provide cutting-edge protection across three main categories, ensuring comprehensive safety for law enforcement, military, and security personnel. Whether you're facing bullets, knives, spikes, or a combination of both, we offer the flexibility to tailor your protection.",
-    buttonText: "Explore Body Armors",
-    bgColor: "bg-[#14375f]",
-    bgImage: CompanyBgImg.src,
-    bgImageMobile: CompanyBg01MobileImg.src,
-    productImage: ArmorImg.src,
-    link: "/products",
-  },
-  {
-    label: "Ballistic Helmets",
-    description:
-      "Engineered from advanced materials to provide high-impact defense against ballistic threats and blunt trauma without sacrificing mobility. These lightweight, durable helmets are fully customizable in shape and specification to meet unique operational or environmental demands.",
-    buttonText: "Explore Ballistic Helmets",
-    bgColor: "bg-[#2465ae]",
-    bgImage: CompanyBg04Img.src,
-    bgImageMobile: CompanyBg02MobileImg.src,
-    productImage: CvcHelmetImg.src,
-    link: "/products/ballistic-helmets",
-  },
-  {
-    label: "Armor Plates",
-    description:
-      "Our armor Plates provide customizable solutions for personal protection. With options ranging from Level III to Level IV, each plate is tested for performance and durability to protect against high-velocity rounds.",
-    buttonText: "Explore Armor Plates",
-    bgColor: "bg-[#90b9e7]",
-    bgImage: CompanyBg03Img.src,
-    bgImageMobile: CompanyBg03MobileImg.src,
-    productImage: PlateIIIImg.src,
-    link: "/products/ballistic-plates",
-  },
+const { lang = "en" } = Astro.props;
+const t = useTranslations(lang);
 
-  {
-    label: "Other Solutions",
-    description:
-      "We offer a wide range of ballistic protection products beyond traditional body armor and armored vehicles. From custom-sized solutions to specialized coatings, we provide innovative protection for various needs.<br/><br/> Our additional products include ballistic shields, bomb blankets, backpacks, briefcases, wall panels, and more each designed to offer reliable protection in diverse environments.",
-    buttonText: "Explore Other Solution",
-    bgColor: "bg-[#194577]",
-    bgImage: CompanyBgImg.src,
-    bgImageMobile: CompanyBg01MobileImg.src,
-  },
-];
+// Image arrays matched to translation card order
+const bgImages = [CompanyBgImg.src, CompanyBg04Img.src, CompanyBg03Img.src, CompanyBgImg.src];
+const bgImagesMobile = [CompanyBg01MobileImg.src, CompanyBg02MobileImg.src, CompanyBg03MobileImg.src, CompanyBg01MobileImg.src];
+const productImages = [ArmorImg.src, CvcHelmetImg.src, PlateIIIImg.src, undefined];
 
-// Team section data
-const teamTitle = "Discover Ch.Paisarn";
-const teamDescription1 =
-  "Our absolute commitment to safety drives every design decision we make ensuring every piece of equipment delivers uncompromised reliability, durability, and protection when it matters most.";
-const teamDescription2 =
-  "As Thailand's largest manufacturer of ballistic protection equipment, we engineering high-performance gear built to withstand tropical environments and the toughest operational conditions in the field.";
+const cards = t("home.cards").map((card, i) => ({
+  ...card,
+  bgImage: bgImages[i],
+  bgImageMobile: bgImagesMobile[i],
+  productImage: productImages[i],
+}));
 
-// Trust partner section data
-const partnersTitle = "Trusted by our partners";
-const partnersDescription =
-  "We are proud to partner with the organizations and personnel who protect our nation's frontline. Every piece of gear we manufacture has been rigorously tested and proven through real-world deployment in active operational fields and critical border zones. These strategic partnerships stand as a testament to our unyielding commitment to life-saving reliability under the toughest conditions.";
 const partners = [
-  {
-    name: "Royal Thai Armed Forces",
-    img: "/images/partners/royal-thai-armed-forces.png",
-  },
-  {
-    name: "The Royal Thai Police (RTP)",
-    img: "/images/partners/royal-thai-police.png",
-  },
-  {
-    name: "Department of Provincial Administration",
-    img: "/images/partners/provincial-administration.png",
-  },
+  { name: "Royal Thai Armed Forces", img: "/images/partners/royal-thai-armed-forces.png" },
+  { name: "The Royal Thai Police (RTP)", img: "/images/partners/royal-thai-police.png" },
+  { name: "Department of Provincial Administration", img: "/images/partners/provincial-administration.png" },
   { name: "United Nation (UN)", img: "/images/partners/united-nations.png" },
-  {
-    name: "Quartermaster Department",
-    img: "/images/partners/rtaf-1.png",
-  },
-  {
-    name: "Royal Thai Army Medical Department",
-    img: "/images/partners/rta-medical-1.png",
-  },
-  {
-    name: "The Royal Thai Air Force (RTAF)",
-    img: "/images/partners/rtaf-2.png",
-  },
-  {
-    name: "Territorial Defense Command (TDC)",
-    img: "/images/partners/territorial-defense.png",
-  },
-  {
-    name: "Royal Thai Army Medical Department",
-    img: "/images/partners/rta-medical-2.png",
-  },
+  { name: "Quartermaster Department", img: "/images/partners/rtaf-1.png" },
+  { name: "Royal Thai Army Medical Department", img: "/images/partners/rta-medical-1.png" },
+  { name: "The Royal Thai Air Force (RTAF)", img: "/images/partners/rtaf-2.png" },
+  { name: "Territorial Defense Command (TDC)", img: "/images/partners/territorial-defense.png" },
+  { name: "Royal Thai Army Medical Department", img: "/images/partners/rta-medical-2.png" },
 ];
-
-// Contact section data
-const contactTitle = "Get in Touch";
-const contactDescription =
-  "Contact us to learn more about our defense solutions or to discuss your specific operational requirements. Our team is ready to provide the expertise and custom-engineered armor solutions needed to meet your mission objectives.";
 ---
 
 <!-- Hero Section -->
@@ -129,12 +54,12 @@ const contactDescription =
   style={`--hero-bg: url(${HeroBgImg.src}); --hero-bg-mobile: url(${HeroBgImg.src}); background-color: var(--primary-900);`}
 >
   <div class="hero-content">
-    <h4 class="hero-title hero-quote">{heroQuote}</h4>
-    <h1 class="hero-title">{heroTitle1}</h1>
-    <h1 class="hero-title">{heroTitle2}</h1>
+    <h4 class="hero-title hero-quote">{t("home.hero.quote")}</h4>
+    <h1 class="hero-title">{t("home.hero.title1")}</h1>
+    <h1 class="hero-title">{t("home.hero.title2")}</h1>
     <div class="cta-group">
-      <a class="btn-primary" href="#product">Explore our products</a>
-      <a class="btn-secondary" href="#team">Learn more</a>
+      <a class="btn-primary" href="#product">{t("home.hero.ctaExplore")}</a>
+      <a class="btn-secondary" href="#team">{t("home.hero.ctaLearn")}</a>
     </div>
   </div>
 </section>
@@ -150,14 +75,14 @@ const contactDescription =
       class="mb-12 flex flex-col md:flex-row md:items-end md:justify-between"
     >
       <div>
-        <h2 class="text-(--primary-900) mb-4">{productsTitle}</h2>
-        <p class="body-text mb-4">{productsDescription}</p>
+        <h2 class="text-(--primary-900) mb-4">{t("home.products.title")}</h2>
+        <p class="body-text mb-4">{t("home.products.description")}</p>
         <div class="flex flex-col lg:flex-row gap-2 items-end justify-end">
           <button class="btn-primary" style="font-size: 1.125rem;">
-            View Products
+            {t("home.products.viewBtn")}
           </button>
           <button class="customize-btn">
-            Customize your product
+            {t("home.products.customizeBtn")}
             <span>→</span>
           </button>
         </div>
@@ -193,10 +118,10 @@ const contactDescription =
 
       <!-- Content -->
       <div class="team-content text-white">
-        <h2 class="mb-6 whitespace-nowrap">{teamTitle}</h2>
-        <p class="body-text-sm mb-4">{teamDescription1}</p>
-        <p class="body-text-sm mb-4 lg:mb-8">{teamDescription2}</p>
-        <a class="btn-primary" href="/company"> Learn Our Story</a>
+        <h2 class="mb-6 whitespace-nowrap">{t("home.team.title")}</h2>
+        <p class="body-text-sm mb-4">{t("home.team.description1")}</p>
+        <p class="body-text-sm mb-4 lg:mb-8">{t("home.team.description2")}</p>
+        <a class="btn-primary" href={lang === "th" ? "/th/company" : "/company"}>{t("home.team.ctaLearn")}</a>
       </div>
     </div>
   </div>
@@ -205,9 +130,9 @@ const contactDescription =
 <!-- Trust Partner Section -->
 <section class="partners-section">
   <div class="partners-head">
-    <h2 class="partners-title reveal">{partnersTitle}</h2>
+    <h2 class="partners-title reveal">{t("home.partners.title")}</h2>
     <p class="partners-description reveal" style="transition-delay: 0.1s">
-      {partnersDescription}
+      {t("home.partners.description")}
     </p>
   </div>
 
@@ -236,11 +161,12 @@ const contactDescription =
 <!-- Contact Section -->
 <ContactSection
   bgImg={ContactBgImg}
-  contactTitle={contactTitle}
-  contactDescription={contactDescription}
+  contactTitle={t("home.contact.title")}
+  contactDescription={t("home.contact.description")}
   bgColor="primary-50"
   titleColor="primary-700"
   desColor="black"
+  lang={lang}
 />
 
 <script>

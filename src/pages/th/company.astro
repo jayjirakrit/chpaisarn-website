@@ -1,0 +1,13 @@
+---
+import AboutUs from "@/components/Company.astro";
+import Layout from "@/layouts/Layout.astro";
+import "@/styles/global.css";
+
+const title = "เกี่ยวกับ ช.ไพศาล — ผู้ผลิตเกราะป้องกันชั้นนำในประเทศไทย";
+const description = "เรียนรู้เกี่ยวกับ ช.ไพศาล บริษัทผลิตเครื่องป้องกันแบลลิสติกของไทย ตั้งอยู่ที่นนทบุรี มีโรงงานที่จังหวัดชัยนาท ได้รับความไว้วางใจจากทหาร ตำรวจ และสหประชาชาติ";
+const keywords = "เกี่ยวกับ ช.ไพศาล, ประวัติบริษัทเกราะไทย, ผู้จัดหาสินค้าให้กองทัพบกไทย, บริษัทป้องกันประเทศไทย";
+---
+
+<Layout title={title} description={description} keywords={keywords} lang="th">
+  <AboutUs lang="th" />
+</Layout>

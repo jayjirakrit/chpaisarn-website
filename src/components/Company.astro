@@ -6,48 +6,26 @@ import AboutUsBgImg from "@/assets/company/aboutus_bg.png";
 import ProductIntroSection from "@/components/ProductIntroSection.astro";
 import StatSection from "@/components/StatSection.astro";
 import ContactSection from "@/components/ContactSection.astro";
+import type { Lang } from "@/i18n/types";
+import { useTranslations } from "@/i18n/utils";
 
-// Intro data
-const introTitle = "Our Company";
-const introDesc =
-    "Founded in 1974, Ch.Paisarn Co., Ltd. is Thailand's largest manufacturer of ballistic protection equipment built on over 50 years of dedication to protecting Thailand's armed forces and security agencies. A silent, loyal companion following every soldier into every mission since 1974.";
+interface Props {
+  lang?: Lang;
+}
 
-// Legacy data
-const legTitle = "The Ch. Paisarn Legacy";
-const legDesc =
-    "Over 50 years of manufacturing heritage — combining proven expertise with advanced engineering to deliver ballistic protection that Thailand's forces can depend on.";
-const legacies = [
-    {
-        img: "",
-        title: "Our Legacy",
-        decs: "Established in 1974, Ch.Paisarn Co., Ltd. was founded by Thais, for Thai soldiers. For over 50 years we have dedicated ourselves to a single purpose — designing, manufacturing, and delivering ballistic protection equipment that Thailand's armed forces and security agencies can trust in active operations.<br><br>What began as a commitment to equip Thai soldiers with the best possible protection has grown into Thailand's largest ballistic protection manufacturing operation — with a production facility in Chainat Province capable of producing over 120,000 units per year.<br><br>**Made in Thailand. Crafted for Thailand. Trusted by Thailand.**",
-    },
-    {
-        img: "",
-        title: "Engineered for Protection",
-        decs: "Our products have been supplied to the Royal Thai Army, Thai law enforcement agencies, and security forces across the region — deployed in border security operations, jungle terrain, urban environments, and international peacekeeping missions.<br><br>Every contract we fulfill is a continuation of a commitment that began in 1974 and has never wavered.<br><br>**Part of Every Mission. Proud of Every Success.**",
-    },
-];
-
-// Video data
-const aboutUsTitle = "More About Us";
-
-// Contact section data
-const ctaTitle = "Explore Our Solutions";
-const ctaDescription =
-    "We offer a wide range of ballistic protection products designed to meet the demands of military, law enforcement, security, and civilian applications. Whether you’re seeking personal protection or armored vehicle solutions, our products provide the ultimate defense against ballistic threats.";
-const link = "";
+const { lang = "en" } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <!-- Intro Section -->
 <ProductIntroSection
     companyBgImg={CompanyBgImg}
-    pageTitle={introTitle}
-    pageDescription={introDesc}
+    pageTitle={t("company.intro.title")}
+    pageDescription={t("company.intro.description")}
 />
 
 <!-- Stat Section -->
-<StatSection />
+<StatSection lang={lang} />
 
 <!-- Legacy Section -->
 <section id="legacy" class="legacy-section">
@@ -64,7 +42,7 @@ const link = "";
     class="aboutus-section"
     style={`background-image: url(${AboutUsBgImg.src});`}
 >
-    <h2 class="aboutus-title">{aboutUsTitle}</h2>
+    <h2 class="aboutus-title">{t("company.aboutUsTitle")}</h2>
     <div class="aboutus-video aboutus-video-placeholder" id="aboutus-video">
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -82,9 +60,9 @@ const link = "";
 <!-- Contact Section -->
 <ContactSection
     bgImg={CtaBgImg}
-    contactTitle={ctaTitle}
-    contactDescription={ctaDescription}
-    link={link}
+    contactTitle={t("company.cta.title")}
+    contactDescription={t("company.cta.description")}
+    lang={lang}
 />
 
 <script>
