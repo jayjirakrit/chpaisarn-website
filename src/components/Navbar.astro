@@ -17,7 +17,7 @@ type MegaMenu = {
 const navItems = [
   { name: "Home", link: "/", key: "home" },
   { name: "Products", link: "/products", key: "products" },
-  { name: "About Us", link: "/#about", key: "about" },
+  { name: "About Us", link: "/company", key: "about" },
   { name: "Contact Us", link: "/contact", key: "contact" },
 ];
 
@@ -118,6 +118,7 @@ const GLOBE_PATH =
       <div class="navbar-inner">
         <a href="/" class="navbar-logo">
           <img src={LogoImg.src} alt="Ch.Paisarn Logo" />
+          <span class="navbar-brand-name">Ch.Paisarn</span>
         </a>
 
         <div class="navbar-desktop">
@@ -280,11 +281,29 @@ const GLOBE_PATH =
     /* ── Logo ───────────────────────────────────────────────────────────────────── */
     .navbar-logo {
       flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+      text-decoration: none;
     }
 
     .navbar-logo img {
       height: 4.4375rem;
       width: auto;
+    }
+
+    .navbar-brand-name {
+      display: block;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      font-size: 1.125rem;
+      color: var(--primary-900);
+    }
+
+    @media only screen and (min-width: 768px) {
+      .navbar-brand-name {
+        display: none;
+      }
     }
 
     /* ── Desktop Nav Links ──────────────────────────────────────────────────────── */

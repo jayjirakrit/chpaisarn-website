@@ -16,6 +16,7 @@ import CvcHelmetImg from "@/assets/products/helmet/helmet_fast_green.png";
 import PlateIIIImg from "@/assets/products/plate/plate_III.png";
 
 // Hero section data
+const heroQuote = "CHP® · High Quality Military Equipment";
 const heroTitle1 = "Part of Every Mission.";
 const heroTitle2 = "Proud of Every Success.";
 
@@ -33,7 +34,7 @@ const cards = [
     bgImage: CompanyBgImg.src,
     bgImageMobile: CompanyBg01MobileImg.src,
     productImage: ArmorImg.src,
-    link: "/products"
+    link: "/products",
   },
   {
     label: "Ballistic Helmets",
@@ -44,7 +45,7 @@ const cards = [
     bgImage: CompanyBg04Img.src,
     bgImageMobile: CompanyBg02MobileImg.src,
     productImage: CvcHelmetImg.src,
-    link: "/products/ballistic-helmets"
+    link: "/products/ballistic-helmets",
   },
   {
     label: "Armor Plates",
@@ -55,7 +56,7 @@ const cards = [
     bgImage: CompanyBg03Img.src,
     bgImageMobile: CompanyBg03MobileImg.src,
     productImage: PlateIIIImg.src,
-    link: "/products/ballistic-plates"
+    link: "/products/ballistic-plates",
   },
 
   {
@@ -120,25 +121,34 @@ const partners = [
 const contactTitle = "Get in Touch";
 const contactDescription =
   "Contact us to learn more about our defense solutions or to discuss your specific operational requirements. Our team is ready to provide the expertise and custom-engineered armor solutions needed to meet your mission objectives.";
-
 ---
 
 <!-- Hero Section -->
-<section class="hero-section" style={`--hero-bg: url(${HeroBgImg.src}); --hero-bg-mobile: url(${HeroBgImg.src}); background-color: var(--primary-900);`}>
+<section
+  class="hero-section"
+  style={`--hero-bg: url(${HeroBgImg.src}); --hero-bg-mobile: url(${HeroBgImg.src}); background-color: var(--primary-900);`}
+>
   <div class="hero-content">
+    <h4 class="hero-title hero-quote">{heroQuote}</h4>
     <h1 class="hero-title">{heroTitle1}</h1>
     <h1 class="hero-title">{heroTitle2}</h1>
     <div class="cta-group">
-      <div class="btn-primary">Explore our products</div>
-      <div class="btn-secondary">Learn more</div>
+      <a class="btn-primary" href="#product">Explore our products</a>
+      <a class="btn-secondary" href="#team">Learn more</a>
     </div>
   </div>
 </section>
 
 <!-- Our Products Section -->
-<section class="product-section bg-gray-50" style={`background-image: url(${ProductBgImg.src});`}>
+<section
+  id="product"
+  class="product-section bg-gray-50"
+  style={`background-image: url(${ProductBgImg.src});`}
+>
   <div class="product-container">
-    <div class="mb-12 flex flex-col md:flex-row md:items-end md:justify-between">
+    <div
+      class="mb-12 flex flex-col md:flex-row md:items-end md:justify-between"
+    >
       <div>
         <h2 class="text-(--primary-900) mb-4">{productsTitle}</h2>
         <p class="body-text mb-4">{productsDescription}</p>
@@ -160,14 +170,23 @@ const contactDescription =
 </section>
 
 <!-- Team Section -->
-<section class="team-section">
+<section id="team" class="team-section">
   <div class="team-container">
     <div class="grid md:grid-cols-2 gap-12 items-center">
       <div class="space-y-4">
-        <div class="team-video team-video-placeholder" id="team-video-placeholder">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 48" width="68" height="48" aria-hidden="true">
-            <rect width="68" height="48" rx="10" fill="#ff0000"/>
-            <polygon points="27,14 27,34 47,24" fill="white"/>
+        <div
+          class="team-video team-video-placeholder"
+          id="team-video-placeholder"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 68 48"
+            width="68"
+            height="48"
+            aria-hidden="true"
+          >
+            <rect width="68" height="48" rx="10" fill="#ff0000"></rect>
+            <polygon points="27,14 27,34 47,24" fill="white"></polygon>
           </svg>
         </div>
       </div>
@@ -177,9 +196,7 @@ const contactDescription =
         <h2 class="mb-6 whitespace-nowrap">{teamTitle}</h2>
         <p class="body-text-sm mb-4">{teamDescription1}</p>
         <p class="body-text-sm mb-4 lg:mb-8">{teamDescription2}</p>
-        <button class="btn-primary">
-          Learn Our Story
-        </button>
+        <a class="btn-primary" href="/company"> Learn Our Story</a>
       </div>
     </div>
   </div>
@@ -189,15 +206,25 @@ const contactDescription =
 <section class="partners-section">
   <div class="partners-head">
     <h2 class="partners-title reveal">{partnersTitle}</h2>
-    <p class="partners-description reveal" style="transition-delay: 0.1s">{partnersDescription}</p>
+    <p class="partners-description reveal" style="transition-delay: 0.1s">
+      {partnersDescription}
+    </p>
   </div>
 
   <div class="partners-grid">
     {
       partners.map((partner, index) => (
-        <div class="partner-card reveal" style={`transition-delay: ${index * 80}ms`}>
+        <div
+          class="partner-card reveal"
+          style={`transition-delay: ${index * 80}ms`}
+        >
           <div class="partner-logo">
-            <img src={partner.img} alt={partner.name} loading="lazy" decoding="async" />
+            <img
+              src={partner.img}
+              alt={partner.name}
+              loading="lazy"
+              decoding="async"
+            />
           </div>
           <span class="partner-name body-text-sm">{partner.name}</span>
         </div>
@@ -215,6 +242,34 @@ const contactDescription =
   titleColor="primary-700"
   desColor="black"
 />
+
+<script>
+  import $ from "jquery";
+
+  $("#team-video-placeholder").on("click", function () {
+    const $placeholder = $(this);
+    const width = $placeholder.outerWidth();
+    const height = $placeholder.outerHeight();
+    const borderRadius = $placeholder.css("border-radius");
+    $("<iframe>")
+      .attr({
+        src: "https://www.youtube.com/embed/hOm-Hv6FT1I?si=fAvULb6s6OsnHqA2&autoplay=1",
+        title: "YouTube video player",
+        allow:
+          "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
+        referrerpolicy: "strict-origin-when-cross-origin",
+        allowfullscreen: "",
+      })
+      .css({
+        width: width + "px",
+        height: height + "px",
+        borderRadius: borderRadius,
+        display: "block",
+        flexShrink: "0",
+      })
+      .replaceAll($placeholder);
+  });
+</script>
 
 <style>
   @keyframes fadeUp {
@@ -245,7 +300,6 @@ const contactDescription =
     z-index: 10;
     max-width: 1000px;
     font-family: var(--font-space);
-    font-weight: 700;
   }
 
   .hero-title {
@@ -253,11 +307,21 @@ const contactDescription =
     margin-bottom: 2.5rem;
   }
 
+  .hero-quote {
+    display: inline-block;
+    padding-bottom: 0.75rem;
+    border-bottom: 3px solid var(--accent);
+  }
+
   .hero-title:nth-child(1) {
     animation: fadeUp 0.7s ease 0.1s both;
   }
 
   .hero-title:nth-child(2) {
+    animation: fadeUp 0.7s ease 0.2s both;
+  }
+
+  .hero-title:nth-child(3) {
     animation: fadeUp 0.7s ease 0.3s both;
   }
 
@@ -349,7 +413,7 @@ const contactDescription =
     max-width: 68.125rem;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
   }
 
   .partners-title {
@@ -397,7 +461,9 @@ const contactDescription =
     width: 8rem;
     height: 8rem;
     object-fit: contain;
-    transition: transform 0.25s ease, filter 0.25s ease;
+    transition:
+      transform 0.25s ease,
+      filter 0.25s ease;
     filter: grayscale(30%);
   }
 
@@ -467,30 +533,3 @@ const contactDescription =
     }
   }
 </style>
-
-<script>
-  import $ from "jquery";
-
-  $("#team-video-placeholder").on("click", function () {
-    const $placeholder = $(this);
-    const width = $placeholder.outerWidth();
-    const height = $placeholder.outerHeight();
-    const borderRadius = $placeholder.css("border-radius");
-    $("<iframe>")
-      .attr({
-        src: "https://www.youtube.com/embed/hOm-Hv6FT1I?si=fAvULb6s6OsnHqA2&autoplay=1",
-        title: "YouTube video player",
-        allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
-        referrerpolicy: "strict-origin-when-cross-origin",
-        allowfullscreen: "",
-      })
-      .css({
-        width: width + "px",
-        height: height + "px",
-        borderRadius: borderRadius,
-        display: "block",
-        flexShrink: "0",
-      })
-      .replaceAll($placeholder);
-  });
-</script>

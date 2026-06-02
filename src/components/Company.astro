@@ -1,11 +1,11 @@
 ---
 import CompanyBgImg from "@/assets/company/intro_bg.png";
 import CtaBgImg from "@/assets/company/cta_bg.png";
+import AboutUsBgImg from "@/assets/company/aboutus_bg.png";
 
 import ProductIntroSection from "@/components/ProductIntroSection.astro";
 import StatSection from "@/components/StatSection.astro";
 import ContactSection from "@/components/ContactSection.astro";
-
 
 // Intro data
 const introTitle = "Our Company";
@@ -13,21 +13,30 @@ const introDesc =
     "Founded in 1974, Ch.Paisarn Co., Ltd. is Thailand's largest manufacturer of ballistic protection equipment built on over 50 years of dedication to protecting Thailand's armed forces and security agencies. A silent, loyal companion following every soldier into every mission since 1974.";
 
 // Legacy data
-const legTitle = "";
-const legDesc = "";
+const legTitle = "The Ch. Paisarn Legacy";
+const legDesc =
+    "Over 50 years of manufacturing heritage — combining proven expertise with advanced engineering to deliver ballistic protection that Thailand's forces can depend on.";
 const legacies = [
     {
         img: "",
-        title: "",
-        decs: "",
+        title: "Our Legacy",
+        decs: "Established in 1974, Ch.Paisarn Co., Ltd. was founded by Thais, for Thai soldiers. For over 50 years we have dedicated ourselves to a single purpose — designing, manufacturing, and delivering ballistic protection equipment that Thailand's armed forces and security agencies can trust in active operations.<br><br>What began as a commitment to equip Thai soldiers with the best possible protection has grown into Thailand's largest ballistic protection manufacturing operation — with a production facility in Chainat Province capable of producing over 120,000 units per year.<br><br>**Made in Thailand. Crafted for Thailand. Trusted by Thailand.**",
+    },
+    {
+        img: "",
+        title: "Engineered for Protection",
+        decs: "Our products have been supplied to the Royal Thai Army, Thai law enforcement agencies, and security forces across the region — deployed in border security operations, jungle terrain, urban environments, and international peacekeeping missions.<br><br>Every contract we fulfill is a continuation of a commitment that began in 1974 and has never wavered.<br><br>**Part of Every Mission. Proud of Every Success.**",
     },
 ];
 
-// Contact section data
-const ctaTitle = "Get in Touch";
-const ctaDescription =
-  "Contact us to learn more about our defense solutions or to discuss your specific operational requirements. Our team is ready to provide the expertise and custom-engineered armor solutions needed to meet your mission objectives.";
+// Video data
+const aboutUsTitle = "More About Us";
 
+// Contact section data
+const ctaTitle = "Explore Our Solutions";
+const ctaDescription =
+    "We offer a wide range of ballistic protection products designed to meet the demands of military, law enforcement, security, and civilian applications. Whether you’re seeking personal protection or armored vehicle solutions, our products provide the ultimate defense against ballistic threats.";
+const link = "";
 ---
 
 <!-- Intro Section -->
@@ -50,11 +59,133 @@ const ctaDescription =
     <div class="legacy-content"></div>
 </section>
 
+<section
+    id="aboutus"
+    class="aboutus-section"
+    style={`background-image: url(${AboutUsBgImg.src});`}
+>
+    <h2 class="aboutus-title">{aboutUsTitle}</h2>
+    <div class="aboutus-video aboutus-video-placeholder" id="aboutus-video">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 68 48"
+            width="68"
+            height="48"
+            aria-hidden="true"
+        >
+            <rect width="68" height="48" rx="10" fill="#ff0000"></rect>
+            <polygon points="27,14 27,34 47,24" fill="white"></polygon>
+        </svg>
+    </div>
+</section>
+
 <!-- Contact Section -->
 <ContactSection
-  bgImg={CtaBgImg}
-  contactTitle={ctaTitle}
-  contactDescription={ctaDescription}
+    bgImg={CtaBgImg}
+    contactTitle={ctaTitle}
+    contactDescription={ctaDescription}
+    link={link}
 />
 
-<style></style>
+<script>
+    import $ from "jquery";
+
+    $("#aboutus-video").on("click", function () {
+        const $placeholder = $(this);
+        const width = $placeholder.outerWidth();
+        const height = $placeholder.outerHeight();
+        const borderRadius = $placeholder.css("border-radius");
+        $("<iframe>")
+            .attr({
+                src: "https://www.youtube.com/embed/FNiamannzMQ?si=D2Ef_kx26dmmBXeo",
+                title: "YouTube video player",
+                allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
+                referrerpolicy: "strict-origin-when-cross-origin",
+                allowfullscreen: "",
+            })
+            .css({
+                width: width + "px",
+                height: height + "px",
+                borderRadius: borderRadius,
+                display: "block",
+                flexShrink: "0",
+            })
+            .replaceAll($placeholder);
+    });
+</script>
+
+<style>
+    .aboutus-section {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 3.5rem 1.25rem;
+        gap: 3rem;
+    }
+
+    .aboutus-title {
+        text-align: left;
+        color: white;
+    }
+
+    .aboutus-video {
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 1rem;
+        height: 12.5rem;
+        width: 100%;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    @media only screen and (min-width: 768px) {
+        .aboutus-section {
+            align-items: center;
+            padding: 4.5rem;
+            gap: 3.5rem;
+        }
+
+        .aboutus-title {
+            width: 100%;
+        }
+
+        .aboutus-video {
+            height: 26.75rem;
+            width: calc(100% - 2.5rem);
+        }
+        .aboutus-video svg {
+            width: 140px;
+            height: 80px;
+        }
+    }
+
+    @media only screen and (min-width: 1024px) {
+        .aboutus-section {
+            padding: 6.25rem 14rem;
+            gap: 4rem;
+        }
+
+        .aboutus-video {
+            height: 38.25rem;
+            width: 100%;
+        }
+        .aboutus-video svg {
+            width: 150px;
+            height: 100px;
+        }
+    }
+</style>
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://ch-paisarn.com/" },
+    { "@type": "ListItem", position: 2, name: "About Us", item: "https://ch-paisarn.com/company" },
+  ],
+})} />

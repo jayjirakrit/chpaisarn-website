@@ -112,6 +112,52 @@ const ctaDescription =
   desColor="black"
 />
 
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  if (form) {
+    const submitBtn = form.querySelector<HTMLButtonElement>('[type="submit"]');
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      let valid = true;
+
+      form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("[required]").forEach((input) => {
+        const error = document.getElementById(input.id + "-error");
+        if (!input.validity.valid) {
+          valid = false;
+          if (error) error.textContent = input.validationMessage;
+          input.setAttribute("aria-invalid", "true");
+        } else {
+          if (error) error.textContent = "";
+          input.removeAttribute("aria-invalid");
+        }
+      });
+
+      if (!valid || !submitBtn) return;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending…";
+
+      // Replace the timeout below with an actual fetch() when a backend is wired up
+      await new Promise((r) => setTimeout(r, 1000));
+
+      submitBtn.textContent = "Sent! We'll be in touch.";
+      submitBtn.classList.add("btn-sent");
+    });
+
+    // Clear per-field error on input
+    form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("input, textarea").forEach((input) => {
+      input.addEventListener("input", () => {
+        const error = document.getElementById(input.id + "-error");
+        if (input.validity.valid) {
+          if (error) error.textContent = "";
+          input.removeAttribute("aria-invalid");
+        }
+      });
+    });
+  }
+</script>
+
 <style>
   .form-section {
     padding: 3.125rem 1.25rem;
@@ -289,48 +335,11 @@ const ctaDescription =
   }
 </style>
 
-<script>
-  const form = document.getElementById("contact-form") as HTMLFormElement | null;
-  if (form) {
-    const submitBtn = form.querySelector<HTMLButtonElement>('[type="submit"]');
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      let valid = true;
-
-      form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("[required]").forEach((input) => {
-        const error = document.getElementById(input.id + "-error");
-        if (!input.validity.valid) {
-          valid = false;
-          if (error) error.textContent = input.validationMessage;
-          input.setAttribute("aria-invalid", "true");
-        } else {
-          if (error) error.textContent = "";
-          input.removeAttribute("aria-invalid");
-        }
-      });
-
-      if (!valid || !submitBtn) return;
-
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Sending…";
-
-      // Replace the timeout below with an actual fetch() when a backend is wired up
-      await new Promise((r) => setTimeout(r, 1000));
-
-      submitBtn.textContent = "Sent! We'll be in touch.";
-      submitBtn.classList.add("btn-sent");
-    });
-
-    // Clear per-field error on input
-    form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("input, textarea").forEach((input) => {
-      input.addEventListener("input", () => {
-        const error = document.getElementById(input.id + "-error");
-        if (input.validity.valid) {
-          if (error) error.textContent = "";
-          input.removeAttribute("aria-invalid");
-        }
-      });
-    });
-  }
-</script>
+<script is:inline type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://ch-paisarn.com/" },
+    { "@type": "ListItem", position: 2, name: "Contact Us", item: "https://ch-paisarn.com/contact" },
+  ],
+})} />

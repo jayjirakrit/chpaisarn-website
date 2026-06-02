@@ -8,7 +8,7 @@ import robotsTxt from "astro-robots-txt";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://chpaisarn-website.vercel.app",
+  site: "https://ch-paisarn.com",
   integrations: [
     react(),
     sitemap(),

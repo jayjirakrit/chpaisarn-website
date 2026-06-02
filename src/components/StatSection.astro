@@ -1,4 +1,6 @@
 ---
+import StatBgImg from "@/assets/company/protection_bg.png";
+
 const title = "Built on 50 Years of Trust";
 const stats = [
     {
@@ -25,28 +27,67 @@ const stats = [
 ];
 ---
 
-<section id="stat" class="stat-section section-padding">
-    <h5 class="stat-title">{title}</h5>
+<section
+    id="stat"
+    class="stat-section section-padding"
+    style={`background-image: url(${StatBgImg.src});`}
+>
+    <h4 class="stat-title">{title}</h4>
 
     <div class="stat-content">
         {
             stats.map((stat) => (
                 <div class={`stat-card${stat.wide ? " stat-card--wide" : ""}`}>
-                    <p class="stat-number">
-                        {stat.number}
-                        {stat.suffix}
-                    </p>
-                    <h6 class="stat-card-title heading-h6">{stat.title}</h6>
-                    <p class="stat-card-desc body-text-sm">{stat.desc}</p>
+                    <h1 class="stat-number" data-target={stat.number.replace(/,/g, "")} data-suffix={stat.suffix}>
+                        0{stat.suffix}
+                    </h1>
+                    <div class="stat-card-content">
+                        <h5 class="stat-card-title">{stat.title}</h5>
+                        <h6 class="stat-card-desc">{stat.desc}</h6>
+                    </div>
                 </div>
             ))
         }
     </div>
 </section>
 
+<script>
+  const els = document.querySelectorAll<HTMLElement>(".stat-number");
+
+  const animate = (el: HTMLElement) => {
+    const target = parseInt(el.dataset.target ?? "0", 10);
+    const suffix = el.dataset.suffix ?? "";
+    const duration = 2000;
+    const start = performance.now();
+
+    const tick = (now: number) => {
+      const progress = Math.min((now - start) / duration, 1);
+      el.textContent = Math.round(progress * target).toLocaleString() + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        els.forEach(animate);
+        obs.disconnect();
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  const section = document.getElementById("stat");
+  if (section) observer.observe(section);
+</script>
+
 <style>
     .stat-section {
-        background-color: white;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         display: flex;
         flex-direction: column;
         gap: 1.25rem;
@@ -60,12 +101,13 @@ const stats = [
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 0.75rem;
+        text-align: center;
     }
 
     .stat-card {
         background-color: var(--primary-500);
         border-radius: 0.5rem;
-        padding: 1.25rem 1rem 1.5rem;
+        padding: 0.75rem;
         display: flex;
         flex-direction: column;
         gap: 0.25rem;
@@ -79,8 +121,6 @@ const stats = [
 
     .stat-number {
         font-family: "Space Grotesk", sans-serif;
-        font-size: 2.75rem;
-        font-weight: 700;
         line-height: 1;
         color: var(--accent);
     }
@@ -93,38 +133,69 @@ const stats = [
     /* Tablet and above */
     @media only screen and (min-width: 768px) {
         .stat-section {
+            padding: 6.25rem 4.5rem;
+            flex-direction: row;
             gap: 2rem;
         }
 
-        .stat-content {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
+        .stat-title {
+            padding-right: 1.25rem;
+            border-right: 3px solid var(--secondary-500);
         }
 
+        .stat-content {
+            display: grid;
+            gap: 2rem;
+        }
+        .stat-card {
+            flex-direction: row;
+            justify-content: center;
+            text-align: left;
+            gap: 1rem;
+        }
         .stat-card--wide {
-            grid-column: auto;
-            align-items: flex-start;
+            align-items: center;
             text-align: left;
         }
 
         .stat-number {
-            font-size: 3rem;
+            /* flex: 1; */
+            text-align: center;
+        }
+
+        .stat-card-content {
+            flex: 1.5;
+        }
+
+        .stat-card--wide .stat-number {
+            flex: 2.5;
         }
     }
 
     /* Desktop and above */
     @media only screen and (min-width: 1024px) {
         .stat-section {
-            gap: 2.5rem;
+            padding: 6.25rem 14rem;
+            gap: 4rem;
         }
         .stat-content {
-            gap: 1.5rem;
+            gap: 2rem;
         }
         .stat-card {
-            padding: 2rem 1.5rem 2.25rem;
+            padding: 1.25rem;
         }
-        .stat-number {
-            font-size: 3.5rem;
+
+        .stat-card--wide {
+            width: 80%;
+            margin: 0 auto;
+
+            .stat-number {
+                flex: 2;
+            }
+            .stat-card-content {
+                flex: 1;
+            }
         }
+
     }
 </style>

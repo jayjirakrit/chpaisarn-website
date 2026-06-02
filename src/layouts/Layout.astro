@@ -5,6 +5,7 @@ import Footer from "@/components/Footer.astro";
 interface Props {
   title?: string;
   description?: string;
+  keywords?: string;
   image?: string;
   canonical?: string;
   noindex?: boolean;
@@ -13,6 +14,7 @@ interface Props {
 const {
   title = "Ch.Paisarn (Chpaisarn) — High Quality Military Equipment",
   description = "Ch.Paisarn (Chpaisarn) is a Thailand-based manufacturer of ballistic protection: body armor, ballistic helmets, and ballistic plates trusted by military and law enforcement.",
+  keywords = "ch-paisarn, ch-paisarn.com, ch paisarn, chapaisarn, chpaisarn, Ch.Paisarn, body armor Thailand, ballistic protection manufacturer, military equipment Thailand, NIJ certified armor, ballistic helmets Thailand, ballistic plates Thailand, Thai defense manufacturer, เสื้อเกราะกันกระสุน, หมวกกันกระสุน, บริษัท เฉลิมไพศาล",
   image = "/logo_chp.webp",
   canonical,
   noindex = false,
@@ -26,11 +28,12 @@ const organizationLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Ch.Paisarn",
-  alternateName: ["Chpaisarn", "CH Paisarn", "Ch Paisarn Co., Ltd."],
+  alternateName: ["Chpaisarn", "CH Paisarn", "Ch Paisarn Co., Ltd.", "chapaisarn", "ch-paisarn"],
   url: siteUrl,
   logo: `${siteUrl}/logo_chp.webp`,
   email: "contact@chpaisarn.com",
   telephone: "+662 580 2552",
+  sameAs: ["https://ch-paisarn.com"],
   address: [
     {
       "@type": "PostalAddress",
@@ -50,6 +53,13 @@ const organizationLd = {
   description:
     "Ch.Paisarn (Chpaisarn) is a Thailand-based manufacturer of ballistic protection products including body armor, ballistic helmets, and ballistic plates.",
 };
+
+const websiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Ch.Paisarn",
+  url: siteUrl,
+};
 ---
 
 <!doctype html>
@@ -61,10 +71,7 @@ const organizationLd = {
 
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta
-      name="keywords"
-      content="Chpaisarn, Ch.Paisarn, ballistic protection, body armor, ballistic helmets, ballistic plates, Thailand body armor manufacturer, NIJ certified armor"
-    />
+    <meta name="keywords" content={keywords} />
     <meta name="author" content="Ch.Paisarn" />
     <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
     <link rel="canonical" href={canonicalUrl} />
@@ -75,6 +82,8 @@ const organizationLd = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
     <meta property="og:locale" content="en_US" />
 
     <meta name="twitter:card" content="summary_large_image" />
@@ -90,7 +99,8 @@ const organizationLd = {
       rel="stylesheet"
     />
     <meta name="google-site-verification" content="2dmLqw5I1x54g1oNetF1eVOWEP8LqUwFqM6RqQkPNEQ" />
-    <script type="application/ld+json" set:html={JSON.stringify(organizationLd)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(organizationLd)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(websiteLd)} />
   </head>
   <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>

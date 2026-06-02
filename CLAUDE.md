@@ -14,18 +14,20 @@ No lint or test scripts are configured.
 
 ## Architecture
 
-**Stack:** Astro 5 + React 19 + Tailwind CSS v4 (via Vite plugin, not PostCSS). TypeScript throughout. jQuery for lightweight DOM interactions (navbar hover/mobile toggle).
+**Stack:** Astro 5 + React 19 + Tailwind CSS v4 (via Vite plugin, not PostCSS). TypeScript throughout. jQuery 4 for DOM interactions (navbar mega menu, mobile accordion, video embeds).
 
-**Path alias:** `@` resolves to `/src` (configured in `astro.config.mjs`).
+**Path aliases:** `@` resolves to `/src`, `~` resolves to the project root (both configured in `astro.config.mjs`).
 
 **Page → Component pattern:** Each page file in `src/pages/` is minimal — it imports one "page component" from `src/components/` and wraps it in `Layout.astro`. The page component (`Helmet.astro`, `Armour.astro`, etc.) owns all content data as frontmatter variables and composes reusable section components.
 
 **Reusable section components** (accept props, no internal data):
-- `ProductIntroSection.astro` — hero banner with background image, title, description
+- `ProductIntroSection.astro` — hero banner with desktop/mobile background image, title, description
 - `ProductOptionNav.astro` — anchor navigation tabs for product sections
-- `ProductOpItemsSection.astro` — grid of product option cards
-- `CustomStepsSection.astro` — multi-step customization walkthrough
-- `ContactSection.astro` — CTA contact card
+- `ProductOpItemsSection.astro` — grid of product option cards (images + labels)
+- `ProductOptionSection.astro` — protection system option cards with feature lists (canonical style reference)
+- `CustomStepsSection.astro` — multi-step customization walkthrough (image + content per step)
+- `StatSection.astro` — animated statistics with scroll-triggered count-up
+- `ContactSection.astro` — CTA contact card with configurable colors
 
 **Interactive React components** (`.tsx`, use `client:visible` directive):
 - `collapse/Collapse.tsx` — expanding product card grid on the home page; uses a `useIsMobile` hook (breakpoint 768px) to show all cards on mobile
@@ -33,7 +35,59 @@ No lint or test scripts are configured.
 
 Astro components handle static rendering; React is only introduced for client-side interactivity.
 
-**Routing:** File-based via `src/pages/`. Current routes: `/` (home), `/company`, `/products`, `/products/ballistic-helmets`, `/products/ballistic-plates`.
+**Routing:** File-based via `src/pages/`. Current routes:
+
+| Route | Page component |
+|---|---|
+| `/` | `Home.astro` |
+| `/company` | `Company.astro` |
+| `/contact` | `ContactUs.astro` |
+| `/products` | `Products.astro` |
+| `/products/ballistic-helmets` | `Helmet.astro` |
+| `/products/ballistic-plates` | `Plate.astro` |
+
+## Layout
+
+**`Layout.astro`** is the root wrapper for every page. Props: `title`, `description`, `keywords`, `image`, `canonical`, `noindex`.
+
+It provides:
+- Full SEO head (meta tags, Open Graph, Twitter Card, canonical)
+- JSON-LD `Organization` + `WebSite` schemas (both emitted globally on every page)
+- Google Fonts (`Space Grotesk`, `Hanken Grotesk`, `Roboto`)
+- Google Site Verification meta tag
+- OG image dimensions (`og:image:width` / `og:image:height`)
+- Skip-to-content accessibility link
+- Global `IntersectionObserver` that adds `.is-visible` to any element with class `.reveal` when it enters the viewport (threshold 0.15) — used for scroll-triggered fade/slide-up animations
+
+## SEO
+
+**Production domain:** `https://ch-paisarn.com` — set as `site` in `astro.config.mjs`. This propagates to all canonical URLs, the auto-generated sitemap (`/sitemap-index.xml`), and OG image paths.
+
+**Page metadata pattern:** Every page in `src/pages/` passes `title`, `description`, and `keywords` to `Layout`. The `keywords` prop is optional — omitting it falls back to the global default in `Layout.astro`. Always provide a page-specific `keywords` for new pages.
+
+**Global default keywords** (defined in `Layout.astro`):
+```
+ch-paisarn, ch-paisarn.com, ch paisarn, chapaisarn, chpaisarn, Ch.Paisarn,
+body armor Thailand, ballistic protection manufacturer, military equipment Thailand,
+NIJ certified armor, ballistic helmets Thailand, ballistic plates Thailand,
+Thai defense manufacturer, เสื้อเกราะกันกระสุน, หมวกกันกระสุน, บริษัท เฉลิมไพศาล
+```
+
+**JSON-LD schemas:**
+- `Organization` + `WebSite` — emitted globally in `Layout.astro`
+- `BreadcrumbList` — emitted per inner-page component (`Company.astro`, `ContactUs.astro`, `Armour.astro`, `Helmet.astro`, `Plate.astro`) using `<script is:inline type="application/ld+json" set:html={...} />`
+
+Always use `is:inline` on JSON-LD `<script>` tags to silence the Astro "will be treated as inline" hint.
+
+**Submitting to Google:** After deploying changes, use Google Search Console → URL Inspection → "Request Indexing" per page, and submit `/sitemap-index.xml` under the Sitemaps section.
+
+## jQuery usage
+
+jQuery 4 is loaded globally. Usage patterns across the codebase:
+
+- **Navbar** (`Navbar.astro`) — mega menu show/hide on hover (80ms hide delay), mobile accordion with animated `max-height`, hamburger toggle
+- **Video placeholders** (`Company.astro`) — click on SVG placeholder swaps in a YouTube `<iframe>` at the same dimensions
+- **Stats** (`StatSection.astro`) — scroll animation uses vanilla `IntersectionObserver` + `requestAnimationFrame` (not jQuery)
 
 ## Styling conventions
 
@@ -43,8 +97,29 @@ Tailwind CSS v4 is imported in `src/styles/global.css` via `@import "tailwindcss
 - Layout: `.section-padding` (responsive horizontal/vertical padding), `.section-min-h`
 - Buttons: `.btn-primary` (green), `.btn-secondary` (white outline)
 - Colors: `.text-primary`, `.text-primary-dark`, `.bg-gradient-primary`
+- Decoration: `.label-accent-border` (3px solid `--accent` underline), `.shadow-card`
+- Animation: `.reveal` (initial hidden state) + `.reveal.is-visible` (fade + slide-up end state, toggled by Layout.astro observer)
 
-Brand colors as CSS variables: `--primary-900: #14375f` (dark navy) through `--primary-50`, `--secondary-500: #58bb90` (green CTA).
+**Brand CSS variables:**
+
+| Variable | Value | Usage |
+|---|---|---|
+| `--primary-900` | `#14375f` | Dark navy — headings, borders |
+| `--primary-700` | `#194577` | Medium blue |
+| `--primary-500` | `#2465ae` | Bright blue — buttons, cards |
+| `--primary-300` | `#5e99dc` | Light blue |
+| `--primary-100` | `#90b9e7` | Very light blue |
+| `--primary-50` | `#dce9f7` | Ultra-light blue — backgrounds |
+| `--secondary-500` | `#58bb90` | Green — primary CTA |
+| `--secondary-700` | `#087a49` | Dark green accents |
+| `--secondary-hover` | `#4fa07d` | Green hover state |
+| `--accent` | `#9af9cf` | Bright teal — underlines, stat numbers |
+| `--white` | `#ffffff` | |
+| `--black` | `#272727` | Dark body text |
+| `--gray-light` | `#f5f5f5` | |
+| `--gray-lighter` | `#f0f0f0` | |
+| `--gray-border` | `#d4d4d4` | |
+| `--gray` | `#F3F7FC` | Blue-tinted gray backgrounds |
 
 Fonts (loaded via Google Fonts): Space Grotesk for headings (`--font-space`), Hanken Grotesk for body (`--font-hanken`), Roboto (`--font-roboto`).
 
@@ -141,4 +216,4 @@ const items: { label: string; title: string }[] = Astro.props.items;
 
 ## Deployment
 
-Site is deployed to Vercel. The `site` URL in `astro.config.mjs` is `https://chpaisarn-website.vercel.app` — this is used by `@astrojs/sitemap` for sitemap generation.
+Site is deployed to Vercel. Production domain is `https://ch-paisarn.com` — set as `site` in `astro.config.mjs` and used by `@astrojs/sitemap` for sitemap generation.
