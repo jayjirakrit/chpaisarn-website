@@ -55,7 +55,7 @@ const Collapse: React.FC<CollapseProps> = ({ cards }) => {
               <button className="text-white font-bold flex gap-2 items-center hover:underline">
                 <a href={card.link}>
                   {card.buttonText}
-                  <span>→</span>
+                  <span> → </span>
                 </a>
               </button>
             </div>
