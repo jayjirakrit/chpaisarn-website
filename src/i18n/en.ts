@@ -547,15 +547,27 @@ export const en: Translations = {
     },
     {
       step: "Step 3",
-      title: "Colors",
+      title: "Cutting Materials",
       items: [
         {
-          name: "Standard colors",
-          desc: "Select from Black, Olive Green, Navy Blue",
+          name: "Size",
+          desc: "Standard plates are supplied at 25 × 30 cm — engineered to provide an optimal balance of coverage and mobility for general applications. Custom dimensions are available on request, including side plate configurations for extended coverage.",
         },
         {
-          name: "Custom Colors",
-          desc: "Additional colors are available based on customer specifications for camouflage or unit identification.",
+          name: "Curvature",
+          desc: "Available in Single Curved and Multi-Curved profiles — each designed to conform to the body's natural contours for a secure and comfortable fit during extended field operations.",
+        },
+        {
+          name: "Cut Shape",
+          desc: "Four standard cut shapes are available to match your carrier system and operational requirement — Shooter Cut for optimized shoulder mobility, Full Plate for maximum torso coverage, SAPI Cut for compatibility with standard military carrier systems, and Swimmer Cut for enhanced upper arm mobility."
+        },
+        {
+          name: "Trauma Reduction",
+          desc: "Supporting materials are available to reduce blunt force trauma transfer to the wearer upon ballistic impact — integrated as an additional layer within the plate assembly."
+        },
+        {
+          name: "Plate Marking & Identification",
+          desc: "Plates can be marked or screen-printed to your unit's specifications — including strike face markings, threat protection level indication, unit identification, warning labels, and custom branding."
         },
       ],
     },
