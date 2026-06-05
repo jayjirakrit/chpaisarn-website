@@ -185,6 +185,7 @@ export const en: Translations = {
   "contact.cta.title": "Explore Our Solutions",
   "contact.cta.description":
     "We offer a wide range of ballistic protection products designed to meet the demands of military, law enforcement, security, and civilian applications. Whether you're seeking personal protection or armored vehicle solutions, our products provide the ultimate defense against ballistic threats.",
+  "contact.cta.btnDescription": "Explore Our Products",
 
   // Armour page
   "armour.hero.title": "Body Armors",

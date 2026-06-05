@@ -40,11 +40,15 @@ const Collapse: React.FC<CollapseProps> = ({ cards }) => {
         <div
           key={index}
           className={`product-card ${card.bgColor} ${isActive(index) ? "border-highlight is-active-card" : ""}`}
-          style={{
-            backgroundImage: isActive(index) && card.bgImage ? `url(${isMobile && card.bgImageMobile ? card.bgImageMobile : card.bgImage})` : "none",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
+          style={
+            isActive(index) && card.bgImage
+              ? {
+                  backgroundImage: `url(${isMobile && card.bgImageMobile ? card.bgImageMobile : card.bgImage})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }
+              : {} // no inline style when inactive – let CSS handle the background
+          }
           onClick={() => setVisible(index)}
         >
           <div className={`product-label-h3 product-label-vertical ${isActive(index) ? "hidden" : ""}`}>{card.label}</div>

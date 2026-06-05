@@ -65,15 +65,9 @@ const partners = [
 </section>
 
 <!-- Our Products Section -->
-<section
-  id="product"
-  class="product-section bg-gray-50"
-  style={`background-image: url(${ProductBgImg.src});`}
->
+<section id="product" class="product-section bg-gray-50" style={`background-image: url(${ProductBgImg.src});`}>
   <div class="product-container">
-    <div
-      class="mb-12 flex flex-col md:flex-row md:items-end md:justify-between"
-    >
+    <div class="mb-12 flex flex-col md:flex-row md:items-end md:justify-between">
       <div>
         <h2 class="text-(--primary-900) mb-4">{t("home.products.title")}</h2>
         <p class="body-text mb-4">{t("home.products.description")}</p>
@@ -99,17 +93,8 @@ const partners = [
   <div class="team-container">
     <div class="grid md:grid-cols-2 gap-12 items-center">
       <div class="space-y-4">
-        <div
-          class="team-video team-video-placeholder"
-          id="team-video-placeholder"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 68 48"
-            width="68"
-            height="48"
-            aria-hidden="true"
-          >
+        <div class="team-video team-video-placeholder" id="team-video-placeholder">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 48" width="68" height="48" aria-hidden="true">
             <rect width="68" height="48" rx="10" fill="#ff0000"></rect>
             <polygon points="27,14 27,34 47,24" fill="white"></polygon>
           </svg>
@@ -121,7 +106,9 @@ const partners = [
         <h2 class="mb-6 whitespace-nowrap">{t("home.team.title")}</h2>
         <p class="body-text-sm mb-4">{t("home.team.description1")}</p>
         <p class="body-text-sm mb-4 lg:mb-8">{t("home.team.description2")}</p>
-        <a class="btn-primary" href={lang === "th" ? "/th/company" : "/company"}>{t("home.team.ctaLearn")}</a>
+        <button class="btn-primary">
+          <a href={lang === "th" ? "/th/company" : "/company"}>{t("home.team.ctaLearn")}</a>
+        </button>
       </div>
     </div>
   </div>
@@ -139,17 +126,9 @@ const partners = [
   <div class="partners-grid">
     {
       partners.map((partner, index) => (
-        <div
-          class="partner-card reveal"
-          style={`transition-delay: ${index * 80}ms`}
-        >
+        <div class="partner-card reveal" style={`transition-delay: ${index * 80}ms`}>
           <div class="partner-logo">
-            <img
-              src={partner.img}
-              alt={partner.name}
-              loading="lazy"
-              decoding="async"
-            />
+            <img src={partner.img} alt={partner.name} loading="lazy" decoding="async" />
           </div>
           <span class="partner-name body-text-sm">{partner.name}</span>
         </div>
@@ -181,8 +160,7 @@ const partners = [
       .attr({
         src: "https://www.youtube.com/embed/hOm-Hv6FT1I?si=fAvULb6s6OsnHqA2&autoplay=1",
         title: "YouTube video player",
-        allow:
-          "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
+        allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
         referrerpolicy: "strict-origin-when-cross-origin",
         allowfullscreen: "",
       })

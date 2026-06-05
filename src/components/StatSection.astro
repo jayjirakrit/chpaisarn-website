@@ -39,35 +39,40 @@ const stats = t("stat.items");
 </section>
 
 <script>
-  const els = document.querySelectorAll<HTMLElement>(".stat-number");
+  const animateStats = () => {
+    const els = document.querySelectorAll<HTMLElement>(".stat-number");
 
-  const animate = (el: HTMLElement) => {
-    const target = parseInt(el.dataset.target ?? "0", 10);
-    const suffix = el.dataset.suffix ?? "";
-    const duration = 2000;
-    const start = performance.now();
+    const animate = (el: HTMLElement) => {
+      const target = parseInt(el.dataset.target ?? "0", 10);
+      const suffix = el.dataset.suffix ?? "";
+      const duration = 2000;
+      const start = performance.now();
 
-    const tick = (now: number) => {
-      const progress = Math.min((now - start) / duration, 1);
-      el.textContent = Math.round(progress * target).toLocaleString() + suffix;
-      if (progress < 1) requestAnimationFrame(tick);
+      const tick = (now: number) => {
+        const progress = Math.min((now - start) / duration, 1);
+        el.textContent = Math.round(progress * target).toLocaleString() + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
     };
-    requestAnimationFrame(tick);
+
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          els.forEach(animate);
+          obs.disconnect();
+        });
+      },
+      { threshold: 0.3 },
+    );
+
+    const section = document.getElementById("stat");
+    if (section) observer.observe(section);
   };
-
-  const observer = new IntersectionObserver(
-    (entries, obs) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        els.forEach(animate);
-        obs.disconnect();
-      });
-    },
-    { threshold: 0.3 }
-  );
-
-  const section = document.getElementById("stat");
-  if (section) observer.observe(section);
+  
+  animateStats();
+  document.addEventListener("astro:after-swap", animateStats);
 </script>
 
 <style>

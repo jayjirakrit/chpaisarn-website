@@ -1,7 +1,8 @@
 ---
-import LogoImg from "../assets/logo_chp.webp";
+import LogoImg from "@/assets/logo_chp.png";
 import type { Lang } from "@/i18n/types";
 import { useTranslations } from "@/i18n/utils";
+import { Image } from "astro:assets";
 
 interface Props {
   lang?: Lang;
@@ -31,7 +32,7 @@ const factoryInfo = {
 
       <!-- Logo & Copyright -->
       <div class="footer-brand">
-        <img src={LogoImg.src} alt="Ch.Paisarn Logo" class="footer-logo" />
+        <Image src={LogoImg} alt="Ch.Paisarn Logo" class="footer-logo" />
         <p class="footer-copy footer-copy-desktop">{t("footer.copyright")}</p>
         <p class="footer-copy footer-copy-desktop">{t("footer.credit")}</p>
       </div>

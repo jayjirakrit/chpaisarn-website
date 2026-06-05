@@ -157,7 +157,8 @@ export type Translations = {
   "contact.form.sent": string;
   "contact.cta.title": string;
   "contact.cta.description": string;
-
+  "contact.cta.btnDescription": string;
+  
   // Armour page
   "armour.hero.title": string;
   "armour.hero.description": string;

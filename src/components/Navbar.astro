@@ -1,7 +1,8 @@
 ---
-import LogoImg from "../assets/logo_chp.webp";
+import LogoImg from "@/assets/logo_chp.png";
 import type { Lang } from "@/i18n/types";
 import { useTranslations, getAlternateLangUrl } from "@/i18n/utils";
+import { Image } from "astro:assets";
 
 interface Props {
   lang?: Lang;
@@ -117,7 +118,7 @@ const GLOBE_PATH =
     <div class="navbar-container">
       <div class="navbar-inner">
         <a href="/" class="navbar-logo">
-          <img src={LogoImg.src} alt="Ch.Paisarn Logo" />
+          <Image src={LogoImg} alt="Ch.Paisarn Logo" />
           <span class="navbar-brand-name">Ch.Paisarn</span>
         </a>
 
@@ -135,7 +136,8 @@ const GLOBE_PATH =
           </div>
 
           <div class="lang-group" role="group" aria-label="Language selection">
-            <svg class="lang-icon" width="32" height="32" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d={GLOBE_PATH}></path></svg>
+            <svg class="lang-icon" width="32" height="32" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d={GLOBE_PATH}></path></svg
+            >
             <div class="lang-list">
               <a href={enHref} class:list={["lang-link", { "is-active": lang === "en" }]}>
                 {t("nav.langEn")}
@@ -151,11 +153,6 @@ const GLOBE_PATH =
           <button id="mobile-menu-btn" class="mobile-icon-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav-panel">
             <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-          </button>
-          <button id="close-menu-btn" class="mobile-icon-btn mobile-close-btn is-close" aria-label="Close menu">
-            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
           </button>
           <!-- mobile panel moved out of here -->
@@ -177,8 +174,11 @@ const GLOBE_PATH =
                 {item.name}
               </a>
               <button type="button" aria-expanded="false" aria-controls={`mobile-nav-link-child-${index}`}>
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <svg class="arrow-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                   <path d="M0 6.71H8.09L4.79 10L6.21 11.42L11.91 5.71L6.21 0L4.79 1.42L8.09 4.71H0V6.71Z" fill="#14375F" />
+                </svg>
+                <svg class="close-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <path d="M1 1L11 11M1 11L11 1" stroke="#14375F" stroke-width="2" stroke-linecap="round" />
                 </svg>
               </button>
             </div>
@@ -209,7 +209,7 @@ const GLOBE_PATH =
 
   {
     Object.entries(megaMenus).map(([key, menu]) => (
-      <div id={`mega-menu-${key}`} class="mega-menu" role="region" aria-label={`${navItems.find(n => n.key === key)?.name ?? key} submenu`}>
+      <div id={`mega-menu-${key}`} class="mega-menu" role="region" aria-label={`${navItems.find((n) => n.key === key)?.name ?? key} submenu`}>
         <div class="mega-menu-container">
           <div class="mega-menu-sidebar">
             <div class="mega-nav-items">
@@ -468,8 +468,17 @@ const GLOBE_PATH =
       padding: 0.25rem;
     }
 
-    .mobile-nav-link-parent button.active {
-      transform: rotate(90deg);
+    /* Hide the close icon by default, show arrow */
+    .mobile-nav-link-parent button .close-icon {
+      display: none;
+    }
+
+    /* When the button is active, show close icon and hide arrow */
+    .mobile-nav-link-parent button.active .arrow-icon {
+      display: none;
+    }
+    .mobile-nav-link-parent button.active .close-icon {
+      display: inline-block;
     }
 
     .mobile-nav-link-child .mega-card p {
@@ -519,7 +528,10 @@ const GLOBE_PATH =
       visibility: hidden;
       pointer-events: none;
       transform: translateY(-0.5rem);
-      transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+      transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease,
+        transform 0.2s ease;
     }
 
     .mega-menu.is-visible {
@@ -723,65 +735,81 @@ const GLOBE_PATH =
   <script>
     import $ from "jquery";
 
-    let hideTimer: ReturnType<typeof setTimeout>;
-    const $menus = $(".mega-menu");
+    function setupNavbar() {
+      let hideTimer: ReturnType<typeof setTimeout>;
+      const $menus = $(".mega-menu");
 
-    const show = ($menu: JQuery) => {
-      clearTimeout(hideTimer);
-      $menus.not($menu).removeClass("is-visible");
-      $menu.addClass("is-visible");
-    };
+      const show = ($menu: JQuery) => {
+        clearTimeout(hideTimer);
+        $menus.not($menu).removeClass("is-visible");
+        $menu.addClass("is-visible");
+      };
 
-    const hide = ($menu: JQuery) => {
-      hideTimer = setTimeout(() => $menu.removeClass("is-visible"), 80);
-    };
+      const hide = ($menu: JQuery) => {
+        hideTimer = setTimeout(() => $menu.removeClass("is-visible"), 80);
+      };
 
-    $(".nav-item[data-menu]").each(function () {
-      const $menu = $(`#mega-menu-${$(this).data("menu")}`);
-      if (!$menu.length) return;
-      $(this)
-        .add($menu)
-        .on("mouseenter", () => show($menu))
-        .on("mouseleave", () => hide($menu));
-    });
+      // Desktop mega menu hover
+      $(".nav-item[data-menu]").each(function () {
+        const $menu = $(`#mega-menu-${$(this).data("menu")}`);
+        if (!$menu.length) return;
+        $(this)
+          .add($menu)
+          .off("mouseenter mouseleave") // prevent duplicate bindings when re‑running
+          .on("mouseenter", () => show($menu))
+          .on("mouseleave", () => hide($menu));
+      });
 
-    $(document).on("click", (e) => {
-      if (!$(e.target as Element).closest(".nav-item, .mega-menu").length) {
-        $menus.removeClass("is-visible");
-      }
-    });
+      // Click outside to close mega menus
+      $(document)
+        .off("click.navbarMegaClose")
+        .on("click.navbarMegaClose", (e) => {
+          if (!$(e.target as Element).closest(".nav-item, .mega-menu").length) {
+            $menus.removeClass("is-visible");
+          }
+        });
 
-    // Toggle the in‑flow mobile container
-    const toggleMobileNav = () => {
-      const $container = $(".mobile-nav-container");
-      const isOpen = $container.hasClass("is-open");
-      $container.toggleClass("is-open");
-      $("#mobile-menu-btn").attr("aria-expanded", String(!isOpen));
-    };
+      // Mobile toggle
+      const toggleMobileNav = () => {
+        const $container = $(".mobile-nav-container");
+        const isOpen = $container.hasClass("is-open");
+        $container.toggleClass("is-open");
+        $("#mobile-menu-btn").attr("aria-expanded", String(!isOpen));
+      };
 
-    $("#mobile-menu-btn").on("click", toggleMobileNav);
-    $("#close-menu-btn").on("click", toggleMobileNav);
+      // Clean up old bindings and attach fresh ones
+      $("#mobile-menu-btn").off("click").on("click", toggleMobileNav);
+      $("#close-menu-btn").off("click").on("click", toggleMobileNav);
 
-    // --- Mobile accordion for sub-menus ---
-    $(".mobile-nav-link-parent button").on("click", function (e) {
-      e.preventDefault();
-      const $btn = $(this);
-      const $parent = $btn.closest(".mobile-nav-link");
-      const $child = $parent.find(".mobile-nav-link-child");
-      const isActive = $btn.hasClass("active");
+      // Mobile accordion sub‑menus
+      $(".mobile-nav-link-parent button")
+        .off("click")
+        .on("click", function (e) {
+          e.preventDefault();
+          const $btn = $(this);
+          const $parent = $btn.closest(".mobile-nav-link");
+          const $child = $parent.find(".mobile-nav-link-child");
+          const isActive = $btn.hasClass("active");
 
-      // Close all other open children
-      $(".mobile-nav-link-child").not($child).removeClass("is-expanded");
-      $(".mobile-nav-link-parent button").not($btn).removeClass("active").attr("aria-expanded", "false");
+          // Close others
+          $(".mobile-nav-link-child").not($child).removeClass("is-expanded");
+          $(".mobile-nav-link-parent button").not($btn).removeClass("active").attr("aria-expanded", "false");
 
-      // Toggle current child and button state
-      if (isActive) {
-        $btn.removeClass("active").attr("aria-expanded", "false");
-        $child.removeClass("is-expanded");
-      } else {
-        $btn.addClass("active").attr("aria-expanded", "true");
-        $child.addClass("is-expanded");
-      }
-    });
+          // Toggle current
+          if (isActive) {
+            $btn.removeClass("active").attr("aria-expanded", "false");
+            $child.removeClass("is-expanded");
+          } else {
+            $btn.addClass("active").attr("aria-expanded", "true");
+            $child.addClass("is-expanded");
+          }
+        });
+    }
+
+    // Run immediately (for first page load)
+    setupNavbar();
+
+    // Re‑run after every Astro client‑side navigation
+    document.addEventListener("astro:after-swap", setupNavbar);
   </script>
 </nav>

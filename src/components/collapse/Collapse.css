@@ -15,7 +15,12 @@
   background-repeat: no-repeat;
   align-self: stretch;
   position: relative;
+  cursor: pointer;
 }
+
+/* .product-card:hover {
+  background: linear-gradient(180deg, #58bb90 0%, #58bb90 100%); Define Color Later
+} */
 
 .product-label-vertical {
   color: white;
@@ -33,7 +38,9 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition:
+      background-color 0.3s ease,
+      transform 0.2s ease;
   }
 
   button:hover {
@@ -131,7 +138,9 @@
   .product-card {
     flex: 1;
     overflow: hidden;
-    transition: flex 0.4s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+    transition:
+      flex 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+      background-color 0.3s ease;
   }
 
   .product-card.is-active-card {

@@ -6,6 +6,7 @@ interface Props {
   bgImg?: { src: string };
   contactTitle?: string;
   contactDescription?: string;
+  btnDescription?: string;
   bgColor?: string;
   titleColor?: string;
   desColor?: string;
@@ -17,6 +18,8 @@ const {
   bgImg = { src: "" },
   contactTitle = "Discover  Ch.Paisarn",
   contactDescription = "Get in touch with us",
+  btnDescription = "",
+  link = "/contact",
   bgColor = "primary-900",
   titleColor = "white",
   desColor = "white",
@@ -24,6 +27,7 @@ const {
 } = Astro.props;
 
 const t = useTranslations(lang);
+const prefix = lang === "th" ? "/th" : "";
 ---
 
 <section class="cta-section" style={`background-image: url(${bgImg.src});`}>
@@ -34,8 +38,8 @@ const t = useTranslations(lang);
     <p class="cta-description body-text-sm" style={`color: var(--${desColor});`}>
       {contactDescription}
     </p>
-    <a href="/contact" class="cta-button">
-      <span class="cta-button-text">{t("shared.contactBtn")}</span>
+    <a href={prefix + link} class="cta-button">
+      <span class="cta-button-text">{btnDescription || t("shared.contactBtn")}</span>
     </a>
   </div>
 </section>
