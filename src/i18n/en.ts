@@ -43,13 +43,7 @@ export const en: Translations = {
   "footer.company": "Company",
   "footer.copyright": "© 2026 Ch.Paisarn. All Rights Reserved.",
   "footer.credit": "Website created by House of Bandan",
-  "footer.products.list": [
-    "Body Armors",
-    "Ballistic Helmets",
-    "Ballistic Plates",
-    "Other Ballistic Solutions",
-    "Customized Defense Solutions",
-  ],
+  "footer.products.list": ["Body Armors", "Ballistic Helmets", "Ballistic Plates", "Other Ballistic Solutions", "Customized Defense Solutions"],
   "footer.company.list": ["About Us", "Quality", "Contact Us"],
 
   // Shared
@@ -58,14 +52,14 @@ export const en: Translations = {
   "shared.learnMore": "Learn more",
 
   // Home page
-  "home.hero.quote": "CHP® · High Quality Military Equipment",
+  "home.hero.quote": "Ch.Paisarn · High Quality Military Equipment",
   "home.hero.title1": "Part of Every Mission.",
   "home.hero.title2": "Proud of Every Success.",
   "home.hero.ctaExplore": "Explore our products",
   "home.hero.ctaLearn": "Learn more",
   "home.products.title": "Our Products",
   "home.products.description":
-    "From personal protection to specialized security solutions, every CHP® product is designed, manufactured, and tested in-house purpose-built to meet the specific demands of military, law enforcement, and security operations.",
+    "From personal protection to specialized security solutions, every Ch.Paisarn product is designed, manufactured, and tested in-house purpose-built to meet the specific demands of military, law enforcement, and security operations.",
   "home.products.viewBtn": "View Products",
   "home.products.customizeBtn": "Customize your product",
   "home.cards": [
@@ -107,9 +101,10 @@ export const en: Translations = {
   "home.team.description2":
     "As Thailand's largest manufacturer of ballistic protection equipment, we engineering high-performance gear built to withstand tropical environments and the toughest operational conditions in the field.",
   "home.team.ctaLearn": "Learn Our Story",
-  "home.partners.title": "Trusted by our partners",
+  "home.partners.title": "Trusted Across Thailand's Forces",
   "home.partners.description":
-    "We are proud to partner with the organizations and personnel who protect our nation's frontline. Every piece of gear we manufacture has been rigorously tested and proven through real-world deployment in active operational fields and critical border zones. These strategic partnerships stand as a testament to our unyielding commitment to life-saving reliability under the toughest conditions.",
+    "The organizations below rely on Ch.Paisarn equipment to protect their personnel in training, in the field, and in active border operations. That trust reflects decades of proven performance under demanding conditions.",
+  "home.carousel.title": "Selected Works",
   "home.contact.title": "Get in Touch",
   "home.contact.description":
     "Contact us to learn more about our defense solutions or to discuss your specific operational requirements. Our team is ready to provide the expertise and custom-engineered armor solutions needed to meet your mission objectives.",
@@ -190,10 +185,10 @@ export const en: Translations = {
   // Armour page
   "armour.hero.title": "Body Armors",
   "armour.hero.description":
-    "CHP® body armor is engineered to deliver certified ballistic and multi-threat protection for military, law enforcement, and security personnel designed, manufactured, and tested in-house to meet the demands of each specific mission and operation",
+    "Ch.Paisarn body armor is engineered to deliver certified ballistic and multi-threat protection for military, law enforcement, and security personnel designed, manufactured, and tested in-house to meet the demands of each specific mission and operation",
   "armour.optionsItem.title": "Your Options",
   "armour.optionsItem.description":
-    "CHP® ballistic helmets are available across a range of proven military profiles each certified to NIJ and MIL-STD ballistic standards and configurable to your unit's specific operational requirements.",
+    "Ch.Paisarn ballistic helmets are available across a range of proven military profiles each certified to NIJ and MIL-STD ballistic standards and configurable to your unit's specific operational requirements.",
   "armour.options.title": "Protection Systems: Select Your Base",
   "armour.options.description":
     "Every operation carries a different threat profile. Our body armor range covers three primary protection systems each fully configurable to the specific requirements of your unit, environment, and mission. All three protection systems are fully configurable to your unit's specific requirements explore our customization options",
@@ -451,7 +446,7 @@ export const en: Translations = {
       items: [
         {
           name: "Standardized Sizing",
-          desc: "CHP® helmets are available in two standard size configurations to ensure a secure and comfortable fit across a wide range of head sizes: <br><br> &nbsp;&#x2022; Size 1: S / M <br> &nbsp;&#x2022; Size 2: L / XL",
+          desc: "Ch.Paisarn helmets are available in two standard size configurations to ensure a secure and comfortable fit across a wide range of head sizes: <br><br> &nbsp;&#x2022; Size 1: S / M <br> &nbsp;&#x2022; Size 2: L / XL",
         },
         {
           name: "Custom Sizing",
@@ -464,13 +459,13 @@ export const en: Translations = {
   // Plate page
   "plate.hero.title": "Armor Plates",
   "plate.hero.description":
-    "CHP® armor plates are engineered to deliver certified hard armor protection from Level III to Level IV — designed, manufactured, and tested in-house to stop the most demanding ballistic threats your operation may face.",
+    "Ch.Paisarn armor plates are engineered to deliver certified hard armor protection from Level III to Level IV — designed, manufactured, and tested in-house to stop the most demanding ballistic threats your operation may face.",
   "plate.options.title": "Your Options",
   "plate.options.description":
-    "CHP® armor plates are certified in compliance with NIJ 0101.06, NIJ 0101.07, and Thai Ministry of Defense ballistic standards — engineered to deliver reliable protection across a range of high-velocity and armor-piercing threats.",
+    "Ch.Paisarn armor plates are certified in compliance with NIJ 0101.06, NIJ 0101.07, and Thai Ministry of Defense ballistic standards — engineered to deliver reliable protection across a range of high-velocity and armor-piercing threats.",
   "plate.reg.title": "Standards & Compliance",
   "plate.reg.description":
-    "Every CHP® armor plate is manufactured and tested in-house to meet the requirements of international and Thai national ballistic protection standards.",
+    "Every Ch.Paisarn armor plate is manufactured and tested in-house to meet the requirements of international and Thai national ballistic protection standards.",
   "plate.reg.specTitle": "Certified Protection Across Every Mission Threat.",
   "plate.reg.colClass": "NIJ 0101.06\nClassification",
   "plate.reg.colAmmo": "Test Ammunitions",
@@ -484,7 +479,7 @@ export const en: Translations = {
     {
       title: "NIJ Compliance",
       description:
-        "All CHP® armor plates are certified in compliance with NIJ Standard 0101.06 and NIJ Standard 0101.07 — the international benchmark for ballistic resistance testing of hard armor plates against high-velocity and armor-piercing threats.",
+        "All Ch.Paisarn armor plates are certified in compliance with NIJ Standard 0101.06 and NIJ Standard 0101.07 — the international benchmark for ballistic resistance testing of hard armor plates against high-velocity and armor-piercing threats.",
     },
     {
       title: "Backface Signature (BFS)",
@@ -516,7 +511,7 @@ export const en: Translations = {
       items: [
         {
           name: "UHMWPE Core",
-          desc: "The foundation of every CHP® plate — providing high ballistic resistance and multi-hit capability at low weight. Sourced from certified global manufacturers including Dyneema®.",
+          desc: "The foundation of every Ch.Paisarn plate — providing high ballistic resistance and multi-hit capability at low weight. Sourced from certified global manufacturers including Dyneema®.",
         },
         {
           name: "Ceramic Composite",
@@ -560,15 +555,15 @@ export const en: Translations = {
         },
         {
           name: "Cut Shape",
-          desc: "Four standard cut shapes are available to match your carrier system and operational requirement — Shooter Cut for optimized shoulder mobility, Full Plate for maximum torso coverage, SAPI Cut for compatibility with standard military carrier systems, and Swimmer Cut for enhanced upper arm mobility."
+          desc: "Four standard cut shapes are available to match your carrier system and operational requirement — Shooter Cut for optimized shoulder mobility, Full Plate for maximum torso coverage, SAPI Cut for compatibility with standard military carrier systems, and Swimmer Cut for enhanced upper arm mobility.",
         },
         {
           name: "Trauma Reduction",
-          desc: "Supporting materials are available to reduce blunt force trauma transfer to the wearer upon ballistic impact — integrated as an additional layer within the plate assembly."
+          desc: "Supporting materials are available to reduce blunt force trauma transfer to the wearer upon ballistic impact — integrated as an additional layer within the plate assembly.",
         },
         {
           name: "Plate Marking & Identification",
-          desc: "Plates can be marked or screen-printed to your unit's specifications — including strike face markings, threat protection level indication, unit identification, warning labels, and custom branding."
+          desc: "Plates can be marked or screen-printed to your unit's specifications — including strike face markings, threat protection level indication, unit identification, warning labels, and custom branding.",
         },
       ],
     },

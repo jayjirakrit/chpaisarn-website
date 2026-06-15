@@ -8,11 +8,14 @@ import CompanyBg03Img from "@/assets/company/company_bg_03.png";
 import CompanyBg03MobileImg from "@/assets/company/company_bg_03_mobile.png";
 import CompanyBg04Img from "@/assets/company/company_bg_04.png";
 import ContactBgImg from "@/assets/company/contact_bg.svg";
-import Collapse from "@/components/collapse/Collapse.tsx";
-import ContactSection from "@/components/ContactSection.astro";
 import ArmorImg from "@/assets/products/body_armor_1.png";
 import CvcHelmetImg from "@/assets/products/helmet/helmet_fast_green.png";
 import PlateIIIImg from "@/assets/products/plate/plate_III.png";
+import VideoImg from "@/assets/company/video_bg.png";
+import CarouselImg01 from "@/assets/products/armor/armor_01.png";
+import Collapse from "@/components/collapse/Collapse.tsx";
+import ContactSection from "@/components/ContactSection.astro";
+import Carousel from "@/components/carousel/Carousel.astro";
 import type { Lang } from "@/i18n/types";
 import { useTranslations } from "@/i18n/utils";
 
@@ -39,12 +42,17 @@ const partners = [
   { name: "Royal Thai Armed Forces", img: "/images/partners/royal-thai-armed-forces.png" },
   { name: "The Royal Thai Police (RTP)", img: "/images/partners/royal-thai-police.png" },
   { name: "Department of Provincial Administration", img: "/images/partners/provincial-administration.png" },
-  { name: "United Nation (UN)", img: "/images/partners/united-nations.png" },
-  { name: "Quartermaster Department", img: "/images/partners/rtaf-1.png" },
-  { name: "Royal Thai Army Medical Department", img: "/images/partners/rta-medical-1.png" },
+  { name: "United Nations (UN)", img: "/images/partners/united-nations.png" },
+  { name: "Royal Thai Army Quartermaster Department", img: "/images/partners/rtaf-1.png" },
+  { name: "Internal Security Operations Command (ISOC)", img: "/images/partners/rta-medical-1.png" },
   { name: "The Royal Thai Air Force (RTAF)", img: "/images/partners/rtaf-2.png" },
   { name: "Territorial Defense Command (TDC)", img: "/images/partners/territorial-defense.png" },
   { name: "Royal Thai Army Medical Department", img: "/images/partners/rta-medical-2.png" },
+];
+
+const carouselItems = [
+  { img: CarouselImg01.src, description: "Carousel Image 1" },
+  { img: CarouselImg01.src, description: "Carousel Image 2" },
 ];
 ---
 
@@ -71,6 +79,7 @@ const partners = [
       <div>
         <h2 class="text-(--primary-900) mb-4">{t("home.products.title")}</h2>
         <p class="body-text mb-4">{t("home.products.description")}</p>
+        <!-- Comment Out Btn since no navigation defined -->
         <!-- <div class="flex flex-col lg:flex-row gap-2 items-end justify-end">
           <button class="btn-primary" style="font-size: 1.125rem;">
             {t("home.products.viewBtn")}
@@ -137,6 +146,12 @@ const partners = [
   </div>
 </section>
 
+<!-- Carousel Section -->
+<section class="carousel-section">
+  <h2 class="carousel-title reveal">{t("home.carousel.title")}</h2>
+  <Carousel />
+</section>
+
 <!-- Contact Section -->
 <ContactSection
   bgImg={ContactBgImg}
@@ -175,7 +190,7 @@ const partners = [
   });
 </script>
 
-<style>
+<style define:vars={{ videoUrl: `url(${VideoImg.src})` }}>
   @keyframes fadeUp {
     from {
       opacity: 0;
@@ -254,7 +269,7 @@ const partners = [
   .customize-btn:hover {
     color: var(--primary-500);
   }
-
+  /* --------------------- Team Section ---------------------*/
   .team-section {
     background-color: var(--primary-900);
     display: flex;
@@ -283,14 +298,16 @@ const partners = [
   }
 
   .team-video-placeholder {
-    background-color: white;
+    background-image: var(--videoUrl);
+    background-size: cover;
+    background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     border-radius: 1rem;
   }
-
+  /* --------------------- Product Section ---------------------*/
   .product-section {
     padding: 2rem;
     padding: 4rem 1.25rem;
@@ -302,7 +319,7 @@ const partners = [
     gap: 48px;
     isolation: isolate;
   }
-
+  /* --------------------- Partners Section ---------------------*/
   .partners-section {
     background-color: var(--white);
     padding: 4rem 1.25rem;
@@ -383,6 +400,15 @@ const partners = [
     color: var(--black);
     text-align: center;
   }
+  /* --------------------- Carousel Section ---------------------*/
+  .carousel-section {
+    background-color: var(--primary-900);
+    color: var(--white);
+    padding: 4rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
 
   /* Tablet and above (min-width) */
   @media only screen and (min-width: 768px) {
@@ -402,6 +428,9 @@ const partners = [
     }
     .partners-title {
       font-size: 3.625rem;
+    }
+    .carousel-section {
+      padding: 4.6875rem;
     }
   }
 

@@ -1,0 +1,222 @@
+---
+import { Image } from "astro:assets";
+import CarouselImg01 from "@/assets/products/armor/armor_01.png";
+import CarouselImg02 from "@/assets/products/armor/armor_02.png";
+import CarouselImg03 from "@/assets/products/armor/armor_03.png";
+import CarouselImg04 from "@/assets/products/armor/armor_04.png";
+import CarouselImg05 from "@/assets/products/armor/armor_05.png";
+import CarouselImg06 from "@/assets/products/armor/armor_06.png";
+import CarouselImg07 from "@/assets/products/armor/armor_07.png";
+import CarouselImg08 from "@/assets/products/armor/armor_08.png";
+import CarouselImg09 from "@/assets/products/armor/armor_09.png";
+
+const items = [
+  { img: CarouselImg01, description: "Carousel Image 1" },
+  { img: CarouselImg02, description: "Carousel Image 2" },
+  { img: CarouselImg03, description: "Carousel Image 3" },
+  { img: CarouselImg04, description: "Carousel Image 4" },
+  { img: CarouselImg05, description: "Carousel Image 5" },
+  { img: CarouselImg06, description: "Carousel Image 6" },
+  { img: CarouselImg07, description: "Carousel Image 7" },
+  { img: CarouselImg08, description: "Carousel Image 8" },
+  { img: CarouselImg09, description: "Carousel Image 9" },
+];
+---
+
+<div class="carousel-container">
+  <div class="carousel-slider">
+    <div class="carousel-track">
+      {
+        items.map((item, index) => (
+          <div id={`carousel-slide-${index}`} class="carousel-slide">
+            <Image src={item.img} alt={item.description} />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- arrows unchanged -->
+  <div class="carousel-arrow carousel-arrow-left">
+    <svg width="28" height="27" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M27.79 10.9898L8.91337 10.9898L16.6134 3.31315L13.3 -0.000179337L3.75255e-05 13.3232L13.3 26.6465L16.6134 23.3332L8.91337 15.6565L27.79 15.6565L27.79 10.9898Z"
+        fill="#90B9E7"></path>
+    </svg>
+    <!-- <svg width="28" height="27" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M27.79 10.9898L8.91337 10.9898L16.6134 3.31315L13.3 -0.000179291L3.8147e-05 13.3232L13.3 26.6465L16.6134 23.3332L8.91337 15.6565L27.79 15.6565L27.79 10.9898Z"
+        fill="#F3F7FC"></path>
+    </svg> -->
+  </div>
+  <div class="carousel-arrow carousel-arrow-right">
+    <svg width="28" height="27" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 15.6567H18.8767L11.1767 23.3333L14.49 26.6467L27.79 13.3233L14.49 0L11.1767 3.31333L18.8767 10.99H0V15.6567Z" fill="#90B9E7"></path>
+    </svg>
+    <!-- <svg width="28" height="27" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 15.6567H18.8767L11.1767 23.3333L14.49 26.6467L27.79 13.3233L14.49 0L11.1767 3.31333L18.8767 10.99H0V15.6567Z" fill="white"></path>
+    </svg> -->
+  </div>
+  <!-- indicators add in js -->
+  <div class="carousel-indicators"></div>
+</div>
+
+<!-- add event listeners for astro-reload -->
+<script is:inline>
+  function setupCarousel() {
+    const track = document.querySelector(".carousel-track");
+    const slides = document.querySelectorAll(".carousel-slide");
+    const dotsBox = document.querySelector(".carousel-indicators");
+    const prev = document.querySelector(".carousel-arrow-left");
+    const next = document.querySelector(".carousel-arrow-right");
+
+    let page = 0,
+      perView = 1,
+      containerWidth = 0,
+      totalPages = 0;
+
+    function update() {
+      containerWidth = track.parentElement.clientWidth;
+      perView = matchMedia("(min-width: 768px)").matches ? 3 : 1;
+      totalPages = Math.ceil(slides.length / perView);
+      page = Math.min(page, totalPages - 1);
+
+      // Build the dots: the active one gets the 'active' class
+      let html = "";
+      for (let i = 0; i < totalPages; i++) {
+        html += `<button class="carousel-indicator${i === page ? " active" : ""}" aria-label="Go to page ${i + 1}" data-page="${i}"></button>`;
+      }
+      dotsBox.innerHTML = html;
+
+      // Move the track by one full container width per page
+      gap = parseInt(getComputedStyle(track).gap) || 0;
+      track.style.transform = `translateX(-${page * (containerWidth + gap)}px)`;
+    }
+
+    // ---------- Event delegation: clicks on any dot (even future ones) ----------
+    dotsBox.addEventListener("click", (e) => {
+      const btn = e.target.closest("button");
+      if (!btn) return;
+      const newPage = Number(btn.dataset.page);
+      if (newPage !== page) {
+        page = newPage;
+        update();
+      }
+    });
+
+    // Arrows – cycle through pages
+    prev.addEventListener("click", () => {
+      page = (page - 1 + totalPages) % totalPages;
+      update();
+    });
+    next.addEventListener("click", () => {
+      page = (page + 1) % totalPages;
+      update();
+    });
+
+    // Recalculate on resize (debounced)
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(update, 100);
+    });
+
+    update();
+  }
+
+  // Initial setup on page load
+  setupCarousel();
+  // Re‑run after every Astro client‑side navigation
+  document.addEventListener("astro:after-swap", setupCarousel);
+</script>
+
+<style is:global>
+  .carousel-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .carousel-slider {
+    overflow: hidden; /* hides slides outside the view */
+  }
+
+  /* track that moves */
+  .carousel-track {
+    display: flex;
+    gap: 1rem;
+    transition: transform 0.4s ease; /* smooth slide */
+    will-change: transform;
+  }
+
+  .carousel-slide {
+    background-color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 100%;
+    border-radius: 0.5rem;
+  }
+
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.75rem;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .carousel-arrow-left {
+    left: 0;
+  }
+
+  .carousel-arrow-right {
+    right: 0;
+  }
+
+  .carousel-indicators {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .carousel-indicator {
+    background-color: var(--white);
+    width: 25px;
+    height: 3px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .carousel-indicator.active {
+    background-color: var(--accent);
+  }
+  /* Fix calculate gap later */
+  @media screen and (min-width: 768px) {
+    .carousel-slider {
+      width: 90%;
+    }
+
+    .carousel-slide {
+      flex: 0 0 calc(100% / 3 - (1.875rem * 2 / 3)); /* show 3 slides with gap */
+    }
+
+    .carousel-track {
+      gap: 1.875rem; /* also calculate gap in flex proportion */
+    }
+
+    .carousel-arrow {
+      padding: 0.5rem;
+    }
+
+    .carousel-indicator {
+      width: 50px;
+      height: 5px;
+    }
+  }
+</style>

@@ -64,11 +64,6 @@ const Collapse: React.FC<CollapseProps> = ({ cards }) => {
               </button>
             </div>
           </div>
-          {isActive(index) && card.productImage && !isMobile && (
-            <div className="product-img">
-              <img src={card.productImage} alt={card.label} loading="lazy" decoding="async" />
-            </div>
-          )}
         </div>
       ))}
     </div>

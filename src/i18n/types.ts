@@ -121,9 +121,10 @@ export type Translations = {
   "home.team.ctaLearn": string;
   "home.partners.title": string;
   "home.partners.description": string;
+  "home.carousel.title": string;
   "home.contact.title": string;
   "home.contact.description": string;
-
+  
   // Company page
   "company.intro.title": string;
   "company.intro.description": string;
