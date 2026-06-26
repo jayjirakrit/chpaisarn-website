@@ -43,19 +43,11 @@ const items = [
         d="M27.79 10.9898L8.91337 10.9898L16.6134 3.31315L13.3 -0.000179337L3.75255e-05 13.3232L13.3 26.6465L16.6134 23.3332L8.91337 15.6565L27.79 15.6565L27.79 10.9898Z"
         fill="#90B9E7"></path>
     </svg>
-    <!-- <svg width="28" height="27" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M27.79 10.9898L8.91337 10.9898L16.6134 3.31315L13.3 -0.000179291L3.8147e-05 13.3232L13.3 26.6465L16.6134 23.3332L8.91337 15.6565L27.79 15.6565L27.79 10.9898Z"
-        fill="#F3F7FC"></path>
-    </svg> -->
   </div>
   <div class="carousel-arrow carousel-arrow-right">
     <svg width="28" height="27" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0 15.6567H18.8767L11.1767 23.3333L14.49 26.6467L27.79 13.3233L14.49 0L11.1767 3.31333L18.8767 10.99H0V15.6567Z" fill="#90B9E7"></path>
     </svg>
-    <!-- <svg width="28" height="27" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0 15.6567H18.8767L11.1767 23.3333L14.49 26.6467L27.79 13.3233L14.49 0L11.1767 3.31333L18.8767 10.99H0V15.6567Z" fill="white"></path>
-    </svg> -->
   </div>
   <!-- indicators add in js -->
   <div class="carousel-indicators"></div>
@@ -69,14 +61,34 @@ const items = [
     const dotsBox = document.querySelector(".carousel-indicators");
     const prev = document.querySelector(".carousel-arrow-left");
     const next = document.querySelector(".carousel-arrow-right");
-
+    
+    if (!track) return;
     let page = 0,
       perView = 1,
       containerWidth = 0,
-      totalPages = 0;
+      totalPages = 0,
+      autoPlayInterval = null;
+
+    // Clear any running timer
+    function stopAutoPlay() {
+      if (autoPlayInterval) {
+        clearInterval(autoPlayInterval);
+        autoPlayInterval = null;
+      }
+    }
+
+    // Start / restart the timer (clears previous first)
+    function startAutoPlay() {
+      stopAutoPlay();
+      autoPlayInterval = setInterval(() => {
+        // simulate a click on the next arrow
+        page = (page + 1) % totalPages;
+        update();
+      }, 4000); // 4 seconds per slide – adjust as needed
+    }
 
     function update() {
-      containerWidth = track.parentElement.clientWidth;
+      containerWidth = track?.parentElement.clientWidth;
       perView = matchMedia("(min-width: 768px)").matches ? 3 : 1;
       totalPages = Math.ceil(slides.length / perView);
       page = Math.min(page, totalPages - 1);
@@ -94,7 +106,7 @@ const items = [
     }
 
     // ---------- Event delegation: clicks on any dot (even future ones) ----------
-    dotsBox.addEventListener("click", (e) => {
+    dotsBox?.addEventListener("click", (e) => {
       const btn = e.target.closest("button");
       if (!btn) return;
       const newPage = Number(btn.dataset.page);
@@ -105,11 +117,11 @@ const items = [
     });
 
     // Arrows – cycle through pages
-    prev.addEventListener("click", () => {
+    prev?.addEventListener("click", () => {
       page = (page - 1 + totalPages) % totalPages;
       update();
     });
-    next.addEventListener("click", () => {
+    next?.addEventListener("click", () => {
       page = (page + 1) % totalPages;
       update();
     });
@@ -122,6 +134,7 @@ const items = [
     });
 
     update();
+    startAutoPlay(); // Start Auto Slider
   }
 
   // Initial setup on page load

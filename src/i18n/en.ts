@@ -204,15 +204,15 @@ export const en: Translations = {
     { label: "Built to your specification", anchor: "customization" },
   ],
   "armour.itemOptions": [
-    { label: "Option 1", imgDescription: "Ballistic Plate Level III" },
-    { label: "Option 2", imgDescription: "Ballistic Plate Level III+" },
-    { label: "Option 3", imgDescription: "Ballistic Plate Level IV-" },
-    { label: "Option 4", imgDescription: "Ballistic Plate Level IV" },
-    { label: "Option 5", imgDescription: "Ballistic Plate Level III" },
-    { label: "Option 6", imgDescription: "Ballistic Plate Level III+" },
-    { label: "Option 7", imgDescription: "Ballistic Plate Level IV-" },
-    { label: "Option 8", imgDescription: "Ballistic Plate Level IV" },
-    { label: "Option 9", imgDescription: "Ballistic Plate Level IV" },
+    { label: "Option 1", imgDescription: "" },
+    { label: "Option 2", imgDescription: "" },
+    { label: "Option 3", imgDescription: "" },
+    { label: "Option 4", imgDescription: "" },
+    { label: "Option 5", imgDescription: "" },
+    { label: "Option 6", imgDescription: "" },
+    { label: "Option 7", imgDescription: "" },
+    { label: "Option 8", imgDescription: "" },
+    { label: "Option 9", imgDescription: "" },
   ],
   "armour.protectionOptions": [
     {
@@ -499,10 +499,10 @@ export const en: Translations = {
     { label: "Built to your specification", anchor: "customization" },
   ],
   "plate.itemOptions": [
-    { label: "Option 1", title: "NIJ Level III", imgDescription: "Ballistic Plate Level III" },
-    { label: "Option 2", title: "NIJ Level III+", imgDescription: "Ballistic Plate Level III+" },
-    { label: "Option 3", title: "NIJ Level IV-", imgDescription: "Ballistic Plate Level IV-" },
-    { label: "Option 4", title: "NIJ Level IV", imgDescription: "Ballistic Plate Level IV" },
+    { label: "Option 1", title: "NIJ Level III", imgDescription: "<strong>Ballistic Plate Level III</strong>:<br>Bullet Protection<br> 7.62x51 mm FMJ, 7.62x39 mm MSC, 5.56x45 mm (M193)" },
+    { label: "Option 2", title: "NIJ Level III+", imgDescription: "<strong>Ballistic Plate Level III+</strong>:<br>Bullet Protection<br> 7.62x51 mm FMJ, 7.62x39 mm MSC, 5.56x45 mm (M193), 5.56x45 mm (M855)" },
+    { label: "Option 3", title: "NIJ Level IV-", imgDescription: "<strong>Ballistic Plate Level IV-</strong>:<br>Bullet Protection<br> 7.62x51 mm FMJ, 7.62x39 mm MSC, 5.56x45 mm (M193), 5.56x45 mm (M855), 5.56x45 mm (M855A1), 7.62x39 API" },
+    { label: "Option 4", title: "NIJ Level IV", imgDescription: "<strong>Ballistic Plate Level IV</strong>:<br>Bullet Protection<br> 7.62x51 mm FMJ, 7.62x39 mm MSC, 5.56x45 mm (M193), 5.56x45 mm (M855), 5.56x45 mm (M855A1), 7.62x39 API, 7.62x63 AP, 7.62x54 R API" },
   ],
   "plate.customizationSteps": [
     {

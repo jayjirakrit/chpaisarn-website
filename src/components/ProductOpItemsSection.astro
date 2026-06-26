@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 const optionsTitle: string = Astro.props.optionsTitle;
 const optionsDescription: string = Astro.props.optionsDescription;
 const itemOptions: { label: string; title: string; img: any; imgDescription: string }[] = Astro.props.itemOptions;
+const showModal: boolean = Astro.props.showModal ?? false;
 ---
 
 <section class="option-items-section">
@@ -12,132 +13,202 @@ const itemOptions: { label: string; title: string; img: any; imgDescription: str
     <p class="option-description body-text">{optionsDescription}</p>
   </div>
 
-  <div class="option-items-content">
+  <div
+    id="option-items-content"
+    class="option-items-content"
+    data-show-modal={showModal}>
     {
       itemOptions.map((item, index) => (
-        <div class="option-items-card reveal" style={`transition-delay: ${index * 60}ms`}>
+        <div
+          id={`option-item-${index}`}
+          class="option-items-card reveal"
+          style={`transition-delay: ${index * 60}ms`}>
           <div class="option-items-card-header">
             <span class="option-items-card-label">{item.label}</span>
             <h5 class="option-items-card-title">{item.title}</h5>
           </div>
           <div class="option-items-card-features">
-            <Image src={item.img} alt={item.imgDescription} />
+            <Image
+              src={item.img}
+              alt={item.imgDescription}
+            />
+          </div>
+          <div class="option-items-card-modal">
+            <p
+              class="text-white"
+              set:html={item.imgDescription}
+            />
           </div>
         </div>
       ))
     }
   </div>
-
-  <style>
-    .option-items-section {
-      background-color: white;
-      background-size: cover;
-      background-position: center;
-      padding: 3.5rem 1.25rem;
-    }
-
-    .option-head {
-      /* text-align: center; */
-      margin-bottom: 3rem;
-    }
-
-    .option-title {
-      color: var(--primary-900);
-      margin-bottom: 1.5rem;
-    }
-
-    .option-description {
-      margin-bottom: 1rem;
-    }
-
-    .option-items-content {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr); /* ← 2 columns on mobile */
-      gap: 1rem;
-    }
-
-    .option-items-card {
-      width: 100%;
-      background-color: var(--primary-50);
-      border-radius: 0.3125rem;
-      border: 1px solid var(--primary-900);
-      padding: 1rem;
-    }
-
-    .option-items-card-header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      padding-bottom: 1rem;
-      color: black;
-    }
-
-    .option-items-card-label {
-      font-family: var(--font-space);
-      font-weight: 700;
-      font-size: 0.75rem;
-      color: black;
-      padding-bottom: 0.5rem;
-      border-bottom: 3px solid var(--accent);
-    }
-
-    .option-items-card-title {
-      font-family: var(--font-hanken);
-      font-weight: 700;
-      color: black;
-    }
-
-    .option-items-card-features {
-      list-style-type: disc;
-      color: white;
-      display: flex;
-      justify-content: center;
-    }
-
-    .option-items-card-features li {
-      margin-bottom: 0.75rem;
-      font-size: 1rem;
-      line-height: 1.4;
-    }
-
-    /* Tablet and above (min-width) */
-    @media only screen and (min-width: 768px) {
-      .option-items-section {
-        padding: 4.5rem;
-        min-height: auto;
-      }
-
-      .option-head {
-        text-align: start;
-      }
-
-      .option-items-content {
-        grid-template-columns: repeat(3, 1fr); /* exactly 3 equal columns */
-        gap: 3rem;
-      }
-
-      .option-items-card {
-        padding: 1.875rem;
-      }
-
-      .option-items-card-header {
-        align-items: flex-start;
-        flex-direction: row;
-      }
-
-    }
-
-    /* Desktop and above */
-    @media only screen and (min-width: 1024px) {
-      .option-items-section {
-        padding: 5rem 12.5rem;
-        min-height: auto;
-      }
-
-      .option-items-content {
-        padding: 0rem 3.75rem;
-      }
-    }
-  </style>
 </section>
+
+<!-- The script is always present, but only activates when showModal is true -->
+<script>
+  function setupHandleModal() {
+    const optionContent = document.getElementById("option-items-content");
+    if (!optionContent) return;
+    if (optionContent.dataset.showModal !== "true") return;
+    const optionItems = document.querySelectorAll(".option-items-card");
+    optionItems.forEach((item) => {
+      item.addEventListener("mouseenter", () => {
+        const modal = item.querySelector(".option-items-card-modal");
+        if (modal) {
+          modal.classList.add("active");
+        }
+      });
+      item.addEventListener("mouseleave", () => {
+        const modal = item.querySelector(".option-items-card-modal");
+        if (modal) {
+          modal.classList.remove("active");
+        }
+      });
+    });
+  }
+
+  setupHandleModal();
+  document.addEventListener("astro:after-swap", setupHandleModal);
+</script>
+
+<style>
+  .option-items-section {
+    background-color: white;
+    background-size: cover;
+    background-position: center;
+    padding: 3.5rem 1.25rem;
+  }
+
+  .option-head {
+    margin-bottom: 3rem;
+  }
+
+  .option-title {
+    color: var(--primary-900);
+    margin-bottom: 1.5rem;
+  }
+
+  .option-description {
+    margin-bottom: 1rem;
+  }
+
+  .option-items-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .option-items-card {
+    position: relative;
+    width: 100%;
+    background-color: var(--primary-50);
+    border-radius: 0.3125rem;
+    border: 1px solid var(--primary-900);
+    padding: 1rem;
+  }
+
+  .option-items-card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    color: black;
+  }
+
+  .option-items-card-label {
+    font-family: var(--font-space);
+    font-weight: 700;
+    font-size: 0.75rem;
+    color: black;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--accent);
+  }
+
+  .option-items-card-title {
+    font-family: var(--font-hanken);
+    font-weight: 700;
+    color: black;
+  }
+
+  .option-items-card-features {
+    list-style-type: disc;
+    color: white;
+    display: flex;
+    justify-content: center;
+  }
+
+  .option-items-card-features li {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .option-items-card-modal {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding-bottom: 1.75rem;
+    background: linear-gradient(180deg, rgba(20, 55, 95, 0) 18.17%, #14375f 76.75%);
+    filter: drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.15));
+    border-radius: 5px;
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+    transition:
+      opacity 0.4s ease-out,
+      transform 0.4s ease-out;
+  }
+
+  .option-items-card-modal.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .option-items-card-modal p {
+    font-size: 12px;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .option-items-section {
+      padding: 4.5rem;
+      min-height: auto;
+    }
+    .option-head {
+      text-align: start;
+    }
+    .option-items-content {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+    }
+    .option-items-card {
+      padding: 1.875rem;
+    }
+    .option-items-card-header {
+      align-items: flex-start;
+      flex-direction: row;
+    }
+  }
+
+  @media only screen and (min-width: 1024px) {
+    .option-items-section {
+      padding: 5rem 12.5rem;
+      min-height: auto;
+    }
+    .option-items-content {
+      padding: 0rem 3.75rem;
+    }
+    .option-items-card-modal p {
+      font-size: 15px;
+    }
+  }
+</style>
