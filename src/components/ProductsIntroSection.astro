@@ -1,0 +1,72 @@
+---
+const companyBgImg: { src: string } = Astro.props.companyBgImg;
+const companyBgImgMobile: { src: string } | undefined = Astro.props.companyBgImgMobile;
+const pageTitle: string = Astro.props.pageTitle;
+const pageDescription: string = Astro.props.pageDescription;
+
+const mobileImg = companyBgImgMobile ?? companyBgImg;
+---
+
+<section class="hero-section" style={`--bg-desktop: url(${companyBgImg.src}); --bg-mobile: url(${mobileImg.src});`}>
+  <div class="hero-content">
+    <h1 class="hero-title">{pageTitle}</h1>
+    <p class="hero-description body-text">{pageDescription}</p>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    background-color: var(--primary-900);
+    background-image: var(--bg-mobile);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    position: relative;
+    min-height: 28rem;
+    padding: 3.5rem 1.25rem;
+  }
+
+  .hero-content {
+    color: white;
+  }
+
+  .hero-title {
+    font-family: var(--font-hanken);
+    font-weight: 700;
+    font-size: 2.25rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  /* Tablet and above (min-width) */
+  @media only screen and (min-width: 768px) {
+    .hero-section {
+      background-image: var(--bg-desktop);
+      padding: 6rem 4rem;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+    }
+
+    .hero-content {
+      max-width: 600px;
+    }
+
+  }
+
+  /* Desktop and above (min-width) */
+  @media only screen and (min-width: 1024px) {
+    .hero-title {
+      font-size: 3.625rem;
+    }
+  }
+
+  .hero-description {
+    position: relative;
+    z-index: 10;
+  }
+
+</style>

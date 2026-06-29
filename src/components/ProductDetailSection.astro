@@ -1,0 +1,83 @@
+---
+import ProductTable from "@/components/table/ProductTable.astro";
+import type { TableRow } from "@/components/table/ProductTable.astro";
+
+type ProductDetailProps = {
+  pidTitle: string;
+  pidDesc: string;
+  specTitle: string;
+  tableContent: TableRow[];
+};
+
+const pidTitle = "Structural Integrity & Design";
+const pidDesc =
+  "Fast Helment is manufactured using a proprietary blend of high-tensile aramid fibers and advanced resin matrices. This composition undergoes a rigorously controlled high-pressure molding process, ensuring zero delamination under extreme ballistic stress. The result is a shell that consistently outperforms standard military specifications for backface deformation and fragmentation resistance. <br /><br /> Internally, the suspension system leverages aerospace biomechanics. The multi-point harness integrates energy-absorbing memory foam pads that not only mitigate blunt force trauma but provide sustained comfort during extended deployment. Every component, from the modular side rails to the front shroud, is subjected to strict tolerance checks.";
+
+const specTitle = "Technical Specifications";
+const tableContent: TableRow[] = [
+  { label: "PRODUCT TYPE", value: "Advanced Combat Helmet (ACH) Profile" },
+  { label: "HELMET SHAPE", value: "Military Helmet (round shape, open front design with visor)" },
+  { label: "MATERIAL", value: "Aramid Fiber" },
+  { label: "PROTECTION LEVEL", value: "NIJ 0106.01 Level IIIA (9mm & .44 Mag)" },
+  { label: "WEIGHT", value: "Shell: < 1.35 kg<br />Total with accessories: < 1.50 kg" },
+  { label: "THICKNESS", value: "8.0 mm (± 0.2mm tolerance)" },
+  { label: "COLOR OPTIONS", value: "Matte Black, Olive Drab, Desert Tan" },
+  { label: "CERTIFICATIONS", value: "ISO 9001:2015, NIJ Certified Laboratory Tested" },
+];
+
+// const { pidTitle, pidDesc, specTitle, tableContent }: ProductDetailProps = Astro.props;
+---
+
+<section class="product-info-detail-section">
+  <div class="pid-content">
+    <h2 class="pid-content-title">{pidTitle}</h2>
+    <p
+      class="pid-content-desc"
+      set:html={pidDesc}
+    />
+  </div>
+  <div class="pid-spec">
+    <h2>{specTitle}</h2>
+    <ProductTable rows={tableContent} />
+  </div>
+</section>
+
+<script></script>
+
+<style>
+  .product-info-detail-section {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    padding: 4rem 0.75rem;
+  }
+
+  .pid-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .pid-content-desc {
+    color: #43474f;
+  }
+
+  .pid-spec {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  @media screen and (min-width: 768px) {
+    .product-info-detail-section {
+      padding: 4rem 3rem;
+    }
+
+    .pid-content {
+      gap: 1.5rem;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+  }
+</style>

@@ -6,7 +6,7 @@ import CustomizeBg02Img from "@/assets/spec_06.png";
 import CustomizeBg03Img from "@/assets/spec_09.png";
 import CustomizeBg04Img from "@/assets/spec_03.png";
 import CustomizeBg05Img from "@/assets/spec_08.png";
-import ProductIntroSection from "@/components/ProductIntroSection.astro";
+import ProductsIntroSection from "@/components/ProductsIntroSection.astro";
 import ProductOpItemsSection from "@/components/ProductOpItemsSection.astro";
 import ProductOptionNav from "@/components/ProductOptionNav.astro";
 import CustomStepsSection from "@/components/CustomStepsSection.astro";
@@ -17,7 +17,6 @@ import HelmetSouthImg from "@/assets/products/helmet/helmet_south.png";
 import HelmetFastImg from "@/assets/products/helmet/helmet_fast_rif.png";
 import HelmetFastGreenImg from "@/assets/products/helmet/helmet_fast_green.png";
 import HelmetWendyImg from "@/assets/products/helmet/helmet_wendy.png";
-import HelmetAirFrameImg from "@/assets/products/helmet/helmet_air_frame.png";
 import type { Lang } from "@/i18n/types";
 import { useTranslations } from "@/i18n/utils";
 
@@ -28,7 +27,7 @@ interface Props {
 const { lang = "en" } = Astro.props;
 const t = useTranslations(lang);
 
-const helmetImgs = [HelmetMitImg, HelmetNewFastImg, HelmetSouthImg, HelmetFastImg, HelmetFastGreenImg, HelmetWendyImg, HelmetAirFrameImg];
+const helmetImgs = [HelmetMitImg, HelmetNewFastImg, HelmetSouthImg, HelmetFastImg, HelmetFastGreenImg, HelmetWendyImg];
 const stepImgs = [CustomizeBg01Img.src, CustomizeBg02Img.src, CustomizeBg03Img.src, CustomizeBg04Img.src, CustomizeBg05Img.src];
 
 const itemOptions = t("helmet.itemOptions").map((opt, i) => ({ ...opt, img: helmetImgs[i] }));
@@ -36,7 +35,7 @@ const customizationSteps = t("helmet.customizationSteps").map((step, i) => ({ ..
 ---
 
 <!-- Introduction Section -->
-<ProductIntroSection
+<ProductsIntroSection
   companyBgImg={CompanyBgImg}
   pageTitle={t("helmet.hero.title")}
   pageDescription={t("helmet.hero.description")}

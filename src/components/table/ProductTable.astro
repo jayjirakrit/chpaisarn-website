@@ -1,0 +1,185 @@
+---
+// Table.astro
+// Two‑column product specification table – rem units, tablet/desktop breakpoints
+
+export interface TableRow {
+  label: string;
+  value: string;
+}
+
+export interface Props {
+  rows?: TableRow[];
+  title?: string;
+  className?: string;
+}
+
+const defaultRows: TableRow[] = [
+  { label: "PRODUCT TYPE", value: "Advanced Combat Helmet (ACH) Profile" },
+  { label: "HELMET SHAPE", value: "Military Helmet (round shape, open front design with visor)" },
+  { label: "MATERIAL", value: "Aramid Fiber" },
+  { label: "PROTECTION LEVEL", value: "NIJ 0106.01 Level IIIA (9mm & .44 Mag)" },
+  { label: "WEIGHT", value: "Shell: < 1.35 kg<br />Total with accessories: < 1.50 kg" },
+  { label: "THICKNESS", value: "8.0 mm (± 0.2mm tolerance)" },
+  { label: "COLOR OPTIONS", value: "Matte Black, Olive Drab, Desert Tan" },
+  { label: "CERTIFICATIONS", value: "ISO 9001:2015, NIJ Certified Laboratory Tested" },
+];
+
+const { rows = defaultRows, title, className = "" } = Astro.props;
+---
+
+<div class={`table-container ${className}`}>
+  {title && <h3 class="table-container__title">{title}</h3>}
+  <table class="spec-table">
+    <tbody>
+      {
+        rows.map((row, index) => (
+          <tr class="spec-table__row">
+            <th
+              class="spec-table__header"
+              scope="row">
+              {row.label}
+            </th>
+            <td
+              class="spec-table__cell"
+              set:html={row.value}
+            />
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
+
+<style>
+  /* ========== MOBILE FIRST (base) ========== */
+  table {
+    font-family: var(--font-space);
+  }
+
+  th {
+    color: #215fa5;
+  }
+
+  td {
+    color: #001736;
+  }
+
+  .table-container {
+    max-width: 51.25rem; /* 820px */
+    margin: 0 auto;
+    background: #fff;
+    border: 0.0625rem solid #e9edf4; /* 1px */
+    box-shadow: 0 0.25rem 1.5rem rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+  }
+  .table-container__title {
+    padding: 1rem 1.125rem 0.625rem; /* 16px 18px 10px */
+    margin: 0;
+    font-size: 0.875rem; /* 14px */
+    font-weight: 600;
+    border-bottom: 0.0625rem solid #f0f2f6;
+  }
+  .spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.75rem; /* 12px */
+    line-height: 1.6;
+  }
+  .spec-table__row:nth-child(even) {
+    background: #fafbfc;
+  }
+  .spec-table__row:hover {
+    background: #f5f8fe;
+  }
+  .spec-table__header,
+  .spec-table__cell {
+    padding: 0.625rem 0.875rem; /* 10px 14px */
+    border-bottom: 0.0625rem solid #eef1f7;
+    text-align: left;
+    vertical-align: middle;
+  }
+  .spec-table__header {
+    font-weight: 600;
+    font-size: 0.625rem; /* 10px */
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    width: 40%;
+    min-width: 4.375rem; /* 70px */
+  }
+  .spec-table__cell {
+    font-weight: 400;
+    font-size: 0.75rem; /* 12px */
+    word-break: break-word;
+  }
+  .spec-table__row:last-child .spec-table__header,
+  .spec-table__row:last-child .spec-table__cell {
+    border-bottom: none;
+  }
+
+  /* ========== TABLET: ≥ 768px (48rem) ========== */
+  @media (min-width: 768px) {
+    .table-container {
+      border-radius: 0.625rem;
+    } /* 10px */
+    .table-container__title {
+      padding: 1.125rem 1.5rem 0.75rem; /* 18px 24px 12px */
+      font-size: 1rem; /* 16px */
+    }
+    .spec-table {
+      font-size: 0.875rem;
+    } /* 14px */
+    .spec-table__header,
+    .spec-table__cell {
+      padding: 0.75rem 1.25rem; /* 12px 20px */
+    }
+    .spec-table__header {
+      font-size: 0.6875rem; /* 11px */
+      min-width: 7.5rem; /* 120px */
+      width: 32%;
+    }
+    .spec-table__cell {
+      font-size: 0.875rem;
+    } /* 14px */
+  }
+
+  /* ========== DESKTOP: ≥ 1024px (64rem) ========== */
+  @media (min-width: 1024px) {
+    .table-container {
+      border-radius: 0.75rem;
+    } /* 12px */
+    .table-container__title {
+      padding: 1.25rem 1.75rem 0.875rem; /* 20px 28px 14px */
+      font-size: 1.125rem; /* 18px */
+    }
+    .spec-table {
+      font-size: 1rem;
+    } /* 16px */
+    .spec-table__header,
+    .spec-table__cell {
+      padding: 1rem 1.5rem; /* 16px 24px */
+    }
+    .spec-table__header {
+      font-size: 0.75rem; /* 12px */
+      min-width: 9.375rem; /* 150px */
+      width: 28%;
+    }
+    .spec-table__cell {
+      font-size: 1rem;
+    } /* 16px */
+  }
+
+  /* ========== PRINT ========== */
+  @media print {
+    .table-container {
+      box-shadow: none;
+      border: 0.0625rem solid #ccc;
+      border-radius: 0;
+    }
+    .spec-table__row:nth-child(even) {
+      background: #f5f5f5;
+    }
+    .spec-table__row:hover {
+      background: transparent;
+    }
+  }
+</style>

@@ -8,7 +8,6 @@ import CompanyBg03Img from "@/assets/company/company_bg_03.png";
 import CompanyBg03MobileImg from "@/assets/company/company_bg_03_mobile.png";
 import CompanyBg04Img from "@/assets/company/company_bg_04.png";
 import ContactBgImg from "@/assets/company/contact_bg.svg";
-import ArmorImg from "@/assets/products/body_armor_1.png";
 import CvcHelmetImg from "@/assets/products/helmet/helmet_fast_green.png";
 import PlateIIIImg from "@/assets/products/plate/plate_III.png";
 import VideoImg from "@/assets/company/video_bg.png";
@@ -29,13 +28,11 @@ const t = useTranslations(lang);
 // Image arrays matched to translation card order
 const bgImages = [CompanyBgImg.src, CompanyBg04Img.src, CompanyBg03Img.src, CompanyBgImg.src];
 const bgImagesMobile = [CompanyBg01MobileImg.src, CompanyBg02MobileImg.src, CompanyBg03MobileImg.src, CompanyBg01MobileImg.src];
-const productImages = [ArmorImg.src, CvcHelmetImg.src, PlateIIIImg.src, undefined];
 
 const cards = t("home.cards").map((card, i) => ({
   ...card,
   bgImage: bgImages[i],
   bgImageMobile: bgImagesMobile[i],
-  productImage: productImages[i],
 }));
 
 const partners = [

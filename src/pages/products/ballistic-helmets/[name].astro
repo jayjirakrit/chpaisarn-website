@@ -1,0 +1,58 @@
+---
+import HelmetInfo from "@/components/HelmetInfo.astro";
+import Layout from "@/layouts/Layout.astro";
+import "@/styles/global.css";
+
+// ========== GENERATE STATIC PATHS ==========
+export function getStaticPaths() {
+  // ========== PRODUCT DATA ==========
+  // (In a real project, move this to a separate file like src/data/ballistic-plates.ts)
+  const products = [
+    {
+      slug: "cvc",
+      name: "CVC Helmet",
+    },
+    {
+      slug: "fast",
+      name: "Fast Helmet",
+    },
+    {
+      slug: "ballistic-i",
+      name: "Ballistic I Helmet ",
+    },
+    {
+      slug: "fast-cer",
+      name: "Fast Ceramic Helmet",
+    },
+    {
+      slug: "fast-iii",
+      name: "Fast III Helmet",
+    },
+    {
+      slug: "wendy",
+      name: "Wendy Helmet",
+    },
+  ];
+
+  return products.map((product) => ({
+    params: { name: product.slug },
+    props: { product },
+  }));
+}
+
+// ========== ACCESS PROPS & BUILD DYNAMIC SEO ==========
+const { product } = Astro.props;
+
+// Dynamically build metadata based on the product
+const title = `${product.name} — Ch.Paisarn (Chpaisarn)`;
+const description = `Ballistic Helmet from Ch.Paisarn. ${product.name} Manufactured in Thailand for military and law enforcement.`;
+const keywords = ``;
+---
+
+<!-- ========== PAGE TEMPLATE ========== -->
+<Layout
+  title={title}
+  description={description}
+  keywords={keywords}>
+  <HelmetInfo productInfo={product} />
+</Layout>

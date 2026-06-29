@@ -17,7 +17,7 @@ import Armor07Img from "@/assets/products/armor/armor_07.png";
 import Armor08Img from "@/assets/products/armor/armor_08.png";
 import Armor09Img from "@/assets/products/armor/armor_09.png";
 
-import ProductIntroSection from "@/components/ProductIntroSection.astro";
+import ProductsIntroSection from "@/components/ProductsIntroSection.astro";
 import ProductOptionSection from "@/components/ProductOptionSection.astro";
 import ProductOptionNav from "@/components/ProductOptionNav.astro";
 import CustomStepsSection from "@/components/CustomStepsSection.astro";
@@ -41,7 +41,7 @@ const customizationSteps = t("armour.customizationSteps").map((step, i) => ({ ..
 ---
 
 <!-- Hero Section -->
-<ProductIntroSection companyBgImg={CompanyBgImg} companyBgImgMobile={CompanyBgMobileImg} pageTitle={t("armour.hero.title")} pageDescription={t("armour.hero.description")} />
+<ProductsIntroSection companyBgImg={CompanyBgImg} companyBgImgMobile={CompanyBgMobileImg} pageTitle={t("armour.hero.title")} pageDescription={t("armour.hero.description")} />
 
 <!--Options Navigation -->
 <ProductOptionNav optionsNav={t("armour.optionsNav")} />

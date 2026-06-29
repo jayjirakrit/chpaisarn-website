@@ -5,7 +5,7 @@ import CustomizeBg01Img from "@/assets/spec_06.png";
 import CustomizeBg02Img from "@/assets/spec_07.png";
 import CustomizeBg03Img from "@/assets/spec_02.png";
 import CustomizeBg04Img from "@/assets/spec_08.png";
-import ProductIntroSection from "@/components/ProductIntroSection.astro";
+import ProductsIntroSection from "@/components/ProductsIntroSection.astro";
 import ProductOpItemsSection from "@/components/ProductOpItemsSection.astro";
 import ProductOptionNav from "@/components/ProductOptionNav.astro";
 import CustomStepsSection from "@/components/CustomStepsSection.astro";
@@ -85,7 +85,7 @@ const customizationSteps = t("plate.customizationSteps").map((step, i) => ({ ...
 ---
 
 <!-- Introduction Section -->
-<ProductIntroSection
+<ProductsIntroSection
   companyBgImg={CompanyBgImg}
   pageTitle={t("plate.hero.title")}
   pageDescription={t("plate.hero.description")}

@@ -359,12 +359,11 @@ export const en: Translations = {
   ],
   "helmet.itemOptions": [
     { label: "Option 1", title: "CVC Helmet", imgDescription: "CVC Helmet" },
-    { label: "Option 2", title: "Fast Helmet", imgDescription: "Fast Helmet" },
-    { label: "Option 3", title: "Fast Helmet", imgDescription: "Fast Helmet" },
-    { label: "Option 4", title: "NIJ Level IV-", imgDescription: "NIJ Level IV- Helmet" },
-    { label: "Option 5", title: "PASGT", imgDescription: "PASGT Helmet" },
-    { label: "Option 6", title: "Ballistic", imgDescription: "Ballistic Helmet" },
-    { label: "Option 7", title: "Ballistic", imgDescription: "Ballistic Helmet" },
+    { label: "Option 2", title: "Fast", imgDescription: "Fast Helmet" },
+    { label: "Option 3", title: "Ballistic I", imgDescription: "Ballistic I Helmet" },
+    { label: "Option 4", title: "Fast CER", imgDescription: "Fast Ceramic Helmet" },
+    { label: "Option 5", title: "Fast III", imgDescription: "Fast III Helmet" },
+    { label: "Option 6", title: "Wendy", imgDescription: "Wendy Helmet" },
   ],
   "helmet.customizationSteps": [
     {
