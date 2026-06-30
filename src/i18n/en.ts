@@ -53,8 +53,8 @@ export const en: Translations = {
 
   // Home page
   "home.hero.quote": "Ch.Paisarn · High Quality Military Equipment",
-  "home.hero.title1": "Part of Every Mission.",
-  "home.hero.title2": "Proud of Every Success.",
+  "home.hero.title1": '"Your Trust Partners in Ballistic Protection."',
+  "home.hero.title2": "",
   "home.hero.ctaExplore": "Explore our products",
   "home.hero.ctaLearn": "Learn more",
   "home.products.title": "Our Products",
@@ -204,15 +204,15 @@ export const en: Translations = {
     { label: "Built to your specification", anchor: "customization" },
   ],
   "armour.itemOptions": [
-    { label: "Option 1", imgDescription: "" },
-    { label: "Option 2", imgDescription: "" },
-    { label: "Option 3", imgDescription: "" },
-    { label: "Option 4", imgDescription: "" },
-    { label: "Option 5", imgDescription: "" },
-    { label: "Option 6", imgDescription: "" },
-    { label: "Option 7", imgDescription: "" },
-    { label: "Option 8", imgDescription: "" },
-    { label: "Option 9", imgDescription: "" },
+    { label: "Option 1", imgDescription: "Ballistic Armor Level IIIA", url:"iiia" },
+    { label: "Option 2", imgDescription: "Ballistic Armor Level IIIA", url:"iiia" },
+    { label: "Option 3", imgDescription: "Ballistic Armor Level IIIA", url:"iiia" },
+    { label: "Option 4", imgDescription: "Ballistic and Fragmentation Armor", url:"fragmentation" },
+    { label: "Option 5", imgDescription: "Quick-Release Ballistic Ballistic Level III", url:"quick-release-iii" },
+    { label: "Option 6", imgDescription: "Quick-Release Ballistic Ballistic Level III", url:"quick-release-iii" },
+    { label: "Option 7", imgDescription: "Quick-Release Ballistic Ballistic Level III", url:"quick-release-iii" },
+    { label: "Option 8", imgDescription: "Quick-Release Ballistic Ballistic Level III", url:"quick-release-iii" },
+    { label: "Option 9", imgDescription: "Quick-Release Ballistic Ballistic Level III+++", url:"quick-release-iii+" },
   ],
   "armour.protectionOptions": [
     {
@@ -358,12 +358,12 @@ export const en: Translations = {
     { label: "Customization", anchor: "customization" },
   ],
   "helmet.itemOptions": [
-    { label: "Option 1", title: "CVC Helmet", imgDescription: "CVC Helmet" },
-    { label: "Option 2", title: "Fast", imgDescription: "Fast Helmet" },
-    { label: "Option 3", title: "Ballistic I", imgDescription: "Ballistic I Helmet" },
-    { label: "Option 4", title: "Fast CER", imgDescription: "Fast Ceramic Helmet" },
-    { label: "Option 5", title: "Fast III", imgDescription: "Fast III Helmet" },
-    { label: "Option 6", title: "Wendy", imgDescription: "Wendy Helmet" },
+    { label: "Option 1", title: "CVC", imgDescription: "CVC Helmet", url: "cvc" },
+    { label: "Option 2", title: "Fast", imgDescription: "Fast Helmet", url: "fast" },
+    { label: "Option 3", title: "Ballistic I", imgDescription: "Ballistic I Helmet", url: "ballistic-i" },
+    { label: "Option 4", title: "Fast CER", imgDescription: "Fast Ceramic Helmet", url: "fast-cer" },
+    { label: "Option 5", title: "Fast III", imgDescription: "Fast III Helmet", url: "fast-iii" },
+    { label: "Option 6", title: "Wendy", imgDescription: "Wendy Helmet", url: "wendy" },
   ],
   "helmet.customizationSteps": [
     {
@@ -498,10 +498,29 @@ export const en: Translations = {
     { label: "Built to your specification", anchor: "customization" },
   ],
   "plate.itemOptions": [
-    { label: "Option 1", title: "NIJ Level III", imgDescription: "<strong>Ballistic Plate Level III</strong>:<br>Bullet Protection<br> 7.62x51 mm FMJ, 7.62x39 mm MSC, 5.56x45 mm (M193)" },
-    { label: "Option 2", title: "NIJ Level III+", imgDescription: "<strong>Ballistic Plate Level III+</strong>:<br>Bullet Protection<br> 7.62x51 mm FMJ, 7.62x39 mm MSC, 5.56x45 mm (M193), 5.56x45 mm (M855)" },
-    { label: "Option 3", title: "NIJ Level IV-", imgDescription: "<strong>Ballistic Plate Level IV-</strong>:<br>Bullet Protection<br> 7.62x51 mm FMJ, 7.62x39 mm MSC, 5.56x45 mm (M193), 5.56x45 mm (M855), 5.56x45 mm (M855A1), 7.62x39 API" },
-    { label: "Option 4", title: "NIJ Level IV", imgDescription: "<strong>Ballistic Plate Level IV</strong>:<br>Bullet Protection<br> 7.62x51 mm FMJ, 7.62x39 mm MSC, 5.56x45 mm (M193), 5.56x45 mm (M855), 5.56x45 mm (M855A1), 7.62x39 API, 7.62x63 AP, 7.62x54 R API" },
+    {
+      label: "Option 1",
+      title: "NIJ Level III",
+      imgDescription: "<strong>Ballistic Plate Level III</strong>:<br>Bullet Protection<br> 7.62x51 mm FMJ, 7.62x39 mm MSC, 5.56x45 mm (M193)",
+    },
+    {
+      label: "Option 2",
+      title: "NIJ Level III+",
+      imgDescription:
+        "<strong>Ballistic Plate Level III+</strong>:<br>Bullet Protection<br> 7.62x51 mm FMJ, 7.62x39 mm MSC, 5.56x45 mm (M193), 5.56x45 mm (M855)",
+    },
+    {
+      label: "Option 3",
+      title: "NIJ Level IV-",
+      imgDescription:
+        "<strong>Ballistic Plate Level IV-</strong>:<br>Bullet Protection<br> 7.62x51 mm FMJ, 7.62x39 mm MSC, 5.56x45 mm (M193), 5.56x45 mm (M855), 5.56x45 mm (M855A1), 7.62x39 API",
+    },
+    {
+      label: "Option 4",
+      title: "NIJ Level IV",
+      imgDescription:
+        "<strong>Ballistic Plate Level IV</strong>:<br>Bullet Protection<br> 7.62x51 mm FMJ, 7.62x39 mm MSC, 5.56x45 mm (M193), 5.56x45 mm (M855), 5.56x45 mm (M855A1), 7.62x39 API, 7.62x63 AP, 7.62x54 R API",
+    },
   ],
   "plate.customizationSteps": [
     {

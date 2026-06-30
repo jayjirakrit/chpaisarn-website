@@ -6,7 +6,7 @@ import CustomizeBg02Img from "@/assets/spec_06.png";
 import CustomizeBg03Img from "@/assets/spec_09.png";
 import CustomizeBg04Img from "@/assets/spec_03.png";
 import CustomizeBg05Img from "@/assets/spec_08.png";
-import ProductsIntroSection from "@/components/ProductsIntroSection.astro";
+import IntroSection from "@/components/IntroSection.astro";
 import ProductOpItemsSection from "@/components/ProductOpItemsSection.astro";
 import ProductOptionNav from "@/components/ProductOptionNav.astro";
 import CustomStepsSection from "@/components/CustomStepsSection.astro";
@@ -35,7 +35,7 @@ const customizationSteps = t("helmet.customizationSteps").map((step, i) => ({ ..
 ---
 
 <!-- Introduction Section -->
-<ProductsIntroSection
+<IntroSection
   companyBgImg={CompanyBgImg}
   pageTitle={t("helmet.hero.title")}
   pageDescription={t("helmet.hero.description")}

@@ -1,9 +1,9 @@
 ---
-import HelmetFast01Img from "@/assets/products/helmet/helmet_fast_green.png";
 import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
+import type { Color } from "@/i18n/types";
 
-type ProductInfoProps = {
+export type ProductInfoProps = {
   productName: string;
   productsImg: ImageMetadata[];
   level: string;
@@ -12,37 +12,20 @@ type ProductInfoProps = {
   productDesc: string;
 };
 
-export type Color = {
-  color: string;
-  hex: string;
-};
-
-const productName = "Fast Helmet";
-const productsImg = [HelmetFast01Img, HelmetFast01Img, HelmetFast01Img, HelmetFast01Img];
-const level = "NIJ LEVEL IIIA";
-const colors: Color[] = [
-  { color: "red", hex: "" },
-  { color: "blue", hex: "" },
-  { color: "green", hex: "" },
-];
-const sizes = ["S", "M"];
-const productDesc =
-  "Engineered for elite tactical operations, the Model X combines advanced aramid composites with aerospace-grade ergonomic design. Offering unparalleled NIJ Level IIIA protection while maintaining a remarkably low profile and weight.";
-
-// const { productName, productsImg, level, colors, sizes, productDesc } = Astro.props;
+const { productName, productsImg, level, colors, sizes, productDesc } = Astro.props as ProductInfoProps;
 ---
 
 <section class="product-intro-section">
   <div class="product-intro-photo">
     <div class="product-intro-photo-main">
       <Image
-        src={productsImg[0]}
+        src={productsImg && productsImg[0]}
         alt=""
       />
     </div>
     <div class="product-intro-photo-side">
       {
-        productsImg.slice(1).map((sideImg) => (
+        productsImg?.slice(1).map((sideImg) => (
           <div>
             <Image
               src={sideImg}
@@ -59,19 +42,17 @@ const productDesc =
       {
         level && (
           <div class="product-intro-title-desc">
-            <>
-              <p>{level}</p>
-              <span> Certified</span>
-            </>
+            <p>{level}</p>
+            <span> Certified</span>
           </div>
         )
       }
     </div>
     <div class="product-intro-color">
-      <p class="font-semibold">SIZES: {sizes.join(", ")}</p>
+      <p class="font-semibold">SIZES: {sizes?.join(", ")}</p>
       <p class="font-semibold">COLOR: BLACK</p>
       <div class="product-intro-color-pallete">
-        {colors.map((color) => <div color-pallete />)}
+        {colors?.map((color) => <div style=`background-color: ${color.hex}` color-pallete />)}
       </div>
     </div>
 
@@ -102,9 +83,6 @@ const productDesc =
     background-color: #c4c6d0;
   }
 
-  .product-intro-section-photo {
-  }
-
   .product-intro-photo {
     display: flex;
     flex-direction: column;
@@ -115,12 +93,18 @@ const productDesc =
     display: flex;
     justify-content: center;
     align-items: center;
-    aspect-ratio: 16/9;
+    /* aspect-ratio: 16/9; */
     border: 1.5px solid #c4c6d0;
   }
 
+  .product-intro-photo-side > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .product-intro-photo-main img {
-    width: 75%;
+    max-width: 60%;
     object-fit: cover;
   }
 
@@ -176,12 +160,45 @@ const productDesc =
   .product-intro-color-pallete [color-pallete] {
     height: 40px;
     width: 40px;
-    background-color: #3b3b3b;
     border-radius: 12px;
   }
 
   .product-intro-desc {
     padding: 0 0 0 1rem;
     border-left: 3px solid var(--secondary-500);
+  }
+
+  @media screen and (min-width: 768px) {
+    .product-intro-section {
+      padding: 3rem 3rem;
+    }
+
+    .product-intro-section::after {
+      left: 5%;
+      width: 90%;
+    }
+  }
+
+  @media screen and (min-width: 1028px) {
+    .product-intro-section {
+      flex-direction: row;
+
+      padding: 3rem 6rem;
+    }
+
+    .product-intro-section::after {
+      left: 5%;
+      width: 90%;
+    }
+    .product-intro-photo-main img {
+      max-width: 50%;
+    }
+
+    .product-intro-photo-side img {
+      max-width: 80%;
+    }
+    .product-intro-content {
+      padding: 7.15rem 0;
+    }
   }
 </style>

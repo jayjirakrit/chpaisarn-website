@@ -2,11 +2,25 @@
 import ProductIntroSection from "@/components/ProductIntroSection.astro";
 import ProductDetailSection from "@/components/ProductDetailSection.astro";
 
-const product = Astro.props;
+const { productInfo } = Astro.props;
 ---
 
 <!-- Product Introduction Section -->
-<ProductIntroSection />
+<ProductIntroSection
+  productName={productInfo.productName}
+  productsImg={productInfo.productsImg}
+  level={productInfo.level}
+  colors={productInfo.colors}
+  sizes={productInfo.sizes}
+  productDesc={productInfo.productDesc}
+/>
 
 <!-- Product Detail Section -->
-<ProductDetailSection />
+<ProductDetailSection
+  pidTitle={productInfo.pidTitle}
+  pidDesc={productInfo.pidDesc}
+  specTitle={productInfo.specTitle}
+  tableContent={productInfo.tableContent}
+  highlightTitle={productInfo.highlightTitle}
+  highlightItems={productInfo.highlightItems}
+/>

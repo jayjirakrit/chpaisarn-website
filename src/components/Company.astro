@@ -3,7 +3,7 @@ import CompanyBgImg from "@/assets/company/intro_bg.png";
 import CtaBgImg from "@/assets/company/cta_bg.png";
 import AboutUsBgImg from "@/assets/company/aboutus_bg.png";
 
-import ProductIntroSection from "@/components/ProductIntroSection.astro";
+import IntroSection from "@/components/IntroSection.astro";
 import StatSection from "@/components/StatSection.astro";
 import ContactSection from "@/components/ContactSection.astro";
 import type { Lang } from "@/i18n/types";
@@ -18,7 +18,7 @@ const t = useTranslations(lang);
 ---
 
 <!-- Intro Section -->
-<ProductIntroSection
+<IntroSection
     companyBgImg={CompanyBgImg}
     pageTitle={t("company.intro.title")}
     pageDescription={t("company.intro.description")}

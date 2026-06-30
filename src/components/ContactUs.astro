@@ -1,7 +1,7 @@
 ---
 import CompanyBgImg from "@/assets/company/intro_bg.png";
 import CompanyBg01Img from "@/assets/company/factory_01_bg.svg";
-import ProductIntroSection from "@/components/ProductIntroSection.astro";
+import IntroSection from "@/components/IntroSection.astro";
 import ContactSection from "@/components/ContactSection.astro";
 import type { Lang } from "@/i18n/types";
 import { useTranslations } from "@/i18n/utils";
@@ -15,7 +15,7 @@ const t = useTranslations(lang);
 ---
 
 <!-- Introduction Section -->
-<ProductIntroSection companyBgImg={CompanyBgImg} pageTitle={t("contact.hero.title")} pageDescription={t("contact.hero.description")} />
+<IntroSection companyBgImg={CompanyBgImg} pageTitle={t("contact.hero.title")} pageDescription={t("contact.hero.description")} />
 
 <!-- Form Section -->
 <div class="form-section">

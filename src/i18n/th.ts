@@ -370,7 +370,6 @@ export const th: Translations = {
     { label: "ตัวเลือก 4", title: "NIJ Level IV-", imgDescription: "NIJ Level IV- Helmet" },
     { label: "ตัวเลือก 5", title: "PASGT", imgDescription: "PASGT Helmet" },
     { label: "ตัวเลือก 6", title: "Ballistic", imgDescription: "Ballistic Helmet" },
-    { label: "ตัวเลือก 7", title: "Ballistic", imgDescription: "Ballistic Helmet" },
   ],
   "helmet.customizationSteps": [
     {

@@ -1,5 +1,10 @@
 export type Lang = "en" | "th";
 
+export type Color = {
+  color: string;
+  hex: string;
+};
+
 export type NavCard = {
   title: string;
   description: string;
@@ -34,6 +39,7 @@ export type ItemOption = {
   label: string;
   title?: string;
   imgDescription: string;
+  url?: string;
 };
 
 export type ProtectionOption = {

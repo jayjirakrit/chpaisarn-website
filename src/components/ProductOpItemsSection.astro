@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 
 const optionsTitle: string = Astro.props.optionsTitle;
 const optionsDescription: string = Astro.props.optionsDescription;
-const itemOptions: { label: string; title: string; img: any; imgDescription: string }[] = Astro.props.itemOptions;
+const itemOptions: { label: string; title: string; img: any; imgDescription: string; url: string }[] = Astro.props.itemOptions;
 const showModal: boolean = Astro.props.showModal ?? false;
 ---
 
@@ -22,6 +22,7 @@ const showModal: boolean = Astro.props.showModal ?? false;
         <div
           id={`option-item-${index}`}
           class="option-items-card reveal"
+          data-url={item.url}
           style={`transition-delay: ${index * 60}ms`}>
           <div class="option-items-card-header">
             <span class="option-items-card-label">{item.label}</span>
@@ -47,6 +48,21 @@ const showModal: boolean = Astro.props.showModal ?? false;
 
 <!-- The script is always present, but only activates when showModal is true -->
 <script>
+  import { navigate } from "astro:transitions/client";
+
+  function setupItemCard() {
+    const optionCards = document.querySelectorAll(".option-items-card");
+    optionCards?.forEach((card) => {
+      const addedPath = (card as HTMLElement).dataset.url;
+      if (!addedPath) return;
+      card?.addEventListener("click", () => {
+        const url = new URL(window.location.href);
+        url.pathname += (url.pathname.endsWith("/") ? "" : "/") + addedPath;
+        navigate(url.href);
+      });
+    });
+  }
+
   function setupHandleModal() {
     const optionContent = document.getElementById("option-items-content");
     if (!optionContent) return;
@@ -69,7 +85,9 @@ const showModal: boolean = Astro.props.showModal ?? false;
   }
 
   setupHandleModal();
+  setupItemCard();
   document.addEventListener("astro:after-swap", setupHandleModal);
+  document.addEventListener("astro:after-swap", setupItemCard);
 </script>
 
 <style>
@@ -97,6 +115,7 @@ const showModal: boolean = Astro.props.showModal ?? false;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+    cursor: pointer;
   }
 
   .option-items-card {
