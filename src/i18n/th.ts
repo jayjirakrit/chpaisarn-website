@@ -26,8 +26,7 @@ export const th: Translations = {
   "nav.mega.plate.description":
     "แผ่นเกราะกันกระสุนของเราให้การป้องกันส่วนบุคคลที่ปรับแต่งได้ พร้อมตัวเลือกตั้งแต่ระดับ III ถึง Level IV แต่ละแผ่นผ่านการทดสอบประสิทธิภาพและความทนทานเพื่อป้องกันกระสุนความเร็วสูง",
   "nav.mega.company.title": "บริษัทของเรา",
-  "nav.mega.company.description":
-    "ประสบการณ์ 50 ปี ออกแบบ ผลิต และทดสอบในบริษัทอย่างครบวงจร 100% ผู้ผลิตเกราะป้องกันกระสุนรายใหญ่ที่สุดในประเทศไทย",
+  "nav.mega.company.description": "ประสบการณ์ 50 ปี ออกแบบ ผลิต และทดสอบในบริษัทอย่างครบวงจร 100% ผู้ผลิตเกราะป้องกันกระสุนรายใหญ่ที่สุดในประเทศไทย",
   "nav.mega.quality.title": "มาตรฐานคุณภาพ",
   "nav.mega.quality.description":
     "ที่ ช.ไพศาล เราผสมผสานการทดสอบมาตรฐานสากลกับวิศวกรรมขั้นสูง เพื่อให้มั่นใจว่าทุกชิ้นของอุปกรณ์ให้การป้องกันที่เชื่อถือได้ สำรวจความมุ่งมั่นสู่ความเป็นเลิศของเราผ่านกระบวนการที่ผ่านการรับรองและการผลิตที่แม่นยำ",
@@ -43,13 +42,7 @@ export const th: Translations = {
   "footer.company": "บริษัท",
   "footer.copyright": "© 2026 ช.ไพศาล สงวนลิขสิทธิ์",
   "footer.credit": "Website created by House of Bandan",
-  "footer.products.list": [
-    "เสื้อเกราะกันกระสุน",
-    "หมวกกันกระสุน",
-    "แผ่นเกราะกันกระสุน",
-    "ระบบป้องกันแบลลิสติกอื่นๆ",
-    "โซลูชันป้องกันแบบกำหนดเอง",
-  ],
+  "footer.products.list": ["เสื้อเกราะกันกระสุน", "หมวกกันกระสุน", "แผ่นเกราะกันกระสุน", "ระบบป้องกันแบลลิสติกอื่นๆ", "โซลูชันป้องกันแบบกำหนดเอง"],
   "footer.company.list": ["เกี่ยวกับเรา", "คุณภาพ", "ติดต่อเรา"],
 
   // Shared
@@ -210,15 +203,15 @@ export const th: Translations = {
     { label: "สร้างตามสเปคของคุณ", anchor: "customization" },
   ],
   "armour.itemOptions": [
-    { label: "ตัวเลือก 1", imgDescription: "Ballistic Plate Level III" },
-    { label: "ตัวเลือก 2", imgDescription: "Ballistic Plate Level III+" },
-    { label: "ตัวเลือก 3", imgDescription: "Ballistic Plate Level IV-" },
-    { label: "ตัวเลือก 4", imgDescription: "Ballistic Plate Level IV" },
-    { label: "ตัวเลือก 5", imgDescription: "Ballistic Plate Level III" },
-    { label: "ตัวเลือก 6", imgDescription: "Ballistic Plate Level III+" },
-    { label: "ตัวเลือก 7", imgDescription: "Ballistic Plate Level IV-" },
-    { label: "ตัวเลือก 8", imgDescription: "Ballistic Plate Level IV" },
-    { label: "ตัวเลือก 9", imgDescription: "Ballistic Plate Level IV" },
+    { label: "ตัวเลือก 1", imgDescription: "Quick-Release Ballistic Ballistic Level III+++" },
+    { label: "ตัวเลือก 2", imgDescription: "Quick-Release Ballistic Ballistic Level III+++" },
+    { label: "ตัวเลือก 3", imgDescription: "Quick-Release Ballistic Ballistic Level III+++" },
+    { label: "ตัวเลือก 4", imgDescription: "Quick-Release Ballistic Ballistic Level III+++" },
+    { label: "ตัวเลือก 5", imgDescription: "Quick-Release Ballistic Ballistic Level III+++" },
+    { label: "ตัวเลือก 6", imgDescription: "Ballistic and Fragmentation Armor" },
+    { label: "ตัวเลือก 7", imgDescription: "Ballistic Armor Level IIIA" },
+    { label: "ตัวเลือก 8", imgDescription: "Ballistic Armor Level IIIA" },
+    { label: "ตัวเลือก 9", imgDescription: "Ballistic Armor Level IIIA" },
   ],
   "armour.protectionOptions": [
     {
@@ -364,12 +357,11 @@ export const th: Translations = {
     { label: "การปรับแต่ง", anchor: "customization" },
   ],
   "helmet.itemOptions": [
-    { label: "ตัวเลือก 1", title: "CVC Helmet", imgDescription: "CVC Helmet" },
-    { label: "ตัวเลือก 2", title: "Fast Helmet", imgDescription: "Fast Helmet" },
-    { label: "ตัวเลือก 3", title: "Fast Helmet", imgDescription: "Fast Helmet" },
-    { label: "ตัวเลือก 4", title: "NIJ Level IV-", imgDescription: "NIJ Level IV- Helmet" },
-    { label: "ตัวเลือก 5", title: "PASGT", imgDescription: "PASGT Helmet" },
-    { label: "ตัวเลือก 6", title: "Ballistic", imgDescription: "Ballistic Helmet" },
+    { label: "ตัวเลือก 1", title: "Fast ", imgDescription: "Fast Helmet" },
+    { label: "ตัวเลือก 2", title: "Wendy", imgDescription: "Wendy Helmet" },
+    { label: "ตัวเลือก 3", title: "Fast CER", imgDescription: "Fast Ceramic Helmet" },
+    { label: "ตัวเลือก 4", title: "Fast III", imgDescription: "Fast III Helmet" },
+    { label: "ตัวเลือก 5", title: "Ballistic I", imgDescription: "Ballistic I Helmet" },
   ],
   "helmet.customizationSteps": [
     {
@@ -547,30 +539,30 @@ export const th: Translations = {
       ],
     },
     {
-      "step": "ขั้นตอนที่ 3",
-      "title": "ปรับแต่ง",
-      "items": [
+      step: "ขั้นตอนที่ 3",
+      title: "ปรับแต่ง",
+      items: [
         {
-          "name": "ขนาด",
-          "desc": "แผ่นมาตรฐานมีขนาด 25 x 30 ซม. — ออกแบบมาเพื่อให้สมดุลระหว่างการปกป้องและความคล่องตัวสำหรับการใช้งานทั่วไป สามารถสั่งขนาดพิเศษได้ตามความต้องการ รวมถึงการกำหนดค่าด้านข้างเพื่อเพิ่มพื้นที่ปกป้อง"
+          name: "ขนาด",
+          desc: "แผ่นมาตรฐานมีขนาด 25 x 30 ซม. — ออกแบบมาเพื่อให้สมดุลระหว่างการปกป้องและความคล่องตัวสำหรับการใช้งานทั่วไป สามารถสั่งขนาดพิเศษได้ตามความต้องการ รวมถึงการกำหนดค่าด้านข้างเพื่อเพิ่มพื้นที่ปกป้อง",
         },
         {
-          "name": "ความโค้ง",
-          "desc": "มีให้เลือกทั้งแบบโค้งเดี่ยวและโค้งหลายระดับ — แต่ละแบบออกแบบมาให้สอดคล้องกับส่วนโค้งตามธรรมชาติของร่างกายเพื่อให้พอดีและสบายในระหว่างการปฏิบัติงานภาคสนามเป็นเวลานาน"
+          name: "ความโค้ง",
+          desc: "มีให้เลือกทั้งแบบโค้งเดี่ยวและโค้งหลายระดับ — แต่ละแบบออกแบบมาให้สอดคล้องกับส่วนโค้งตามธรรมชาติของร่างกายเพื่อให้พอดีและสบายในระหว่างการปฏิบัติงานภาคสนามเป็นเวลานาน",
         },
         {
-          "name": "รูปทรงการตัด",
-          "desc": "มีรูปทรงการตัดมาตรฐาน 4 แบบเพื่อให้เหมาะกับระบบพกพาและความต้องการในการปฏิบัติงานของคุณ — Shooter Cut เพื่อเพิ่มความคล่องตัวของไหล่, Full Plate เพื่อการปกป้องลำตัวสูงสุด, SAPI Cut เพื่อความเข้ากันได้กับระบบพกพาทางทหารมาตรฐาน, และ Swimmer Cut เพื่อเพิ่มความคล่องตัวของแขนส่วนบน"
+          name: "รูปทรงการตัด",
+          desc: "มีรูปทรงการตัดมาตรฐาน 4 แบบเพื่อให้เหมาะกับระบบพกพาและความต้องการในการปฏิบัติงานของคุณ — Shooter Cut เพื่อเพิ่มความคล่องตัวของไหล่, Full Plate เพื่อการปกป้องลำตัวสูงสุด, SAPI Cut เพื่อความเข้ากันได้กับระบบพกพาทางทหารมาตรฐาน, และ Swimmer Cut เพื่อเพิ่มความคล่องตัวของแขนส่วนบน",
         },
         {
-          "name": "การลดแรงกระแทก",
-          "desc": "มีวัสดุเสริมเพื่อช่วยลดการถ่ายโอนแรงกระแทกที่เกิดจากกระสุนไปยังผู้สวมใส่ — ผสานเป็นชั้นเพิ่มเติมภายในชุดแผ่นป้องกัน"
+          name: "การลดแรงกระแทก",
+          desc: "มีวัสดุเสริมเพื่อช่วยลดการถ่ายโอนแรงกระแทกที่เกิดจากกระสุนไปยังผู้สวมใส่ — ผสานเป็นชั้นเพิ่มเติมภายในชุดแผ่นป้องกัน",
         },
         {
-          "name": "การทำเครื่องหมายและการระบุแผ่น",
-          "desc": "สามารถทำเครื่องหมายหรือพิมพ์บนแผ่นตามข้อกำหนดของหน่วยงานของคุณ — รวมถึงการทำเครื่องหมายด้านที่รับแรงกระแทก, ระดับการป้องกันภัยคุกคาม, การระบุหน่วยงาน, ป้ายคำเตือน, และการสร้างแบรนด์เฉพาะ"
-        }
-      ]
-    }
+          name: "การทำเครื่องหมายและการระบุแผ่น",
+          desc: "สามารถทำเครื่องหมายหรือพิมพ์บนแผ่นตามข้อกำหนดของหน่วยงานของคุณ — รวมถึงการทำเครื่องหมายด้านที่รับแรงกระแทก, ระดับการป้องกันภัยคุกคาม, การระบุหน่วยงาน, ป้ายคำเตือน, และการสร้างแบรนด์เฉพาะ",
+        },
+      ],
+    },
   ],
 };

@@ -33,7 +33,7 @@ interface Props {
 const { lang = "en" } = Astro.props;
 const t = useTranslations(lang);
 
-const armorImgs = [Armor01Img, Armor02Img, Armor03Img, Armor04Img, Armor05Img, Armor06Img, Armor07Img, Armor08Img, Armor09Img];
+const armorImgs = [Armor05Img, Armor06Img, Armor07Img, Armor08Img, Armor09Img, Armor04Img, Armor01Img, Armor02Img, Armor03Img];
 const stepImgs = [Spec01Img.src, Spec02Img.src, Spec03Img.src, Spec04Img.src, Spec05Img.src];
 
 const itemOptions = t("armour.itemOptions").map((opt, i) => ({ ...opt, img: armorImgs[i] }));

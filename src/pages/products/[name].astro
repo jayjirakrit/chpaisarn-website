@@ -1,33 +1,12 @@
 ---
-import HelmetInfo from "@/components/HelmetInfo.astro";
+import ArmorInfo from "@/components/HelmetInfo.astro";
 import Layout from "@/layouts/Layout.astro";
 import "@/styles/global.css";
-
+import { armorInfos } from "@/data/armor-info.ts";
 // ========== GENERATE STATIC PATHS ==========
 export function getStaticPaths() {
   // ========== PRODUCT DATA ==========
-  // (In a real project, move this to a separate file like src/data/ballistic-plates.ts)
-  const products = [
-    {
-      slug: "level-iii",
-      name: "Level III Ballistic Plate",
-      level: "NIJ Level III",
-      material: "Polyethylene / Ceramic Composite",
-      description: "Lightweight protection against rifle rounds up to 7.62x51mm M80 ball.",
-      specs: ["Weight: 2.5 kg", "Thickness: 20mm", "Multi-hit capability"],
-      image: "/images/level-iii.jpg", // Optional
-    },
-    {
-      slug: "level-iv",
-      name: "Level IV Ballistic Plate",
-      level: "NIJ Level IV",
-      material: "Advanced Ceramic / Alumina",
-      description: "Maximum protection against armor-piercing rifle rounds up to .30-06 AP.",
-      specs: ["Weight: 3.2 kg", "Thickness: 25mm", "Stand-alone protection"],
-      image: "/images/level-iv.jpg", // Optional
-    },
-    // Add more plates here (e.g., 'level-iii-plus', 'special-threat')
-  ];
+  const products = armorInfos;
 
   return products.map((product) => ({
     params: { name: product.slug },
@@ -37,11 +16,11 @@ export function getStaticPaths() {
 
 // ========== ACCESS PROPS & BUILD DYNAMIC SEO ==========
 const { product } = Astro.props;
-
+  
 // Dynamically build metadata based on the product
 const title = `${product.name} — Ch.Paisarn (Chpaisarn)`;
-const description = `Hard armor ballistic plates from Ch.Paisarn. ${product.description} Manufactured in Thailand for military and law enforcement.`;
-const keywords = `level III plate Thailand, level IV plate, hard armor plate Thailand, ballistic insert plate, ch paisarn plates, SAPI plate, ceramic armor plate, steel plate Thailand, ${product.level}, ${product.material}`;
+const description = `Ballistic Armor from Ch.Paisarn. ${product.name} Manufactured in Thailand for military and law enforcement.`;
+const keywords = ``;
 ---
 
 <!-- ========== PAGE TEMPLATE ========== -->
@@ -49,4 +28,5 @@ const keywords = `level III plate Thailand, level IV plate, hard armor plate Tha
   title={title}
   description={description}
   keywords={keywords}>
+  <ArmorInfo productInfo={product} />
 </Layout>

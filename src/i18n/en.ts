@@ -204,15 +204,15 @@ export const en: Translations = {
     { label: "Built to your specification", anchor: "customization" },
   ],
   "armour.itemOptions": [
-    { label: "Option 1", imgDescription: "Ballistic Armor Level IIIA", url:"iiia" },
-    { label: "Option 2", imgDescription: "Ballistic Armor Level IIIA", url:"iiia" },
-    { label: "Option 3", imgDescription: "Ballistic Armor Level IIIA", url:"iiia" },
-    { label: "Option 4", imgDescription: "Ballistic and Fragmentation Armor", url:"fragmentation" },
-    { label: "Option 5", imgDescription: "Quick-Release Ballistic Ballistic Level III", url:"quick-release-iii" },
-    { label: "Option 6", imgDescription: "Quick-Release Ballistic Ballistic Level III", url:"quick-release-iii" },
-    { label: "Option 7", imgDescription: "Quick-Release Ballistic Ballistic Level III", url:"quick-release-iii" },
-    { label: "Option 8", imgDescription: "Quick-Release Ballistic Ballistic Level III", url:"quick-release-iii" },
-    { label: "Option 9", imgDescription: "Quick-Release Ballistic Ballistic Level III+++", url:"quick-release-iii+" },
+    { label: "Option 1", imgDescription: "Quick-Release Ballistic Ballistic Level III+++", url: "quick-release-iii-01" },
+    { label: "Option 2", imgDescription: "Quick-Release Ballistic Ballistic Level III+++", url: "quick-release-iii-02" },
+    { label: "Option 3", imgDescription: "Quick-Release Ballistic Ballistic Level III+++", url: "quick-release-iii-03" },
+    { label: "Option 4", imgDescription: "Quick-Release Ballistic Ballistic Level III+++", url: "quick-release-iii-04" },
+    { label: "Option 5", imgDescription: "Quick-Release Ballistic Ballistic Level III+++", url: "quick-release-iii-05" },
+    { label: "Option 6", imgDescription: "Ballistic and Fragmentation Armor", url: "fragmentation" },
+    { label: "Option 7", imgDescription: "Ballistic Armor Level IIIA", url: "iiia-01" },
+    { label: "Option 8", imgDescription: "Ballistic Armor Level IIIA", url: "iiia-02" },
+    { label: "Option 9", imgDescription: "Ballistic Armor Level IIIA", url: "iiia-03" },
   ],
   "armour.protectionOptions": [
     {
@@ -358,12 +358,11 @@ export const en: Translations = {
     { label: "Customization", anchor: "customization" },
   ],
   "helmet.itemOptions": [
-    { label: "Option 1", title: "CVC", imgDescription: "CVC Helmet", url: "cvc" },
-    { label: "Option 2", title: "Fast", imgDescription: "Fast Helmet", url: "fast" },
-    { label: "Option 3", title: "Ballistic I", imgDescription: "Ballistic I Helmet", url: "ballistic-i" },
-    { label: "Option 4", title: "Fast CER", imgDescription: "Fast Ceramic Helmet", url: "fast-cer" },
-    { label: "Option 5", title: "Fast III", imgDescription: "Fast III Helmet", url: "fast-iii" },
-    { label: "Option 6", title: "Wendy", imgDescription: "Wendy Helmet", url: "wendy" },
+    { label: "Option 1", title: "Fast", imgDescription: "Fast Helmet", url: "fast" },
+    { label: "Option 2", title: "Wendy", imgDescription: "Wendy Helmet", url: "wendy" },
+    { label: "Option 3", title: "Fast CER", imgDescription: "Fast Ceramic Helmet", url: "fast-cer" },
+    { label: "Option 4", title: "Fast III", imgDescription: "Fast III Helmet", url: "fast-iii" },
+    { label: "Option 5", title: "Ballistic I", imgDescription: "Ballistic I Helmet", url: "ballistic-i" },
   ],
   "helmet.customizationSteps": [
     {
