@@ -88,30 +88,10 @@ const partners = [
   </div>
 </section>
 
-<!-- Team Section -->
-<section id="team" class="team-section">
-  <div class="team-container">
-    <div class="grid md:grid-cols-2 gap-12 items-center">
-      <div class="space-y-4">
-        <div class="team-video team-video-placeholder" id="team-video-placeholder">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 48" width="68" height="48" aria-hidden="true">
-            <rect width="68" height="48" rx="10" fill="#ff0000"></rect>
-            <polygon points="27,14 27,34 47,24" fill="white"></polygon>
-          </svg>
-        </div>
-      </div>
-
-      <!-- Content -->
-      <div class="team-content text-white">
-        <h2 class="mb-6 whitespace-nowrap">{t("home.team.title")}</h2>
-        <p class="body-text-sm mb-4">{t("home.team.description1")}</p>
-        <p class="body-text-sm mb-4 lg:mb-8">{t("home.team.description2")}</p>
-        <button class="btn-primary">
-          <a href={lang === "th" ? "/th/company" : "/company"}>{t("home.team.ctaLearn")}</a>
-        </button>
-      </div>
-    </div>
-  </div>
+<!-- Carousel Section -->
+<section class="carousel-section">
+  <h2 class="carousel-title reveal">{t("home.carousel.title")}</h2>
+  <Carousel />
 </section>
 
 <!-- Trust Partner Section -->
@@ -137,10 +117,30 @@ const partners = [
   </div>
 </section>
 
-<!-- Carousel Section -->
-<section class="carousel-section">
-  <h2 class="carousel-title reveal">{t("home.carousel.title")}</h2>
-  <Carousel />
+<!-- Team Section -->
+<section id="team" class="team-section">
+  <div class="team-container">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="space-y-4">
+        <div class="team-video team-video-placeholder" id="team-video-placeholder">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 48" width="68" height="48" aria-hidden="true">
+            <rect width="68" height="48" rx="10" fill="#ff0000"></rect>
+            <polygon points="27,14 27,34 47,24" fill="white"></polygon>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="team-content text-white">
+        <h2 class="mb-6 whitespace-nowrap">{t("home.team.title")}</h2>
+        <p class="body-text-sm mb-4">{t("home.team.description1")}</p>
+        <p class="body-text-sm mb-4 lg:mb-8">{t("home.team.description2")}</p>
+        <button class="btn-primary">
+          <a href={lang === "th" ? "/th/company" : "/company"}>{t("home.team.ctaLearn")}</a>
+        </button>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Contact Section -->

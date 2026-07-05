@@ -104,7 +104,7 @@ export const en: Translations = {
   "home.partners.title": "Trusted Across Thailand's Forces",
   "home.partners.description":
     "The organizations below rely on Ch.Paisarn equipment to protect their personnel in training, in the field, and in active border operations. That trust reflects decades of proven performance under demanding conditions.",
-  "home.carousel.title": "Selected Works",
+  "home.carousel.title": "View Our Products",
   "home.contact.title": "Get in Touch",
   "home.contact.description":
     "Contact us to learn more about our defense solutions or to discuss your specific operational requirements. Our team is ready to provide the expertise and custom-engineered armor solutions needed to meet your mission objectives.",
@@ -134,13 +134,13 @@ export const en: Translations = {
     "We offer a wide range of ballistic protection products designed to meet the demands of military, law enforcement, security, and civilian applications. Whether you're seeking personal protection or armored vehicle solutions, our products provide the ultimate defense against ballistic threats.",
 
   // Stat section
-  "stat.title": "Built on 50 Years of Trust",
+  "stat.title": "Built on 30 Years of Trust",
   "stat.items": [
     {
-      number: "50",
+      number: "30",
       suffix: "",
       title: "Years",
-      desc: "Trusted by the Royal Thai Army since 1974.",
+      desc: "Trusted by the Royal Thai Army since 1994.",
       wide: false,
     },
     {

@@ -9,17 +9,29 @@ import CarouselImg06 from "@/assets/products/armor/armor_06.png";
 import CarouselImg07 from "@/assets/products/armor/armor_07.png";
 import CarouselImg08 from "@/assets/products/armor/armor_08.png";
 import CarouselImg09 from "@/assets/products/armor/armor_09.png";
+import CarouselImg10 from "@/assets/products/helmet/helmet_new_fast.png";
+import CarouselImg11 from "@/assets/products/helmet/helmet_wendy.png";
+import CarouselImg12 from "@/assets/products/helmet/helmet_fast_rif.png";
+import CarouselImg13 from "@/assets/products/helmet/helmet_fast_green.png";
+import CarouselImg14 from "@/assets/products/helmet/helmet_south.png";
+import CarouselImg15 from "@/assets/products/helmet/helmet_mit_rif.png";
 
 const items = [
-  { img: CarouselImg01, description: "Carousel Image 1" },
-  { img: CarouselImg02, description: "Carousel Image 2" },
-  { img: CarouselImg03, description: "Carousel Image 3" },
-  { img: CarouselImg04, description: "Carousel Image 4" },
-  { img: CarouselImg05, description: "Carousel Image 5" },
-  { img: CarouselImg06, description: "Carousel Image 6" },
-  { img: CarouselImg07, description: "Carousel Image 7" },
-  { img: CarouselImg08, description: "Carousel Image 8" },
-  { img: CarouselImg09, description: "Carousel Image 9" },
+  { img: CarouselImg07, description: "Carousel Image 7", url: "/products/quick-release-iii-03" },
+  { img: CarouselImg08, description: "Carousel Image 8", url: "/products/quick-release-iii-04" },
+  { img: CarouselImg09, description: "Carousel Image 9", url: "/products/quick-release-iii-05" },
+  { img: CarouselImg05, description: "Carousel Image 5", url: "/products/quick-release-iii-01" },
+  { img: CarouselImg06, description: "Carousel Image 6", url: "/products/quick-release-iii-02" },
+  { img: CarouselImg04, description: "Carousel Image 4", url: "/products/fragmentation" },
+  { img: CarouselImg01, description: "Carousel Image 1", url: "/products/iiia-01" },
+  { img: CarouselImg02, description: "Carousel Image 2", url: "/products/iiia-02" },
+  { img: CarouselImg03, description: "Carousel Image 3", url: "/products/iiia-03" },
+  { img: CarouselImg10, description: "Carousel Image 10", url: "/products/ballistic-helmets/fast" },
+  { img: CarouselImg11, description: "Carousel Image 11", url: "/products/ballistic-helmets/wendy" },
+  { img: CarouselImg12, description: "Carousel Image 12", url: "/products/ballistic-helmets/fast-cer" },
+  { img: CarouselImg13, description: "Carousel Image 13", url: "/products/ballistic-helmets/fast-iii" },
+  { img: CarouselImg14, description: "Carousel Image 14", url: "/products/ballistic-helmets/ballistic-i" },
+  { img: CarouselImg15, description: "Carousel Image 15" },
 ];
 ---
 
@@ -28,9 +40,15 @@ const items = [
     <div class="carousel-track">
       {
         items.map((item, index) => (
-          <div id={`carousel-slide-${index}`} class="carousel-slide">
-            <Image src={item.img} alt={item.description} />
-          </div>
+          <a
+            id={`carousel-slide-${index}`}
+            class="carousel-slide"
+            href={item?.url}>
+            <Image
+              src={item.img}
+              alt={item.description}
+            />
+          </a>
         ))
       }
     </div>
@@ -38,15 +56,29 @@ const items = [
 
   <!-- arrows unchanged -->
   <div class="carousel-arrow carousel-arrow-left">
-    <svg width="28" height="27" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width="28"
+      height="27"
+      viewBox="0 0 28 27"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg">
       <path
         d="M27.79 10.9898L8.91337 10.9898L16.6134 3.31315L13.3 -0.000179337L3.75255e-05 13.3232L13.3 26.6465L16.6134 23.3332L8.91337 15.6565L27.79 15.6565L27.79 10.9898Z"
-        fill="#90B9E7"></path>
+        fill="#90B9E7"
+      ></path>
     </svg>
   </div>
   <div class="carousel-arrow carousel-arrow-right">
-    <svg width="28" height="27" viewBox="0 0 28 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0 15.6567H18.8767L11.1767 23.3333L14.49 26.6467L27.79 13.3233L14.49 0L11.1767 3.31333L18.8767 10.99H0V15.6567Z" fill="#90B9E7"></path>
+    <svg
+      width="28"
+      height="27"
+      viewBox="0 0 28 27"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M0 15.6567H18.8767L11.1767 23.3333L14.49 26.6467L27.79 13.3233L14.49 0L11.1767 3.31333L18.8767 10.99H0V15.6567Z"
+        fill="#90B9E7"
+      ></path>
     </svg>
   </div>
   <!-- indicators add in js -->
@@ -61,7 +93,7 @@ const items = [
     const dotsBox = document.querySelector(".carousel-indicators");
     const prev = document.querySelector(".carousel-arrow-left");
     const next = document.querySelector(".carousel-arrow-right");
-    
+
     if (!track) return;
     let page = 0,
       perView = 1,
@@ -98,7 +130,11 @@ const items = [
       for (let i = 0; i < totalPages; i++) {
         html += `<button class="carousel-indicator${i === page ? " active" : ""}" aria-label="Go to page ${i + 1}" data-page="${i}"></button>`;
       }
-      dotsBox.innerHTML = html;
+      if (window.innerWidth > 768) {
+        dotsBox.innerHTML = html;
+      } else {
+        dotsBox.innerHTML = ""; // hide dots on small screens
+      }
 
       // Move the track by one full container width per page
       gap = parseInt(getComputedStyle(track).gap) || 0;
