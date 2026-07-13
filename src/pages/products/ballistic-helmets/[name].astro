@@ -3,6 +3,7 @@ import HelmetInfo from "@/components/HelmetInfo.astro";
 import Layout from "@/layouts/Layout.astro";
 import "@/styles/global.css";
 import { helmetInfos } from "@/data/helmet-info";
+import { breadcrumbUrl } from "@/i18n/utils";
 // ========== GENERATE STATIC PATHS ==========
 export function getStaticPaths() {
   // ========== PRODUCT DATA ==========
@@ -20,7 +21,14 @@ const { product } = Astro.props;
 // Dynamically build metadata based on the product
 const title = `${product.name} — Ch.Paisarn (Chpaisarn)`;
 const description = `Ballistic Helmet from Ch.Paisarn. ${product.name} Manufactured in Thailand for military and law enforcement.`;
-const keywords = ``;
+const keywords = `${product.name}, ${product.level}, ch paisarn ballistic helmet, chpaisarn combat helmet, NIJ ${product.level} helmet, combat helmet Thailand, ballistic helmet manufacturer Thailand`;
+
+const breadcrumbItems = [
+  { name: "Home", item: breadcrumbUrl("en", "/") },
+  { name: "Products", item: breadcrumbUrl("en", "/products") },
+  { name: "Ballistic Helmets", item: breadcrumbUrl("en", "/products/ballistic-helmets") },
+  { name: product.name, item: breadcrumbUrl("en", `/products/ballistic-helmets/${product.slug}`) },
+];
 ---
 
 <!-- ========== PAGE TEMPLATE ========== -->
@@ -28,5 +36,5 @@ const keywords = ``;
   title={title}
   description={description}
   keywords={keywords}>
-  <HelmetInfo productInfo={product} lang="en" />
+  <HelmetInfo productInfo={product} lang="en" breadcrumbItems={breadcrumbItems} />
 </Layout>

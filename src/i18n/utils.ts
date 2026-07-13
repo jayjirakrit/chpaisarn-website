@@ -27,7 +27,7 @@ export function getAlternateLangUrl(pathname: string, currentLang: Lang): string
 export function breadcrumbUrl(lang: Lang, path: string): string {
   const base = "https://ch-paisarn.com";
   if (lang === "th") {
-    return base + "/th" + (path === "/" ? "" : path);
+    return path === "/" ? base + "/th/" : base + "/th" + path;
   }
   return base + path;
 }

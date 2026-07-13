@@ -3,6 +3,7 @@ import ArmorInfo from "@/components/HelmetInfo.astro";
 import Layout from "@/layouts/Layout.astro";
 import "@/styles/global.css";
 import { armorInfos } from "@/data/armor-info.ts";
+import { breadcrumbUrl } from "@/i18n/utils";
 // ========== GENERATE STATIC PATHS ==========
 export function getStaticPaths() {
   // ========== PRODUCT DATA ==========
@@ -20,7 +21,13 @@ const { product } = Astro.props;
 // Dynamically build metadata based on the product
 const title = `${product.name} — Ch.Paisarn (Chpaisarn)`;
 const description = `Ballistic Armor from Ch.Paisarn. ${product.name} Manufactured in Thailand for military and law enforcement.`;
-const keywords = ``;
+const keywords = `${product.name}, ${product.level}, ch paisarn body armor, chpaisarn body armor, ballistic vest Thailand, NIJ ${product.level} body armor, body armor manufacturer Thailand`;
+
+const breadcrumbItems = [
+  { name: "Home", item: breadcrumbUrl("en", "/") },
+  { name: "Products", item: breadcrumbUrl("en", "/products") },
+  { name: product.name, item: breadcrumbUrl("en", `/products/${product.slug}`) },
+];
 ---
 
 <!-- ========== PAGE TEMPLATE ========== -->
@@ -28,5 +35,5 @@ const keywords = ``;
   title={title}
   description={description}
   keywords={keywords}>
-  <ArmorInfo productInfo={product} lang="en" />
+  <ArmorInfo productInfo={product} lang="en" breadcrumbItems={breadcrumbItems} />
 </Layout>

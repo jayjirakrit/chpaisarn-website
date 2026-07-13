@@ -19,7 +19,15 @@ export default defineConfig({
   },
   integrations: [
     react(),
-    sitemap(),
+    sitemap({
+      i18n: {
+        defaultLocale: "en",
+        locales: {
+          en: "en-US",
+          th: "th-TH",
+        },
+      },
+    }),
     robotsTxt({
       sitemap: true,
       policy: [{ userAgent: "*", allow: "/" }],

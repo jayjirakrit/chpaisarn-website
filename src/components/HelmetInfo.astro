@@ -6,9 +6,16 @@ import type { Lang } from "@/i18n/types";
 interface Props {
   productInfo: any;
   lang?: Lang;
+  breadcrumbItems?: { name: string; item: string }[];
 }
 
-const { productInfo, lang = "en" } = Astro.props as Props;
+const { productInfo, lang = "en", breadcrumbItems } = Astro.props as Props;
+
+const breadcrumbLd = breadcrumbItems && {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: breadcrumbItems.map((entry, i) => ({ "@type": "ListItem", position: i + 1, name: entry.name, item: entry.item })),
+};
 ---
 
 <!-- Product Introduction Section -->
@@ -31,3 +38,5 @@ const { productInfo, lang = "en" } = Astro.props as Props;
   highlightTitle={productInfo.highlightTitle}
   highlightItems={productInfo.highlightItems}
 />
+
+{breadcrumbLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />}

@@ -3,6 +3,7 @@ import ArmorInfo from "@/components/HelmetInfo.astro";
 import Layout from "@/layouts/Layout.astro";
 import "@/styles/global.css";
 import { armorInfosTh } from "@/data/armor-info.th";
+import { breadcrumbUrl } from "@/i18n/utils";
 // ========== GENERATE STATIC PATHS ==========
 export function getStaticPaths() {
   // ========== PRODUCT DATA ==========
@@ -20,7 +21,13 @@ const { product } = Astro.props;
 // Dynamically build metadata based on the product
 const title = `${product.name} — ช.ไพศาล (Chpaisarn)`;
 const description = `เสื้อเกราะกันกระสุนจาก ช.ไพศาล ${product.name} ผลิตในประเทศไทยสำหรับหน่วยงานทหารและเจ้าหน้าที่บังคับใช้กฎหมาย`;
-const keywords = ``;
+const keywords = `${product.name}, ${product.level}, เสื้อเกราะกันกระสุน ช.ไพศาล, เสื้อเกราะกันกระสุนไทย, เกราะกันกระสุน ${product.level}, ผู้ผลิตเสื้อเกราะไทย, ซื้อเสื้อเกราะกันกระสุน`;
+
+const breadcrumbItems = [
+  { name: "หน้าแรก", item: breadcrumbUrl("th", "/") },
+  { name: "สินค้า", item: breadcrumbUrl("th", "/products") },
+  { name: product.name, item: breadcrumbUrl("th", `/products/${product.slug}`) },
+];
 ---
 
 <!-- ========== PAGE TEMPLATE ========== -->
@@ -29,5 +36,5 @@ const keywords = ``;
   description={description}
   keywords={keywords}
   lang="th">
-  <ArmorInfo productInfo={product} lang="th" />
+  <ArmorInfo productInfo={product} lang="th" breadcrumbItems={breadcrumbItems} />
 </Layout>

@@ -7,7 +7,7 @@ import IntroSection from "@/components/IntroSection.astro";
 import StatSection from "@/components/StatSection.astro";
 import ContactSection from "@/components/ContactSection.astro";
 import type { Lang } from "@/i18n/types";
-import { useTranslations } from "@/i18n/utils";
+import { useTranslations, breadcrumbUrl } from "@/i18n/utils";
 
 interface Props {
   lang?: Lang;
@@ -15,6 +15,15 @@ interface Props {
 
 const { lang = "en" } = Astro.props;
 const t = useTranslations(lang);
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: lang === "th" ? "หน้าแรก" : "Home", item: breadcrumbUrl(lang, "/") },
+    { "@type": "ListItem", position: 2, name: lang === "th" ? "เกี่ยวกับเรา" : "About Us", item: breadcrumbUrl(lang, "/company") },
+  ],
+};
 ---
 
 <!-- Intro Section -->
@@ -159,11 +168,4 @@ const t = useTranslations(lang);
     }
 </style>
 
-<script is:inline type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://ch-paisarn.com/" },
-    { "@type": "ListItem", position: 2, name: "About Us", item: "https://ch-paisarn.com/company" },
-  ],
-})} />
+<script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />

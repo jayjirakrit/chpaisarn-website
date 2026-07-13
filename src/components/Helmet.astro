@@ -17,7 +17,7 @@ import HelmetFastImg from "@/assets/products/helmet/helmet_fast_rif.png";
 import HelmetFastGreenImg from "@/assets/products/helmet/helmet_fast_green.png";
 import HelmetWendyImg from "@/assets/products/helmet/helmet_wendy.png";
 import type { Lang } from "@/i18n/types";
-import { useTranslations } from "@/i18n/utils";
+import { useTranslations, breadcrumbUrl } from "@/i18n/utils";
 
 interface Props {
   lang?: Lang;
@@ -25,6 +25,21 @@ interface Props {
 
 const { lang = "en" } = Astro.props;
 const t = useTranslations(lang);
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: lang === "th" ? "หน้าแรก" : "Home", item: breadcrumbUrl(lang, "/") },
+    { "@type": "ListItem", position: 2, name: lang === "th" ? "สินค้า" : "Products", item: breadcrumbUrl(lang, "/products") },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: lang === "th" ? "หมวกกันกระสุน" : "Ballistic Helmets",
+      item: breadcrumbUrl(lang, "/products/ballistic-helmets"),
+    },
+  ],
+};
 
 const helmetImgs = [HelmetNewFastImg, HelmetWendyImg, HelmetFastImg, HelmetFastGreenImg, HelmetSouthImg];
 const stepImgs = [CustomizeBg01Img.src, CustomizeBg02Img.src, CustomizeBg03Img.src, CustomizeBg04Img.src, CustomizeBg05Img.src];
@@ -73,12 +88,4 @@ const customizationSteps = t("helmet.customizationSteps").map((step, i) => ({ ..
 
 <style></style>
 
-<script is:inline type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://ch-paisarn.com/" },
-    { "@type": "ListItem", position: 2, name: "Products", item: "https://ch-paisarn.com/products" },
-    { "@type": "ListItem", position: 3, name: "Ballistic Helmets", item: "https://ch-paisarn.com/products/ballistic-helmets" },
-  ],
-})} />
+<script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
