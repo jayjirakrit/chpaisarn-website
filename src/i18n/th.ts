@@ -49,6 +49,9 @@ export const th: Translations = {
   "shared.contactBtn": "ติดต่อเรา",
   "shared.exploreProducts": "ดูสินค้าของเรา",
   "shared.learnMore": "เรียนรู้เพิ่มเติม",
+  "shared.sizesLabel": "ขนาด",
+  "shared.colorLabel": "สี",
+  "shared.certifiedLabel": "รับรอง",
 
   // Home page
   "home.hero.quote": "CHP® · อุปกรณ์ทหารคุณภาพสูง",
@@ -203,15 +206,15 @@ export const th: Translations = {
     { label: "สร้างตามสเปคของคุณ", anchor: "customization" },
   ],
   "armour.itemOptions": [
-    { label: "ตัวเลือก 1", imgDescription: "Quick-Release Ballistic Ballistic Level III+++" },
-    { label: "ตัวเลือก 2", imgDescription: "Quick-Release Ballistic Ballistic Level III+++" },
-    { label: "ตัวเลือก 3", imgDescription: "Quick-Release Ballistic Ballistic Level III+++" },
-    { label: "ตัวเลือก 4", imgDescription: "Quick-Release Ballistic Ballistic Level III+++" },
-    { label: "ตัวเลือก 5", imgDescription: "Quick-Release Ballistic Ballistic Level III+++" },
-    { label: "ตัวเลือก 6", imgDescription: "Ballistic and Fragmentation Armor" },
-    { label: "ตัวเลือก 7", imgDescription: "Ballistic Armor Level IIIA" },
-    { label: "ตัวเลือก 8", imgDescription: "Ballistic Armor Level IIIA" },
-    { label: "ตัวเลือก 9", imgDescription: "Ballistic Armor Level IIIA" },
+    { label: "ตัวเลือก 1", imgDescription: "Quick-Release Ballistic Ballistic Level III+++", url: "quick-release-iii-01" },
+    { label: "ตัวเลือก 2", imgDescription: "Quick-Release Ballistic Ballistic Level III+++", url: "quick-release-iii-02" },
+    { label: "ตัวเลือก 3", imgDescription: "Quick-Release Ballistic Ballistic Level III+++", url: "quick-release-iii-03" },
+    { label: "ตัวเลือก 4", imgDescription: "Quick-Release Ballistic Ballistic Level III+++", url: "quick-release-iii-04" },
+    { label: "ตัวเลือก 5", imgDescription: "Quick-Release Ballistic Ballistic Level III+++", url: "quick-release-iii-05" },
+    { label: "ตัวเลือก 6", imgDescription: "Ballistic and Fragmentation Armor", url: "fragmentation" },
+    { label: "ตัวเลือก 7", imgDescription: "Ballistic Armor Level IIIA", url: "iiia-01" },
+    { label: "ตัวเลือก 8", imgDescription: "Ballistic Armor Level IIIA", url: "iiia-02" },
+    { label: "ตัวเลือก 9", imgDescription: "Ballistic Armor Level IIIA", url: "iiia-03" },
   ],
   "armour.protectionOptions": [
     {
@@ -357,11 +360,11 @@ export const th: Translations = {
     { label: "การปรับแต่ง", anchor: "customization" },
   ],
   "helmet.itemOptions": [
-    { label: "ตัวเลือก 1", title: "Fast ", imgDescription: "Fast Helmet" },
-    { label: "ตัวเลือก 2", title: "Wendy", imgDescription: "Wendy Helmet" },
-    { label: "ตัวเลือก 3", title: "Fast CER", imgDescription: "Fast Ceramic Helmet" },
-    { label: "ตัวเลือก 4", title: "Fast III", imgDescription: "Fast III Helmet" },
-    { label: "ตัวเลือก 5", title: "Ballistic I", imgDescription: "Ballistic I Helmet" },
+    { label: "ตัวเลือก 1", title: "Fast ", imgDescription: "Fast Helmet", url: "fast" },
+    { label: "ตัวเลือก 2", title: "Wendy", imgDescription: "Wendy Helmet", url: "wendy" },
+    { label: "ตัวเลือก 3", title: "Fast CER", imgDescription: "Fast Ceramic Helmet", url: "fast-cer" },
+    { label: "ตัวเลือก 4", title: "Fast III", imgDescription: "Fast III Helmet", url: "fast-iii" },
+    { label: "ตัวเลือก 5", title: "Ballistic I", imgDescription: "Ballistic I Helmet", url: "ballistic-i" },
   ],
   "helmet.customizationSteps": [
     {

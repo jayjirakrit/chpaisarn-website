@@ -1,8 +1,14 @@
 ---
 import ProductIntroSection from "@/components/ProductIntroSection.astro";
 import ProductDetailSection from "@/components/ProductDetailSection.astro";
+import type { Lang } from "@/i18n/types";
 
-const { productInfo } = Astro.props;
+interface Props {
+  productInfo: any;
+  lang?: Lang;
+}
+
+const { productInfo, lang = "en" } = Astro.props as Props;
 ---
 
 <!-- Product Introduction Section -->
@@ -13,6 +19,7 @@ const { productInfo } = Astro.props;
   colors={productInfo.colors}
   sizes={productInfo.sizes}
   productDesc={productInfo.productDesc}
+  lang={lang}
 />
 
 <!-- Product Detail Section -->

@@ -1,7 +1,8 @@
 ---
 import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
-import type { Color } from "@/i18n/types";
+import type { Color, Lang } from "@/i18n/types";
+import { useTranslations } from "@/i18n/utils";
 
 export type ProductInfoProps = {
   productName: string;
@@ -10,9 +11,11 @@ export type ProductInfoProps = {
   colors: Color[];
   sizes: String[];
   productDesc: string;
+  lang?: Lang;
 };
 
-const { productName, productsImg, level, colors, sizes, productDesc } = Astro.props as ProductInfoProps;
+const { productName, productsImg, level, colors, sizes, productDesc, lang = "en" } = Astro.props as ProductInfoProps;
+const t = useTranslations(lang);
 ---
 
 <section class="product-intro-section">
@@ -43,14 +46,14 @@ const { productName, productsImg, level, colors, sizes, productDesc } = Astro.pr
         level && (
           <div class="product-intro-title-desc">
             <p>{level}</p>
-            <span> Certified</span>
+            <span> {t("shared.certifiedLabel")}</span>
           </div>
         )
       }
     </div>
     <div class="product-intro-color">
-      <p class="font-semibold">SIZES: {sizes?.join(", ")}</p>
-      <p class="font-semibold">COLOR: BLACK</p>
+      <p class="font-semibold">{t("shared.sizesLabel")}: {sizes?.join(", ")}</p>
+      <p class="font-semibold">{t("shared.colorLabel")}: {colors?.[0]?.color}</p>
       <div class="product-intro-color-pallete">
         {colors?.map((color) => <div style=`background-color: ${color.hex}` color-pallete />)}
       </div>

@@ -50,6 +50,9 @@ export const en: Translations = {
   "shared.contactBtn": "Contact Us",
   "shared.exploreProducts": "Explore our products",
   "shared.learnMore": "Learn more",
+  "shared.sizesLabel": "SIZES",
+  "shared.colorLabel": "COLOR",
+  "shared.certifiedLabel": "Certified",
 
   // Home page
   "home.hero.quote": "Ch.Paisarn · High Quality Military Equipment",

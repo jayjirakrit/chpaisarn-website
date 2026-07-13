@@ -109,6 +109,9 @@ export type Translations = {
   "shared.contactBtn": string;
   "shared.exploreProducts": string;
   "shared.learnMore": string;
+  "shared.sizesLabel": string;
+  "shared.colorLabel": string;
+  "shared.certifiedLabel": string;
 
   // Home page
   "home.hero.quote": string;

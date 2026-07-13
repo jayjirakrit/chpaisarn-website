@@ -2,11 +2,11 @@
 import ArmorInfo from "@/components/HelmetInfo.astro";
 import Layout from "@/layouts/Layout.astro";
 import "@/styles/global.css";
-import { armorInfos } from "@/data/armor-info.ts";
+import { armorInfosTh } from "@/data/armor-info.th";
 // ========== GENERATE STATIC PATHS ==========
 export function getStaticPaths() {
   // ========== PRODUCT DATA ==========
-  const products = armorInfos;
+  const products = armorInfosTh;
 
   return products.map((product) => ({
     params: { name: product.slug },
@@ -18,8 +18,8 @@ export function getStaticPaths() {
 const { product } = Astro.props;
 
 // Dynamically build metadata based on the product
-const title = `${product.name} — Ch.Paisarn (Chpaisarn)`;
-const description = `Ballistic Armor from Ch.Paisarn. ${product.name} Manufactured in Thailand for military and law enforcement.`;
+const title = `${product.name} — ช.ไพศาล (Chpaisarn)`;
+const description = `เสื้อเกราะกันกระสุนจาก ช.ไพศาล ${product.name} ผลิตในประเทศไทยสำหรับหน่วยงานทหารและเจ้าหน้าที่บังคับใช้กฎหมาย`;
 const keywords = ``;
 ---
 
@@ -27,6 +27,7 @@ const keywords = ``;
 <Layout
   title={title}
   description={description}
-  keywords={keywords}>
-  <ArmorInfo productInfo={product} lang="en" />
+  keywords={keywords}
+  lang="th">
+  <ArmorInfo productInfo={product} lang="th" />
 </Layout>
