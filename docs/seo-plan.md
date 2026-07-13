@@ -126,3 +126,44 @@ No new files were created in `src/`; no new dependencies were added (every packa
    - Each page's `<meta name="description">` matches the table above.
    - The home page renders the literal word "Chpaisarn" in body copy.
 3. Paste the home page HTML into Google's Rich Results Test → Organization schema is detected with no errors and `alternateName` includes `Chpaisarn`.
+
+---
+
+## Update (2026-07-13) — Thai-language SEO + structured-data fixes
+
+By this point the site had grown a full `/th/*` Thai locale (see [`docs/i18n.md`](./i18n.md)) and the production domain had moved to `https://ch-paisarn.com`. This pass targeted ranking for the Thai company name (`ช.ไพศาล`) and fixed two structural bugs that were silently hurting the Thai pages' SEO.
+
+### 1. Bugs found and fixed
+
+- **`BreadcrumbList` JSON-LD was hardcoded to English.** `Company.astro`, `Helmet.astro`, `Armour.astro`, `Plate.astro`, and `ContactUs.astro` all emitted a breadcrumb schema with English labels ("Home", "Products", …) and `https://ch-paisarn.com/...` URLs — even when rendering under `/th/*`. Google was seeing Thai pages claim an English breadcrumb trail. Fixed by building `breadcrumbLd` from `lang` and the existing (previously unused) `breadcrumbUrl()` helper in `src/i18n/utils.ts`, with Thai labels (`หน้าแรก`, `สินค้า`, `หมวกกันกระสุน`, `แผ่นเกราะกันกระสุน`, `เกี่ยวกับเรา`, `ติดต่อเรา`) on the Thai pages.
+- **Product detail pages had no breadcrumb at all.** `HelmetInfo.astro` (the shared component behind both armor and helmet detail pages, EN and TH) now accepts an optional `breadcrumbItems` prop; each of the four `[name].astro` product pages builds a language- and category-correct trail (e.g. Home → Products → Ballistic Helmets → *product name*) using `breadcrumbUrl()`.
+- **Empty `keywords` on all four product detail pages.** `src/pages/products/[name].astro`, `src/pages/products/ballistic-helmets/[name].astro`, and their `/th/` equivalents had `const keywords = "";`. Now built per-product from `product.name` + `product.level` plus category keywords, in the page's own language.
+- **Sitemap had no i18n hreflang.** `@astrojs/sitemap` was called with no options, so `sitemap-index.xml` never linked the `en`/`th` versions of a page together. Added:
+  ```js
+  sitemap({
+    i18n: {
+      defaultLocale: "en",
+      locales: { en: "en-US", th: "th-TH" },
+    },
+  }),
+  ```
+  in `astro.config.mjs`. Verified `dist/sitemap-0.xml` now emits `<xhtml:link rel="alternate" hreflang="en-US" .../>` / `hreflang="th-TH"` pairs per URL.
+- **`breadcrumbUrl()` trailing-slash inconsistency.** The Thai-homepage case returned `https://ch-paisarn.com/th` (no trailing slash) while canonical/sitemap URLs use `https://ch-paisarn.com/th/`. Fixed in `src/i18n/utils.ts`.
+
+### 2. Thai brand keyword coverage
+
+Added the company-name variants requested for ranking, including the common misspelling users actually search:
+
+- Global default keywords (`Layout.astro`) and `Organization` JSON-LD `alternateName`: `ช.ไพศาล`, `ช ไพศาล`, `บริษัท ช.ไพศาล`, `บริษัท ช.ไพศาล จำกัด`, `เว็บไซต์ ช.ไพศาล`, `เว็ปไซต์ ช.ไพศาล` (misspelling), `chpaisarn.com`.
+- `src/pages/th/index.astro` and `src/pages/th/company.astro` — same brand/website phrases added to their page-specific `keywords` (page-level keywords override the Layout default, so the global addition alone wasn't enough).
+
+### 3. Files touched
+
+`astro.config.mjs`, `src/layouts/Layout.astro`, `src/i18n/utils.ts`, `src/components/{Company,Helmet,Armour,Plate,ContactUs,HelmetInfo}.astro`, `src/pages/th/{index,company}.astro`, `src/pages/products/[name].astro`, `src/pages/products/ballistic-helmets/[name].astro`, `src/pages/th/products/[name].astro`, `src/pages/th/products/ballistic-helmets/[name].astro`.
+
+### 4. Verification
+
+- `npm run build` — 42 pages built, no errors.
+- Confirmed in `dist/th/products/ballistic-helmets/fast/index.html`: `BreadcrumbList` renders Thai labels and `/th/` URLs (4 levels deep).
+- Confirmed in `dist/sitemap-0.xml`: every URL has `en-US`/`th-TH` `hreflang` alternates.
+- Confirmed in `dist/th/company/index.html`: home breadcrumb item is `https://ch-paisarn.com/th/` (trailing slash matches canonical convention).
