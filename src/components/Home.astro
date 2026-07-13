@@ -155,30 +155,9 @@ const partners = [
 />
 
 <script>
-  import $ from "jquery";
+  import { mountClickToPlayEmbed } from "@/scripts/video-embed";
 
-  $("#team-video-placeholder").on("click", function () {
-    const $placeholder = $(this);
-    const width = $placeholder.outerWidth();
-    const height = $placeholder.outerHeight();
-    const borderRadius = $placeholder.css("border-radius");
-    $("<iframe>")
-      .attr({
-        src: "https://www.youtube.com/embed/hOm-Hv6FT1I?si=fAvULb6s6OsnHqA2&autoplay=1",
-        title: "YouTube video player",
-        allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
-        referrerpolicy: "strict-origin-when-cross-origin",
-        allowfullscreen: "",
-      })
-      .css({
-        width: width + "px",
-        height: height + "px",
-        borderRadius: borderRadius,
-        display: "block",
-        flexShrink: "0",
-      })
-      .replaceAll($placeholder);
-  });
+  mountClickToPlayEmbed("team-video-placeholder", "https://www.youtube.com/embed/hOm-Hv6FT1I?si=fAvULb6s6OsnHqA2&autoplay=1");
 </script>
 
 <style define:vars={{ videoUrl: `url(${VideoImg.src})` }}>

@@ -14,7 +14,7 @@ No lint or test scripts are configured.
 
 ## Architecture
 
-**Stack:** Astro 5 + React 19 + Tailwind CSS v4 (via Vite plugin, not PostCSS). TypeScript throughout. jQuery 4 for DOM interactions (navbar mega menu, mobile accordion, video embeds).
+**Stack:** Astro 5 + React 19 + Tailwind CSS v4 (via Vite plugin, not PostCSS). TypeScript throughout. All DOM interactions (navbar mega menu, mobile accordion, video embeds) use vanilla JS — no jQuery.
 
 **Path aliases:** `@` resolves to `/src`, `~` resolves to the project root (both configured in `astro.config.mjs`).
 
@@ -81,13 +81,13 @@ Always use `is:inline` on JSON-LD `<script>` tags to silence the Astro "will be 
 
 **Submitting to Google:** After deploying changes, use Google Search Console → URL Inspection → "Request Indexing" per page, and submit `/sitemap-index.xml` under the Sitemaps section.
 
-## jQuery usage
+## DOM interactions
 
-jQuery 4 is loaded globally. Usage patterns across the codebase:
+No jQuery — all interactivity is plain DOM APIs (`querySelectorAll`, `classList`, `addEventListener`). Usage patterns across the codebase:
 
-- **Navbar** (`Navbar.astro`) — mega menu show/hide on hover (80ms hide delay), mobile accordion with animated `max-height`, hamburger toggle
-- **Video placeholders** (`Company.astro`) — click on SVG placeholder swaps in a YouTube `<iframe>` at the same dimensions
-- **Stats** (`StatSection.astro`) — scroll animation uses vanilla `IntersectionObserver` + `requestAnimationFrame` (not jQuery)
+- **Navbar** (`Navbar.astro`) — mega menu show/hide on hover (80ms hide delay), click-outside-to-close, mobile accordion with animated `max-height`, hamburger toggle. Re-initializes on `astro:after-swap` (client-side nav); each run creates a fresh `AbortController` and aborts the previous one to avoid duplicate listener bindings.
+- **Video placeholders** (`Home.astro`, `Company.astro`) — click on SVG placeholder swaps in a YouTube `<iframe>` at the same dimensions via the shared `mountClickToPlayEmbed()` helper in `src/scripts/video-embed.ts`.
+- **Stats** (`StatSection.astro`) — scroll animation uses vanilla `IntersectionObserver` + `requestAnimationFrame`.
 
 ## Styling conventions
 

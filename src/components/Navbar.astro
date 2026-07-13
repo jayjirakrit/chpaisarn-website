@@ -733,77 +733,97 @@ const GLOBE_PATH =
   </style>
 
   <script>
-    import $ from "jquery";
+    let controller: AbortController | undefined;
 
     function setupNavbar() {
-      let hideTimer: ReturnType<typeof setTimeout>;
-      const $menus = $(".mega-menu");
+      // Abort listeners from the previous run instead of jQuery's .off() dance
+      controller?.abort();
+      controller = new AbortController();
+      const { signal } = controller;
 
-      const show = ($menu: JQuery) => {
+      let hideTimer: ReturnType<typeof setTimeout>;
+      const menus = Array.from(document.querySelectorAll<HTMLElement>(".mega-menu"));
+
+      const show = (menu: HTMLElement) => {
         clearTimeout(hideTimer);
-        $menus.not($menu).removeClass("is-visible");
-        $menu.addClass("is-visible");
+        menus.forEach((m) => {
+          if (m !== menu) m.classList.remove("is-visible");
+        });
+        menu.classList.add("is-visible");
       };
 
-      const hide = ($menu: JQuery) => {
-        hideTimer = setTimeout(() => $menu.removeClass("is-visible"), 80);
+      const hide = (menu: HTMLElement) => {
+        hideTimer = setTimeout(() => menu.classList.remove("is-visible"), 80);
       };
 
       // Desktop mega menu hover
-      $(".nav-item[data-menu]").each(function () {
-        const $menu = $(`#mega-menu-${$(this).data("menu")}`);
-        if (!$menu.length) return;
-        $(this)
-          .add($menu)
-          .off("mouseenter mouseleave") // prevent duplicate bindings when re‑running
-          .on("mouseenter", () => show($menu))
-          .on("mouseleave", () => hide($menu));
+      document.querySelectorAll<HTMLElement>(".nav-item[data-menu]").forEach((item) => {
+        const menu = document.getElementById(`mega-menu-${item.dataset.menu}`);
+        if (!menu) return;
+        for (const el of [item, menu]) {
+          el.addEventListener("mouseenter", () => show(menu), { signal });
+          el.addEventListener("mouseleave", () => hide(menu), { signal });
+        }
       });
 
       // Click outside to close mega menus
-      $(document)
-        .off("click.navbarMegaClose")
-        .on("click.navbarMegaClose", (e) => {
-          if (!$(e.target as Element).closest(".nav-item, .mega-menu").length) {
-            $menus.removeClass("is-visible");
+      document.addEventListener(
+        "click",
+        (e) => {
+          if (!(e.target as Element).closest(".nav-item, .mega-menu")) {
+            menus.forEach((m) => m.classList.remove("is-visible"));
           }
-        });
+        },
+        { signal },
+      );
 
       // Mobile toggle
       const toggleMobileNav = () => {
-        const $container = $(".mobile-nav-container");
-        const isOpen = $container.hasClass("is-open");
-        $container.toggleClass("is-open");
-        $("#mobile-menu-btn").attr("aria-expanded", String(!isOpen));
+        const container = document.querySelector(".mobile-nav-container");
+        if (!container) return;
+        const isOpen = container.classList.contains("is-open");
+        container.classList.toggle("is-open");
+        document.getElementById("mobile-menu-btn")?.setAttribute("aria-expanded", String(!isOpen));
       };
 
-      // Clean up old bindings and attach fresh ones
-      $("#mobile-menu-btn").off("click").on("click", toggleMobileNav);
-      $("#close-menu-btn").off("click").on("click", toggleMobileNav);
+      document.getElementById("mobile-menu-btn")?.addEventListener("click", toggleMobileNav, { signal });
+      document.getElementById("close-menu-btn")?.addEventListener("click", toggleMobileNav, { signal });
 
       // Mobile accordion sub‑menus
-      $(".mobile-nav-link-parent button")
-        .off("click")
-        .on("click", function (e) {
-          e.preventDefault();
-          const $btn = $(this);
-          const $parent = $btn.closest(".mobile-nav-link");
-          const $child = $parent.find(".mobile-nav-link-child");
-          const isActive = $btn.hasClass("active");
+      document.querySelectorAll<HTMLButtonElement>(".mobile-nav-link-parent button").forEach((btn) => {
+        btn.addEventListener(
+          "click",
+          (e) => {
+            e.preventDefault();
+            const parent = btn.closest(".mobile-nav-link");
+            const child = parent?.querySelector<HTMLElement>(".mobile-nav-link-child");
+            const isActive = btn.classList.contains("active");
 
-          // Close others
-          $(".mobile-nav-link-child").not($child).removeClass("is-expanded");
-          $(".mobile-nav-link-parent button").not($btn).removeClass("active").attr("aria-expanded", "false");
+            // Close others
+            document.querySelectorAll(".mobile-nav-link-child").forEach((c) => {
+              if (c !== child) c.classList.remove("is-expanded");
+            });
+            document.querySelectorAll<HTMLButtonElement>(".mobile-nav-link-parent button").forEach((b) => {
+              if (b !== btn) {
+                b.classList.remove("active");
+                b.setAttribute("aria-expanded", "false");
+              }
+            });
 
-          // Toggle current
-          if (isActive) {
-            $btn.removeClass("active").attr("aria-expanded", "false");
-            $child.removeClass("is-expanded");
-          } else {
-            $btn.addClass("active").attr("aria-expanded", "true");
-            $child.addClass("is-expanded");
-          }
-        });
+            // Toggle current
+            if (isActive) {
+              btn.classList.remove("active");
+              btn.setAttribute("aria-expanded", "false");
+              child?.classList.remove("is-expanded");
+            } else {
+              btn.classList.add("active");
+              btn.setAttribute("aria-expanded", "true");
+              child?.classList.add("is-expanded");
+            }
+          },
+          { signal },
+        );
+      });
     }
 
     // Run immediately (for first page load)
