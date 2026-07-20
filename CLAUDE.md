@@ -12,6 +12,10 @@ npm run preview   # Preview production build locally
 
 No lint or test scripts are configured.
 
+## Git commits
+
+Never add a `Co-Authored-By: Claude` (or similar Claude/Anthropic attribution) trailer to commit messages in this repository.
+
 ## Architecture
 
 **Stack:** Astro 5 + React 19 + Tailwind CSS v4 (via Vite plugin, not PostCSS). TypeScript throughout. All DOM interactions (navbar mega menu, mobile accordion, video embeds) use vanilla JS — no jQuery.
