@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/qr-code/:path*",
+      "destination": "https://serichai-qr-code.vercel.app/:path*"
+    }
+  ]
+}
