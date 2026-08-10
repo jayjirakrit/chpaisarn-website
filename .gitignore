@@ -1,3 +1,7 @@
+# claude/speckit
+.claude/
+.specify/
+
 # build output
 dist/
 

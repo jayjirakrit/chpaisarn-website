@@ -133,6 +133,7 @@
   .product-card-container {
     flex-direction: row;
     height: 40.5rem;
+    padding: 0;
   }
 
   .product-card {
