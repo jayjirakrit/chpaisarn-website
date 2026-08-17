@@ -12,9 +12,10 @@ export type ProductInfoProps = {
   sizes: String[];
   productDesc: string;
   lang?: Lang;
+  specPdfUrl?: string;
 };
 
-const { productName, productsImg, level, colors, sizes, productDesc, lang = "en" } = Astro.props as ProductInfoProps;
+const { productName, productsImg, level, colors, sizes, productDesc, lang = "en", specPdfUrl } = Astro.props as ProductInfoProps;
 const t = useTranslations(lang);
 ---
 
@@ -41,6 +42,13 @@ const t = useTranslations(lang);
   </div>
   <div class="product-intro-content">
     <div class="product-intro-header">
+      {
+        specPdfUrl && (
+          <a class="product-intro-spec-download" href={specPdfUrl} download target="_blank" rel="noopener">
+            Download Spec
+          </a>
+        )
+      }
       <h2 class="product-intro-title">{productName}</h2>
       {
         level && (
@@ -131,6 +139,25 @@ const t = useTranslations(lang);
     padding-bottom: 1.5rem;
   }
 
+  .product-intro-spec-download {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    border-radius: 0.25rem;
+    background-color: var(--secondary-500);
+    color: var(--white);
+    font-size: 0.875rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+  }
+
+  .product-intro-spec-download:hover {
+    background-color: var(--secondary-hover);
+  }
+
   .product-intro-title-desc > p {
     background-color: var(--color-black);
     display: inline-flex;
@@ -204,6 +231,11 @@ const t = useTranslations(lang);
     .product-intro-photo-side img {
       max-width: 80%;
     }
+  .product-intro-spec-download {
+    align-self: flex-start;
+    justify-content: start;
+  }
+
     .product-intro-content {
       padding: 7.15rem 0;
     }

@@ -5,6 +5,7 @@ export const armorInfos = [
     slug: "iiia-01",
     name: "Ballistic Armor Level IIIA (Over Vest)",
     productName: "Ballistic Armor Level IIIA (Over Vest)",
+    specPdfUrl: "/specs/armor/iiia-01-en.pdf",
     productsImg: [
       armorImages["../assets/products/armor/armor_01.png"],
       armorImages["../assets/products/armor/armor_01_02.png"],
@@ -42,6 +43,7 @@ export const armorInfos = [
     slug: "iiia-02",
     name: "Ballistic Armor Level IIIA (Over Vest)",
     productName: "Ballistic Armor Level IIIA (Over Vest)",
+    specPdfUrl: "/specs/armor/iiia-02-en.pdf",
     productsImg: [
       armorImages["../assets/products/armor/armor_02.png"],
       armorImages["../assets/products/armor/armor_02_02.png"],
@@ -79,6 +81,7 @@ export const armorInfos = [
     slug: "iiia-03",
     name: "Ballistic Armor Level IIIA (Concealed)",
     productName: "Ballistic Armor Level IIIA (Concealed)",
+    specPdfUrl: "/specs/armor/iiia-03-en.pdf",
     productsImg: [
       armorImages["../assets/products/armor/armor_03.png"],
       armorImages["../assets/products/armor/armor_03_02.png"],
@@ -117,6 +120,7 @@ export const armorInfos = [
     name: "Ballistic and Fragmentation Armor",
     specTitle: "Technical Specifications",
     productName: "Ballistic and Fragmentation Armor",
+    specPdfUrl: "/specs/armor/fragment-en.pdf",
     productsImg: [
       armorImages["../assets/products/armor/armor_04.png"],
       armorImages["../assets/products/armor/armor_04_02.png"],
@@ -155,6 +159,7 @@ export const armorInfos = [
     slug: "quick-release-iii-01",
     name: "Quick-Release Ballistic Level III+++",
     productName: "Quick-Release Ballistic Level III+++",
+    specPdfUrl: "/specs/armor/qr-iii-01-en.pdf",
     productsImg: [
       armorImages["../assets/products/armor/armor_05.png"],
       armorImages["../assets/products/armor/armor_05_02.png"],
@@ -193,6 +198,7 @@ export const armorInfos = [
     slug: "quick-release-iii-02",
     name: "Quick-Release Ballistic Level III+++",
     productName: "Quick-Release Ballistic Level III+++",
+    specPdfUrl: "/specs/armor/qr-iii-02-en.pdf",
     productsImg: [
       armorImages["../assets/products/armor/armor_06.png"],
       armorImages["../assets/products/armor/armor_06_02.png"],
@@ -231,6 +237,7 @@ export const armorInfos = [
     slug: "quick-release-iii-03",
     name: "Quick-Release Ballistic Level III+++",
     productName: "Quick-Release Ballistic Level III+++",
+    specPdfUrl: "/specs/armor/qr-iii-03-en.pdf",
     productsImg: [
       armorImages["../assets/products/armor/armor_07.png"],
       armorImages["../assets/products/armor/armor_07_02.png"],
@@ -269,6 +276,7 @@ export const armorInfos = [
     slug: "quick-release-iii-04",
     name: "Quick-Release Ballistic Level III+++",
     productName: "Quick-Release Ballistic Level III+++",
+    specPdfUrl: "/specs/armor/qr-iii-04-en.pdf",
     productsImg: [
       armorImages["../assets/products/armor/armor_08.png"],
       armorImages["../assets/products/armor/armor_08_02.png"],
@@ -307,6 +315,7 @@ export const armorInfos = [
     slug: "quick-release-iii-05",
     name: "Quick-Release Ballistic Level III+++",
     productName: "Quick-Release Ballistic Level III+++",
+    specPdfUrl: "/specs/armor/qr-iii-05-en.pdf",
     productsImg: [
       armorImages["../assets/products/armor/armor_09.png"],
       armorImages["../assets/products/armor/armor_09_02.png"],

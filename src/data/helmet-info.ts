@@ -5,6 +5,7 @@ export const helmetInfos = [
     slug: "fast",
     name: "Fast Helmet",
     productName: "Fast Helmet",
+    specPdfUrl: "/specs/helmets/fast-en.pdf",
     productsImg: [
       helmetImages["../assets/products/helmet/helmet_new_fast.png"],
       helmetImages["../assets/products/helmet/helmet_new_fast_02.png"],
@@ -45,6 +46,7 @@ export const helmetInfos = [
     slug: "ballistic-i",
     name: "Ballistic I Helmet",
     productName: "Ballistic I Helmet",
+    specPdfUrl: "/specs/helmets/ballistic-i-en.pdf",
     productsImg: [
       helmetImages["../assets/products/helmet/helmet_south.png"],
       helmetImages["../assets/products/helmet/helmet_south_02.png"],
@@ -85,6 +87,7 @@ export const helmetInfos = [
     slug: "fast-cer",
     name: "Fast Ceramic Helmet",
     productName: "Fast Ceramic Helmet",
+    specPdfUrl: "/specs/helmets/fast-cer-en.pdf",
     productsImg: [
       helmetImages["../assets/products/helmet/helmet_fast_rif.png"],
       helmetImages["../assets/products/helmet/helmet_fast_rif_02.png"],
@@ -126,6 +129,7 @@ export const helmetInfos = [
     slug: "fast-iii",
     name: "Fast III Helmet",
     productName: "Fast III Helmet",
+    specPdfUrl: "/specs/helmets/fast-iii-en.pdf",
     productsImg: [
       helmetImages["../assets/products/helmet/helmet_fast_green.png"],
       helmetImages["../assets/products/helmet/helmet_fast_green_02.png"],
