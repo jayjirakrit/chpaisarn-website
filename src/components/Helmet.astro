@@ -15,7 +15,6 @@ import HelmetNewFastImg from "@/assets/products/helmet/helmet_new_fast.png";
 import HelmetSouthImg from "@/assets/products/helmet/helmet_south.png";
 import HelmetFastImg from "@/assets/products/helmet/helmet_fast_rif.png";
 import HelmetFastGreenImg from "@/assets/products/helmet/helmet_fast_green.png";
-import HelmetWendyImg from "@/assets/products/helmet/helmet_wendy.png";
 import type { Lang } from "@/i18n/types";
 import { useTranslations, breadcrumbUrl } from "@/i18n/utils";
 
@@ -41,7 +40,7 @@ const breadcrumbLd = {
   ],
 };
 
-const helmetImgs = [HelmetNewFastImg, HelmetWendyImg, HelmetFastImg, HelmetFastGreenImg, HelmetSouthImg];
+const helmetImgs = [HelmetNewFastImg, HelmetFastImg, HelmetFastGreenImg, HelmetSouthImg];
 const stepImgs = [CustomizeBg01Img.src, CustomizeBg02Img.src, CustomizeBg03Img.src, CustomizeBg04Img.src, CustomizeBg05Img.src];
 
 const itemOptions = t("helmet.itemOptions").map((opt, i) => ({ ...opt, img: helmetImgs[i] }));

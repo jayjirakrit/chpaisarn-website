@@ -97,7 +97,13 @@ export type Translations = {
   // Footer
   "footer.contactUs": string;
   "footer.office": string;
+  "footer.office.address": string;
+  "footer.office.phone": string;
+  "footer.office.email": string;
+  "footer.office.email2": string;
   "footer.factory": string;
+  "footer.factory.address": string;
+  "footer.factory.phone": string;
   "footer.products": string;
   "footer.company": string;
   "footer.copyright": string;

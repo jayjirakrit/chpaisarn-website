@@ -27,7 +27,7 @@ export const en: Translations = {
     "Our ballistic plates provide customizable solutions for personal protection. With options ranging from Level III to Level IV, each plate is tested for performance and durability to protect against high-velocity rounds.",
   "nav.mega.company.title": "Our Company",
   "nav.mega.company.description":
-    "50 years of experience. 100% in-house design, manufacturing, and testing. Thailand's largest ballistic protection manufacturer.",
+    "30 years of experience. 100% in-house design, manufacturing, and testing. Thailand's largest ballistic protection manufacturer.",
   "nav.mega.quality.title": "Quality Standards",
   "nav.mega.quality.description":
     "At Ch. Paisarn, we combine rigorous international testing with advanced engineering to ensure every piece of equipment provides dependable protection. Explore our commitment to excellence through our certified processes and precision manufacturing.",
@@ -38,11 +38,17 @@ export const en: Translations = {
   // Footer
   "footer.contactUs": "Contact Us",
   "footer.office": "Office",
+  "footer.office.address": "55/20 Soi Ronnasittipichai Sanambinnam Road Tasai Muang Nonthaburi 11000 Thailand",
+  "footer.office.phone": "+662 580 2552 - 3",
+  "footer.office.email": "contact@chpaisarn.com",
+  "footer.office.email2": "natty@chpaisarn.com",
   "footer.factory": "Factory",
+  "footer.factory.address": "179 Moo11 Banchian Hunka Chainat 17130 Thailand",
+  "footer.factory.phone": "+665 645 1982 - 6",
   "footer.products": "Products",
   "footer.company": "Company",
   "footer.copyright": "© 2026 Ch.Paisarn. All Rights Reserved.",
-  "footer.credit": "Website created by House of Bandan",
+  "footer.credit": "",
   "footer.products.list": ["Body Armors", "Ballistic Helmets", "Ballistic Plates", "Other Ballistic Solutions", "Customized Defense Solutions"],
   "footer.company.list": ["About Us", "Quality", "Contact Us"],
 
@@ -115,15 +121,15 @@ export const en: Translations = {
   // Company page
   "company.intro.title": "Our Company",
   "company.intro.description":
-    "Founded in 1974, Ch.Paisarn Co., Ltd. is Thailand's largest manufacturer of ballistic protection equipment built on over 50 years of dedication to protecting Thailand's armed forces and security agencies. A silent, loyal companion following every soldier into every mission since 1974.",
+    "Founded in 1974, Ch.Paisarn Co., Ltd. is Thailand's largest manufacturer of ballistic protection equipment built on over 30 years of dedication to protecting Thailand's armed forces and security agencies. A silent, loyal companion following every soldier into every mission since 1974.",
   "company.legacy.title": "The Ch. Paisarn Legacy",
   "company.legacy.description":
-    "Over 50 years of manufacturing heritage — combining proven expertise with advanced engineering to deliver ballistic protection that Thailand's forces can depend on.",
+    "Over 30 years of manufacturing heritage — combining proven expertise with advanced engineering to deliver ballistic protection that Thailand's forces can depend on.",
   "company.legacy.items": [
     {
       img: "",
       title: "Our Legacy",
-      decs: "Established in 1974, Ch.Paisarn Co., Ltd. was founded by Thais, for Thai soldiers. For over 50 years we have dedicated ourselves to a single purpose — designing, manufacturing, and delivering ballistic protection equipment that Thailand's armed forces and security agencies can trust in active operations.<br><br>What began as a commitment to equip Thai soldiers with the best possible protection has grown into Thailand's largest ballistic protection manufacturing operation — with a production facility in Chainat Province capable of producing over 120,000 units per year.<br><br>**Made in Thailand. Crafted for Thailand. Trusted by Thailand.**",
+      decs: "Established in 1974, Ch.Paisarn Co., Ltd. was founded by Thais, for Thai soldiers. For over 30 years we have dedicated ourselves to a single purpose — designing, manufacturing, and delivering ballistic protection equipment that Thailand's armed forces and security agencies can trust in active operations.<br><br>What began as a commitment to equip Thai soldiers with the best possible protection has grown into Thailand's largest ballistic protection manufacturing operation — with a production facility in Chainat Province capable of producing over 120,000 units per year.<br><br>**Made in Thailand. Crafted for Thailand. Trusted by Thailand.**",
     },
     {
       img: "",
@@ -362,10 +368,9 @@ export const en: Translations = {
   ],
   "helmet.itemOptions": [
     { label: "Option 1", title: "Fast", imgDescription: "Fast Helmet", url: "fast" },
-    { label: "Option 2", title: "Wendy", imgDescription: "Wendy Helmet", url: "wendy" },
-    { label: "Option 3", title: "Fast CER", imgDescription: "Fast Ceramic Helmet", url: "fast-cer" },
-    { label: "Option 4", title: "Fast III", imgDescription: "Fast III Helmet", url: "fast-iii" },
-    { label: "Option 5", title: "Ballistic I", imgDescription: "Ballistic I Helmet", url: "ballistic-i" },
+    { label: "Option 2", title: "Fast CER", imgDescription: "Fast Ceramic Helmet", url: "fast-cer" },
+    { label: "Option 3", title: "Fast III", imgDescription: "Fast III Helmet", url: "fast-iii" },
+    { label: "Option 4", title: "Ballistic I", imgDescription: "Ballistic I Helmet", url: "ballistic-i" },
   ],
   "helmet.customizationSteps": [
     {
